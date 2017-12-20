@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>用户管理</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/user.css" />
+		<!--<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/user.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/li_change.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="" alt="" class="photo" />
+								<img src="" alt="" />
+							</div>
+							<div class="info_name"></div>
+							<div class="rows">
+								<div><span class="one"><img src="img/icon-suotou.png" alt="" /></span></div>
+								<div><span class="two"><img src="img/icon-yaoshi.png" alt="" /></span></div>
+								<div><span class="three"><img src="img/icon-camera.png" alt="" /></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="listBtn">
+						<a href="task.html?name=1" class="list_1 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<i>任务</i>
+							</div>
+						</a>
+						<a href="msg.html" class="list_2 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-tongzhi-white.png" alt="" />
+									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
+								<i>通知</i>
+							</div>
+						</a>
+						<a href="pandect.html" class="list_3 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-zonglan-white.png" alt="" /></div>
+								<i>总览</i>
+							</div>
+						</a>
+						<a href="user.html?name=3" class="list_4 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-yonghu-white.png" alt="" /></div>
+								<i>用户</i>
+							</div>
+						</a>
+						<a href="administration.html" class="list_5 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-guanli-white.png" alt="" /></div>
+								<i>管理</i>
+							</div>
+						</a>
+						<a href="finance.html" class="list_6 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-caiwu-white.png" alt="" /></div>
+								<i>财务</i>
+							</div>
+						</a>
+						<a href="backstage_general.html" class="list_7 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-houtai-white.png" alt="" /></div>
+								<i>后台</i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="left">
+					<div class="icon-search">
+						<img src="img/icon-search-orange.png" alt="" />
+					</div>
+					<div class="search-inp">
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
+					</div>
+				</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="" /></div>
+					</div>
+					<div class="helpBtn rightDiv">
+						<div><img src="img/icon-bangzhu-white.png" /></div>
+					</div>
+					<div class="dataTime rightDiv">
+						<div>
+							<i>2017</i>年<i>09</i>月<i>01</i>日&nbsp;&nbsp;&nbsp;&nbsp;星期<i>五</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<!--右侧内容区-->
+				<div class="center_content">
+					<div class="content_header">
+						<ul class="user_tab clearfix">
+							<li>
+								<a href="index.html">项目信息</a>
+							</li>
+							<li>
+								<a href="process.html">过程管理</a>
+							</li>
+							<li>
+								<a href="count.html">统计分析</a>
+							</li>
+							<li class="active">
+								<a href="count.html">用户</a>
+								<!--<i><img src="img/icon_del.png" alt="" /></i>-->
+							</li>
+						</ul>
+						<div class="current_task">
+							<span class="task">当前项目：</span>
+							<span class="task_name"></span>
+						</div>
+					</div>
+					<!--个人信息-->
+					<div class="personal_msg">
+						<div class="msg">
+							<div class="msg_header"><span>个人信息</span><span class="edit1">编辑</span></div>
+							<div class="person_msg clearfix">
+								<div class="msg_detail account">
+									<div class="msg_detail_left">账号:</div>
+									<input type="text" name="" id="Uusername" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail password">
+									<div class="msg_detail_left">密码:</div>
+									<input type="password" name="" id="" value="*********" class="msg_detail_right" disabled="" />
+									<div class="set">设置</div>
+								</div>
+								<div class="msg_detail name">
+									<div class="msg_detail_left">姓名:</div>
+									<input type="text" name="" id="Unickname" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail sex">
+									<div class="msg_detail_left">性别:</div>
+									<input type="text" name="" id="Usex" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail birthday">
+									<div class="msg_detail_left">出生年月:</div>
+									<input type="text" name="" id="Ubirthday" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail worktime">
+									<div class="msg_detail_left">参加工作时间:</div>
+									<input type="text" name="" id="Uworktime" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail college">
+									<div class="msg_detail_left">毕业学校:</div>
+									<input type="text" name="" id="Uschool" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail edu">
+									<div class="msg_detail_left">学历:</div>
+									<input type="text" name="" id="Uedu" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail job">
+									<div class="msg_detail_left">职称:</div>
+									<input type="text" name="" id="Uposition" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail job_style">
+									<div class="msg_detail_left">所属工种:</div>
+									<input type="text" name="" id="Uwork_type" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail phone">
+									<div class="msg_detail_left">手机:</div>
+									<input type="text" name="" id="Umobile" value="" class="msg_detail_right" disabled="" />
+								</div>
+								<div class="msg_detail qq">
+									<div class="msg_detail_left">QQ:</div>
+									<input type="text" name="" id="Uqq" value="" class="msg_detail_right" disabled="" />
+
+								</div>
+							</div>
+						</div>
+						<!--//回收站-->
+						<div class="recycle">
+							<div class="recycle_header">回收站</div>
+							<ul class="recycle_ul">
+								<li>
+									<a href="javascript:void(0)">过程管理</a>
+								</li>
+								<li class="active">
+									<a href="javascript:void(0)">任务</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">通知</a>
+								</li>
+							</ul>
+							<!--过程管理-->
+							<div class="process_detail recycle_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<td class="orderlist">序号</td>
+										<td class="settime">创建时间</td>
+										<td class="job-style">所属分栏</td>
+										<td class="job">类型</td>
+										<td class="title">标题内容</td>
+										<td class="del">删除时间</td>
+										<td class="handle">操作</td>
+									</thead>
+									<tbody>
+										<!--<tr>
+											<td>过程管理</td>
+											<td>2017-08-20</td>
+											<td>筑工种建筑工种建筑工种建筑工种</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span class="edit">编辑</span><span class="check">查看</span><span class="del">删除</span></td>
+										</tr>
+										<tr>
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr>
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>-->
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span>0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--任务开始-->
+							<div class="task_detail recycle_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<td class="orderlist">序号</td>
+										<td class="settime">创建时间</td>
+										<td class="job-style">所属分栏</td>
+										<td class="job">类型</td>
+										<td class="title">标题内容</td>
+										<td class="del">删除时间</td>
+										<td class="handle">操作</td>
+									</thead>
+									<tbody>
+										<!--<tr>
+											<td>任务开始</td>
+											<td>2017-08-20</td>
+											<td>筑工种建筑工种建筑工种建筑工种</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span class="edit">编辑</span><span class="check">查看</span><span class="del">删除</span></td>
+										</tr>
+										<tr>
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr>
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>-->
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span>0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--任务结束-->
+							<!--通知开始-->
+							<div class="info_detail recycle_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<td class="orderlist">序号</td>
+										<td class="settime">创建时间</td>
+										<td class="job-style">所属分栏</td>
+										<td class="job">类型</td>
+										<td class="title">标题内容</td>
+										<td class="del">删除时间</td>
+										<td class="handle">操作</td>
+									</thead>
+									<tbody>
+										<!--<tr>
+											<td>通知</td>
+											<td>2017-08-20</td>
+											<td>筑工种建筑工种建筑工种建筑工种</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span class="edit">编辑</span><span class="check">查看</span><span class="del">删除</span></td>
+										</tr>
+										<tr>
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+										<tr>
+											<td>序号</td>
+											<td>创建时间</td>
+											<td>所属分栏</td>
+											<td>类型</td>
+											<td>标题内容</td>
+											<td>删除时间</td>
+											<td class="handle"><span>查看</span></td>
+										</tr>-->
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span>0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--通知结束-->
+						</div>
+						<!--//回收站结束-->
+						<!--绩效记录开始-->
+						<div class="perf">
+							<div class="perf_header"><span class="record">绩效记录</span></div>
+							<div class="task_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<td class="orderlist">序号</td>
+										<td class="settime">时间区间</td>
+										<td class="job-style">项目名称</td>
+										<td class="job">工种负责</td>
+										<td class="title">分工情况</td>
+										<td class="del">提成</td>
+										<td class="handle">操作</td>
+									</thead>
+									<tbody>
+
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span>0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--绩效记录结束-->
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<!--弹框区-->
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<div class="scroll" id="scroll">
+				<!--绩效详情-->
+				<div class="perf_detail">
+					<div class="pref_head">
+						<span>绩效详情</span>
+						<i></i>
+					</div>
+					<div class="pref_info">
+						<div class="info_center">
+							<div class="info_detail account">
+								<div class="info_detail_left">姓名:</div>
+								<input type="text" name="" id="" value="输入姓名" class="info_detail_right" disabled="" />
+							</div>
+							<div class="info_detail password">
+								<div class="info_detail_left">项目名称:</div>
+								<input type="text" name="" id="" value="输入名称" class="info_detail_right" disabled="" />
+							</div>
+							<div class="info_detail name">
+								<div class="info_detail_left">项目主管:</div>
+								<input type="text" name="" id="" value="输入姓名" class="info_detail_right" disabled="" />
+							</div>
+							<div class="info_detail sex">
+								<div class="info_detail_left">工种负责:</div>
+								<input type="text" name="" id="" value="建筑" class="info_detail_right" disabled="" />
+							</div>
+							<div class="info_detail birthday">
+								<div class="info_detail_left">计提总额:</div>
+								<input type="text" name="" id="" value="输入总额" class="info_detail_right" disabled="" />
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_center">
+							<div class="item_head">
+								<span>时间阶段：</span>
+								<span>2016.07.01-2017.06.01</span>
+							</div>
+							<div class="item_bottom clearfix">
+								<div class="info_detail">
+									<div class="info_detail_left">公众参与:</div>
+									<input type="text" name="" id="" value="分派" class="info_detail_right" disabled="" />
+								</div>
+								<div class="info_detail">
+									<div class="info_detail_left">分工情况:</div>
+									<input type="text" name="" id="" value="" class="info_detail_right" disabled="" />
+								</div>
+								<div class="info_detail">
+									<div class="info_detail_left">计提占比:</div>
+									<input type="text" name="" id="" value="" class="info_detail_right" disabled="" />
+								</div>
+								<div class="info_detail">
+									<div class="info_detail_left">计提数额:</div>
+									<input type="text" name="" id="" value="" class="info_detail_right" disabled="" />
+								</div>
+							</div>
+							<div class="work_content">
+								<div class="work_head">
+									工作记录
+								</div>
+								<textarea name="" rows="" cols="" placeholder="请输入" disabled="disabled"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<button type="button" class="btn1">确&nbsp;&nbsp;定</button>
+				</div>
+				<!--绩效详情结束-->
+				<!--修改密码-->
+				<div class="change_psw">
+					<div class="psw_header">
+						修改密码
+						<i></i>
+					</div>
+					<div class="psw_content">
+						<div class="psw_detail name">
+							<div class="psw_detail_left">姓名:</div>
+							<input readonly="readonly" type="text" name="" id="pwdnickname" placeholder="李四" class="psw_detail_right" />
+						</div>
+						<div class="psw_detail">
+							<div class="psw_detail_left">账号:</div>
+							<input readonly="readonly" type="text" name="" id="pwdusername" placeholder="输入账号" class="psw_detail_right" />
+						</div>
+						<div class="psw_detail">
+							<div class="psw_detail_left">旧密码:</div>
+							<input type="password" name="" id="" placeholder="输入旧密码" class="psw_detail_right oldPwd" />
+						</div>
+						<div class="psw_detail">
+							<div class="psw_detail_left">新密码:</div>
+							<input type="password" name="" id="" placeholder="输入新密码" class="psw_detail_right newPwd" />
+						</div>
+						<div class="psw_detail">
+							<div class="psw_detail_left">再次确认:</div>
+							<input type="password" name="" id="" placeholder="输入新密码" class="psw_detail_right newPwd1" />
+						</div>
+					</div>
+					<button type="button" class="btn1" id="editPwd">确&nbsp;&nbsp;定</button>
+				</div>
+				<!--修改密码-->
+				<!--编辑个人信息-->
+				<div class="edit">
+					<div class="edit_head">
+						<span>编辑个人信息</span>
+						<i></i>
+					</div>
+					<div class="edit_bottom">
+						<div class="edit_msg">
+							<div class="choose">
+								<!--<div class="choose_man">
+									选人
+								</div>-->
+							</div>
+							<div class="person_msg clearfix">
+								<div class="msg_detail account">
+									<div class="msg_detail_left">账号:</div>
+									<input type="text" name="" id="editusername" value="5465478979313" class="msg_detail_right" disabled="disabled" />
+								</div>
+								<div class="msg_detail fl">
+									<div class="msg_detail_left">密码:</div>
+									<input type="password" name="" id="" value="*********" class="msg_detail_right" disabled="disabled" />
+								</div>
+								<div class="msg_detail name">
+									<div class="msg_detail_left">姓名:</div>
+									<input type="text" name="" id="editnickname" value="李四" class="msg_detail_right">
+								</div>
+								<div class="msg_detail sex">
+									<div class="msg_detail_left">性别:</div>
+									<input type="text" name="" id="editsex" value="" class="msg_detail_right" />
+									<i><img src="img/black_tri.png"/></i>
+									<select name="" class="sex_c">
+										<option value="-1">请选择性别</option>
+										<option value="0">保密</option>
+										<option value="1">男</option>
+										<option value="2">女</option>
+									</select>
+								</div>
+								<div class="msg_detail birthday">
+									<div class="msg_detail_left">出生年月:</div>
+									<input type="text" name="" id="editbirthday" value="1990-03-04" class="msg_detail_right" />
+								</div>
+								<div class="msg_detail worktime">
+									<div class="msg_detail_left">参加工作时间:</div>
+									<input type="text" name="" id="editworktime" value="2014-07-01" class="msg_detail_right" />
+								</div>
+								<div class="msg_detail college">
+									<div class="msg_detail_left">毕业学校:</div>
+									<input type="text" name="" id="editschool" value="清华大学" class="msg_detail_right" />
+								</div>
+								<div class="msg_detail edu">
+									<div class="msg_detail_left">学历:</div>
+									<input type="text" name="" id="editedu" value="" class="msg_detail_right" />
+									<i><img src="img/black_tri.png"/></i>
+									<select name="" class="edu_c">
+										<option value="-1">请选择学历</option>
+										<option value="0">小学</option>
+										<option value="1">初中</option>
+										<option value="2">中专</option>
+										<option value="3">高中</option>
+										<option value="4">大专</option>
+										<option value="5">本科</option>
+										<option value="6">硕士</option>
+										<option value="7">博士</option>
+										<option value="8">其他</option>
+									</select>
+								</div>
+								<div class="msg_detail job">
+									<div class="msg_detail_left">职称:</div>
+									<input type="text" name="" id="editposition" value="工程师" class="msg_detail_right" />
+								</div>
+								<div class="msg_detail job_style">
+									<div class="msg_detail_left">所属工种:</div>
+									<input type="text" name="" id="editwork_type" value="" class="msg_detail_right" />
+									<i><img src="img/black_tri.png"/></i>
+									<select name="" class="work_c">
+										<!--<option value="">建筑</option>
+										<option value="">后勤</option>
+										<option value="">电气</option>-->
+									</select>
+								</div>
+								<div class="msg_detail phone">
+									<div class="msg_detail_left">手机:</div>
+									<input type="text" name="" id="editmobile" value="" class="msg_detail_right" />
+								</div>
+								<div class="msg_detail qq">
+									<div class="msg_detail_left">QQ:</div>
+									<input type="text" name="" id="editqq" value="" class="msg_detail_right" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn1">确&nbsp;&nbsp;定</button>
+				</div>
+				<!--编辑个人信息结束-->
+			</div>
+
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#editbirthday',
+			});
+			laydate.render({
+				elem: '#editworktime',
+			});
+		</script>
+	</body>
+
+</html>
