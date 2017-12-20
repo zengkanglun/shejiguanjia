@@ -1,0 +1,2502 @@
+#bodyRight #content .firstNav {
+  font-size: 14px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+#bodyRight #content .firstNav a {
+  color: inherit;
+}
+#bodyRight #content .firstNav a + a {
+  cursor: auto;
+}
+#bodyRight #content .box {
+  width: 100%;
+  background-color: #FFFFFF;
+}
+#bodyRight #content .box .first {
+  width: 100%;
+  height: 72px;
+  border-bottom: 1px solid #c8d2dc;
+  position: relative;
+}
+#bodyRight #content .box .first button {
+  width: 75px;
+  height: 32px;
+  display: block;
+  border: 1px solid #FD813E;
+  color: #FD813E;
+  font-size: 14px;
+  background-color: transparent;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  right: 33px;
+  bottom: 0;
+  margin: auto;
+}
+#bodyRight #content .box .first .rows {
+  width: 480px;
+  height: 100%;
+  overflow: hidden;
+}
+#bodyRight #content .box .first .rows .xs-3 {
+  width: 150px;
+  height: 100%;
+  padding-top: 40px;
+  position: relative;
+  float: left;
+}
+#bodyRight #content .box .first .rows .xs-3 span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  color: #6a6a6a;
+  text-align: center;
+  cursor: pointer;
+}
+#bodyRight #content .box .first .rows .xs-3 i {
+  width: 100%;
+  height: 4px;
+  background-color: #FD813E;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+#bodyRight #content .box .first .rows .xs-3s {
+  margin: 0px 20px 0px 10px;
+}
+#bodyRight #content .box .first .rows .HeaderRowsActive span {
+  color: #FD813E;
+}
+#bodyRight #content .box .first .rows .HeaderRowsActive i {
+  display: block;
+}
+#bodyRight #content .box .second {
+  width: 100%;
+  height: 90px;
+  border-bottom: 1px solid #c8d2dc;
+  position: relative;
+  margin-bottom: 40px;
+}
+#bodyRight #content .box .second .left {
+  width: 120px;
+  height: 36px;
+  display: block;
+  border: 1px solid #FD813E;
+  border-radius: 5px;
+  color: #FD813E;
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  bottom: 0;
+  margin: auto;
+  background-color: transparent;
+}
+#bodyRight #content .box .second .right {
+  width: 240px;
+  height: 36px;
+  border: 1px solid #C8D2DC;
+  border-radius: 5px;
+  background-color: #e9ecf1;
+  position: absolute;
+  top: 0;
+  right: 37px;
+  bottom: 0;
+  margin: auto;
+}
+#bodyRight #content .box .second .right a {
+  width: 22px;
+  height: 22px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 6px;
+  bottom: 0;
+  margin: auto;
+}
+#bodyRight #content .box .second .right span {
+  width: 200px;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#bodyRight #content .box .second .right span input {
+  width: 100%;
+  height: 100%;
+  padding: 0 5px;
+  float: left;
+}
+#bodyRight #content .box .third {
+  width: 100%;
+  margin: auto;
+  padding: 0 32px 85px;
+}
+#bodyRight #content .box .third .thirdTable {
+  width: 100%;
+  border: 1px solid #C8D2DC;
+  text-align: center;
+  margin-bottom: 33px;
+}
+#bodyRight #content .box .third .thirdTable tr {
+  height: 50px;
+}
+#bodyRight #content .box .third .thirdTable tr th {
+  text-align: center;
+  background-color: #cdd1d9;
+}
+#bodyRight #content .box .third .thirdTable tr th i {
+  display: inline-block;
+  width: 10px;
+  height: 8px;
+  line-height: 0;
+  border: 5px solid transparent;
+  border-bottom: 0;
+  margin-left: 12px;
+  border-top: 8px solid orange;
+  border-top-color: #5B636C;
+}
+#bodyRight #content .box .third .thirdTable tr th + th {
+  border-left: 1px solid #9daab8;
+}
+#bodyRight #content .box .third .thirdTable tr td {
+  position: relative;
+}
+#bodyRight #content .box .third .thirdTable tr td span {
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 1px solid #667788;
+  box-sizing: border-box;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#bodyRight #content .box .third .thirdTable tr td span img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  display: none;
+}
+#bodyRight #content .box .third .thirdTable tr td span.active img {
+  display: block;
+}
+#bodyRight #content .box .third .thirdTable tr td + td {
+  border-left: 1px solid #9daab8;
+}
+#bodyRight #content .box .third .thirdTable .one {
+  width: 50px;
+}
+#bodyRight #content .box .third .thirdTable .two {
+  width: 10%;
+}
+#bodyRight #content .box .third .thirdTable .three {
+  width: 10%;
+}
+#bodyRight #content .box .third .thirdTable .eight {
+  width: 10%;
+}
+#bodyRight #content .box .third .thirdTable .nine {
+  width: 258px;
+}
+#bodyRight #content .box .third .thirdTable .tableFirstRows {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#bodyRight #content .box .third .thirdTable .tableFirstRows div {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  float: left;
+}
+#bodyRight #content .box .third .thirdTable .tableFirstRows div a {
+  display: block;
+  width: 32px;
+  height: 22px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #333333;
+  color: #333333;
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-decoration: none;
+}
+#bodyRight #content .box .third .thirdTable .tableFirstRows div a:hover {
+  color: #FD813E;
+  border-bottom: 1px solid #FD813E;
+}
+#bodyRight #content .box .third .thirdTable .tableFirstRows .tableFirstRowsActive a {
+  color: #FD813E;
+  border-color: #FD813E;
+}
+#bodyRight #content .box .third .thirdTable .tableTrBackground {
+  background-color: #E9ECF1;
+}
+#bodyRight #content .box .third .paging {
+  width: 100%;
+  height: 36px;
+  margin-top: 25px;
+}
+#bodyRight #content .box .third .paging .page {
+  float: right;
+  height: 36px;
+}
+#bodyRight #content .box .third .paging .page .page_left {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+  color: #333333;
+  margin-right: 30px;
+}
+#bodyRight #content .box .third .paging .page .pagenum {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+  color: #333333;
+  margin-left: 20px;
+  margin-right: 26px;
+  position: relative;
+}
+#bodyRight #content .box .third .paging .page .pagenum span {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+  color: #333333;
+}
+#bodyRight #content .box .third .paging .page .pagenum input {
+  width: 47px;
+  height: 36px;
+  float: left;
+  border: 1px solid #c8d2dc;
+  line-height: 34px;
+  line-height: 34px\9;
+  font-size: 14x;
+  text-align: center;
+}
+#bodyRight #content .box .third .paging .page .pagenum i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: relative;
+  border: 1px solid #c8d2dc;
+  border-left: none;
+  float: left;
+}
+#bodyRight #content .box .third .paging .page .pagenum i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#bodyRight #content .box .third .paging .page .pagenum .leftt {
+  margin-left: 10px;
+}
+#bodyRight #content .box .third .paging .page .pagenum select {
+  width: 80px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  right: 24px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#bodyRight #content .box .third .paging .page .page_right {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+}
+#bodyRight #content .box .third .paging .page .page_right span {
+  display: block;
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+}
+#bodyRight #content .box .third .paging .page .page_right .number {
+  color: #fd813e;
+  display: block;
+  float: left;
+}
+#bodyRight #content .box .third .paging .page .page_right i {
+  width: 16px;
+  height: 16px;
+  background: #E5E5E5;
+  color: #000000;
+  display: block;
+  text-align: center;
+  line-height: 16px;
+  line-height: 16px\9;
+  float: left;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#bodyRight #content .box .third .paging .page .page_right i.less {
+  margin-left: 10px;
+}
+#bodyRight #content .box .third .paging .page .page_right i.more {
+  margin-left: 5px;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third {
+  width: 100%;
+  padding: 87px 0 160px;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBox {
+  width: 278px;
+  margin: 0 auto 53px;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBox .thirdBoxDiv {
+  width: 100%;
+  height: 36px;
+  overflow: hidden;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBox .thirdBoxDiv div {
+  width: 72px;
+  height: 100%;
+  line-height: 36px;
+  color: #6A6A6A;
+  font-size: 14px;
+  float: left;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBox .thirdBoxDiv span {
+  display: block;
+  width: 200px;
+  height: 100%;
+  line-height: 36px;
+  float: right;
+  color: #333333;
+  font-size: 14px;
+  padding: 0 5px;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBox .thirdBoxDiv span input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  float: left;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBox .thirdBoxDiv + .thirdBoxDiv {
+  margin-top: 30px;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBox .thirdBoxDiv + .thirdBoxDiv span {
+  border: 1px solid #C8D2DC;
+  background-color: #fafafa;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBoxButton {
+  width: 160px;
+  height: 50px;
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px 0px #FD813E;
+  border-radius: 5px;
+}
+#bodyRight #content[name="backstageAdmin"] .box .third .thirdBoxButton button {
+  width: 100%;
+  height: 100%;
+  display: block;
+  float: left;
+  background-color: #FD813E;
+  font-size: 16px;
+}
+#bodyRight #content[name="newUser"] .newUsers {
+  width: 100%;
+}
+#bodyRight #content[name="newUser"] .newUsers .first {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 25px 0 32px;
+  margin-bottom: 24px;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box {
+  width: 820px;
+  margin: auto;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight {
+  width: 305px;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl {
+  width: 100%;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li {
+  width: 100%;
+  height: 36px;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li div,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li div {
+  width: 98px;
+  height: 100%;
+  line-height: 36px;
+  float: left;
+  font-size: 14px;
+  color: #010028;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span {
+  width: 200px;
+  height: 100%;
+  display: block;
+  float: right;
+  border: 1px solid #C8D2DC;
+  position: relative;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span input,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span input {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  display: block;
+  float: left;
+  position: relative;
+  padding: 0 10px;
+  background-color: #fafafa;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span #testone,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span #testone,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span #testtwo,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span #testtwo {
+  background-image: url(../img/timechoose.png);
+  background-position: right center;
+  background-size: 36px 40px;
+  background-repeat: no-repeat;
+  background-position-y: -3px;
+  cursor: pointer;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span i,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span i {
+  width: 33px;
+  height: 34px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: 0;
+  right: 0;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span i img,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span select,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span select {
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li span input[name="input"],
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li span input[name="input"] {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  padding: 0 10px;
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #010028;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft .boxUl li + li,
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight .boxUl li + li {
+  margin-top: 22px;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxLeft {
+  float: left;
+}
+#bodyRight #content[name="newUser"] .newUsers .first .box .boxRight {
+  float: right;
+}
+#bodyRight #content[name="newUser"] .newUsers .second {
+  width: 100%;
+  background-color: #FFFFFF;
+  margin-bottom: 30px;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sheader {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #CDD1D9;
+  font-size: 16px;
+  color: #333333;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody {
+  width: 100%;
+  padding: 30px 0 42px 70px;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody p {
+  width: 100%;
+  font-size: 16px;
+  color: #6A6A6A;
+  margin-bottom: 26px;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody div {
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody div span {
+  display: block;
+  cursor: pointer;
+  float: left;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody div span a {
+  display: block;
+  float: left;
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody div span i {
+  height: 100%;
+  line-height: 20px;
+  display: block;
+  font-size: 16px;
+  color: #333333;
+  float: left;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody div span i + i {
+  margin-left: 20px;
+  color: #fc1e00;
+  font-size: 12px;
+}
+#bodyRight #content[name="newUser"] .newUsers .second .Sbody div span + span {
+  margin-left: 56px;
+}
+#bodyRight #content[name="newUser"] .newUsers .third {
+  width: 100%;
+  background-color: #FFFFFF;
+  margin-bottom: 30px;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Theader {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #CDD1D9;
+  font-size: 16px;
+  color: #333333;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody {
+  width: 100%;
+  padding: 28px 70px 44px;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box {
+  width: 100%;
+  margin: auto;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable {
+  width: 100%;
+  border: 1px solid #C8D2DC;
+  text-align: center;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable tr {
+  height: 50px;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable tr th {
+  text-align: center;
+  background-color: #CDD1D9;
+  font-size: 14px;
+  color: #6a6a6a;
+  font-weight: 400;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable tr th + th {
+  border-left: 1px solid #9DAAB8;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable tr td {
+  font-size: 14px;
+  color: #333333;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable tr td + td {
+  text-align: justify;
+  padding: 0 22px;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable .one {
+  width: 19.5%;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable .two {
+  width: 27.5%;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable .three {
+  width: 53%;
+}
+#bodyRight #content[name="newUser"] .newUsers .third .Tbody .box .Ttable .four {
+  background-color: #e8edf3;
+}
+#bodyRight #content[name="newUser"] .newUsers .forth {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin-bottom: 130px;
+}
+#bodyRight #content[name="newUser"] .newUsers .forth .box {
+  width: 380px;
+  margin: auto;
+  position: absolute;
+  background-color: transparent;
+  left: 0;
+  right: 0;
+}
+#bodyRight #content[name="newUser"] .newUsers .forth .box button {
+  width: 160px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+#bodyRight #content[name="newUser"] .newUsers .forth .box .left {
+  background-color: #FD813E;
+  float: left;
+  box-shadow: 0 0 10px 0 #FD813E;
+}
+#bodyRight #content[name="newUser"] .newUsers .forth .box .right {
+  background-color: #9DAAB8;
+  float: right;
+}
+#bodyRight #content[name="userLog"] .tap {
+  width: 100%;
+  height: 54px;
+  background-color: #5b636c;
+}
+#bodyRight #content[name="userLog"] .tap div {
+  width: 110px;
+  height: 100%;
+  line-height: 54px;
+  text-align: center;
+  font-size: 16px;
+  color: #333333;
+  float: left;
+  margin-right: 2px;
+  border-radius: 5px 5px 0 0;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 10px -4px #CDD1D9;
+}
+#bodyRight #content[name="userLog"] .tap .tapDivActive {
+  background-color: #FD813E;
+  color: #FFFFFF;
+}
+#bodyRight #content[name="userLog"] .box .third .thirdTable .tableFirstRows div {
+  width: 56%;
+}
+#bodyRight #content[name="userLog"] .box .third .thirdTable .tableFirstRows div[data-num="1"] a {
+  left: initial;
+}
+#bodyRight #content[name="userLog"] .box .third .thirdTable .tableFirstRows div[data-num="3"] a {
+  right: initial;
+}
+#bodyRight #content[names="unitInfo"] .box .third .thirdBox .thirdBoxDiv span {
+  border: 1px solid #C8D2DC;
+  background-color: #fafafa;
+}
+#bodyRight #content[names="channel"] .box .first {
+  margin-bottom: 40px;
+}
+#bodyRight #content[names="channel"] .box .first .rows {
+  width: 630px;
+}
+#bodyRight #content[names="channel"] .box .third .thirdTable .nine {
+  width: 180px;
+}
+#bodyRight #content[names="channel"] .box .third .thirdTable .tableFirstRows div {
+  width: 50%;
+}
+#bodyRight #content[names="channel"] .box .third .thirdTable .tableFirstRows div[data-num="1"] a {
+  left: 0;
+}
+#bodyRight #content[names="channel"] .box .third .addChannelBtn {
+  width: 100%;
+  position: relative;
+}
+#bodyRight #content[names="channel"] .box .third .addChannelBtn button {
+  width: 160px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #FD813E;
+  box-shadow: 0 0 10px 0 #FD813E;
+}
+#bodyRight #content[name="backup"] .box .third {
+  padding-top: 40px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid #C8D2DC;
+}
+#bodyRight #content[name="backup"] .box .third .thirdDiv {
+  width: 524px;
+  height: 36px;
+  margin: 0 auto 24px;
+  overflow: hidden;
+}
+#bodyRight #content[name="backup"] .box .third .thirdDiv div {
+  float: left;
+  width: 98px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  margin-right: 5px;
+  color: #6a6a6a;
+}
+#bodyRight #content[name="backup"] .box .third .thirdDiv button {
+  width: 98px;
+  height: 100%;
+  float: left;
+  margin-right: 16px;
+  background-color: transparent;
+  border: 1px solid #FD813E;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #FD813E;
+}
+#bodyRight #content[name="backup"] .box .third .thirdDiv span {
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  color: #6A6A6A;
+  float: left;
+}
+#bodyRight #content[name="backup"] .box .third .thirdDiv i {
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  color: #6A6A6A;
+  float: left;
+}
+#bodyRight #content[name="backup"] .box .third .thirdDiv i + i {
+  margin-left: 10px;
+}
+#bodyRight #content[name="backup"] .box .third .thirdDivs {
+  margin-bottom: 0px;
+}
+#bodyRight #content[name="backup"] .box .forth {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv {
+  width: 368px;
+  height: 36px;
+  margin: 0 auto 102px;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv div {
+  height: 36px;
+  line-height: 36px;
+  float: left;
+  font-size: 14px;
+  color: #6A6A6A;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv span {
+  width: 200px;
+  height: 100%;
+  display: block;
+  float: right;
+  border: 1px solid #C8D2DC;
+  position: relative;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv span input {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+  background-color: #fafafa;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv span i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border: 1px solid #c8d2dc;
+  top: -1px;
+  right: -1px;
+  z-index: 1;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv span i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv span select {
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#bodyRight #content[name="backup"] .box .forth .forthDiv span input[name="input"] {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  padding: 0 10px;
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #010028;
+}
+#bodyRight #content[name="backup"] .box .forth .forthBtn {
+  width: 160px;
+  height: 50px;
+  border-radius: 5px;
+  overflow: auto;
+  margin: auto;
+  background-color: #FD813E;
+  box-shadow: 0 0 10px 0 #FD813E;
+}
+#bodyRight #content[name="backup"] .box .forth .forthBtn button {
+  width: 100%;
+  height: 100%;
+  float: left;
+  display: block;
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: inherit;
+}
+#bodyRight #content[name="notice"] .box .second {
+  margin-bottom: 20px;
+}
+#bodyRight #content[name="notice"] .box .second .left {
+  width: 420px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  left: 28px;
+  bottom: 0;
+  margin: auto;
+  border: none;
+}
+#bodyRight #content[name="notice"] .box .second .left div {
+  height: 36px;
+  line-height: 36px;
+  float: left;
+  font-size: 14px;
+  color: #010028;
+}
+#bodyRight #content[name="notice"] .box .second .left span {
+  width: 166px;
+  height: 100%;
+  display: block;
+  float: left;
+  border: 1px solid #C8D2DC;
+  position: relative;
+}
+#bodyRight #content[name="notice"] .box .second .left span input {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+  background-color: #fafafa;
+  color: #010028;
+}
+#bodyRight #content[name="notice"] .box .second .left span #notice_one,
+#bodyRight #content[name="notice"] .box .second .left span #notice_two,
+#bodyRight #content[name="notice"] .box .second .left span #notice_three,
+#bodyRight #content[name="notice"] .box .second .left span #notice_four {
+  background-image: url(../img/timechoose.png);
+  background-position: right center;
+  background-size: 36px 40px;
+  background-repeat: no-repeat;
+  background-position-y: -3px;
+  cursor: pointer;
+}
+#bodyRight #content[name="notice"] .box .second .left .one {
+  margin: 0 22px 0 12px;
+}
+#bodyRight #content[name="notice"] .box .second .left .two {
+  margin-left: 22px;
+}
+#bodyRight #content[name="notice"] .box .second .search {
+  position: absolute;
+  width: 70px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #FD813E;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #FD813E;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 15px;
+  top: 27px;
+  left: 450px;
+}
+#bodyRight #content[name="notice"] .box .secondBotton {
+  width: 100%;
+  height: 32px;
+  position: relative;
+  margin-bottom: 17px;
+}
+#bodyRight #content[name="notice"] .box .secondBotton button {
+  width: 75px;
+  height: 32px;
+  position: absolute;
+  top: 0;
+  left: 27px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid #FD813E;
+  font-size: 14px;
+  color: #FD813E;
+}
+#bodyRight #content[name="notice"] .box .third .thirdTable .nine {
+  width: 180px;
+}
+#bodyRight #content[name="notice"] .box .third .thirdTable .tableFirstRows div {
+  width: 50%;
+}
+#bodyRight #content[name="notice"] .box .has_send_task {
+  display: none;
+}
+/*弹框部分*/
+#boxPock {
+  display: block;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+}
+#boxPock .scroll {
+  width: 970px;
+  height: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  overflow: hidden;
+}
+#boxPock .send_add {
+  width: 990px;
+  height: 90%;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #5b636c;
+  display: none;
+  overflow: auto;
+  z-index: 10;
+  background: rgba(91, 99, 108, 0.5);
+}
+#boxPock .send_add .send_add_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .send_add .send_add_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .send_add .send_add_bottom {
+  width: 100%;
+  padding: 37px;
+}
+#boxPock .send_add .send_add_bottom .add_content {
+  width: 100%;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header {
+  height: 200px;
+  width: 100%;
+  padding: 39px 36px 34px 34px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 14px;
+  background: #ffffff;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .left {
+  height: 36px;
+  float: left;
+  position: relative;
+  margin-bottom: 20px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .left span {
+  float: left;
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  color: #010028;
+  width: 100px;
+  text-align: right;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .left input {
+  float: left;
+  width: 140px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  margin-left: 15px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .left i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: 0;
+  right: 0;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .left i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .left select {
+  width: 140px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .group .choose {
+  width: 62px;
+  height: 32px;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  color: #FD813E;
+  border-radius: 5px;
+  border: 1px solid #FD813E;
+  margin-top: 2px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .right {
+  width: 302px;
+  height: 36px;
+  float: right;
+  position: relative;
+  margin-left: 180px;
+  margin-bottom: 20px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .right span {
+  float: left;
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  color: #010028;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .right input {
+  float: left;
+  width: 140px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  margin-left: 15px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .right i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: 0;
+  right: 78px;
+  cursor: pointer;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .right i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .right select {
+  width: 140px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  right: 77px;
+  opacity: 0;
+  cursor: pointer;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .file input {
+  width: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .file .choose_file {
+  width: 62px;
+  height: 32px;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  color: #FD813E;
+  border-radius: 5px;
+  border: 1px solid #FD813E;
+  margin-top: 2px;
+  margin-left: 15px;
+  cursor: pointer;
+  float: left;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_header .file .download {
+  width: 62px;
+  height: 32px;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  color: #FD813E;
+  border-radius: 5px;
+  border: 1px solid #FD813E;
+  margin-top: 2px;
+  margin-left: 15px;
+  cursor: pointer;
+  float: left;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_bottom {
+  padding: 22px 36px 30px 34px;
+  background: #ffffff;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_bottom .cnt_bottom_header {
+  height: 26px;
+  padding-left: 15px;
+  border-left: 4px solid #FD813E;
+  box-sizing: border-box;
+  font-size: 24px;
+  color: #293541;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_bottom textarea {
+  width: 100%;
+  height: 174px;
+  background: #EEEEEE;
+  border-radius: 5px;
+  margin-top: 22px;
+  outline: none;
+  border: none;
+  resize: none;
+  color: #5b636c;
+  padding: 15px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+#boxPock .send_add .send_add_bottom .add_content .color {
+  width: 100%;
+  height: 26px;
+  background: #5b636c;
+  background: rgba(91, 99, 108, 0.5);
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply {
+  padding: 22px 0 30px 0;
+  background: #ffffff;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .cnt_bottom_header {
+  padding-left: 36px;
+  box-sizing: border-box;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .cnt_bottom_header span {
+  display: block;
+  height: 26px;
+  padding-left: 15px;
+  border-left: 4px solid #FD813E;
+  box-sizing: border-box;
+  font-size: 26px;
+  color: #293541;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .reply_ul {
+  list-style: none;
+  width: 100%;
+  border-top: 1px solid #E5E5E5;
+  margin-top: 10px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .reply_ul li {
+  width: 100%;
+  padding: 8px 36px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E5E5E5;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .reply_ul li .cnt_detail {
+  width: 80%;
+  float: left;
+  overflow: hidden;
+  color: #5B636C;
+  line-height: 30px;
+  line-height: 30px\9;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .reply_ul li .time {
+  width: 20%;
+  float: right;
+  color: #657bac;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: right;
+  font-size: 12px;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_footer {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_footer .btn2 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 50px auto;
+  background: #9DAAB8;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+}
+#boxPock .newbuild_detail {
+  width: 990px;
+  height: 680px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #5b636c;
+  display: none;
+  overflow: auto;
+  z-index: 10;
+  background: rgba(91, 99, 108, 0.5);
+}
+#boxPock .newbuild_detail .newbuild_detail_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .newbuild_detail .newbuild_detail_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom {
+  width: 100%;
+  padding: 37px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content {
+  width: 100%;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header {
+  height: 200px;
+  width: 100%;
+  padding: 39px 36px 34px 34px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 14px;
+  background: #ffffff;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .left {
+  height: 36px;
+  float: left;
+  position: relative;
+  margin-bottom: 20px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .left span {
+  float: left;
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  color: #010028;
+  width: 100px;
+  text-align: right;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .left input {
+  float: left;
+  width: 140px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  margin-left: 15px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .left i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: 0;
+  right: 0;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .left i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .left select {
+  width: 140px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .group .choose {
+  width: 62px;
+  height: 32px;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  color: #FD813E;
+  border-radius: 5px;
+  border: 1px solid #FD813E;
+  margin-top: 2px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .right {
+  height: 36px;
+  float: right;
+  position: relative;
+  margin-left: 180px;
+  margin-bottom: 20px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .right span {
+  float: left;
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  color: #010028;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .right input {
+  float: left;
+  width: 140px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  margin-left: 15px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .right i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .right i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .right select {
+  width: 140px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .file {
+  width: 225px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .file input {
+  width: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .file .choose_file {
+  width: 62px;
+  height: 32px;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  color: #FD813E;
+  border-radius: 5px;
+  border: 1px solid #FD813E;
+  margin-top: 2px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_header .file .download {
+  width: 62px;
+  height: 32px;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  color: #FD813E;
+  border-radius: 5px;
+  border: 1px solid #FD813E;
+  margin-top: 2px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_bottom {
+  padding: 22px 36px 30px 34px;
+  background: #ffffff;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_bottom .cnt_bottom_header {
+  height: 26px;
+  padding-left: 15px;
+  border-left: 4px solid #FD813E;
+  box-sizing: border-box;
+  font-size: 24px;
+  color: #293541;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_bottom textarea {
+  width: 100%;
+  height: 174px;
+  background: #EEEEEE;
+  border-radius: 5px;
+  margin-top: 22px;
+  outline: none;
+  border: none;
+  resize: none;
+  color: #5b636c;
+  padding: 15px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .color {
+  width: 100%;
+  height: 26px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply {
+  padding: 22px 0 30px 0;
+  background: #ffffff;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .cnt_bottom_header {
+  padding-left: 36px;
+  box-sizing: border-box;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .cnt_bottom_header span {
+  display: block;
+  height: 26px;
+  padding-left: 15px;
+  border-left: 4px solid #FD813E;
+  box-sizing: border-box;
+  font-size: 26px;
+  color: #293541;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .reply_ul {
+  list-style: none;
+  width: 100%;
+  border-top: 1px solid #E5E5E5;
+  margin-top: 10px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .reply_ul li {
+  width: 100%;
+  padding: 8px 36px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E5E5E5;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .reply_ul li .cnt_detail {
+  width: 80%;
+  float: left;
+  overflow: hidden;
+  color: #5B636C;
+  line-height: 30px;
+  line-height: 30px\9;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .reply_ul li .time {
+  width: 20%;
+  float: right;
+  color: #657bac;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: right;
+  font-size: 12px;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_footer {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_footer .btn2 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 50px auto;
+  background: #9DAAB8;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+}
+#boxPock .bianjiUserFu {
+  width: 970px;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+}
+#boxPock .bianjiUserFu .bianjiUser {
+  width: 990px;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  overflow-y: auto;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJheader {
+  width: 970px;
+  height: 56px;
+  position: relative;
+  z-index: 1;
+  background-color: #293541;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJheader div {
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  height: 100%;
+  line-height: 56px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJheader a {
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  right: 30px;
+  bottom: 0;
+  margin: auto;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody {
+  width: 970px;
+  padding: 38px 38px 52px;
+  position: relative;
+  z-index: 1;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .boxPickBg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 26px 0 21px;
+  border-bottom: 1px solid #CDD1D9;
+  display: none;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box {
+  width: 820px;
+  margin: auto;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight {
+  width: 305px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl {
+  width: 100%;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li {
+  width: 100%;
+  height: 36px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li div,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li div {
+  width: 98px;
+  height: 100%;
+  line-height: 36px;
+  float: left;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li span,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li span {
+  width: 200px;
+  height: 100%;
+  display: block;
+  float: right;
+  border: 1px solid #C8D2DC;
+  position: relative;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li span input,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li span input {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+  background-color: #fafafa;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li span i,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li span i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: -1px;
+  right: 0;
+  z-index: 1;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li span i img,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li span i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li span select,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li span select {
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft .boxUl li span input[name="input"],
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight .boxUl li span input[name="input"] {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  padding: 0 10px;
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxLeft {
+  float: left;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .editAdmin .box .boxRight {
+  float: right;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 25px 0 32px;
+  margin-bottom: 24px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box {
+  width: 820px;
+  margin: auto;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight {
+  width: 305px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl {
+  width: 100%;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li {
+  width: 100%;
+  height: 36px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li div,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li div {
+  width: 98px;
+  height: 100%;
+  line-height: 36px;
+  float: left;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span {
+  width: 200px;
+  height: 100%;
+  display: block;
+  float: right;
+  border: 1px solid #C8D2DC;
+  position: relative;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span input,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span input {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+  background-color: #fafafa;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span #backtwo,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span #backtwo,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span #backone,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span #backone {
+  background-image: url(../img/timechoose.png);
+  background-position: right center;
+  background-size: 36px 40px;
+  background-repeat: no-repeat;
+  background-position-y: -3px;
+  cursor: pointer;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span i,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: -1px;
+  right: 0;
+  z-index: 1;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span i img,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span select,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span select {
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li span input[name="input"],
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li span input[name="input"] {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  padding: 0 10px;
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft .boxUl li + li,
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight .boxUl li + li {
+  margin-top: 22px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxLeft {
+  float: left;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .first .box .boxRight {
+  float: right;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second {
+  width: 100%;
+  background-color: #FFFFFF;
+  margin-bottom: 30px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sheader {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #CDD1D9;
+  font-size: 16px;
+  color: #333333;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody {
+  width: 100%;
+  padding: 30px 0 42px 70px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody p {
+  width: 100%;
+  font-size: 16px;
+  color: #6A6A6A;
+  margin-bottom: 26px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div {
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div span {
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div span a {
+  display: block;
+  float: left;
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div span i {
+  height: 100%;
+  line-height: 20px;
+  display: block;
+  font-size: 16px;
+  color: #333333;
+  float: left;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div span i + i {
+  margin-left: 20px;
+  color: #fc1e00;
+  font-size: 12px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div span + span {
+  margin-left: 56px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody .gaoji {
+  margin-top: 50px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third {
+  width: 100%;
+  background-color: #FFFFFF;
+  margin-bottom: 30px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Theader {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #CDD1D9;
+  font-size: 16px;
+  color: #333333;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody {
+  width: 100%;
+  padding: 28px 70px 44px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box {
+  width: 100%;
+  margin: auto;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable {
+  width: 100%;
+  border: 1px solid #C8D2DC;
+  text-align: center;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable tr {
+  height: 50px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable tr th {
+  text-align: center;
+  background-color: #CDD1D9;
+  font-size: 14px;
+  color: #6a6a6a;
+  font-weight: 400;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable tr th + th {
+  border-left: 1px solid #9DAAB8;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable tr td {
+  font-size: 14px;
+  color: #333333;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable tr td + td {
+  text-align: justify;
+  padding: 0 22px;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable .one {
+  width: 19.5%;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable .two {
+  width: 27.5%;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable .three {
+  width: 53%;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .third .Tbody .box .Ttable .four {
+  background-color: #e8edf3;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .forth {
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .forth .box {
+  width: 160px;
+  margin: auto;
+  position: absolute;
+  background-color: transparent;
+  left: 0;
+  right: 0;
+}
+#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .forth .box button {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 5px;
+  background-color: #FD813E;
+  float: left;
+  box-shadow: 0 0 10px 0 #FD813E;
+}
+#boxPock .edit_user {
+  width: 970px;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+}
+#boxPock .edit_user .bianjiUser {
+  width: 990px;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  overflow-y: auto;
+}
+#boxPock .edit_user .bianjiUser .edit_user_head {
+  width: 970px;
+  height: 56px;
+  position: relative;
+  z-index: 1;
+  background-color: #293541;
+}
+#boxPock .edit_user .bianjiUser .edit_user_head div {
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  height: 100%;
+  line-height: 56px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_head a {
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  right: 30px;
+  bottom: 0;
+  margin: auto;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail {
+  width: 970px;
+  padding: 38px 38px 52px;
+  position: relative;
+  z-index: 1;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .boxPickBg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 26px 0 21px;
+  border-bottom: 1px solid #CDD1D9;
+  display: none;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box {
+  width: 820px;
+  margin: auto;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight {
+  width: 305px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl {
+  width: 100%;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li {
+  width: 100%;
+  height: 36px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li div,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li div {
+  width: 98px;
+  height: 100%;
+  line-height: 36px;
+  float: left;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li span,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li span {
+  width: 200px;
+  height: 100%;
+  display: block;
+  float: right;
+  border: 1px solid #C8D2DC;
+  position: relative;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li span input,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li span input {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+  background-color: #fafafa;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li span i,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li span i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: -1px;
+  right: 0;
+  z-index: 1;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li span i img,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li span i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li span select,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li span select {
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft .boxUl li span input[name="input"],
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight .boxUl li span input[name="input"] {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  padding: 0 10px;
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxLeft {
+  float: left;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .editAdmin .box .boxRight {
+  float: right;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 25px 0 32px;
+  margin-bottom: 24px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box {
+  width: 820px;
+  margin: auto;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight {
+  width: 305px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl {
+  width: 100%;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li {
+  width: 100%;
+  height: 36px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li div,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li div {
+  width: 98px;
+  height: 100%;
+  line-height: 36px;
+  float: left;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span {
+  width: 200px;
+  height: 100%;
+  display: block;
+  float: right;
+  border: 1px solid #C8D2DC;
+  position: relative;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span input,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span input {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+  background-color: #fafafa;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span #backtwo,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span #backtwo,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span #backone,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span #backone {
+  background-image: url(../img/timechoose.png);
+  background-position: right center;
+  background-size: 36px 40px;
+  background-repeat: no-repeat;
+  background-position-y: -3px;
+  cursor: pointer;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span i,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: -1px;
+  right: 0;
+  z-index: 1;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span i img,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span select,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span select {
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li span input[name="input"],
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li span input[name="input"] {
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  padding: 0 10px;
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft .boxUl li + li,
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight .boxUl li + li {
+  margin-top: 22px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxLeft {
+  float: left;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .first .box .boxRight {
+  float: right;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second {
+  width: 100%;
+  background-color: #FFFFFF;
+  margin-bottom: 30px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sheader {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #CDD1D9;
+  font-size: 16px;
+  color: #333333;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody {
+  width: 100%;
+  padding: 30px 0 42px 70px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody p {
+  width: 100%;
+  font-size: 16px;
+  color: #6A6A6A;
+  margin-bottom: 26px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody div {
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody div span {
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody div span a {
+  display: block;
+  float: left;
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody div span i {
+  height: 100%;
+  line-height: 20px;
+  display: block;
+  font-size: 16px;
+  color: #333333;
+  float: left;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody div span i + i {
+  margin-left: 20px;
+  color: #fc1e00;
+  font-size: 12px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody div span + span {
+  margin-left: 56px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .second .Sbody .gaoji {
+  margin-top: 50px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third {
+  width: 100%;
+  background-color: #FFFFFF;
+  margin-bottom: 30px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Theader {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #CDD1D9;
+  font-size: 16px;
+  color: #333333;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody {
+  width: 100%;
+  padding: 28px 70px 44px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box {
+  width: 100%;
+  margin: auto;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable {
+  width: 100%;
+  border: 1px solid #C8D2DC;
+  text-align: center;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable tr {
+  height: 50px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable tr th {
+  text-align: center;
+  background-color: #CDD1D9;
+  font-size: 14px;
+  color: #6a6a6a;
+  font-weight: 400;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable tr th + th {
+  border-left: 1px solid #9DAAB8;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable tr td {
+  font-size: 14px;
+  color: #333333;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable tr td + td {
+  text-align: justify;
+  padding: 0 22px;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable .one {
+  width: 19.5%;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable .two {
+  width: 27.5%;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable .three {
+  width: 53%;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .third .Tbody .box .Ttable .four {
+  background-color: #e8edf3;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .forth {
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .forth .box {
+  width: 160px;
+  margin: auto;
+  position: absolute;
+  background-color: transparent;
+  left: 0;
+  right: 0;
+}
+#boxPock .edit_user .bianjiUser .edit_user_detail .newUsers .forth .box button {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 5px;
+  background-color: #FD813E;
+  float: left;
+  box-shadow: 0 0 10px 0 #FD813E;
+}
+#boxPock .edit_user {
+  display: none;
+}
+.newUsers .first .box:after,
+.newUsers .first .box .boxUl li:after,
+.newUsers .editAdmin .box:after,
+#content[name="userLog"] .tap:after {
+  content: "";
+  display: block;
+  clear: both;
+}

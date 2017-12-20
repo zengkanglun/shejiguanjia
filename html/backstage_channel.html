@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家后台管理</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstage_channel.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstageLeft.css" />
+		<link rel="stylesheet" type="text/css" href="css/fix.css" />
+		
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstage_channel.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="img/info_image.png" alt="" class="photo"/>
+								<img src="img/info_image_Bg.png" alt="" />
+							</div>
+							<div class="info_name"></div>
+						</div>
+					</div>
+					<div class="backstageListOne">
+						<div class="title ">
+							<span></span>
+							<div class="manage">用户管理</div>
+							<i></i>
+						</div>
+						<ul class="ul" style="display:none;">
+							<li>
+								<a href="backstage_admin_list.html">用户列表</a>
+							</li>
+							<li  >
+								<a href="backstage_new-user.html">新增用户</a>
+							</li>
+							<li>
+								<a href="backstage_user-log.html">用户日志</a>
+							</li>	
+						</ul>
+					</div>
+					<div class="backstageListTwo">
+						<div class="title active">
+							<span></span>
+							<div class="manage">系统管理</div>
+							<i></i>
+						</div>
+						<ul class="ul" style="display: block;">
+							<li>
+								<a href="backstage_notice.html">任务通知</a>
+							</li>
+							<li >
+								<a href="backstage_unit-info.html">单位信息</a>
+							</li>
+							<li class=" active">
+								<a href="backstage_channel.html">栏目标签</a>
+							</li>
+							<li>
+								<a href="backstage_backup.html">数据备份</a>
+							</li>	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="leftText">设计管家后台管理</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="img/info_image.png" /></div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录时间：<i>2017-09-01</i><i>09:01:00</i>
+						</div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录IP：<i>255.255.255.255</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content" name="userLog" names="channel">
+				<!--右侧内容区-->
+				<div class="firstNav">
+					<a href="###">管理员管理</a>&nbsp;&gt;&nbsp;
+					<a>栏目标签</a>
+				</div>
+				<div class="box">
+					<ul class="tap">
+						<li id = "project">项目信息</li>
+						<li id = "process" class="tapDivActive">过程管理</li>
+						<li id = "task">任务</li>
+						<li id = "notice">通知</li>
+						<li id = "financial">财务</li>
+						<li id = "backstage">后台</li>
+					</ul>
+					<!--项目信息-->
+					<div class="boxtab process_two">
+						<div class="first">
+							<div class="rows">
+								<div class="xs-3  HeaderRowsActive">
+									<span>建筑类型</span>
+									<i></i>
+								</div>
+								<div class="xs-3">
+									<span>阶段类型</span>
+									<i></i>
+								</div>
+								<div class="xs-3">
+									<span>工种类型</span>
+									<i></i>
+								</div>
+							</div>
+						</div>
+						<!--建筑类型-->
+						<div class="third process">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								<tbody id="build_type">
+								<tr>
+									<td>建筑类型</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="build_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--建筑类型结束-->
+						<!--阶段类型-->
+						<div class="third trip">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								<tbody id="stage_type">
+								<tr>
+									<td>阶段类型</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+										
+										
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1" class="edit">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="stage_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--阶段类型结束-->
+						<!--工种类型 -->
+						<div class="third manage">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								<tbody id="work_type">
+								<tr>
+									<td>工种类型</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="work_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--工种类型结束-->
+					</div>
+					<!--项目信息结束-->
+					<!--过程管理-->
+					<div class="boxtab process_one">
+						<div class="first">
+							<div class="rows">
+								<div class="xs-3  HeaderRowsActive">
+									<span>过程纪要</span>
+									<i></i>
+								</div>
+								<div class="xs-3">
+									<span>出图出差</span>
+									<i></i>
+								</div>
+								<div class="xs-3">
+									<span>发函管理</span>
+									<i></i>
+								</div>
+								<div class="xs-3">
+									<span>图纸归档</span>
+									<i></i>
+								</div>
+							</div>
+						</div>
+						<!--过程纪要-->
+						<div class="third process">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								<tbody id="process_type">
+								<tr>
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="process_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--过程纪要结束-->
+						<!--出图出差-->
+						<div class="third trip">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								<tbody class="processr" id="chutu_type">
+								<tr>
+									<td>出图出差</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="chutu_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--出图出差结束-->
+						<!--发函管理 -->
+						<div class="third manage">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								<tbody class="processr" id="letter_type">
+								<tr>
+									<td>发函管理</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="letter_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--发函管理结束-->
+						<!--图纸归档-->
+						<div class="third pictrue">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								
+								<tbody class="processr" id="archive_type">
+								<tr>
+									<td>图纸归档</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="archive_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--图纸归档结束-->
+					</div>
+					<!--过程管理结束-->
+					<!--任务-->
+					<div class="boxtab process_three">
+						<div class="first">
+							<div class="rows">
+								<div class="xs-3  HeaderRowsActive">
+									<span>任务类型</span>
+									<i></i>
+								</div>
+							</div>
+						</div>
+						<!--建筑类型-->
+						<div class="third process">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								
+								<tbody class="processr" id="task_type">
+								<tr>
+									<td>2017 build</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="task_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--建筑类型结束-->
+					</div>
+					<!--任务结束-->
+					<!--通知-->
+					<div class="boxtab process_four">
+						<div class="first">
+							<div class="rows">
+								<div class="xs-3  HeaderRowsActive">
+									<span>通知类型</span>
+									<i></i>
+								</div>
+							</div>
+						</div>
+						<!--建筑类型-->
+						<div class="third process">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								
+								<tbody class="processr" id="notice_type">
+								<tr>
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="notice_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--建筑类型结束-->
+					</div>
+					<!--通知结束-->
+					<!--财务-->
+					<div class="boxtab process_five">
+						<div class="first">
+							<div class="rows">
+								<div class="xs-3  HeaderRowsActive">
+									<span>项目支出类型</span>
+									<i></i>
+								</div>
+								<div class="xs-3">
+									<span>行政支出类型</span>
+									<i></i>
+								</div>
+							</div>
+						</div>
+						<!--项目支出类型-->
+						<div class="third process">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								
+								<tbody class="processr" id="project_overhead_type">
+								<tr>
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="project_overhead_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--项目支出类型结束-->
+						<!--行政支出类型-->
+						<div class="third trip">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								
+								<tbody class="processr" id="admin_overhead_type">
+								<tr>
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>行政</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="admin_overhead_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--行政支出类型结束-->
+					</div>
+					<!--财务结束-->
+					<!--后台-->
+					<div class="boxtab process_four">
+						<div class="first">
+							<div class="rows">
+								<div class="xs-3  HeaderRowsActive">
+									<span>用户角色</span>
+									<i></i>
+								</div>
+							</div>
+						</div>
+						<!--建筑类型-->
+						<div class="third process">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="two">序号</th>
+									<th class="six">类型</th>
+									<th class="nine">操作</th>
+								</tr>
+								
+								<tbody class="processr" id="role_type">
+								<tr>
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td>2017</td>
+									<td>123456</td>
+									<td>
+										<div class="tableFirstRows">
+											<div data-num="1">
+												<a>编辑</a>
+											</div>
+											
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr class="tableTrBackground">
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="addChannelBtn" data-id="role_type">
+								<button type="button">增&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+							</div>
+						</div>
+						<!--建筑类型结束-->
+					</div>
+					<!--后台结束-->
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<!--编辑框-->
+			<div class="add edit" id="edit_add" data-type="2b">
+				<div class="edit_head">
+					<span>编辑</span>
+					<i></i>
+				</div>
+				<div class="edit_bottom">
+					<input id="shortE" type="text" placeholder="请输入内容" />
+					<button class="btn1" id="sure">确定</button>
+				</div>
+			</div>
+			<!---->
+			<!--编辑框-->
+			<div class="edit" id="edit" data-type="2b">
+				<div class="edit_head">
+					<span>新增</span>
+					<i></i>
+				</div>
+				<div class="edit_bottom">
+					<input id="short" type="text" placeholder="请输入内容" />
+					<button class="btn1">确定</button>
+				</div>
+			</div>
+			<!---->
+			<!--删除提示框-->
+			<div class="del">
+				<div class="del_head">
+					<span>温馨提示</span>
+					<i></i>
+				</div>
+				<div class="del_bottom">
+					<div class="sure">是否确认删除?</div>
+					<div class="foot">
+						<button class="btn1">是</button>
+						<button class="btn2">否</button>
+					</div>
+				</div>
+			</div>
+			<!---->
+
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstage_channelData.js" type="text/javascript" charset="utf-8"></script>
+	    
+	</body>
+	
+
+</html>

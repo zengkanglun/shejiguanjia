@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/administration.css" />
+		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+		<!--<script src="js/administration.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/admin_person.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="img/info_image.png" alt="" class="photo" />
+								<!--<img src="img/info_image_Bg.png" alt="" />-->
+							</div>
+							<div class="info_name"></div>
+							<div class="rows">
+								<div><span class="one"><img src="img/icon-suotou.png" alt="" /></span></div>
+								<div><span class="two"><img src="img/icon-yaoshi.png" alt="" /></span></div>
+								<div><span class="three"><img src="img/icon-camera.png" alt="" /></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="listBtn">
+						<a href="task.html" class="list_1 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<i>任务</i>
+							</div>
+						</a>
+						<a href="msg.html" class="list_2 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-tongzhi-white.png" alt="" />
+									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
+								<i>通知</i>
+							</div>
+						</a>
+						<a href="pandect.html" class="list_3 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-zonglan-white.png" alt="" /></div>
+								<i>总览</i>
+							</div>
+						</a>
+						<a href="user.html" class="list_4 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-yonghu-white.png" alt="" /></div>
+								<i>用户</i>
+							</div>
+						</a>
+						<a href="administration.html" class="list_5 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-guanli-white.png" alt="" /></div>
+								<i>管理</i>
+							</div>
+						</a>
+						<a href="finance.html" class="list_6 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-caiwu-white.png" alt="" /></div>
+								<i>财务</i>
+							</div>
+						</a>
+						<a href="backstage_general.html" class="list_7 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-houtai-white.png" alt="" /></div>
+								<i>后台</i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="left">
+					<div class="icon-search">
+						<img src="img/icon-search-orange.png" alt="" />
+					</div>
+					<div class="search-inp">
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
+					</div>
+				</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="" /></div>
+					</div>
+					<div class="helpBtn rightDiv">
+						<div><img src="img/icon-bangzhu-white.png" /></div>
+					</div>
+					<div class="dataTime rightDiv">
+						<div>
+							<i>2017</i>年<i>09</i>月<i>01</i>日&nbsp;&nbsp;&nbsp;&nbsp;星期<i>五</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<!--右侧内容区-->
+				<div class="first">
+					<a href="index.html">项目信息</a>
+					<a href="process.html">过程管理</a>
+					<a href="count">统计分析</a>
+					<a href="javascript:void(0)" class="firstActive">管理</a>
+					<!--<div>当前项目：中山市中创新科技产业园</div>-->
+					<div class="current_task">
+						<span class="task">当前项目：</span>
+						<span class="task_name"></span>
+					</div>
+				</div>
+
+				<div class="second">
+					<div class="rows">
+						<div class="xs-3">
+							<span>项目管理</span>
+							<i></i>
+						</div>
+						<div class="xs-3  HeaderRowsActive">
+							<span>人员管理</span>
+							<i></i>
+						</div>
+					</div>
+					<button type="button">导出表格</button>
+				</div>
+				<!--人员管理-->
+				<div class="member_manage2" style="display: block;">
+					<div class="seconds">
+						<button type="button" class="left">新建用户</button>
+						<div class="time_left">
+							<span>从</span>
+							<input type="text" placeholder="请输入时间" id="admin_three" />
+						</div>
+						<div class="time_right">
+							<span>至</span>
+							<input type="text" placeholder="请输入时间" id="admin_four" />
+						</div>
+						<div class="right">
+							<a class="s_name"><img src="img/icon-search-orange.png" alt="" /></a>
+							<span><input type="text" name="" id="search_name" value="" placeholder="请输入姓名"/></span>
+						</div>
+						<div class="search">搜索</div>
+					</div>
+					<div class="third">
+						<div class="title">
+							<i></i>用户管理
+						</div>
+						<table border="1" cellspacing="0">
+							<thead>
+								<tr>
+									<td class="orderlist">序号</td>
+									<td>用户账号</td>
+									<td>姓名</td>
+									<td>工种</td>
+									<td>入职时间</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								<!--<tr>
+									<td>100000</td>
+									<td>新建通知</td>
+									<td>建筑</td>
+									<td>张三李四</td>
+									<td>2017-8-29</td>
+									<td class="handle"><span class="check">查看</span></td>
+								</tr>
+								<tr class="e9ecf1">
+									<td>100000</td>
+									<td>2017-08-20</td>
+									<td>建筑</td>
+									<td>张三李四</td>
+									<td>2017-8-29</td>
+									<td class="handle"><span class="edit">编辑</span><span class="check">查看</span></td>
+								</tr>-->
+							</tbody>
+						</table>
+						<div class="paging">
+							<div class="page">
+								<div class="page_left">
+									记录数：<span>0</span>条
+								</div>
+								<div class="page_right">
+									<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">0</span><i class="more">></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="forth">
+						<div class="title">
+							<i></i>历史用户
+						</div>
+						<table border="1" cellspacing="0">
+							<thead>
+								<tr>
+									<td class="orderlist">序号</td>
+									<td>用户账号</td>
+									<td>姓名</td>
+									<td>工种</td>
+									<td>入职时间</td>
+									<td>离职时间</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								<!--<tr>
+									<td>100000</td>
+									<td>新建通知</td>
+									<td>建筑</td>
+									<td>张三李四</td>
+									<td>2017-8-29</td>
+									<td>2017-8-29</td>
+									<td class="handle"><span>查看</span></td>
+								</tr>
+								<tr class="e9ecf1">
+									<td>100000</td>
+									<td>2017-08-20</td>
+									<td>建筑</td>
+									<td>张三李四</td>
+									<td>2017-8-29</td>
+									<td class="handle"><span class="edit">编辑</span><span class="check">查看</span></td>
+								</tr>-->
+							</tbody>
+						</table>
+						<div class="paging">
+							<div class="page">
+								<div class="page_left">
+									记录数：<span>0</span>条
+								</div>
+								<div class="page_right">
+									<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">0</span><i class="more">></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--人员管理结束-->
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<div class="scroll">
+				<!-- 成员管理一 -->
+				<div class="userAdminOne">
+					<!--背景-->
+					<img class="userAdminBg" src="img/boxPickBg.png" alt="" />
+					<div class="box">
+						<div class="UAHeader">
+							<span>成员管理</span>
+							<img src="img/icon_del_white.png" alt="" />
+						</div>
+						<div class="UAbody">
+							<div class="UAWhite">
+								<div class="UANav">
+									<div class="UANavActive">
+										基本信息
+										<span></span>
+									</div>
+									<div>
+										建设单位基本资料
+										<span></span>
+									</div>
+									<div>
+										项目组信息
+										<span></span>
+									</div>
+								</div>
+								<table border="" cellspacing="" cellpadding="" class="UATable">
+									<tr class="BgColor">
+										<td class="one"><i>*&nbsp;</i>项目编号：</td>
+										<td><input type="text" name="" id="" value="" /></td>
+										<td class="one"><i>*&nbsp;</i>项目名称：</td>
+										<td><input type="text" name="" id="" value="" /></td>
+									</tr>
+									<tr>
+										<td class="one">立项时间：</td>
+										<td>
+											<span>
+											<a>2017-09-01</a>
+											<a><i></i></a>
+										</span>
+										</td>
+										<td class="one">所属区域：</td>
+										<td>
+											<span>
+											<a>广东省&nbsp;广州市</a>
+											<a><i></i></a>
+										</span>
+										</td>
+									</tr>
+									<tr class="BgColor">
+										<td class="one">建筑类型：</td>
+										<td>
+											<span>
+											<a>请选择类型</a>
+											<a><i></i></a>
+											<select name="page">
+												<option value="请选择类型">请选择类型</option>
+												<option value="条目一">条目一</option>
+												<option value="条目二">条目二</option>
+												<option value="条目三">条目三</option>
+												<option value="条目四">条目四</option>
+											</select>
+										</span>
+										</td>
+										<td class="one">阶段类型：</td>
+										<td>
+											<span>
+											<a>请选择类型</a>
+											<a><i></i></a>
+											<select name="page">
+												<option value="请选择类型">请选择类型</option>
+												<option value="条目一">条目一</option>
+												<option value="条目二">条目二</option>
+												<option value="条目三">条目三</option>
+												<option value="条目四">条目四</option>
+											</select>
+										</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="one">项目地址：</td>
+										<td><input type="text" name="" id="" value="" /></td>
+										<td class="one">项目进度：</td>
+										<td><input type="text" name="" id="" value="" /></td>
+									</tr>
+									<tr class="BgColor">
+										<td class="one">合同附件：</td>
+										<td>
+											<div class="upFile">
+												<a href="javascript:void(0);"><input type="file" name="" id="" value="" />上传附件</a>
+											</div>
+										</td>
+										<td class="one">收款情况：</td>
+										<td><input type="text" name="" id="" value="" /></td>
+									</tr>
+								</table>
+							</div>
+							<div class="UABtn">
+								<button type="button">下一步</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 成员管理二 -->
+				<div class="userAdminTwo">
+					<!--背景-->
+					<img class="userAdminBg" src="img/boxPickBg.png" alt="" />
+					<div class="box">
+						<div class="UAHeader">
+							<span>成员管理</span>
+							<img src="img/icon_del_white.png" alt="" />
+						</div>
+						<div class="UAbody">
+							<div class="UAWhite">
+								<div class="UANavFu">
+									<div class="UANav">
+										<div class="UANavActive">
+											一号楼
+											<span></span>
+										</div>
+										<div>
+											二号楼
+											<span></span>
+										</div>
+										<div>
+											三号楼
+											<span></span>
+										</div>
+									</div>
+									<div class="UARight">
+										当前子项目：<i>一号楼</i>
+									</div>
+								</div>
+								<div class="UADiY">
+									<div>
+										<a><img src="img/icon_add.png" alt="" /></a>
+										<span>自定义</span>
+									</div>
+								</div>
+								<table border="" cellspacing="" cellpadding="" class="UATable">
+									<tr class="BgColor">
+										<td class="one">项目主管：</td>
+										<td><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">规划负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+									</tr>
+									<tr>
+										<td class="one">方案负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">建筑负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></span>
+										</td>
+									</tr>
+									<tr class="BgColor">
+										<td class="one">结构负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">电齐负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+									</tr>
+									<tr>
+										<td class="one">给排水负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">暖通负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+									</tr>
+								</table>
+							</div>
+							<div class="UABtn">
+								<button type="button">确&nbsp;&nbsp;&nbsp;定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 成员管理三 -->
+				<div class="userAdminThree">
+					<!--背景-->
+					<img class="userAdminBg" src="img/boxPickBg.png" alt="" />
+					<div class="box">
+						<div class="UAHeader">
+							<span>工种参与人员</span>
+							<img src="img/icon_del_white.png" alt="" />
+						</div>
+						<div class="UAbody">
+							<div class="UAWhite">
+								<table border="" cellspacing="" cellpadding="" class="UATable">
+									<tr class="BgHColor">
+										<th>序号</th>
+										<th>姓名</th>
+										<th>工种参与</th>
+										<th>分工情况</th>
+										<th>工作内容</th>
+										<th>操作</th>
+									</tr>
+									<tr>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+									</tr>
+									<tr class="BgColor">
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+									</tr>
+									<tr>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+									</tr>
+								</table>
+							</div>
+							<div class="UABtn">
+								<button type="button">确&nbsp;&nbsp;&nbsp;定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 成员管理四 -->
+				<div class="userAdminFour">
+					<!--背景-->
+					<img class="userAdminBg" src="img/boxPickBg.png" alt="" />
+					<div class="box">
+						<div class="UAHeader">
+							<span>设置工种负责人</span>
+							<img src="img/icon_del_white.png" alt="" />
+						</div>
+						<div class="UAbody">
+							<div class="UAWhite">
+								<div class="head_right clearfix">
+									<div class="list">
+										<div class="small_item">子项目名称:</div>
+										<input type="text" name="" id="" value="子项目一" class="floor" />
+										<i><img src="img/black_tri.png"/></i>
+										<select name="">
+											<option value="">1</option>
+											<option value="">2</option>
+											<option value="">3</option>
+										</select>
+									</div>
+								</div>
+								<table border="" cellspacing="" cellpadding="" class="UATable">
+									<tr class="BgColor">
+										<td class="one">项目主管：</td>
+										<td><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">规划负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+									</tr>
+									<tr>
+										<td class="one">方案负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">建筑负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></span>
+										</td>
+									</tr>
+									<tr class="BgColor">
+										<td class="one">结构负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">电齐负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+									</tr>
+									<tr>
+										<td class="one">给排水负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+										<td class="one">暖通负责：</td>
+										<td>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
+									</tr>
+								</table>
+							</div>
+							<div class="UABtn">
+								<button type="button">确&nbsp;&nbsp;&nbsp;定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--管理五项目计提-->
+				<div class="userAdminFive">
+					<div class="perf_detail_head">
+						<span>项目计提</span>
+						<i></i>
+					</div>
+					<div class="perf_detail_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>项目名称：</span>
+									<input type="text" value="hah" disabled="disabled" class="project_name" />
+								</div>
+								<div class="right clearfix">
+									<span>立项时间：</span>
+									<input type="text" value="2017-09-04" disabled="disabled" class="project_time" />
+								</div>
+								<div class="left clearfix group">
+									<span>项目阶段：</span>
+									<input type="text" value="建筑" disabled="disabled" class="stage" />
+								</div>
+								<div class="right clearfix">
+									<span>当前子项目：</span>
+									<span class="floor">一号楼</span>
+								</div>
+							</div>
+							<div class="bigfloor">
+								<ul class="floor_ul clearfix">
+									<!--<li class="active">
+										一号楼
+									</li>
+									<li>
+										二号楼
+									</li>
+									<li>
+										三号楼
+									</li>-->
+								</ul>
+							</div>
+							<!--新建计提-->
+							<div class="list_detail newCount">
+								<div class="go_list">
+									新建计提
+								</div>
+								<div class="item_time clearfix">
+									<div class="time_left">
+										<span>从</span>
+										<input type="text" value="2017-09-07" id="user_one" />
+									</div>
+									<div class="time_right">
+										<span>至</span>
+										<input type="text" value="2017-09-28" id="user_two" />
+									</div>
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号<i></i></td>
+											<td class="item_name">工种</td>
+											<td class="income">工种负责</td>
+											<td class="expend">工作情况</td>
+											<td class="count">计提比例</td>
+											<td class="handle">发出通知</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>100000</td>
+											<td>经营统计</td>
+											<td>建筑</td>
+											<td class="work_status"><span class="check">查看</span></td>
+											<td><input type="text" placeholder="请输入内容" /></td>
+											<td class="handle"><span>通知</span></td>
+										</tr>
+									</tbody>
+								</table>
+								<button type="button" class="newbutton">确&nbsp;定</button>
+							</div>
+							<!--新建计提结束-->
+							<div class="black blackone"></div>
+							<!--计提进行中-->
+							<div class="list_detail nowCount">
+								<div class="go_list">
+									计提进行中
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号<i></i></td>
+											<td class="item_name">时间</td>
+											<td class="income">工种</td>
+											<td class="expend">工种负责</td>
+											<td class="surplus">计提比例</td>
+											<td class="plan_time">工作方案</td>
+											<td class="handle">审核状态</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>100000</td>
+											<td>经营统计</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td class="plan"><span class="add">已提交</span><span class="detail">详情</span></td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+									</tbody>
+								</table>
+								<button type="button" class="nowbutton">确定方案</button>
+							</div>
+							<!--计提进行中-->
+							<div class="black"></div>
+							<!--历史计提-->
+							<div class="list_detail pastCount">
+								<div class="go_list">
+									历史计提
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号<i></i></td>
+											<td class="item_name">时间</td>
+											<td class="income">工种</td>
+											<td class="expend">工种负责</td>
+											<td class="surplus">计提比例</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>100000</td>
+											<td>经营统计</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>张三李四</td>
+											<td class="handle"><span class="detail">详情</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!--历史计提-->
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--管理五项目计提结束-->
+				<!--项目管理详情-->
+				<div class="userAdminSeven">
+					<div class="itemmanage_head">
+						<span>工种分工情况</span>
+						<i></i>
+					</div>
+					<ul class="subitem_name clearfix">
+
+					</ul>
+					<div class="itemmanage_bottom">
+						<div class="item_table">
+							<div class="manage_detail clearfix">
+								<div class="manage_left">黄鹤楼</div>
+								<div class="manage_right">添加成员</div>
+							</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号</td>
+										<td class="item_name">姓名</td>
+										<td class="income">工种参与</td>
+										<td class="work">分工情况</td>
+										<td class="work_cnt">工作内容</td>
+										<td class="handle">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>100000</td>
+										<td>经营统计</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td>张三李四</td>
+										<td class="handle"><span class="edit">编辑</span><span class="del">删除</span></td>
+									</tr>
+								</tbody>
+							</table>
+							<!--<div class="paging">
+								<div class="page">
+									<div class="page_left">
+										记录数：<span>100</span>条
+									</div>
+									<div class="page_right">
+										<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">10</span><i class="more">></i>
+									</div>
+								</div>
+							</div>-->
+						</div>
+					</div>
+					<div class="cnt_footer">
+						<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+					</div>
+				</div>
+				<!--项目管理详情结束-->
+				<!--添加成员-->
+				<div class="addMember">
+					<div class="addMember_head">
+						<span>添加成员</span>
+						<i></i>
+					</div>
+					<div class="addMember_detail">
+						<div class="member_top clearfix">
+							<span>姓名：</span>
+							<input type="text" value="请选择人员" class="show" disabled="disabled" />
+							<div class="choose">选人</div>
+						</div>
+						<div class="member_bottom clearfix">
+							<span>分工情况：</span>
+							<input type="text" placeholder="输入标题" class="title" />
+						</div>
+					</div>
+					<div class="cnt_footer">
+						<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;定</button>
+						<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+					</div>
+				</div>
+				<!--添加成员结束-->
+				<!--添加成员-->
+				<div class="addcount">
+					<div class="addcount_head">
+						<span>计提编辑</span>
+						<i></i>
+					</div>
+					<div class="addcount_detail">
+						<div class="time clearfix">
+							<div class="time_left">
+								<span>时间区间：</span>
+								<input type="text" placeholder="2017-06-03" />
+								<i><img src="img/black_tri.png"/></i>
+
+							</div>
+							<div class="time_right">
+								<span>至</span>
+								<input type="text" placeholder="2016-07-14" />
+								<i><img src="img/black_tri.png"/></i>
+							</div>
+						</div>
+						<div class="member_top clearfix">
+							<span>分工情况：</span>
+							<input type="text" placeholder="分派" />
+							<i><img src="img/black_tri.png"/></i>
+							<select name="">
+								<option value="">fghgjhkh</option>
+								<option value="">fghgjhkh</option>
+								<option value="">fghgjhkh</option>
+							</select>
+						</div>
+						<div class="member_bottom clearfix">
+							<span>分工：</span>
+							<input type="text" placeholder="输入标题" />
+						</div>
+						<div class="member_bottom clearfix">
+							<span>计提比例：</span>
+							<input type="text" placeholder="输入标题" />
+						</div>
+					</div>
+					<div class="cnt_footer">
+						<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;定</button>
+						<button type="button" class="btn3">返&nbsp;&nbsp;&nbsp;回</button>
+					</div>
+				</div>
+				<!--添加成员结束-->
+				<!--编辑用户-->
+				<div class="edit_person">
+					<div class="edit_person_head">
+						<span>编辑用户</span>
+						<i></i>
+					</div>
+					<div class="edit_person_detail">
+						<div class="edit_top clearfix">
+							<div class="left">
+								<span>账号：</span>
+								<input type="text" value="请输入内容" class="username" />
+							</div>
+							<div class="left">
+								<span>密码：</span>
+								<input type="password" value="******" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>姓名：</span>
+								<input type="text" value="请输入内容" class="nickname" />
+							</div>
+							<div class="left gender">
+								<span>性别：</span>
+								<input type="text" value="保密" class="sex" data-id="0" />
+								<i><img src="img/black_tri.png"/></i>
+								<select name="">
+									<option value="-1">请选择性别</option>
+									<option value="0">保密</option>
+									<option value="1">男</option>
+									<option value="2">女</option>
+								</select>
+							</div>
+							<div class="left">
+								<span>出生年月：</span>
+								<input type="text" value="2017-01-02" id="editone" class="birthday" />
+							</div>
+							<div class="left">
+								<span>参加工作时间：</span>
+								<input type="text" value="2017-01-02" id="edittwo" class="worktime" />
+							</div>
+							<div class="left">
+								<span>毕业院校：</span>
+								<input type="text" value="复旦" class="school" />
+							</div>
+							<div class="left education">
+								<span>学历：</span>
+								<input type="text" value="" class="edu" />
+								<i><img src="img/black_tri.png"/></i>
+								<select name="">
+									<option value="-1">请选择学历</option>
+									<option value="0">小学</option>
+									<option value="1">初中</option>
+									<option value="2">中专</option>
+									<option value="3">高中</option>
+									<option value="4">大专</option>
+									<option value="5">本科</option>
+									<option value="6">硕士</option>
+									<option value="7">博士</option>
+									<option value="8">其他</option>
+								</select>
+							</div>
+							<div class="left">
+								<span>职称：</span>
+								<input type="text" value="本科" class="position" />
+							</div>
+							<div class="left work">
+								<span>所属工种：</span>
+								<input type="text" value="" class="work_type" />
+								<i><img src="img/black_tri.png"/></i>
+								<select name="">
+									<option value="">本科</option>
+									<option value="">高中</option>
+								</select>
+							</div>
+							<div class="left">
+								<span>手机：</span>
+								<input type="text" value="13330114238" class="mobile" />
+							</div>
+							<div class="left">
+								<span>QQ：</span>
+								<input type="text" value="5778158774" class="qq" />
+							</div>
+						</div>
+						<div class="limit">
+							<div class="limit_head">权限分配</div>
+							<div class="limit_bottom">
+								<div class="general">普通权限：</div>
+								<div class="choose clearfix">
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>新建项目</span>
+									</div>
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>编辑相关项目</span>
+									</div>
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>合同及项目收支</span>
+										<span class="limit_manage">(仅限于项目主管所关联负责的项目)</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="explain">
+							<div class="explain_head">权限解释</div>
+							<div class="explain_bottom">
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">权限名称</td>
+											<td class="income">描述</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>新建项目</td>
+											<td>创立新的立项信息</td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>2</td>
+											<td>编辑相关项目</td>
+											<td>编辑用户关联参与的项目信息</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>合同及项目收支</td>
+											<td>项目主管可以查看关联参与项目的合同、收款支出情况</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;认</button>
+							<button type="button" class="btn2">取&nbsp;&nbsp;&nbsp;消</button>
+						</div>
+					</div>
+				</div>
+				<!--编辑用户结束-->
+				<!--查看用户-->
+				<div class="check_person">
+					<div class="check_person_head">
+						<span>查看用户</span>
+						<i></i>
+					</div>
+					<div class="check_person_detail">
+						<div class="edit_top clearfix">
+							<div class="left">
+								<span>账号：</span>
+								<input type="text" class="username" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>密码：</span>
+								<input type="password" value="******" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>姓名：</span>
+								<input type="text" class="nickname" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>性别：</span>
+								<input type="text" class="sex" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>出生年月：</span>
+								<input type="text" class="birthday" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>参加工作时间：</span>
+								<input type="text" class="worktime" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>毕业院校：</span>
+								<input type="text" class="school" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>学历：</span>
+								<input type="text" class="edu" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>职称：</span>
+								<input type="text" class="position" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>所属工种：</span>
+								<input type="text" class="work_type" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>手机：</span>
+								<input type="text" class="mobile" disabled="disabled" />
+							</div>
+							<div class="left">
+								<span>QQ：</span>
+								<input type="text" class="qq" disabled="disabled" />
+							</div>
+						</div>
+						<div class="limit">
+							<div class="limit_head">权限分配</div>
+							<div class="limit_bottom">
+								<div class="general">普通权限：</div>
+								<div class="choose clearfix">
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>新建项目</span>
+									</div>
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>编辑相关项目</span>
+									</div>
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>合同及项目收支</span>
+										<span class="limit_manage">(仅限于项目主管所关联负责的项目)</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="explain">
+							<div class="explain_head">权限解释</div>
+							<div class="explain_bottom">
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">权限名称</td>
+											<td class="income">描述</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>新建项目</td>
+											<td>创立新的立项信息</td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>2</td>
+											<td>编辑相关项目</td>
+											<td>编辑用户关联参与的项目信息</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>合同及项目收支</td>
+											<td>项目主管可以查看关联参与项目的合同、收款支出情况</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn1">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--查看用户结束-->
+				<!--新增用户-->
+				<div class="add_person">
+					<div class="add_person_head">
+						<span>新增用户</span>
+						<i></i>
+					</div>
+					<div class="add_person_detail">
+						<div class="edit_top clearfix">
+							<div class="left">
+								<span>账号：</span>
+								<input type="text" placeholder="请输入内容" class="username" />
+							</div>
+							<div class="left">
+								<span>密码：</span>
+								<input type="password" placeholder="请输入内容" class="password" />
+							</div>
+							<div class="left">
+								<span>姓名：</span>
+								<input type="text" placeholder="请输入姓名" class="nickname" />
+							</div>
+							<div class="left gender">
+								<span>性别：</span>
+								<input type="text" placeholder="请选择性别" class="sex" />
+								<i><img src="img/black_tri.png"/></i>
+								<select name="">
+									<option value="-1">请选择性别</option>
+									<option value="0">保密</option>
+									<option value="1">男</option>
+									<option value="2">女</option>
+								</select>
+							</div>
+							<div class="left">
+								<span>出生年月：</span>
+								<input type="text" placeholder="请选择时间" id="addone" class="birthday" />
+							</div>
+							<div class="left">
+								<span>参加工作时间：</span>
+								<input type="text" placeholder="请选择时间" id="addtwo" class="worktime" />
+							</div>
+							<div class="left">
+								<span>毕业院校：</span>
+								<input type="text" placeholder="请输入" class="school" />
+							</div>
+							<div class="left education">
+								<span>学历：</span>
+								<input type="text" placeholder="请选择学历" class="edu" />
+								<i><img src="img/black_tri.png"/></i>
+								<select name="">
+									<option value="-1">请选择学历</option>
+									<option value="0">小学</option>
+									<option value="1">初中</option>
+									<option value="2">中专</option>
+									<option value="3">高中</option>
+									<option value="4">大专</option>
+									<option value="5">本科</option>
+									<option value="6">硕士</option>
+									<option value="7">博士</option>
+									<option value="8">其他</option>
+								</select>
+							</div>
+							<div class="left">
+								<span>职称：</span>
+								<input type="text" placeholder="请输入职称" class="position" />
+							</div>
+							<div class="left work">
+								<span>所属工种：</span>
+								<input type="text" placeholder="请选择工种" class="work_type" />
+								<i><img src="img/black_tri.png"/></i>
+								<select name="">
+
+								</select>
+							</div>
+							<div class="left">
+								<span>手机：</span>
+								<input type="tel" placeholder="请输入手机号" class="mobile" />
+							</div>
+							<div class="left">
+								<span>QQ：</span>
+								<input type="text" placeholder="请输入QQ号" class="qq" />
+							</div>
+						</div>
+						<div class="limit">
+							<div class="limit_head">权限分配</div>
+							<div class="limit_bottom">
+								<div class="general">普通权限：</div>
+								<div class="choose clearfix">
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>新建项目</span>
+									</div>
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>编辑相关项目</span>
+									</div>
+									<div class="choose_one">
+										<i>
+											<img src="img/backstage_checkbox_orange.png" alt="" />
+										</i>
+										<span>合同及项目收支</span>
+										<span class="limit_manage">(仅限于项目主管所关联负责的项目)</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="explain">
+							<div class="explain_head">权限解释</div>
+							<div class="explain_bottom">
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">权限名称</td>
+											<td class="income">描述</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>新建项目</td>
+											<td>创立新的立项信息</td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>2</td>
+											<td>编辑相关项目</td>
+											<td>编辑用户关联参与的项目信息</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>合同及项目收支</td>
+											<td>项目主管可以查看关联参与项目的合同、收款支出情况</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;认</button>
+							<button type="button" class="btn2">取&nbsp;&nbsp;&nbsp;消</button>
+						</div>
+					</div>
+				</div>
+				<!--查看用户结束-->
+				<!--历史用户-->
+				<div class="history_person">
+					<div class="history_person_head">
+						<span>历史用户</span>
+						<i></i>
+					</div>
+					<div class="history_person_detail">
+						<div class="edit_top clearfix">
+							<div class="left">
+								<span>账号：</span>
+								<input type="text" disabled="disabled" class="username" />
+							</div>
+							<div class="left">
+								<span>密码：</span>
+								<input type="password" disabled="disabled" value="******" />
+							</div>
+							<div class="left">
+								<span>姓名：</span>
+								<input type="text" disabled="disabled" class="nickname" />
+							</div>
+							<div class="left">
+								<span>性别：</span>
+								<input type="text" disabled="disabled" class="sex" />
+							</div>
+							<div class="left">
+								<span>出生年月：</span>
+								<input type="text" disabled="disabled" class="birthday" />
+							</div>
+							<div class="left">
+								<span>参加工作时间：</span>
+								<input type="text" disabled="disabled" class="worktime" />
+							</div>
+							<div class="left">
+								<span>毕业院校：</span>
+								<input type="text" disabled="disabled" class="school" />
+							</div>
+							<div class="left">
+								<span>学历：</span>
+								<input type="text" disabled="disabled" class="edu" />
+							</div>
+							<div class="left">
+								<span>职称：</span>
+								<input type="text" disabled="disabled" class="position" />
+							</div>
+							<div class="left">
+								<span>所属工种：</span>
+								<input type="text" disabled="disabled" class="work_type" />
+							</div>
+							<div class="left">
+								<span>手机：</span>
+								<input type="text" disabled="disabled" class="mobile" />
+							</div>
+							<div class="left">
+								<span>QQ：</span>
+								<input type="text" disabled="disabled" class="qq" />
+							</div>
+						</div>
+						<div class="remark">
+							<div class="remark_head">备注</div>
+							<textarea name="" rows="" cols="" disabled="disabled">世界这么大，出去转转在回来</textarea>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn1">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--查看用户结束-->
+				<!--方案详情-->
+				<div class="item_plan">
+					<div class="item_plan_head">
+						<span>项目计提</span>
+						<i></i>
+					</div>
+					<div class="item_plan_bottom">
+						<div class="cnt_header">
+							<div class="left clearfix">
+								<span>时间区间：</span>
+								<input type="text" value="输入内容" disabled="disabled" class="start_time" />
+							</div>
+							<div class="left clearfix">
+								<span>所属工种：</span>
+								<input type="text" value="输入内容" disabled="disabled" class="work_name" />
+							</div>
+							<div class="left clearfix">
+								<span>工种负责：</span>
+								<input type="text" value="输入内容" disabled="disabled" class="username" />
+							</div>
+							<div class="left clearfix group">
+								<span>项目计提占比：</span>
+								<input type="text" value="建筑" disabled="disabled" class="commission_rate" />
+							</div>
+						</div>
+						<div class="plan_cnt">
+							<div class="plan_cnt_title">参与成员情况</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号</td>
+										<td class="name">姓名</td>
+										<td class="time">分工</td>
+										<td class="cnt">工作内容</td>
+										<td class="hand">计提占比</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>10000</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td>2017-03-04</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="cnt_footer">
+						<button type="button" class="btn1">审核通过</button>
+						<button type="button" class="btn3">审核不通过</button>
+						<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+					</div>
+					<div class="detail_footer">
+						<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+					</div>
+				</div>
+				<!--方案详情结束-->
+				<!--工种分工-->
+				<div class="labour">
+					<div class="labour_head">
+						<span>工种分工</span>
+						<i></i>
+					</div>
+					<div class="labour_bottom">
+						<div class="cnt_header">
+							<div class="left clearfix">
+								<span>时间区间：</span>
+								<input type="text" value="" disabled="disabled" class="start_time" />
+							</div>
+							<div class="left clearfix">
+								<span>所属工种：</span>
+								<input type="text" value="" disabled="disabled" class="work_name" />
+							</div>
+							<div class="left clearfix">
+								<span>工种负责：</span>
+								<input type="text" value="" disabled="disabled" class="username" />
+							</div>
+							<div class="left clearfix group">
+								<span>项目计提占比：</span>
+								<input type="text" value="建筑" disabled="disabled" class="commission_rate" />
+							</div>
+						</div>
+						<div class="plan_cnt">
+							<div class="plan_cnt_title">参与成员情况</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号<i></i></td>
+										<td class="name">姓名</td>
+										<td class="time">分工</td>
+										<td class="cnt">工作内容</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>10000</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td>每天努力的搬砖</td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>10000</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td>建筑</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="cnt_footer">
+						<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+					</div>
+				</div>
+				<!--方案详情结束-->
+				<!--工种负责人操作-->
+				<div class="worktype">
+					<div class="worktype_head">
+						<span>项目计提</span>
+						<i></i>
+					</div>
+					<div class="worktype_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>项目名称：</span>
+									<input type="text" value="输入内容" class="project_name" />
+								</div>
+								<div class="right clearfix">
+									<span>立项时间：</span>
+									<input type="text" value="2017-09-04" class="project_time" />
+								</div>
+								<div class="left clearfix group">
+									<span>项目阶段：</span>
+									<input type="text" value="建筑" class="stage" />
+								</div>
+								<div class="right clearfix">
+									<span>项目主管：</span>
+									<input type="text" value="2017-09-04" class="username" />
+								</div>
+								<div class="left clearfix group">
+									<span>工种计提比例：</span>
+									<input type="text" value="建筑" class="rate" />
+								</div>
+								<div class="right clearfix">
+									<span>当前子项目：</span>
+									<span class="floor">一号楼</span>
+								</div>
+							</div>
+							<div class="bigfloor">
+								<ul class="floor_ul clearfix">
+									<li class="active">
+										一号楼
+									</li>
+									<li>
+										二号楼
+									</li>
+									<li>
+										三号楼
+									</li>
+								</ul>
+							</div>
+							<!--计提进行中-->
+							<div class="list_detail nowCount">
+								<div class="go_list">
+									计提进行中
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号<i></i></td>
+											<td class="item_name">时间区间</td>
+											<td class="income">姓名</td>
+											<td class="expend">分工情况</td>
+											<td class="work">工作情况</td>
+											<td class="surplus">计提比例</td>
+											<td class="handle">状态</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>100000</td>
+											<td>经营统计</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td><span class="detail">详情</span></td>
+											<td><input type="text" placeholder="请输入内容" /></td>
+											<td class="handle"><span>查看</span></td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="plansure">已提交</div>
+								<button type="button" class="workbutton">方案提交</button>
+							</div>
+							<!--计提进行中-->
+							<div class="black"></div>
+							<!--历史计提-->
+							<div class="list_detail history_list ">
+								<div class="go_list">
+									历史计提
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">时间区间</td>
+											<td class="income">姓名</td>
+											<td class="expend">分工情况</td>
+											<td class="count">工作情况</td>
+											<td class="surplus">计提比例</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>100000</td>
+											<td>经营统计</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td></td>
+											<td></td>
+											<td class="handle"><span class="detail1">详情</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>100000</td>
+											<td>2017-08-20</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td></td>
+											<td></td>
+											<td class="handle"><span class="detail1">详情</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!--历史计提-->
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--工种负责人操作结束-->
+				<!--项目分工增加-->
+				<div class="item_check">
+					<div class="item_check_head">
+						<span>项目分工</span>
+						<i></i>
+					</div>
+					<div class="item_check_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="header_left clearfix">
+									<span>姓名：</span>
+									<input type="text" value="张三" disabled="disabled" class="nickname" />
+								</div>
+								<div class="header_right clearfix">
+									<span>工种参与：</span>
+									<input type="text" value="重要修改" disabled="disabled" class="name" />
+								</div>
+								<div class="header_left clearfix">
+									<span>工种负责人：</span>
+									<input type="text" value="重要修改" disabled="disabled" class="director" />
+								</div>
+								<div class="header_right clearfix">
+									<span>分工情况：</span>
+									<input type="text" value="重要修改" disabled="disabled" class="labor" />
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">当前工作内容</div>
+								<textarea name="" rows="" cols="" value="请输入内容" disabled="disabled" class="content"></textarea>
+							</div>
+							<div class="history_work">
+								<div class="cnt_bottom_header">历史工作内容</div>
+								<div class="first_stage">
+									<div class="stage_head">
+										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
+									</div>
+									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+								</div>
+								<div class="first_stage">
+									<div class="stage_head">
+										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
+									</div>
+									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+								</div>
+							</div>
+							<div class="cnt_footer">
+								<div class="foot_second">
+									<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--项目分工结束-->
+				<!--绩效详情-->
+				<div class="perf_detail">
+					<div class="perf_detail_head">
+						<span>绩效详情</span>
+						<i></i>
+					</div>
+					<div class="perf_detail_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>姓名：</span>
+									<input type="text" value="输入内容" class="user_name" />
+								</div>
+								<div class="right clearfix">
+									<span>项目名称：</span>
+									<input type="text" value="输入内容" class="project_name" />
+								</div>
+								<div class="left clearfix">
+									<span>项目主管：</span>
+									<input type="text" value="输入内容" class="supervisor_name" />
+								</div>
+								<div class="right clearfix">
+									<span>计提总额：</span>
+									<input type="text" value="输入内容" class="total_commission" />
+								</div>
+							</div>
+							<div class="color"></div>
+							<div class="record">
+								<div class="job_logging">
+									<div class="job_logging_title">
+										<span>时间阶段：</span><span>2017.07.09-2017.09.36</span>
+									</div>
+									<div class="logging_detail clearfix">
+										<div class="logging_head clearfix">
+											<div class="left clearfix">
+												<span>公众参与：</span>
+												<input type="text" value="输入内容" disabled="disabled" />
+											</div>
+											<div class="right clearfix">
+												<span>分工情况：</span>
+												<input type="text" value="输入内容" />
+											</div>
+											<div class="left clearfix">
+												<span>计提占比：</span>
+												<input type="text" value="输入内容" />
+											</div>
+											<div class="right clearfix group">
+												<span>计提数额：</span>
+												<input type="text" value="建筑" />
+											</div>
+										</div>
+										<div class="logging_bottom">
+											<div class="job_logging_header">工作记录</div>
+											<textarea name="" rows="" cols="" value="请输入内容"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--绩效详情结束-->
+				<!--编辑项目组-->
+				<div class="count_floor">
+					<div class="count_floor_head">
+						<span>编辑项目组</span>
+						<i></i>
+					</div>
+					<div class="count_floor_bottom">
+						<div class="floor_top">当前子项目：<span>一号楼</span></div>
+						<div class="floor_cnt clearfix">
+							<ul class="floor_cnt_ul clearfix">
+								<li class="active">
+									<a href="javascript:void(0)">一号楼</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">二号楼</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">三号楼</a>
+								</li>
+							</ul>
+							<!--//一号楼-->
+							<div class="first_floor">
+								<div class="responsibe clearfix">
+									<div class="detail_head clearfix">
+										<div class="head_left define">
+											<img src="img/icon_add.png" alt="" />
+											<span>自定义</span>
+										</div>
+									</div>
+									<table border="1" cellspacing="0">
+										<tbody>
+											<tr>
+												<td class="item"><i>*</i>项目主管：</td>
+												<td class="item_num">
+													<!--<span>选人</span>-->
+													<input type="text" class="show director" data-id="0" disabled="disabled" />
+												</td>
+											</tr>
+											<tr class="work">
+												<td class="item" data-id="1">规划负责：</td>
+												<td class="item_num">
+													<span>选人</span>
+													<input type="text" class="show" data-id="0" disabled="disabled" />
+													<input type="hidden" class="hidden" value="0" />
+												</td>
+											</tr>
+											<tr class="work">
+												<td class="item" data-id="2">方案负责：</td>
+												<td class="item_num">
+													<span>选人</span>
+													<input type="text" class="show" data-id="0" disabled="disabled" />
+													<input type="hidden" class="hidden" value="0" />
+												</td>
+											</tr>
+											<tr class="work">
+												<td class="item" data-id="3">建筑负责：</td>
+												<td class="item_num">
+													<span>选人</span>
+													<input type="text" class="show" data-id="0" disabled="disabled" />
+													<input type="hidden" class="hidden" value="0" />
+												</td>
+											</tr>
+											<tr class="work">
+												<td class="item" data-id="4">结构负责：</td>
+												<td class="item_num">
+													<span>选人</span>
+													<input type="text" class="show" data-id="0" disabled="disabled" />
+													<input type="hidden" class="hidden" value="0" />
+												</td>
+											</tr>
+											<tr class="work">
+												<td class="item" data-id="5">电气负责：</td>
+												<td class="item_num">
+													<span>选人</span>
+													<input type="text" class="show" data-id="0" disabled="disabled" />
+													<input type="hidden" class="hidden" value="0" />
+												</td>
+											</tr>
+											<tr class="work">
+												<td class="item" data-id="6">给排水负责：</td>
+												<td class="item_num">
+													<span>选人</span>
+													<input type="text" class="show" data-id="0" disabled="disabled" />
+													<input type="hidden" class="hidden" value="0" />
+												</td>
+											</tr>
+											<tr class="work">
+												<td class="item" data-id="7">暖通负责：</td>
+												<td class="item_num">
+													<span>选人</span>
+													<input type="text" class="show" data-id="0" disabled="disabled" />
+													<input type="hidden" class="hidden" value="0" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="beixuan">
+										<div class="alternative">备选工种：</div>
+										<ul class="design clearfix">
+											<li>
+												<i>
+													<img src="img/backstage_checkbox_orange.png"/>
+												</i>
+												<span>室内设计</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="item_worker">
+									<div class="worker_head">
+										<span>工种参与人员</span>
+									</div>
+									<table border="1" cellspacing="0">
+										<thead>
+											<tr>
+												<td class="orderlist">序号</td>
+												<td class="name">姓名</td>
+												<td class="time">工种参与</td>
+												<td class="cnt">分工情况</td>
+												<td class="hand">工作内容</td>
+												<td class="handle">操作</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>100000</td>
+												<td>张三</td>
+												<td>建筑</td>
+												<td>张三李四</td>
+												<td>2017-8-29</td>
+												<td class="handle"><span>编辑</span><span>删除</span></td>
+											</tr>
+											<tr class="e9ecf1">
+												<td>100000</td>
+												<td>张三</td>
+												<td>建筑</td>
+												<td>张三李四</td>
+												<td>2017-8-29</td>
+												<td class="handle"><span>编辑</span><span>删除</span></td>
+											</tr>
+											<tr>
+												<td>100000</td>
+												<td>张三</td>
+												<td>建筑</td>
+												<td>张三李四</td>
+												<td>2017-8-29</td>
+												<td class="handle"><span>编辑</span><span>删除</span></td>
+											</tr>
+											<tr class="e9ecf1">
+												<td>100000</td>
+												<td>张三</td>
+												<td>建筑</td>
+												<td>张三李四</td>
+												<td>2017-8-29</td>
+												<td class="handle"><span>编辑</span><span>删除</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!--一号楼结束-->
+						</div>
+					</div>
+					<div class="count_edit_footer">
+						<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;认</button>
+						<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+					</div>
+				</div>
+				<!--编辑项目组结束-->
+				<!--子项目目录-选人-->
+				<div class="subitem_choose" id="subitem_choose">
+					<div class="subitem_choose_head">
+						<div class="search_left">项目组管理</div>
+						<div class="search_right">
+							<img src="img/icon-search-orange.png" alt="" />
+							<input type="text" placeholder="输入姓名搜索" />
+						</div>
+						<i></i>
+					</div>
+					<div class="subitem_choose_bottom">
+						<div class="item clearfix">
+							<div class="item_left clearfix">
+								<ul class="item_name clearfix">
+									<li class="active">
+										<a href="javascript:void(0)">工种</a>
+									</li>
+									<!--<li>
+										<a href="javascript:void(0)">项目组</a>
+									</li>-->
+									<li>
+										<a href="javascript:void(0)">全部</a>
+									</li>
+								</ul>
+								<!--当前项目-->
+								<div class="item_detail now_item admin">
+									<div class="now_item_cnt">
+										<!--<div class="jobstyle" data-id="1">
+											<div class="job">
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>规划工种</span>
+												<s><img src="img/arrow_bottom.png"/></s>
+											</div>
+											<ul class="worker">
+												<li>
+													<i><img src="img/icon_checked.png" alt="" /></i>
+													<span>赵三</span>
+												</li>
+												<li>
+													<i><img src="img/icon_checked.png" alt="" /></i>
+													<span>钱三</span>
+												</li>
+												<li>
+													<i><img src="img/icon_checked.png" alt="" /></i>
+													<span>孙三</span>
+												</li>
+											</ul>
+										</div>-->
+									</div>
+								</div>
+								<!--历史项目-->
+								<!--<div class="item_detail history_item admin">
+									<div class="jobstyle">
+										<div class="job">
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>sadad</span>
+											<s><img src="img/arrow_bottom.png"/></s>
+										</div>
+										<ul class="worker">
+											<li>
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>张三</span>
+											</li>
+											<li>
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>张三</span>
+											</li>
+											<li>
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>张三</span>
+											</li>
+										</ul>
+									</div>
+								</div>-->
+								<!--全部项目-->
+								<div class="all_item admin">
+									<ul class="Allworker">
+										<!--<li>
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>张三</span>
+										</li>
+										<li>
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>张三</span>
+										</li>
+										<li>
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>张三</span>
+										</li>-->
+									</ul>
+								</div>
+							</div>
+							<div class="haschoose">已选人员：</div>
+							<div class="item_right">
+								<div class="item_right_ctn">
+									<div class="work_style" data-id="1">
+										<!--<ul class="clearfix">
+											<li>
+												<img src="img/icon_del.png" />
+												<span>赵三</span>
+											</li>
+											<li>
+												<img src="img/icon_del.png" />
+												<span>钱三</span>
+											</li>										
+										</ul>-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn1" id="jobbtn">确&nbsp;&nbsp;&nbsp;定</button>
+						</div>
+					</div>
+				</div>
+				<!--子项目目录-选人结束-->
+				<!--项目分工增加-->
+				<div class="item_check1">
+					<div class="item_check1_head">
+						<span>项目分工</span>
+						<i></i>
+					</div>
+					<div class="item_check1_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="header_left clearfix">
+									<span>姓名：</span>
+									<input type="text" value="张三" disabled="disabled" class="nickname" />
+								</div>
+								<div class="header_right clearfix">
+									<span>分工情况：</span>
+									<input type="text" value="重要修改" class="labor" />
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">当前工作内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+							</div>
+							<div class="history_work">
+								<div class="cnt_bottom_header">历史工作内容</div>
+								<div class="first_stage">
+									<div class="stage_head">
+										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
+									</div>
+									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+								</div>
+								<div class="first_stage">
+									<div class="stage_head">
+										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
+									</div>
+									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+								</div>
+							</div>
+							<div class="cnt_footer">
+								<div class="foot_first">
+									<button type="button" class="btn1">修&nbsp;&nbsp;&nbsp;改</button>
+									<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+								</div>
+								<div class="foot_second">
+									<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--项目分工结束-->
+			</div>
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#admin_one',
+			});
+			laydate.render({
+				elem: '#admin_two',
+			});
+			laydate.render({
+				elem: '#admin_three',
+			});
+			laydate.render({
+				elem: '#admin_four',
+			});
+			laydate.render({
+				elem: '#addone',
+			});
+			laydate.render({
+				elem: '#addtwo',
+			});
+			laydate.render({
+				elem: '#editone',
+			});
+			laydate.render({
+				elem: '#edittwo',
+				user_one
+			});
+			laydate.render({
+				elem: '#user_one',
+			});
+			laydate.render({
+				elem: '#user_two',
+			});
+			laydate.render({
+				elem: '#user_three',
+			});
+			laydate.render({
+				elem: '#user_four',
+			});
+		</script>
+	</body>
+
+</html>

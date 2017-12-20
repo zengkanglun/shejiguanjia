@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" href="css/count_check.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/count_check.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="" alt="" class="photo" />
+								<img src="" alt="" />
+							</div>
+							<div class="info_name"></div>
+							<div class="rows">
+								<div><span class="one"><img src="img/icon-suotou.png" alt="" /></span></div>
+								<div><span class="two"><img src="img/icon-yaoshi.png" alt="" /></span></div>
+								<div><span class="three"><img src="img/icon-camera.png" alt="" /></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="listBtn">
+						<a href="task.html" class="list_1 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<i>任务</i>
+							</div>
+						</a>
+						<a href="msg.html" class="list_2 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-tongzhi-white.png" alt="" />
+									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
+								<i>通知</i>
+							</div>
+						</a>
+						<a href="pandect.html" class="list_3 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-zonglan-white.png" alt="" /></div>
+								<i>总览</i>
+							</div>
+						</a>
+						<a href="user.html" class="list_4 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-yonghu-white.png" alt="" /></div>
+								<i>用户</i>
+							</div>
+						</a>
+						<a href="administration.html" class="list_5 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-guanli-white.png" alt="" /></div>
+								<i>管理</i>
+							</div>
+						</a>
+						<a href="finance.html" class="list_6 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-caiwu-white.png" alt="" /></div>
+								<i>财务</i>
+							</div>
+						</a>
+						<a href="backstage_general.html" class="list_7 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-houtai-white.png" alt="" /></div>
+								<i>后台</i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="left">
+					<div class="icon-search">
+						<img src="img/icon-search-orange.png" alt="" />
+					</div>
+					<div class="search-inp">
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
+					</div>
+				</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="" /></div>
+					</div>
+					<div class="helpBtn rightDiv">
+						<div><img src="img/icon-bangzhu-white.png" /></div>
+					</div>
+					<div class="dataTime rightDiv">
+						<div>
+							<i>2017</i>年<i>09</i>月<i>01</i>日&nbsp;&nbsp;&nbsp;&nbsp;星期<i>五</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<!--右侧内容区-->
+				<div class="center_content">
+					<div class="content_detail">
+						<!--项目收款-->
+						<div class="collect_detail clearfix item_one">
+							<div class="item_income">项目收款</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号</td>
+										<td class="stages">项目阶段</td>
+										<td class="has_pay">已收款</td>
+										<td class="no_pay">未收款</td>
+										<td class="process">最新过程记录</td>
+										<td class="handle">操作</td>
+									</tr>
+								</thead>
+								<tbody id="xmsk">
+									<!--<tr>
+										<td>1</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>张三李四</td>
+										<td>2017-8-29</td>
+										<td class="handle"><span class="check">详情</span></td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>张三李四</td>
+										<td>2017-8-29</td>
+										<td class="handle"><span class="check">详情</span></td>
+									</tr>-->
+								</tbody>
+							</table>
+						</div>
+						<!--结束-->
+						<!--项目支出-->
+						<div class="expend_detail clearfix item_one">
+							<div class="item_expend">项目支出</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号</td>
+										<td class="settime">时间</td>
+										<td class="style">报账类型</td>
+										<td class="num">数量</td>
+										<td class="title">内容</td>
+										<td class="del">记录</td>
+										<td class="handle">操作</td>
+									</tr>
+								</thead>
+								<tbody id="xmzc">
+									<!--<tr>
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>张三李四</td>
+										<td>1</td>
+										<td>2017-8-29</td>
+										<td class="handle"><span class="check">详情</span></td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>张三李四</td>
+										<td>1</td>
+										<td>2017-8-29</td>
+										<td class="handle"><span class="check">详情</span></td>
+									</tr>-->
+								</tbody>
+							</table>
+						</div>
+						<!--结束-->
+						<!--项目计提-->
+						<div class="count_detail clearfix">
+							<div class="item_count">项目计提</div>
+							<div class="count_detail_head clearfix">
+								<div class="count_ul" id="xmjt_li">
+									<!--<li class="active">一号楼</li>
+									<li>二号楼</li>
+									<li>三号楼</li>-->
+								</div>
+							</div>
+							<table border="1" cellspacing="0" class="first">
+								<thead>
+									<tr>
+										<td class="orderlist">序号</td>
+										<td class="settime">时间区间</td>
+										<td class="job">计提金额</td>
+										<td class="work">比例分配</td>
+										<td class="worker">项目组提成方案</td>
+										<td class="handle">操作</td>
+									</tr>
+								</thead>
+								<tbody id="xmjt">
+									<!--<tr>
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td class="allot">项目主管：<i>3%</i>项目组：<i>97%</i></td>
+										<td class="plan"><span class="check">查看</span></td>
+										<td class="handle"><span class="check">查看</span></td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td class="allot">项目主管：<i>3%</i>项目组：<i>97%</i></td>
+										<td class="plan"><span class="check">查看</span></td>
+										<td class="handle"><span class="check">查看</span></td>
+									</tr>-->
+								</tbody>
+							</table>
+							<div class="item_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+						<!--结束-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<div class="scroll">
+				<!--查看项目收款详情-->
+				<div class="item_check">
+					<div class="item_check_head">
+						<span>项目收款</span>
+						<i></i>
+					</div>
+					<div class="item_check_bottom">
+						<div class="item_top">
+							<div class="item_name allitem">
+								<div class="name_left item_left">项目名称：</div>
+								<input type="text" value="建筑" disabled="disabled" id="xmsk_d_name" />
+							</div>
+							<div class="item_time allitem">
+								<input type="text" value="2017-09-05" disabled="disabled" id="xmsk_d_time" />
+								<div class="time_left item_left">立项时间：</div>
+							</div>
+							<div class="item_stages allitem">
+								<div class="stages_left item_left">项目阶段：</div>
+								<input type="text" value="建筑" disabled="disabled" id="xmsk_d_stage" />
+							</div>
+							<div class="item_sum allitem">
+								<input type="text" value="建筑" disabled="disabled" id="xmsk_d_menoy" />
+								<div class="sum_left item_left">合同总额：</div>
+							</div>
+						</div>
+						<!--//第一阶段-->
+						<div id="xmsk_d"></div>
+						<!--<div class="bigstage first_stage">
+							<div class="stage_header">
+								<span>第一阶段</span>
+							</div>
+							<div class="stage_bottom">
+								<div class="service_content clearfix">
+									<div class="service">
+										<div class="service_left">服务内容：</div>
+										<input type="text" placeholder="分派" disabled="disabled" />
+									</div>
+									<div class="stage_sum">
+										<div class="stage_sum_left">阶段总额：</div>
+										<input type="text" placeholder="20%" disabled="disabled" />
+									</div>
+									<div class="pay">
+										<div class="pay_left">阶段总额：</div>
+										<input type="text" placeholder="20%" disabled="disabled" />
+									</div>
+									<div class="nopay">
+										<div class="nopay_left">阶段总额：</div>
+										<input type="text" placeholder="20%" disabled="disabled" />
+									</div>
+								</div>
+								<div class="table">
+									<table border="1" cellspacing="0">
+										<thead>
+											<tr>
+												<td class="orderlist">序号<i></i></td>
+												<td class="settime">时间</td>
+												<td class="style">类型</td>
+												<td class="sum">金额</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>100000</td>
+												<td>2017-08-20</td>
+												<td>建筑</td>
+												<td>张三李四</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="process">
+									<div class="process_head">
+										<div class="head_left">过程记录</div>
+									</div>
+									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+								</div>
+							</div>
+						</div>-->
+						<div class="item_footer">
+							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--查看项目收款详情结束-->
+				<!--查看项目支出详情-->
+				<div class="item_expend">
+					<div class="item_expend_head">
+						<span>项目支出</span>
+						<i></i>
+					</div>
+					<div class="item_expend_bottom">
+						<div class="item_top">
+							<div class="item_name allitem">
+								<div class="name_left item_left">项目名称：</div>
+								<input type="text" value="" disabled="disabled" id="xmzc_d_name" />
+							</div>
+							<div class="item_time allitem">
+								<input type="text" value="" disabled="disabled" id="xmzc_d_time" />
+								<div class="time_left item_left">立项时间：</div>
+							</div>
+							<div class="item_stages allitem">
+								<div class="stages_left item_left">报账类型：</div>
+								<input type="text" value="" disabled="disabled" id="xmzc_d_type" />
+							</div>
+							<div class="item_sum allitem">
+								<input type="text" value="" disabled="disabled" id="xmzc_d_amount" />
+								<div class="sum_left item_left">报账金额：</div>
+							</div>
+							<div class="item_stages allitem">
+								<div class="stages_left item_left">经手：</div>
+								<input type="text" value="" disabled="disabled" id="xmzc_d_username" />
+							</div>
+							<div class="item_sum allitem">
+								<input type="text" value="" disabled="disabled" id="xmzc_d_ex_time" />
+								<div class="sum_left item_left">报账时间：</div>
+							</div>
+						</div>
+						<div class="item_bottom">
+							<div class="item_content">报账内容</div>
+							<textarea name="" rows="" cols="" disabled="disabled" id="xmzc_d_ex_con"></textarea>
+						</div>
+						<div class="item_footer">
+							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--查看项目支出结束-->
+				<!--编辑项目计提-->
+				<div class="count_edit">
+					<div class="count_edit_head">
+						<span>项目计提</span>
+						<i></i>
+					</div>
+					<div class="count_edit_bottom">
+						<div class="content">
+							<div class="cnt_header clearfix">
+								<div class="header_left clearfix">
+									<span>时间区间：</span>
+									<input type="text" placeholder="2017-08-01" disabled="disabled" id="xmjtxq_time" />
+								</div>
+								<div class="header_right clearfix">
+									<span>所属工种：</span>
+									<input type="text" placeholder="" disabled="disabled" id="xmjtxq_work_name" />
+								</div>
+								<div class="header_left clearfix">
+									<span>工种负责：</span>
+									<input type="text" placeholder="" disabled="disabled" id="xmjtxq_username" />
+								</div>
+								<div class="header_right clearfix">
+									<span>项目计提占比：</span>
+									<input type="text" placeholder="" disabled="disabled" id="xmjtxq_rate" />
+								</div>
+							</div>
+							<div class="cnt_bottom clearfix">
+								<div class="cnt_bottom_head">参与成员情况</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="name">姓名</td>
+											<td>分工</td>
+											<td class="work_cnt">工作内容</td>
+										</tr>
+									</thead>
+									<tbody id="xmjtxq_list">
+										<!--<tr>
+											<td>10086</td>
+											<td>李四</td>
+											<td>建筑</td>
+											<td>拆墙</td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>10086</td>
+											<td>李四</td>
+											<td>建筑</td>
+											<td>拆墙</td>
+										</tr>-->
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="count_edit_footer">
+							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--编辑项目计提结束-->
+				<!--项目组方案详情-->
+				<div class="item_plan">
+					<div class="item_plan_head">
+						<span>项目组方案详情</span>
+						<i></i>
+					</div>
+					<div class="item_plan_bottom">
+						<div class="content">
+							<div class="cnt_bottom clearfix">
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="time">时间</td>
+											<td>工种</td>
+											<td>工种负责</td>
+											<td>计提比例</td>
+											<td>工种方案</td>
+											<td>审核状态</td>
+										</tr>
+									</thead>
+									<tbody id="xmjtfa">
+										<!--<tr>
+											<td>10086</td>
+											<td>李四</td>
+											<td>建筑</td>
+											<td>拆墙</td>
+											<td>拆墙</td>
+											<td class="work_plan"><i>已提交</i><span>详情</span></td>
+											<td>已审核</td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>10086</td>
+											<td>李四</td>
+											<td>建筑</td>
+											<td>拆墙</td>
+											<td>拆墙</td>
+											<td class="work_plan"><i>已提交</i><span>详情</span></td>
+											<td>已审核</td>
+										</tr>-->
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="item_plan_footer">
+							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--查看项目计提结束-->
+				<!--查看项目计提-->
+				<div class="count_check">
+					<div class="count_check_head">
+						<span>项目计提</span>
+						<i></i>
+					</div>
+					<div class="count_check_bottom">
+						<div class="content">
+							<div class="cnt_header clearfix">
+								<div class="header_left clearfix">
+									<span>计提时间：</span>
+									<input type="text" value="" disabled="disabled" id="xmtj_looktime" />
+								</div>
+								<div class="header_right clearfix">
+									<span>计提金额：</span>
+									<input type="text" value="" disabled="disabled" id="xmtj_lookmenoy" />
+								</div>
+								<div class="arrange">比例分配</div>
+								<div class="header_left clearfix">
+									<span>项目主管：</span>
+									<input type="text" value="" disabled="disabled" id="xmtj_lookzg" />
+								</div>
+								<div class="header_right clearfix">
+									<span>项目组：</span>
+									<input type="text" value="" disabled="disabled" id="xmtj_lookxm" />
+								</div>
+							</div>
+						</div>
+						<div class="count_check_footer">
+							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--查看项目计提结束-->
+			</div>
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

@@ -1,0 +1,178 @@
+/*删除操作确认框*/
+#boxPock .del {
+  width: 400px;
+  height: 256px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #5b636c;
+  display: none;
+  z-index: 10;
+  overflow-y: auto;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .del .del_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .del .del_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .del .del_bottom {
+  width: 100%;
+  height: 200px;
+  background: #ffffff;
+  overflow: hidden;
+}
+#boxPock .del .del_bottom .sure {
+  width: 230px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  text-align: center;
+  margin: 50px auto;
+  margin-bottom: 0;
+}
+#boxPock .del .del_bottom .foot {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+#boxPock .del .del_bottom .foot .btn1 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #FD813E;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  float: left;
+  margin-left: 80px;
+}
+#boxPock .del .del_bottom .foot .btn2 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #9DAAB8;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  float: left;
+  margin-left: 35px;
+}
+
+
+/*复职操作确认框*/
+#boxPock .cover {
+  width: 400px;
+  height: 256px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #5b636c;
+  display: none;
+  z-index: 10;
+  overflow-y: auto;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .cover .cover_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .cover .cover_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .cover .cover_bottom {
+  width: 100%;
+  height: 200px;
+  background: #ffffff;
+  overflow: hidden;
+}
+#boxPock .cover .cover_bottom .sure {
+  width: 230px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  text-align: center;
+  margin: 50px auto;
+  margin-bottom: 0;
+}
+#boxPock .cover .cover_bottom .foot {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+#boxPock .cover .cover_bottom .foot .btn1 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #FD813E;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  float: left;
+  margin-left: 80px;
+}
+#boxPock .cover .cover_bottom .foot .btn2 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #9DAAB8;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  float: left;
+  margin-left: 35px;
+}

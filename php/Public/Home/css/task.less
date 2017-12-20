@@ -1,0 +1,2201 @@
+body {
+    font-size: 16px;
+    font-family: "microsoft yahei";
+}
+
+#bodyRight {
+    #content {
+        .center_content {
+            width: 100%;
+            height: 100%;
+            .content_header {
+                width: 100%;
+                height: 54px;
+                .user_tab {
+                    float: left;
+                    height: 54px;
+                    margin-bottom: 0;
+                    li {
+                        width: 156px;
+                        height: 54px;
+                        background: #ffffff;
+                        margin-right: 1px;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                        float: left;
+                        overflow: hidden;
+                        box-shadow: 0px 2px 3px #f1f1f3;
+                        a {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;
+                            font-size: 16px;
+                            line-height: 54px;
+                            line-height: 54px\9;
+                            letter-spacing: 1px;
+                        }
+                    }
+                    li.active {
+                        background: #fd813e;
+                        box-shadow: none;
+                        a {
+                            color: #ffffff;
+                        }
+                    }
+                }
+                .current_task {
+                    float: right;
+                    height: 54px;
+                    .task {
+                        display: block;
+                        float: left;
+                        height: 54px;
+                        line-height: 54px;
+                        line-height: 54px\9;
+                        color: #FFFFFF;
+                    }
+                    .task_name {
+                        display: block;
+                        float: right;
+                        height: 54px;
+                        line-height: 54px;
+                        line-height: 54px\9;
+                        color: #FFFFFF;
+                    }
+                }
+            }
+            //头部结束
+            .content_detail {
+                background: #ffffff;
+                width: 100%;
+                overflow: hidden;
+                .detail_tab {
+                    width: 100%;
+                    height: 60px;
+                    margin: 0;
+                    border-bottom: 1px solid #c8d2dc;
+                    li {
+                        width: 150px;
+                        height: 60px;
+                        float: left;
+                        box-sizing: border-box;
+                        margin-right: 10px;
+                        a {
+                            display: block;
+                            width: 150px;
+                            height: 60px;
+                            line-height: 60px;
+                            line-height: 60px\9;
+                            text-align: center;
+                            color: #9199ae;
+                        }
+                    }
+                    li.active {
+                        border-bottom: 4px solid #FD813E;
+                        a {
+                            color: #FD813E;
+                        }
+                    }
+                }
+                //新任务
+                .new_task {
+                    width: 100%;
+                    padding: 15px 25px 20px 40px;
+                    box-sizing: border-box;
+                    .new_task_head {
+                        height: 22px;
+                        overflow: hidden;
+                        cursor: pointer;
+                        .build_task_left {
+                            float: left;
+                            cursor: pointer;
+                            img {
+                                width: 22px;
+                                height: 22px;
+                                float: left;
+                            }
+                            span {
+                                display: inline-block;
+                                height: 22px;
+                                color: #FD813E;
+                                line-height: 22px;
+                                line-height: 22px\9;
+                                float: left;
+                                margin-left: 10px;
+                            }
+                        }
+                        .more {
+                            float: right;
+                            color: #FD813E;
+                        }
+                    }
+                    table {
+                        width: 100%;
+                        border: #c8d2dc;
+                        margin-top: 15px;
+                        thead {
+                            height: 50px;
+                            background: #9daab8;
+                            height: 50px;
+                            td {
+                                height: 50px;
+                                text-align: center;
+                                color: #667788;
+                                position: relative;
+                                i {
+                                    position: absolute;
+                                    width: 11px;
+                                    height: 8px;
+                                    background: url(../img/black_tri.png) no-repeat;
+                                    top: 21px;
+                                    right: 20px;
+                                    cursor: pointer;
+                                }
+                            }
+                            .orderlist {
+                                width: 106px;
+                                position: relative;
+                            }
+                            .steman {
+                                width: 109px;
+                            }
+                            .settime {
+                                width: 143px;
+                            }
+                            .job {
+                                width: 122px;
+                            }
+                            .title {
+                                width: 200px;
+                            }
+                            .plan_time {
+                                width: 104px;
+                            }
+                            .handle {
+                                width: 105px;
+                            }
+                        }
+                        tbody {
+                            height: 50px;
+                            tr {
+                                height: 50px;
+                                background: #ffffff;
+                                td {
+                                    height: 50px;
+                                    text-align: center;
+                                    color: #333333;
+                                }
+                                .handle {
+                                    span {
+                                        padding: 0px 2px;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                            .e9ecf1 {
+                                background: #e9ecf1;
+                            }
+                        }
+                    }
+                }
+                //新任务结束
+                //任务进行中
+                .task_go {
+                    width: 100%;
+                    padding: 15px 25px 20px 40px;
+                    box-sizing: border-box;
+                    display: none;
+                    .task_go_head {
+                        height: 22px;
+                        overflow: hidden;
+                        cursor: pointer;
+                        .build_task_left {
+                            float: left;
+                            cursor: pointer;
+                            img {
+                                width: 22px;
+                                height: 22px;
+                                float: left;
+                            }
+                            span {
+                                display: inline-block;
+                                height: 22px;
+                                color: #FD813E;
+                                line-height: 22px;
+                                line-height: 22px\9;
+                                float: left;
+                                margin-left: 10px;
+                            }
+                        }
+                        .more {
+                            float: right;
+                            color: #FD813E;
+                        }
+                    }
+                    table {
+                        width: 100%;
+                        border: #c8d2dc;
+                        margin-top: 15px;
+                        thead {
+                            height: 50px;
+                            background: #9daab8;
+                            height: 50px;
+                            td {
+                                height: 50px;
+                                text-align: center;
+                                color: #667788;
+                                position: relative;
+                                i {
+                                    position: absolute;
+                                    width: 11px;
+                                    height: 8px;
+                                    background: url(../img/black_tri.png) no-repeat;
+                                    top: 21px;
+                                    right: 20px;
+                                    cursor: pointer;
+                                }
+                            }
+                            .orderlist {
+                                width: 106px;
+                                position: relative;
+                            }
+                            .steman {
+                                width: 109px;
+                            }
+                            .settime {
+                                width: 143px;
+                            }
+                            .job {
+                                width: 122px;
+                            }
+                            .title {
+                                width: 200px;
+                            }
+                            .plan_time {
+                                width: 104px;
+                            }
+                            .handle {
+                                width: 105px;
+                            }
+                        }
+                        tbody {
+                            height: 50px;
+                            tr {
+                                height: 50px;
+                                background: #ffffff;
+                                td {
+                                    height: 50px;
+                                    text-align: center;
+                                    color: #333333;
+                                }
+                                .handle {
+                                    span {
+                                        padding: 0px 2px;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                            .e9ecf1 {
+                                background: #e9ecf1;
+                            }
+                        }
+                    }
+                }
+                //任务进行中结束
+                //历史任务
+                .history_task {
+                    width: 100%;
+                    padding: 15px 25px 20px 40px;
+                    box-sizing: border-box;
+                    display: none;
+                    .history_task_head {
+                        height: 22px;
+                        overflow: hidden;
+                        cursor: pointer;
+                        .build_task_left {
+                            float: left;
+                            cursor: pointer;
+                            img {
+                                width: 22px;
+                                height: 22px;
+                                float: left;
+                            }
+                            span {
+                                display: inline-block;
+                                height: 22px;
+                                color: #FD813E;
+                                line-height: 22px;
+                                line-height: 22px\9;
+                                float: left;
+                                margin-left: 10px;
+                            }
+                        }
+                        .more {
+                            float: right;
+                            color: #FD813E;
+                        }
+                    }
+                    table {
+                        width: 100%;
+                        border: #c8d2dc;
+                        margin-top: 15px;
+                        margin-bottom: 25px;
+                        thead {
+                            height: 50px;
+                            background: #9daab8;
+                            height: 50px;
+                            td {
+                                height: 50px;
+                                text-align: center;
+                                color: #667788;
+                                position: relative;
+                                i {
+                                    position: absolute;
+                                    width: 11px;
+                                    height: 8px;
+                                    background: url(../img/black_tri.png) no-repeat;
+                                    top: 21px;
+                                    right: 20px;
+                                    cursor: pointer;
+                                }
+                            }
+                            .orderlist {
+                                width: 106px;
+                                position: relative;
+                            }
+                            .steman {
+                                width: 109px;
+                            }
+                            .settime {
+                                width: 143px;
+                            }
+                            .job {
+                                width: 122px;
+                            }
+                            .title {
+                                width: 200px;
+                            }
+                            .plan_time {
+                                width: 104px;
+                            }
+                            .handle {
+                                width: 105px;
+                            }
+                        }
+                        tbody {
+                            height: 50px;
+                            tr {
+                                height: 50px;
+                                background: #ffffff;
+                                td {
+                                    height: 50px;
+                                    text-align: center;
+                                    color: #333333;
+                                }
+                                .handle {
+                                    span {
+                                        padding: 0px 2px;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                            .e9ecf1 {
+                                background: #e9ecf1;
+                            }
+                        }
+                    }
+                }
+                //历史任务结束
+                //创建任务
+                .build_task {
+                    width: 100%;
+                    padding: 15px 25px 20px 40px;
+                    box-sizing: border-box;
+                    display: none;
+                    .build_task_head {
+                        height: 22px;
+                        overflow: hidden;
+                        cursor: pointer;
+                        .build_task_left {
+                            float: left;
+                            cursor: pointer;
+                            img {
+                                width: 22px;
+                                height: 22px;
+                                float: left;
+                            }
+                            span {
+                                display: inline-block;
+                                height: 22px;
+                                color: #FD813E;
+                                line-height: 22px;
+                                line-height: 22px\9;
+                                float: left;
+                                margin-left: 10px;
+                            }
+                        }
+                        .more {
+                            float: right;
+                            color: #FD813E;
+                        }
+                    }
+                    table {
+                        width: 100%;
+                        border: #c8d2dc;
+                        margin-top: 15px;
+                        margin-bottom: 25px;
+                        thead {
+                            height: 50px;
+                            background: #9daab8;
+                            height: 50px;
+                            td {
+                                height: 50px;
+                                text-align: center;
+                                color: #667788;
+                                position: relative;
+                                i {
+                                    position: absolute;
+                                    width: 11px;
+                                    height: 8px;
+                                    background: url(../img/black_tri.png) no-repeat;
+                                    top: 21px;
+                                    right: 20px;
+                                    cursor: pointer;
+                                }
+                            }
+                            .orderlist {
+                                width: 106px;
+                                position: relative;
+                            }
+                            .steman {
+                                width: 109px;
+                            }
+                            .settime {
+                                width: 143px;
+                            }
+                            .job {
+                                width: 122px;
+                            }
+                            .title {
+                                width: 200px;
+                            }
+                            .plan_time {
+                                width: 104px;
+                            }
+                            .handle {
+                                width: 105px;
+                            }
+                        }
+                        tbody {
+                            height: 50px;
+                            tr {
+                                height: 50px;
+                                background: #ffffff;
+                                td {
+                                    height: 50px;
+                                    text-align: center;
+                                    color: #333333;
+                                }
+                                .handle {
+                                    span {
+                                        padding: 0px 2px;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                            .e9ecf1 {
+                                background: #e9ecf1;
+                            }
+                        }
+                    }
+                }
+                //创建任务结束
+                tbody {
+                    .title {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//弹窗区
+#boxPock {
+    display: block;
+    display: none;
+    //外层滚动条
+    .scroll {
+        width: 970px;
+        height: 100%;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: block;
+        overflow: hidden;
+    }
+    //新建任务添加
+    .newtask_add {
+        width: 990px;
+        height: 650px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #4d555d;
+        display: none;
+        z-index: 10;
+        overflow-y: auto;
+        background: rgba(77,85,93,0.8);
+        .newtask_add_head {
+            width: 100%;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .newtask_add_bottom {
+            width: 100%;
+            padding: 37px;
+            .add_content {
+                width: 100%;            
+                .cnt_header {
+                    height: 200px;
+                    width: 100%;
+                    padding: 39px 36px 34px 34px;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid #eeeeee;
+                    font-size: 14px;
+                    background: #ffffff;
+                    .left {
+                        height: 36px;
+                        float: left;
+                        position: relative;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                            width: 100px;
+                            text-align: right;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .group {
+                        .choose {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                    .right {
+                        height: 36px;
+                        float: right;
+                        position: relative;
+                        margin-left: 180px;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            cursor: pointer;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                        #one {
+                            background-image: url(../img/timechoose.png);
+                            background-position: right center;
+                            background-size: 36px 40px;
+                            background-repeat: no-repeat;
+                            background-position-y: -3px;
+                            cursor: pointer;
+                        }
+                    }
+                    .file {
+                        width: 225px;
+                        input {
+                            width: 150px;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            filter: alpha(opacity=0);
+                            cursor: pointer;
+                        }
+                        .choose_file {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .cnt_bottom {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 174px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .cnt_footer {
+                    width: 100%;
+                    height: 100px;
+                    .btn1 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #FD813E;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        box-shadow: 0px 0px 10px #FD813E;
+                        float: left;
+                        margin-left: 250px;
+                    }
+                    .btn2 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #9DAAB8;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        float: right;
+                        margin-right: 250px;
+                    }
+                }
+            }
+        }
+    }
+    //新建任务添加结束
+    //任务进行中增加
+    .taskgo_add {
+        width: 990px;
+        height: 80%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #5b636c;
+        display: none;
+        overflow: auto;
+        z-index: 10;
+        background: rgba(77,85,93,0.8);
+        .taskgo_add_head {
+            width: 100%;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .taskgo_add_bottom {
+            width: 100%;
+            padding: 37px;
+            .add_content {
+                width: 100%;
+                .cnt_header {
+                    height: 200px;
+                    width: 100%;
+                    padding: 39px 36px 34px 34px;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid #eeeeee;
+                    font-size: 14px;
+                    background: #ffffff;
+                    .left {
+                        height: 36px;
+                        float: left;
+                        position: relative;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                            width: 100px;
+                            text-align: right;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .group {
+                        .choose {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                    .right {
+                        height: 36px;
+                        float: right;
+                        position: relative;
+                        margin-left: 180px;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            cursor: pointer;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                        #two {
+                            background-image: url(../img/timechoose.png);
+                            background-position: right center;
+                            background-size: 36px 40px;
+                            background-repeat: no-repeat;
+                            background-position-y: -3px;
+                            cursor: pointer;
+                        }
+                    }
+                    .file {
+                        width: 225px;
+                        input {
+                            width: 150px;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            filter: alpha(opacity=0);
+                            cursor: pointer;
+                        }
+                        .choose_file {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .cnt_bottom {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 174px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .color {
+                    width: 100%;
+                    height: 26px;
+                    background: #5b636c;
+                }
+                .cnt_reply {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 112px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .cnt_footer {
+                    width: 100%;
+                    height: 100px;
+                    overflow: hidden;
+                    .btn1,
+                    .btn3 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #FD813E;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        box-shadow: 0px 0px 10px #FD813E;
+                        float: left;
+                    }
+                    .btn2 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #9DAAB8;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+    //任务进行中增加结束
+    //新任务详情
+    .newtask_detail {
+        width: 990px;
+        height:80%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #5b636c;
+        display: none;
+        overflow: auto;
+        z-index: 10;
+        background: rgba(77,85,93,0.8);      
+        .newtask_detail_head {
+            width: 100%;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .newtask_detail_bottom {
+            width: 100%;
+            padding: 37px;
+            .add_content {
+                width: 100%;               
+                .cnt_header {
+                    height: 200px;
+                    width: 100%;
+                    padding: 39px 36px 34px 34px;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid #eeeeee;
+                    font-size: 14px;
+                    background: #ffffff;
+                    .left {
+                        height: 36px;
+                        float: left;
+                        position: relative;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                            width: 100px;
+                            text-align: right;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .group {
+                        .choose {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                    .right {
+                        height: 36px;
+                        float: right;
+                        position: relative;
+                        margin-left: 180px;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            cursor: pointer;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                        #three {
+                            background-image: url(../img/timechoose.png);
+                            background-position: right center;
+                            background-size: 36px 40px;
+                            background-repeat: no-repeat;
+                            background-position-y: -3px;
+                            cursor: pointer;
+                        }
+                    }
+                    .file {
+                        width: 225px;
+                        input {
+                            width: 150px;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            filter: alpha(opacity=0);
+                            cursor: pointer;
+                        }
+                        .choose_file {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                        .download {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .cnt_bottom {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 174px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .color {
+                    width: 100%;
+                    height: 26px;
+                }
+                .cnt_reply {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 112px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .cnt_footer {
+                    width: 100%;
+                    height: 100px;
+                    .btn1,
+                    .btn3 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #FD813E;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        box-shadow: 0px 0px 10px #FD813E;
+                        float: left;
+                    }
+                    .btn2 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #9DAAB8;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        float: left;
+                    }
+                    .btn1 {
+                        margin-left: 180px;
+                    }
+                    .btn3,
+                    .btn2 {
+                        margin-left: 34px;
+                    }
+                }
+            }
+        }
+    }
+    //新任务详情结束
+    //历史任务详情
+    .histask_detail {
+        width: 990px;
+        height: 80%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #5b636c;
+        display: none;
+        overflow-y: auto;
+        z-index: 10;
+        background: rgba(77,85,93,0.8);  
+        .histask_detail_head {
+            width: 100%;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .histask_detail_bottom {
+            width: 100%;
+            padding: 37px;
+            .add_content {
+                width: 100%;
+                .cnt_header {
+                    height: 200px;
+                    width: 100%;
+                    padding: 39px 36px 34px 34px;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid #eeeeee;
+                    font-size: 14px;
+                    background: #ffffff;
+                    .left {
+                        height: 36px;
+                        float: left;
+                        position: relative;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                            width: 100px;
+                            text-align: right;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .group {
+                        .choose {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                    .right {
+                        height: 36px;
+                        float: right;
+                        position: relative;
+                        margin-left: 180px;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                        }
+                         #four {
+                            background-image: url(../img/timechoose.png);
+                            background-position: right center;
+                            background-size: 36px 40px;
+                            background-repeat: no-repeat;
+                            background-position-y: -3px;
+                            cursor: pointer;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            cursor: pointer;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .file {
+                        width: 225px;
+                        input {
+                            width: 150px;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            filter: alpha(opacity=0);
+                            cursor: pointer;
+                        }
+                        .choose_file {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                        .download {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .cnt_bottom {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 174px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .color {
+                    width: 100%;
+                    height: 26px;
+                }
+                .cnt_reply {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 112px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .cnt_footer {
+                    width: 100%;
+                    height: 100px;
+                    .btn1,
+                    .btn3 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #FD813E;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        box-shadow: 0px 0px 10px #FD813E;
+                        float: left;
+                    }
+                    .btn2 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #9DAAB8;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        float: left;
+                    }
+                    .btn1 {
+                        margin-left: 275px;
+                    }
+                    .btn3,
+                    .btn2 {
+                        margin-left: 34px;
+                    }
+                }
+            }
+        }
+    }
+    //历史任务详情结束
+    //新建任务详情
+    .newbuild_detail {
+        width: 990px;
+        height: 80%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #5b636c;
+        display: none;
+        overflow-y: auto;
+        z-index: 10;
+        background: rgba(77,85,93,0.8); 
+        .newbuild_detail_head {
+            width: 100%;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .newbuild_detail_bottom {
+            width: 100%;
+            padding: 37px;
+            .add_content {
+                width: 100%;               
+                .cnt_header {
+                    height: 200px;
+                    width: 100%;
+                    padding: 39px 36px 34px 34px;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid #eeeeee;
+                    font-size: 14px;
+                    background: #ffffff;
+                    .left {
+                        height: 36px;
+                        float: left;
+                        position: relative;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                            width: 100px;
+                            text-align: right;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .group {
+                        .choose {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                    .right {
+                        height: 36px;
+                        float: right;
+                        position: relative;
+                        margin-left: 180px;
+                        margin-bottom: 20px;
+                        span {
+                            float: left;
+                            display: block;
+                            height: 36px;
+                            line-height: 36px;
+                            line-height: 36px\9;
+                            color: #010028;
+                        }
+                         #five {
+                            background-image: url(../img/timechoose.png);
+                            background-position: right center;
+                            background-size: 36px 40px;
+                            background-repeat: no-repeat;
+                            background-position-y: -3px;
+                            cursor: pointer;
+                        }
+                        input {
+                            float: left;
+                            width: 140px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                            color: #293541;
+                            font-size: 14px;
+                            margin-left: 15px;
+                        }
+                        i {
+                            width: 33px;
+                            height: 36px;
+                            display: block;
+                            position: absolute;
+                            border-left: 1px solid #c8d2dc;
+                            top: 0;
+                            right: 0;
+                            cursor: pointer;
+                            img {
+                                width: 11px;
+                                height: 8px;
+                                position: absolute;
+                                top: 14px;
+                                left: 11px;
+                            }
+                        }
+                        select {
+                            width: 140px;
+                            height: 36px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .file {
+                        width: 225px;
+                        input {
+                            width: 150px;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            filter: alpha(opacity=0);
+                            cursor: pointer;
+                        }
+                        .choose_file {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                        .download {
+                            width: 62px;
+                            height: 32px;
+                            line-height: 30px;
+                            line-height: 30px\9;
+                            text-align: center;
+                            color: #FD813E;
+                            border-radius: 5px;
+                            border: 1px solid #FD813E;
+                            margin-top: 2px;
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .cnt_bottom {
+                    padding: 22px 36px 30px 34px;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 174px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .color {
+                    width: 100%;
+                    height: 26px;
+                }
+                .cnt_reply {
+                    padding: 22px 0 30px 0;
+                    background: #ffffff;
+                    .cnt_bottom_header {
+                        padding-left: 36px;
+                        box-sizing: border-box;
+                        span {
+                            display: block;
+                            height: 26px;
+                            padding-left: 15px;
+                            border-left: 4px solid #FD813E;
+                            box-sizing: border-box;
+                            font-size: 26px;
+                            color: #293541;
+                        }
+                    }
+                    .reply_ul {
+                        list-style: none;
+                        width: 100%;
+                        border-top: 1px solid #E5E5E5;
+                        margin-top: 10px;
+                        li {
+                            width: 100%;
+                            padding: 8px 36px;
+                            box-sizing: border-box;
+                            border-bottom: 1px solid #E5E5E5;
+                            .cnt_detail {
+                                width: 80%;
+                                float: left;
+                                overflow: hidden;
+                                color: #5B636C;
+                                line-height: 30px;
+                                line-height: 30px\9;
+                            }
+                            .time {
+                                width: 20%;
+                                float: right;
+                                color: #657bac;
+                                line-height: 30px;
+                                line-height: 30px\9;
+                                text-align: right;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+                .cnt_footer {
+                    width: 100%;
+                    height: 100px;
+                    overflow: hidden;
+                    .btn2 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #9DAAB8;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+    //新建任务详情结束
+    //拒绝原因
+    .refuse_detail {
+        width: 970px;
+        height: 520px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #5b636c;
+        display: none;
+        overflow: auto;
+        z-index: 10;
+        .refuse_detail_head {
+            width: 100%;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .refuse_detail_bottom {
+            width: 100%;
+            padding: 37px;
+            background: #5b636c;
+            .add_content {
+                width: 100%;
+                background: #ffffff;
+                .cnt_bottom {
+                    padding: 22px 36px 30px 34px;
+                    .cnt_bottom_header {
+                        height: 26px;
+                        padding-left: 15px;
+                        border-left: 4px solid #FD813E;
+                        box-sizing: border-box;
+                        font-size: 24px;
+                        color: #293541;
+                    }
+                    textarea {
+                        width: 100%;
+                        height: 174px;
+                        background: #EEEEEE;
+                        border-radius: 5px;
+                        margin-top: 22px;
+                        outline: none;
+                        border: none;
+                        resize: none;
+                        color: #5b636c;
+                        padding: 15px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                    }
+                }
+                .cnt_footer {
+                    width: 100%;
+                    height: 100px;
+                    background: #5b636c;
+                    .btn1 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #FD813E;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        box-shadow: 0px 0px 10px #FD813E;
+                        float: left;
+                    }
+                    .btn2 {
+                        width: 160px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                        border-radius: 5px;
+                        display: block;
+                        margin: 50px auto;
+                        background: #9DAAB8;
+                        margin-bottom: 50px;
+                        padding: 0;
+                        font-size: 16px;
+                        outline: none;
+                        float: left;
+                    }
+                    .btn1 {
+                        margin-left: 275px;
+                    }
+                    .btn2 {
+                        margin-left: 34px;
+                    }
+                }
+            }
+        }
+    }
+    //拒绝原因结束
+}

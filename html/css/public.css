@@ -1,0 +1,627 @@
+html,
+body {
+  min-width: 1360px;
+  height: 100%;
+  background-color: #5b636c;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+* {
+  font-family: "微软雅黑";
+}
+#bodyLeft {
+  width: 220px;
+  background-color: #293541;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+#bodyLeft .logoDiv {
+  width: 100%;
+  height: 80px;
+  background-color: #fd813e;
+  line-height: 80px;
+  font-size: 46px;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+#bodyLeft .userinfo {
+  width: 220px;
+}
+#bodyLeft .userinfo .information {
+  width: 100%;
+  padding: 20px 0 25px;
+  border-bottom: 1px solid #4a4e58;
+}
+#bodyLeft .userinfo .information .info_image {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 16px;
+  overflow: hidden;
+  position: relative;
+}
+#bodyLeft .userinfo .information .info_image img {
+  position: relative;
+  z-index: 1;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+#bodyLeft .userinfo .information .info_image img + img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#bodyLeft .userinfo .information .info_name {
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 25px;
+}
+#bodyLeft .userinfo .information .rows {
+  width: 100%;
+  overflow: hidden;
+}
+#bodyLeft .userinfo .information .rows div {
+  width: 33.33333333%;
+  float: left;
+}
+#bodyLeft .userinfo .information .rows div span {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: auto;
+  overflow: hidden;
+  cursor: pointer;
+}
+#bodyLeft .userinfo .information .rows .one {
+  width: 18px;
+}
+#bodyLeft .userinfo .information .rows .three {
+  padding: 2px 0;
+}
+#bodyLeft .listBtn {
+  width: 100%;
+}
+#bodyLeft .listBtn .list_a {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+#bodyLeft .listBtn .list_a .a_box {
+  width: 70px;
+  height: 100%;
+  margin: auto;
+  position: relative;
+}
+#bodyLeft .listBtn .list_a .a_box div {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+#bodyLeft .listBtn .list_a .a_box div span {
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+#bodyLeft .listBtn .list_a .a_box div span img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+#bodyLeft .listBtn .list_a .a_box div span i {
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  line-height: 20px;
+  font-size: 12px;
+  color: white;
+  position: relative;
+  z-index: 4;
+}
+#bodyLeft .listBtn .list_a .a_box i {
+  display: block;
+  font-size: 16px;
+  color: #FFFFFF;
+  height: 100%;
+  line-height: 60px;
+  float: right;
+}
+#bodyRight {
+  min-width: 1140;
+  position: absolute;
+  top: 0;
+  left: 220px;
+}
+#bodyRight #header {
+  width: 100%;
+  height: 80px;
+  background-color: #293541;
+  margin-bottom: 26px;
+  box-shadow: 0px 2px 10px 0px #293541;
+  position: relative;
+}
+#bodyRight #header .left {
+  height: 22px;
+  position: absolute;
+  top: 0;
+  left: 31px;
+  bottom: 0;
+  margin: auto;
+}
+#bodyRight #header .left .icon-search {
+  width: 22px;
+  height: 100%;
+  overflow: hidden;
+  float: left;
+  margin-right: 23px;
+  cursor: pointer;
+}
+#bodyRight #header .left .search-inp {
+  width: 200px;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+}
+#bodyRight #header .left .search-inp input {
+  width: 100%;
+  height: 100%;
+  display: block;
+  float: left;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 0 10px;
+}
+#bodyRight #header .leftText {
+  height: 100%;
+  line-height: 80px;
+  font-size: 30px;
+  color: #FFFFFF;
+  padding-left: 27px;
+}
+#bodyRight #header .right {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#bodyRight #header .right .rightDiv {
+  height: 100%;
+  position: relative;
+  float: right;
+}
+#bodyRight #header .right .rightDiv div {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+#bodyRight #header .right .closeBtn {
+  width: 24px;
+  margin-right: 50px;
+}
+#bodyRight #header .right .closeBtn div {
+  height: 24px;
+}
+#bodyRight #header .right .info-image {
+  width: 40px;
+  margin-right: 17px;
+}
+#bodyRight #header .right .info-image div {
+  height: 40px;
+  width: 40px;
+}
+#bodyRight #header .right .info-image div img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#bodyRight #header .right .helpBtn {
+  width: 26px;
+  margin-right: 59px;
+}
+#bodyRight #header .right .helpBtn div {
+  height: 26px;
+}
+#bodyRight #header .right .dataTime {
+  min-width: 200px;
+  margin-right: 86px;
+}
+#bodyRight #header .right .dataTime div {
+  width: 100%;
+  height: 100%;
+  line-height: 80px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+}
+#bodyRight #header .right .dataTime div i {
+  color: #FD813E;
+}
+#bodyRight #header .right .LastDataTime {
+  min-width: 300px;
+  height: 100%;
+  margin-right: 7px;
+}
+#bodyRight #header .right .LastDataTime div {
+  width: 100%;
+  height: 100%;
+  line-height: 80px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+}
+#bodyRight #header .right .LastDataTime div i {
+  color: #FD813E;
+  margin-right: 15px;
+}
+#bodyRight #header .right .LastDataTime + .LastDataTime {
+  min-width: 225px;
+  margin-right: 40px;
+}
+#bodyRight #header .right .LastDataTime + .LastDataTime div {
+  width: 100%;
+  height: 100%;
+  line-height: 80px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+}
+#bodyRight #header .right .LastDataTime + .LastDataTime div i {
+  color: #FD813E;
+  margin-right: 0px;
+}
+#bodyRight #content {
+  width: 100%;
+  padding: 0 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#boxPock {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: none;
+}
+#boxPock .boxPockBg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#bodyLeft .bodyLeftFu {
+  width: 220px;
+  overflow: hidden;
+}
+#bodyLeft .bodyLeftFu .bodyLeftBox {
+  width: 240px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+tbody tr td span {
+  border-bottom: 1px solid #333333;
+  margin: 0 2px;
+}
+tbody tr td span:hover {
+  color: #FD813E !important;
+  border-bottom: 1px solid #FD813E;
+}
+.msg_remind {
+  padding: 0 10px;
+  height: 50px;
+  font-size: 16px;
+  font-family: "microsoft yahei";
+  background: #000000;
+  color: #FFFFFF;
+  max-width: 200px;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: -100px;
+}
+/*//锁屏*/
+.lock {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: black;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.lock_bg {
+  width: 400px;
+  height: 200px;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.lock_bg .password {
+  width: 100%;
+  height: 50px;
+}
+.lock_bg .password span {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  width: 100px;
+  text-align: right;
+  margin-top: 70px;
+  float: left;
+  margin-left: 50px;
+}
+.lock_bg .password input {
+  width: 140px;
+  height: 30px;
+  float: left;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  margin-top: 70px;
+}
+.lock_bg button {
+  width: 100px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 5px;
+  background: #FD813E;
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  margin-left: -50px;
+}
+/*tbody tr:nth-child(2n) {
+    background: #e9ecf1;
+}*/
+/*修改密码*/
+#boxPock .login_psw {
+  width: 990px;
+  height: 620px;
+  background: #4d555d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  overflow-y: auto;
+  display: block;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .login_psw .psw_header {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+  font-size: 17px;
+  letter-spacing: 1;
+}
+#boxPock .login_psw .psw_header i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 35px;
+  cursor: pointer;
+}
+#boxPock .login_psw .psw_content {
+  width: 572px;
+  height: 378px;
+  background: #ffffff;
+  margin: 37px auto;
+}
+#boxPock .login_psw .psw_content .psw_detail {
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  padding-left: 150px;
+  margin-top: 24px;
+  box-sizing: border-box;
+  float: left;
+}
+#boxPock .login_psw .psw_content .psw_detail .psw_detail_left {
+  width: 90px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  float: left;
+  color: #333333;
+}
+#boxPock .login_psw .psw_content .psw_detail .psw_detail_right {
+  float: left;
+  width: 200px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .login_psw .psw_content .name {
+  margin-top: 50px;
+}
+#boxPock .login_psw .btn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 0px auto;
+  background: #FD813E;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  float: left;
+  margin-left: 280px;
+}
+#boxPock .login_psw .btn2 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 0px auto;
+  background: #9DAAB8;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  float: right;
+  margin-right: 280px;
+}
+/*选择头像*/
+#boxPock .change_pic {
+  width: 500px;
+  height: 500px;
+  background: #4d555d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  overflow-y: auto;
+  display: block;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .change_pic .pic_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .change_pic .pic_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .change_pic form {
+  background: #ffffff;
+  height: 300px;
+  position: relative;
+}
+#boxPock .change_pic form .photo {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: 150px;
+  margin-top: 20px;
+  border: 1px solid #FD813E;
+  float: left;
+}
+#boxPock .change_pic form span {
+  width: 200px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  text-align: center;
+  display: block;
+  float: left;
+  margin-left: 150px;
+  margin-top: 20px;
+  background: #FD813E;
+  color: #ffffff;
+  cursor: pointer;
+}
+#boxPock .change_pic form input {
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  left: 150px;
+  bottom: 22px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#boxPock .change_pic .btn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+  background: #FD813E;
+  margin-bottom: 30px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  margin-top: 30px;
+}
+/*后台*/
+.list_7 {
+  display: none;
+}
+#content .center_content .content_header ul li i {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#content .center_content .content_header ul li:hover i {
+  display: block;
+}

@@ -1,0 +1,149 @@
+body {
+  font-family: "microsoft yahei";
+  font-size: 16px;
+}
+.backstageListOne {
+  width: 100%;
+  cursor: pointer;
+}
+.backstageListOne .title {
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+.backstageListOne .title span {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 19px;
+  left: 32px;
+  background: url(../img/icon_people.png) no-repeat;
+}
+.backstageListOne .title .manage {
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  line-height: 60px\9;
+  color: #ffffff;
+  margin-left: 73px;
+}
+.backstageListOne .title i {
+  position: absolute;
+  background: url(../img/icon_white.png) no-repeat;
+  width: 11px;
+  height: 8px;
+  top: 28px;
+  left: 175px;
+  cursor: pointer;
+}
+.backstageListOne .active {
+  background: #5b636c;
+}
+.backstageListOne .active span {
+  background: url(../img/icon-userGuanli-orange.png);
+}
+.backstageListOne .active .manage {
+  color: #FD813E;
+}
+.backstageListOne .active i {
+  background: url(../img/icon_yellow.png);
+}
+.backstageListOne ul {
+  width: 220px;
+}
+.backstageListOne ul li {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  line-height: 50px\9;
+  text-align: center;
+  color: #ffffff;
+  background: #293541;
+}
+.backstageListOne ul li a {
+  width: 100%;
+  height: 50px;
+  display: block;
+  line-height: 50px;
+  line-height: 50px\9;
+  color: rgba(255, 255, 255, 0.5);
+}
+.backstageListOne ul li.active {
+  background: #FD813E;
+}
+.backstageListOne ul li.active a {
+  color: #ffffff;
+}
+.backstageListTwo {
+  width: 100%;
+  cursor: pointer;
+}
+.backstageListTwo .title {
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+.backstageListTwo .title span {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 19px;
+  left: 32px;
+  background: url(../img/icon-computer.png) no-repeat;
+}
+.backstageListTwo .title .manage {
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  line-height: 60px\9;
+  color: #ffffff;
+  margin-left: 73px;
+}
+.backstageListTwo .title i {
+  position: absolute;
+  background: url(../img/icon_white.png) no-repeat;
+  width: 11px;
+  height: 8px;
+  top: 28px;
+  left: 175px;
+  cursor: pointer;
+}
+.backstageListTwo .active {
+  background: #5b636c;
+}
+.backstageListTwo .active span {
+  background: url(../img/icon_y_computer.png);
+}
+.backstageListTwo .active .manage {
+  color: #FD813E;
+}
+.backstageListTwo .active i {
+  background: url(../img/icon_yellow.png);
+}
+.backstageListTwo ul {
+  width: 220px;
+  display: none;
+}
+.backstageListTwo ul li {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  line-height: 50px\9;
+  text-align: center;
+  color: #ffffff;
+  background: #293541;
+}
+.backstageListTwo ul li a {
+  width: 100%;
+  height: 50px;
+  display: block;
+  line-height: 50px;
+  line-height: 50px\9;
+  color: rgba(255, 255, 255, 0.5);
+}
+.backstageListTwo ul li.active {
+  background: #FD813E;
+}
+.backstageListTwo ul li.active a {
+  color: #ffffff;
+}

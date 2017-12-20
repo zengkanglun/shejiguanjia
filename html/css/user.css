@@ -1,0 +1,1114 @@
+body {
+  font-size: 16px;
+  font-family: "microsoft yahei";
+}
+#bodyRight #content .center_content {
+  width: 100%;
+  height: 100%;
+}
+#bodyRight #content .center_content .content_header {
+  width: 100%;
+  height: 54px;
+}
+#bodyRight #content .center_content .content_header .user_tab {
+  float: left;
+  height: 54px;
+  margin-bottom: 0;
+}
+#bodyRight #content .center_content .content_header .user_tab li {
+  width: 115px;
+  height: 54px;
+  background: #ffffff;
+  margin-right: 1px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  float: left;
+  overflow: hidden;
+  box-shadow: 0px 2px 3px #f1f1f3;
+  position: relative;
+}
+#bodyRight #content .center_content .content_header .user_tab li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 16px;
+  line-height: 54px;
+  line-height: 54px\9;
+  letter-spacing: 1px;
+}
+#bodyRight #content .center_content .content_header .user_tab li i {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .content_header .user_tab li i img {
+  width: 13px;
+  height: 13px;
+}
+#bodyRight #content .center_content .content_header .user_tab li.active {
+  background: #fd813e;
+  box-shadow: none;
+}
+#bodyRight #content .center_content .content_header .user_tab li.active a {
+  color: #ffffff;
+}
+#bodyRight #content .center_content .content_header .current_task {
+  float: right;
+  height: 54px;
+}
+#bodyRight #content .center_content .content_header .current_task .task {
+  display: block;
+  float: left;
+  height: 54px;
+  line-height: 54px;
+  line-height: 54px\9;
+  color: #FFFFFF;
+}
+#bodyRight #content .center_content .content_header .current_task .task_name {
+  display: block;
+  float: right;
+  height: 54px;
+  line-height: 54px;
+  line-height: 54px\9;
+  color: #FFFFFF;
+}
+#bodyRight #content .center_content .msg {
+  width: 100%;
+  padding: 30px 36px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+#bodyRight #content .center_content .msg .msg_header {
+  width: 100%;
+  height: 26px;
+}
+#bodyRight #content .center_content .msg .msg_header span {
+  padding-left: 14px;
+  border-left: 5px solid #fd813e;
+  color: #293541;
+  font-size: 24px;
+  line-height: 26px;
+  line-height: 26px\9;
+  display: block;
+  float: left;
+}
+#bodyRight #content .center_content .msg .msg_header .edit1 {
+  float: right;
+  display: block;
+  height: 26px;
+  line-height: 24px;
+  line-height: 24px\9;
+  font-size: 14px;
+  color: #FD813E;
+  border: 1px solid #FD813E;
+  border-radius: 3px;
+  width: 50px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .msg .person_msg {
+  width: 100%;
+  margin-top: 36px;
+}
+#bodyRight #content .center_content .msg .person_msg .msg_detail {
+  width: 50%;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  padding-left: 40px;
+  margin-bottom: 23px;
+  box-sizing: border-box;
+  float: left;
+}
+#bodyRight #content .center_content .msg .person_msg .msg_detail .msg_detail_left {
+  width: 115px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  float: left;
+  color: #010028;
+}
+#bodyRight #content .center_content .msg .person_msg .msg_detail .msg_detail_right {
+  float: left;
+  width: 200px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background-color: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+}
+#bodyRight #content .center_content .msg .msg_detail .set {
+  width: 50px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #FD813E;
+  color: #FD813E;
+  float: left;
+  margin-left: 15px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .recycle {
+  width: 100%;
+  padding: 30px 0;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding-bottom: 0;
+  margin-top: 23px;
+}
+#bodyRight #content .center_content .recycle .recycle_header {
+  margin-left: 36px;
+  width: 200px;
+  height: 26px;
+  padding-left: 14px;
+  border-left: 5px solid #fd813e;
+  color: #293541;
+  font-size: 24px;
+  line-height: 26px;
+  line-height: 26px\9;
+}
+#bodyRight #content .center_content .recycle .recycle_ul {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #c8d2dc;
+  margin-top: 25px;
+}
+#bodyRight #content .center_content .recycle .recycle_ul li {
+  width: 150px;
+  height: 50px;
+  float: left;
+}
+#bodyRight #content .center_content .recycle .recycle_ul li a {
+  display: block;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  line-height: 50px\9;
+  text-align: center;
+  color: #6a6a6a;
+}
+#bodyRight #content .center_content .recycle .recycle_ul li.active {
+  border-bottom: 4px solid #fd813e;
+}
+#bodyRight #content .center_content .recycle .recycle_ul li.active a {
+  color: #fd813e;
+}
+#bodyRight #content .center_content .recycle .process_detail,
+#bodyRight #content .center_content .recycle .task_detail,
+#bodyRight #content .center_content .recycle .info_detail {
+  width: 100%;
+  padding: 33px 36px;
+  box-sizing: border-box;
+}
+#bodyRight #content .center_content .recycle .process_detail table,
+#bodyRight #content .center_content .recycle .task_detail table,
+#bodyRight #content .center_content .recycle .info_detail table {
+  width: 100%;
+  border: #c8d2dc;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead,
+#bodyRight #content .center_content .recycle .task_detail table thead,
+#bodyRight #content .center_content .recycle .info_detail table thead {
+  background: #9daab8;
+  height: 50px;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead td,
+#bodyRight #content .center_content .recycle .task_detail table thead td,
+#bodyRight #content .center_content .recycle .info_detail table thead td {
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  color: #333333;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .orderlist,
+#bodyRight #content .center_content .recycle .task_detail table thead .orderlist,
+#bodyRight #content .center_content .recycle .info_detail table thead .orderlist {
+  width: 106px;
+  position: relative;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .orderlist i,
+#bodyRight #content .center_content .recycle .task_detail table thead .orderlist i,
+#bodyRight #content .center_content .recycle .info_detail table thead .orderlist i {
+  position: absolute;
+  width: 11px;
+  height: 8px;
+  background: url(../img/black_tri.png) no-repeat;
+  top: 21px;
+  right: 20px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .settime,
+#bodyRight #content .center_content .recycle .task_detail table thead .settime,
+#bodyRight #content .center_content .recycle .info_detail table thead .settime {
+  width: 121px;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .job-style,
+#bodyRight #content .center_content .recycle .task_detail table thead .job-style,
+#bodyRight #content .center_content .recycle .info_detail table thead .job-style {
+  width: 142px;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .job,
+#bodyRight #content .center_content .recycle .task_detail table thead .job,
+#bodyRight #content .center_content .recycle .info_detail table thead .job {
+  width: 122px;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .title,
+#bodyRight #content .center_content .recycle .task_detail table thead .title,
+#bodyRight #content .center_content .recycle .info_detail table thead .title {
+  width: 200px;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .del,
+#bodyRight #content .center_content .recycle .task_detail table thead .del,
+#bodyRight #content .center_content .recycle .info_detail table thead .del {
+  width: 104px;
+}
+#bodyRight #content .center_content .recycle .process_detail table thead .handle,
+#bodyRight #content .center_content .recycle .task_detail table thead .handle,
+#bodyRight #content .center_content .recycle .info_detail table thead .handle {
+  width: 105px;
+}
+#bodyRight #content .center_content .recycle .process_detail table tbody,
+#bodyRight #content .center_content .recycle .task_detail table tbody,
+#bodyRight #content .center_content .recycle .info_detail table tbody {
+  height: 50px;
+}
+#bodyRight #content .center_content .recycle .process_detail table tbody tr,
+#bodyRight #content .center_content .recycle .task_detail table tbody tr,
+#bodyRight #content .center_content .recycle .info_detail table tbody tr {
+  height: 50px;
+  background: #ffffff;
+}
+#bodyRight #content .center_content .recycle .process_detail table tbody tr td,
+#bodyRight #content .center_content .recycle .task_detail table tbody tr td,
+#bodyRight #content .center_content .recycle .info_detail table tbody tr td {
+  height: 50px;
+  text-align: center;
+  color: #333333;
+}
+#bodyRight #content .center_content .recycle .process_detail table tbody tr .handle,
+#bodyRight #content .center_content .recycle .task_detail table tbody tr .handle,
+#bodyRight #content .center_content .recycle .info_detail table tbody tr .handle {
+  color: #333333;
+}
+#bodyRight #content .center_content .recycle .process_detail table tbody tr .handle span,
+#bodyRight #content .center_content .recycle .task_detail table tbody tr .handle span,
+#bodyRight #content .center_content .recycle .info_detail table tbody tr .handle span {
+  padding: 0px 2px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .recycle .process_detail table tbody tr:nth-child(2n),
+#bodyRight #content .center_content .recycle .task_detail table tbody tr:nth-child(2n),
+#bodyRight #content .center_content .recycle .info_detail table tbody tr:nth-child(2n) {
+  background: #e9ecf1;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging,
+#bodyRight #content .center_content .recycle .task_detail .paging,
+#bodyRight #content .center_content .recycle .info_detail .paging {
+  width: 100%;
+  height: 36px;
+  margin-top: 25px;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page,
+#bodyRight #content .center_content .recycle .task_detail .paging .page,
+#bodyRight #content .center_content .recycle .info_detail .paging .page {
+  float: right;
+  height: 36px;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .page_left,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .page_left,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .page_left {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+  color: #333333;
+  margin-right: 15px;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .page_right,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .page_right,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .page_right {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .page_right span,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .page_right span,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .page_right span {
+  display: block;
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .page_right .number,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .page_right .number,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .page_right .number {
+  color: #fd813e;
+  display: block;
+  float: left;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .page_right i,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .page_right i,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .page_right i {
+  width: 16px;
+  height: 16px;
+  background: #E5E5E5;
+  color: #000000;
+  display: block;
+  text-align: center;
+  line-height: 16px;
+  line-height: 16px\9;
+  float: left;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .page_right i.less,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .page_right i.less,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .page_right i.less {
+  margin-left: 5px;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .page_right i.more,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .page_right i.more,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .page_right i.more {
+  margin-left: 5px;
+}
+#bodyRight #content .center_content .recycle .process_detail,
+#bodyRight #content .center_content .recycle .info_detail {
+  display: none;
+}
+#bodyRight #content .center_content .perf {
+  width: 100%;
+  padding: 30px 0;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding-bottom: 0;
+  margin-top: 23px;
+}
+#bodyRight #content .center_content .perf .perf_header {
+  width: 100%;
+  height: 26px;
+  padding: 0 36px;
+  box-sizing: border-box;
+}
+#bodyRight #content .center_content .perf .perf_header .record {
+  border-left: 5px solid #fd813e;
+  color: #293541;
+  font-size: 24px;
+  line-height: 26px;
+  line-height: 26px\9;
+  padding-left: 15px;
+}
+#bodyRight #content .center_content .perf .perf_header .more {
+  float: right;
+  height: 26px;
+  color: #fd813e;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  line-height: 26px;
+  line-height: 26px\9;
+}
+#bodyRight #content .center_content .perf .task_detail {
+  width: 100%;
+  padding: 33px 36px;
+  box-sizing: border-box;
+}
+#bodyRight #content .center_content .perf .task_detail table {
+  width: 100%;
+  border: #c8d2dc;
+}
+#bodyRight #content .center_content .perf .task_detail table thead {
+  background: #9daab8;
+  height: 50px;
+}
+#bodyRight #content .center_content .perf .task_detail table thead td {
+  height: 50px;
+  text-align: center;
+  color: #333333;
+  font-weight: bold;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .orderlist {
+  width: 106px;
+  position: relative;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .orderlist i {
+  position: absolute;
+  width: 11px;
+  height: 8px;
+  background: url(../img/black_tri.png) no-repeat;
+  top: 21px;
+  right: 20px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .settime {
+  width: 121px;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .job-style {
+  width: 142px;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .job {
+  width: 122px;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .title {
+  width: 200px;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .del {
+  width: 104px;
+}
+#bodyRight #content .center_content .perf .task_detail table thead .handle {
+  width: 105px;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody {
+  height: 50px;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr {
+  height: 50px;
+  background: #ffffff;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr td {
+  height: 50px;
+  text-align: center;
+  color: #333333;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr .handle {
+  color: #333333;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr .handle span {
+  padding: 0px 2px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr:nth-child(2n) {
+  background: #e9ecf1;
+}
+#bodyRight #content .center_content .perf .task_detail .paging {
+  width: 100%;
+  height: 36px;
+  margin-top: 25px;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page {
+  float: right;
+  height: 36px;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_left {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+  color: #333333;
+  margin-right: 15px;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  font-size: 14px;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right span {
+  display: block;
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right .number {
+  color: #fd813e;
+  display: block;
+  float: left;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i {
+  width: 16px;
+  height: 16px;
+  background: #E5E5E5;
+  color: #000000;
+  display: block;
+  text-align: center;
+  line-height: 16px;
+  line-height: 16px\9;
+  float: left;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i.less {
+  margin-left: 5px;
+}
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i.more {
+  margin-left: 5px;
+}
+#bodyRight #content .center_content .perf .process_detail,
+#bodyRight #content .center_content .perf .info_detail {
+  display: none;
+}
+#boxPock {
+  display: block;
+  display: none;
+}
+#boxPock .scroll {
+  width: 970px;
+  height: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  overflow: hidden;
+}
+#boxPock .perf_detail {
+  width: 990px;
+  height: 80%;
+  background: #4d555d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  overflow-y: auto;
+  display: none;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .perf_detail .pref_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .perf_detail .pref_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .perf_detail .pref_info {
+  width: 100%;
+  height: 204px;
+  padding: 0 37px;
+  margin-top: 37px;
+  box-sizing: border-box;
+}
+#boxPock .perf_detail .pref_info .info_center {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+#boxPock .perf_detail .pref_info .info_center .info_detail {
+  width: 50%;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  padding-left: 40px;
+  margin-top: 24px;
+  box-sizing: border-box;
+  float: left;
+}
+#boxPock .perf_detail .pref_info .info_center .info_detail .info_detail_left {
+  width: 80px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  float: left;
+  color: #333333;
+}
+#boxPock .perf_detail .pref_info .info_center .info_detail .info_detail_right {
+  float: left;
+  width: 200px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .perf_detail .item {
+  width: 100%;
+  margin-top: 22px;
+  padding: 0 37px;
+  box-sizing: border-box;
+}
+#boxPock .perf_detail .item .item_center {
+  width: 100%;
+}
+#boxPock .perf_detail .item .item_center .item_head {
+  width: 100%;
+  height: 50px;
+  background: #cdd1d9;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+}
+#boxPock .perf_detail .item .item_center .item_head span {
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+}
+#boxPock .perf_detail .item .item_center .item_bottom {
+  width: 100%;
+  height: 145px;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+#boxPock .perf_detail .item .item_center .item_bottom .info_detail {
+  width: 50%;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  padding-left: 40px;
+  margin-top: 24px;
+  box-sizing: border-box;
+  float: left;
+}
+#boxPock .perf_detail .item .item_center .item_bottom .info_detail .info_detail_left {
+  width: 80px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  float: left;
+  color: #333333;
+}
+#boxPock .perf_detail .item .item_center .item_bottom .info_detail .info_detail_right {
+  float: left;
+  width: 200px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .perf_detail .item .item_center .work_content {
+  width: 100%;
+  padding: 25px 37px;
+  background: #ffffff;
+}
+#boxPock .perf_detail .item .item_center .work_content .work_head {
+  width: 100%;
+  height: 26px;
+  line-height: 26px;
+  line-height: 26px\9;
+  font-size: 24px;
+  padding-left: 14px;
+  border-left: 5px solid #fd813e;
+  color: #293541;
+  box-sizing: border-box;
+}
+#boxPock .perf_detail .item .item_center .work_content textarea {
+  width: 100%;
+  height: 174px;
+  border-radius: 5px;
+  background: #eeeeee;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 1px solid #CDD1D9;
+  margin-top: 15px;
+  color: #5b636c;
+  margin-bottom: 20px;
+}
+#boxPock .perf_detail .btn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 50px auto;
+  background: #FD813E;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+}
+#boxPock .change_psw {
+  width: 990px;
+  height: 620px;
+  background: #4d555d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  overflow-y: auto;
+  display: none;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .change_psw .psw_header {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+  font-size: 17px;
+  letter-spacing: 1;
+}
+#boxPock .change_psw .psw_header i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 35px;
+  cursor: pointer;
+}
+#boxPock .change_psw .psw_content {
+  width: 572px;
+  height: 378px;
+  background: #ffffff;
+  margin: 37px auto;
+}
+#boxPock .change_psw .psw_content .psw_detail {
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  padding-left: 150px;
+  margin-top: 24px;
+  box-sizing: border-box;
+  float: left;
+}
+#boxPock .change_psw .psw_content .psw_detail .psw_detail_left {
+  width: 90px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  float: left;
+  color: #333333;
+}
+#boxPock .change_psw .psw_content .psw_detail .psw_detail_right {
+  float: left;
+  width: 200px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+  color: #010028;
+}
+#boxPock .change_psw .psw_content .name {
+  margin-top: 50px;
+}
+#boxPock .change_psw .btn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 50px auto;
+  background: #FD813E;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+}
+#boxPock .edit {
+  width: 969px;
+  height: 660px;
+  background: #4d555d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  overflow-y: auto;
+  display: none;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .edit .edit_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .edit .edit_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .edit .edit_bottom {
+  width: 100%;
+  padding: 37px;
+  box-sizing: border-box;
+}
+#boxPock .edit .edit_bottom .edit_msg {
+  width: 100%;
+  height: 443px;
+  padding: 0 98px;
+  background: #ffffff;
+}
+#boxPock .edit .edit_bottom .edit_msg .choose {
+  width: 100%;
+  height: 32px;
+}
+#boxPock .edit .edit_bottom .edit_msg .choose .choose_man {
+  width: 62px;
+  height: 32px;
+  float: right;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  border: 1px solid #fd813e;
+  border-radius: 5px;
+  color: #fd813e;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg {
+  width: 100%;
+  margin-top: 36px;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .msg_detail {
+  width: 50%;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  padding-left: 40px;
+  margin-bottom: 23px;
+  box-sizing: border-box;
+  float: left;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .msg_detail .msg_detail_left {
+  width: 109px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  float: left;
+  color: #010028;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .msg_detail .msg_detail_right {
+  float: left;
+  width: 200px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #293541;
+  font-size: 14px;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .msg_detail #test1 {
+  background-image: url(../img/timechoose.png);
+  background-position: right center;
+  background-size: 36px 40px;
+  background-repeat: no-repeat;
+  background-position-y: -3px;
+  cursor: pointer;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .msg_detail #birthday {
+  background-image: url(../img/timechoose.png);
+  background-position: right center;
+  background-size: 36px 40px;
+  background-repeat: no-repeat;
+  background-position-y: -3px;
+  cursor: pointer;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .edu,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .sex,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job_style,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .birthday,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .worktime {
+  position: relative;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job i,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .edu i,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .sex i,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job_style i,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .birthday i,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .worktime i {
+  width: 33px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  border-left: 1px solid #c8d2dc;
+  top: 0;
+  right: 0;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job i img,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .edu i img,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .sex i img,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job_style i img,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .birthday i img,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .worktime i img {
+  width: 11px;
+  height: 8px;
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job select,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .edu select,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .sex select,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .job_style select,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .birthday select,
+#boxPock .edit .edit_bottom .edit_msg .person_msg .worktime select {
+  width: 200px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+#boxPock .edit .btn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+  background: #FD813E;
+  margin-bottom: 30px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+}
+#boxPock .change_pic {
+  width: 500px;
+  height: 500px;
+  background: #4d555d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  overflow-y: auto;
+  display: none;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .change_pic .pic_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .change_pic .pic_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .change_pic form {
+  background: #ffffff;
+  height: 300px;
+  position: relative;
+}
+#boxPock .change_pic form .photo {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: 150px;
+  margin-top: 20px;
+  border: 1px solid #FD813E;
+  float: left;
+}
+#boxPock .change_pic form span {
+  width: 200px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  text-align: center;
+  display: block;
+  float: left;
+  margin-left: 150px;
+  margin-top: 20px;
+  background: #FD813E;
+  color: #ffffff;
+  cursor: pointer;
+}
+#boxPock .change_pic form input {
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  left: 150px;
+  bottom: 40px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#boxPock .change_pic .btn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+  background: #FD813E;
+  margin-bottom: 30px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  margin-top: 30px;
+}

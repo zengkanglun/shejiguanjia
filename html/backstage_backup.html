@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家后台管理</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstage.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstageLeft.css" />
+		<link rel="stylesheet" type="text/css" href="css/backup.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backup.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="" alt="" class="photo"/>
+								<img src="img/info_image_Bg.png" alt="" />
+							</div>
+							<div class="info_name"></div>
+						</div>
+					</div>
+					<div class="backstageListOne">
+						<div class="title">
+							<span></span>
+							<div class="manage">用户管理</div>
+							<i></i>
+						</div>
+						<ul class="ul" style="display:none;">
+							<li>
+								<a href="backstage_admin_list.html">用户列表</a>
+							</li>
+							<li  >
+								<a href="backstage_new-user.html">新增用户</a>
+							</li>
+							<li>
+								<a href="backstage_user-log.html">用户日志</a>
+							</li>
+						</ul>
+					</div>
+					<div class="backstageListTwo">
+						<div class="title active">
+							<span></span>
+							<div class="manage">系统管理</div>
+							<i></i>
+						</div>
+						<ul class="ul"  style="display: block;">
+							<li>
+								<a href="backstage_notice.html">任务通知</a>
+							</li>
+							<li>
+								<a href="backstage_unit-info.html">单位信息</a>
+							</li>
+							<li>
+								<a href="backstage_channel.html">栏目标签</a>
+							</li>
+							<li class=" active">
+								<a href="backstage_backup.html">数据备份</a>
+							</li>	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="leftText">设计管家后台管理</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="img/info_image.png" /></div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录时间：<i>2017-09-01</i><i>09:01:00</i>
+						</div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录IP：<i>255.255.255.255</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content" name="backup">
+				<!--右侧内容区-->
+				<div class="firstNav">
+					<a href="###">管理员管理</a>&nbsp;&gt;&nbsp;
+					<a>数据备份</a>
+				</div>
+				<div class="box">
+					<div class="third">
+						<div class="thirdDiv">
+							<div>系统备份：</div>
+							<button type="button" id="real_time_back">实时备份</button>
+							<span id="success_backup"></span>
+							<!--<i>2017-09-01</i>
+							<i>00:00:00</i>-->
+						</div>
+						<div class="thirdDiv">
+							<div>系统更新：</div>
+							<!--<button type="button">软件更新</button>-->
+							<span>当前系统版本号</span>
+							<i>（v1.0.0）</i>
+						</div>
+						<div class="thirdDiv thirdDivs">
+							<div>系统数据恢复：</div>
+							<button type="button" class="choose_file">选择文件</button>
+							<!--<span>上次系统数据恢复时间：</span>
+							<i>2027-09-02</i>
+							<i>00:00:00</i>-->
+						</div>
+					</div>
+					<!--<div class="forth">
+						<div class="forthDiv">
+							<div>系统上传文件最大限制：</div>
+							<span>
+								<input type="text" name="" id="" value="" disabled="disabled" placeholder="选择文件上限"/>
+								<i><img src="img/black_tri.png"/></i>
+								<select name="page">
+									<option value="512K">512K</option>
+									<option value="1M">1M</option>
+									<option value="2M">2M</option>
+									<option value="4M">4M</option>
+									<option value="8M">8M</option>
+								</select>
+							</span>
+						</div>
+						<div class="forthBtn">
+							<button type="button">确&nbsp;&nbsp;&nbsp;&nbsp;定</button>
+						</div>
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<div class="scroll">
+				<!--数据恢复-->
+				<div class="recovery">
+					<div class="recovery_head">
+						<span>数据恢复</span>
+						<i></i>
+					</div>
+					<div class="recovery_bottom">
+						<div class="data_hidden">
+							<ul class="data_backup" id = "data_backup_list" >
+								<li>
+									<span>当前系统版本号</span>
+									<span>（v1.0.0）</span>
+									<span class="dele">删除</span>
+									<span class="recover">恢复</span>
+								</li>
+								<li>
+									<span>当前系统版本号</span>
+									<span>（v1.0.0）</span>
+									<span class="dele">删除</span>
+									<span class="recover">恢复</span>
+								</li>
+								<li>
+									<span>当前系统版本号</span>
+									<span>（v1.0.0）</span>
+									<span class="dele">删除</span>
+									<span class="recover">恢复</span>
+								</li>
+								<li>
+									<span>当前系统版本号</span>
+									<span>（v1.0.0）</span>
+									<span class="dele">删除</span>
+									<span class="recover">恢复</span>
+								</li>
+								<li>
+									<span>当前系统版本号</span>
+									<span>（v1.0.0）</span>
+									<span class="dele">删除</span>
+									<span class="recover">恢复</span>
+								</li>
+								<li>
+									<span>当前系统版本号</span>
+									<span>（v1.0.0）</span>
+									<span class="dele">删除</span>
+									<span class="recover">恢复</span>
+								</li>
+								<li>
+									<span>当前系统版本号</span>
+									<span>（v1.0.0）</span>
+									<span class="dele">删除</span>
+									<span class="recover">恢复</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="cnt_footer">
+						<button type="button" class="btn2">取消</button>
+					</div>
+				</div>
+				<!--数据恢复-->
+				<!--删除提示框-->
+				<div class="delete">
+					<div class="del_head">
+						<span>温馨提示</span>
+						<i></i>
+					</div>
+					<div class="del_bottom">
+						<div class="sure">是否确认删除?</div>
+						<div class="foot">
+							<button class="btn1">是</button>
+							<button class="btn2">否</button>
+						</div>
+					</div>
+				</div>
+				<!---->
+				<!--恢复提示框-->
+				<div class="regain">
+					<div class="regain_head">
+						<span>温馨提示</span>
+						<i></i>
+					</div>
+					<div class="regain_bottom">
+						<div class="sure">是否确认恢复?</div>
+						<div class="foot">
+							<button class="btn1" id="mesure">是</button>
+							<button class="btn2">否</button>
+						</div>
+					</div>
+				</div>
+				<!---->
+			</div>
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				//select选中
+				$("select").on("change", function() {
+					var txt = $(this).find("option:checked").text();
+					$(this).siblings("input").val(txt)
+				})
+			})
+		</script>
+		
+		<script src="js/backup_data.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+
+</html>
