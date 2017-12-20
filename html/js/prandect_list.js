@@ -181,7 +181,6 @@ $(function() {
 				'<td class="handle">' +
 				'<span class="edit"  data-id="' + tsk.id + '">编辑</span>' +
 				'<span class="check"  data-id="' + tsk.id + '">查看</span>' +
-
 				'</td>' +
 				'</tr>');
 			$(e_id).append(item);
