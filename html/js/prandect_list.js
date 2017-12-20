@@ -167,6 +167,7 @@ $(function() {
 	//项目管理 e_id:：渲染元素id
 	var rendPRListParam = function(data, e_id, type) {
 		$(e_id).html("");
+        console.log()
 		for(var i in data) {
 			var tsk = data[i];
 			var item = $('<tr>' +
