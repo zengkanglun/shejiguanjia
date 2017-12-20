@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家后台管理</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstage.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstageLeft.css" />
+		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstage_notice.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="" alt="" class="photo"/>
+								<img src="img/info_image_Bg.png" alt="" />
+							</div>
+							<div class="info_name"></div>
+						</div>
+					</div>
+					<div class="backstageListOne">
+						<div class="title ">
+							<span></span>
+							<div class="manage">用户管理</div>
+							<i></i>
+						</div>
+						<ul class="ul" style="display:none;">
+							<li>
+								<a href="backstage_admin_list.html">用户列表</a>
+							</li>
+							<li>
+								<a href="backstage_new-user.html">新增用户</a>
+							</li>
+							<li>
+								<a href="backstage_user-log.html">用户日志</a>
+							</li>
+						</ul>
+					</div>
+					<div class="backstageListTwo">
+						<div class="title active">
+							<span></span>
+							<div class="manage">系统管理</div>
+							<i></i>
+						</div>
+						<ul class="ul" style="display: block;">
+							<li class=" active">
+								<a href="backstage_notice.html">任务通知</a>
+							</li>
+							<li>
+								<a href="backstage_unit-info.html">单位信息</a>
+							</li>
+							<li>
+								<a href="backstage_channel.html">栏目标签</a>
+							</li>
+							<li>
+								<a href="backstage_backup.html">数据备份</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="leftText">设计管家后台管理</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="img/info_image.png" /></div>
+					</div>
+					<div class="LastDataTime rightDiv last_time">
+						<div>
+							上次登录时间：<i>2017-09-01</i>
+						</div>
+					</div>
+					<div class="LastDataTime rightDiv last_ip">
+						<div>
+							上次登录IP：<i>255.255.255.255</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content" name="notice">
+				<!--右侧内容区-->
+				<div class="firstNav">
+					<a href="###">通知管理</a>&nbsp;&gt;&nbsp;
+					<a>已发任务</a>
+				</div>
+				<div class="box">
+					<div class="first">
+						<div class="rows">
+							<div class="xs-3  HeaderRowsActive">
+								<span>已发通知</span>
+								<i></i>
+							</div>
+							<div class="xs-3">
+								<span>已发任务</span>
+								<i></i>
+							</div>
+						</div>
+					</div>
+					<!--已发通知-->
+					<div class="has_send_msg">
+						<div class="second">
+							<div class="left">
+								<div>从</div>
+								<span class="one">
+								<input type="text" name="" id="notice_three" value="2017-09-01" placeholder=""/>
+								<a><i></i></a>
+							</span>
+								<div>至</div>
+								<span class="two">
+								<input type="text" name="" id="notice_four" value="2017-09-01"  placeholder=""/>
+								<a><i></i></a>
+							</span>
+							</div>
+							<div class="search" id="search_time">搜索</div>
+							<div class="right">
+								<a><img id="query" src="img/icon-search-orange.png" alt="" /></a>
+								<span><input type="text" name="" id="query_key" value="" placeholder="姓名或者项目名"/></span>
+							</div>
+						</div>
+						<div class="secondBotton">
+							<button type="button" id="btn_noticeQueu">批量删除</button>
+						</div>
+						<div class="third">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="one">选择</th>
+									<th class="two">序号<i></i></th>
+									<th class="three">类型</th>
+									<th class="four">标题</th>
+									<th class="five">相关项目</th>
+									<th class="six">发起人</th>
+									<th class="seven">接受群体</th>
+									<th class="eight">时间</th>
+									<th class="nine">操作</th>
+								</tr>
+								<tbody id="notice_list">
+									<tr>
+										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
+										<td>2017</td>
+										<td>小白</td>
+										<td>通知1</td>
+										<td>项目1</td>
+										<td>经理</td>
+										<td>张三、李四</td>
+										<td>2017-12-02</td>
+										<td>
+											<div class="tableFirstRows">
+												<div data-num="1">
+													<a href="###" class="detail">详情</a>
+												</div>
+												<div data-num="2">
+													<a href="###">删除</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr class="tableTrBackground">
+										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
+										<td>2017</td>
+										<td>小白</td>
+										<td>通知2</td>
+										<td>项目1</td>
+										<td>经理</td>
+										<td>张三、李四</td>
+										<td>2017-12-02</td>
+										<td>
+											<div class="tableFirstRows">
+												<div data-num="1">
+													<a href="###" class="detail">详情</a>
+												</div>
+												<div data-num="2">
+													<a href="###">删除</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr class="tableTrBackground">
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="paging">
+								<div class="page">
+									<div class="page_left">
+										记录数：<span id="total_a">0</span>条
+									</div>
+									<div class="page_right">
+										<span>页数</span><i class="less"><</i><span class="number a" id="prev">1</span><span>/</span><span class="total_num a">0</span><i class="more" id="after">></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--已发任务通知-->
+					<!--已发任务-->
+					<div class="has_send_task">
+						<div class="second">
+							<div class="left">
+								<div>从</div>
+								<span class="one">
+								<input type="text" name="" value="2017-09-01" id="notice_one"/>
+							</span>
+								<div>至</div>
+								<span class="two">
+								<input type="text" name=""  value="2017-09-01" id="notice_two"/>
+							</span>
+							</div>
+							<div class="right">
+								<a><img id="query_task" src="img/icon-search-orange.png" alt="" /></a>
+								<span><input type="text" name="" id="query_key_task" value="" placeholder="姓名或者项目名"/></span>
+							</div>
+							<div class="search" id="search_time_task">搜索</div>
+						</div>
+						<div class="secondBotton">
+							<button type="button" id="btn_taskQueu">批量删除</button>
+						</div>
+						<div class="third">
+							<table border="" cellspacing="" cellpadding="" class="thirdTable">
+								<tr>
+									<th class="one">选择</th>
+									<th class="two">序号<i></i></th>
+									<th class="three">创建人</th>
+									<th class="four">创建时间</th>
+									<th class="five">类型</th>
+									<th class="six">标题</th>
+									<th class="seven">接收人</th>
+									<th class="eight">操作</th>
+								</tr>
+								<tbody id="task_list">
+									<tr>
+										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
+										<td>1</td>
+										<td>小白</td>
+										<td>2017-11-10</td>
+										<td>类型1</td>
+										<td>任务1</td>
+										<td>张三</td>
+										<td>
+											<div class="tableFirstRows">
+												<div data-num="1" class="detail">
+													<a href="###">详情</a>
+												</div>
+												<div data-num="2" class="del">
+													<a href="###">删除</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+
+									<tr class="tableTrBackground">
+										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
+										<td>2</td>
+										<td>小白</td>
+										<td>2017-11-13</td>
+										<td>类型2</td>
+										<td>任务1</td>
+										<td>李四</td>
+										<td>
+											<div class="tableFirstRows">
+												<div data-num="1" class="detail">
+													<a href="###">详情</a>
+												</div>
+												<div data-num="2" class="del">
+													<a href="###">删除</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr class="tableTrBackground">
+										<td></td>
+										<td></td>
+										<td></td>
+
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="paging">
+								<div class="page">
+									<div class="page_left">
+										记录数：<span id="total_b">0</span>条
+									</div>
+									<div class="page_right">
+										<span>页数</span><i class="less" id="prevT"><</i><span class="number b">1</span><span>/</span><span class="total_num b">0</span><i class="more" id="afterT">></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--已发任务结束-->
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<div class="scroll" id="scroll">
+				<!--已发通知增加-->
+				<div class="send_add">
+					<div class="send_add_head">
+						<span>已发通知</span>
+						<i></i>
+					</div>
+					<div class="send_add_bottom" id="view_detail_notice">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>类型：</span>
+									<input type="text" placeholder="分派" id="type" disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>相关项目：</span>
+									<input type="text" placeholder="相关项目" id="project_id" disabled="disabled" />
+								</div>
+								<div class="left clearfix">
+									<span>标题：</span>
+									<input type="text" placeholder="输入标题" id="title" disabled="disabled" />
+								</div>
+								<div class="right clearfix group">
+									<span>接受群体：</span>
+									<input type="text" placeholder="李四" id="user_id" disabled="disabled" />
+								</div>
+								<div class="left clearfix file">
+									<span>下载附件：</span>
+
+									<span class="download">下载</span>
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容" id="content" disabled="disabled"></textarea>
+							</div>
+							<div class="color"></div>
+							<div class="cnt_reply">
+								<div class="cnt_bottom_header"><span>状态</span></div>
+								<div class="reply_ul clearfix">
+									<li class="clearfix">
+										<div class="cnt_detail">
+											<span id="to_userwwb">李四：</span><span id="replywwb">已读已读已读已读已读已读已读</span>
+										</div>
+										<div class="time" id="addtimewwb">-2071-07-06 12:23</div>
+									</li>
+
+								</div>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--已发通知增加结束-->
+				<!--新建任务详情-->
+				<div class="newbuild_detail">
+					<div class="newbuild_detail_head">
+						<span>任务详情</span>
+						<i></i>
+					</div>
+					<div class="newbuild_detail_bottom">
+						<div class="add_content" id="view_detail">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>相关项目：</span>
+									<input type="text" placeholder="相关项目" id="project_id" disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>类型：</span>
+									<input type="text" placeholder="分派" id="type" disabled="disabled" />
+								</div>
+								<div class="left clearfix group">
+									<span>接受群体：</span>
+									<input type="text" placeholder="李四" id="to_user" disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>计划开始时间：</span>
+									<input type="text" placeholder="选择时间" id="start_time" disabled="disabled" />
+								</div>
+								<div class="left clearfix">
+									<span>标题：</span>
+									<input type="text" placeholder="输入标题" id="title" disabled="disabled" />
+								</div>
+								<div class="right clearfix file">
+									<span>下载附件：</span>
+
+									<span class="download">下载</span>
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">任务内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容" id="content" disabled="disabled"></textarea>
+							</div>
+							<div class="color"></div>
+							<div class="cnt_reply">
+								<div class="cnt_bottom_header"><span>状态</span></div>
+								<div class="reply_ul clearfix">
+									<li class="clearfix">
+										<div class="cnt_detail">
+											<span id="to_userww">李四：</span><span id="replyww">已读已读已读已读已读已读已读</span>
+										</div>
+										<div class="time" id="addtimeww">-2071-07-06 12:23</div>
+									</li>
+
+								</div>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--新建任务详情结束-->
+			</div>
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/notice_list.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#notice_one',
+			});
+			laydate.render({
+				elem: '#notice_two',
+			});
+			laydate.render({
+				elem: '#notice_three',
+			});
+			laydate.render({
+				elem: '#notice_four',
+			});
+		</script>
+
+	</body>
+
+</html>

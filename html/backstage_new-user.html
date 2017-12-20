@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家后台管理</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstage.css" />
+		<link rel="stylesheet" type="text/css" href="css/backstageLeft.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="img/info_image.png" alt="" class="photo"/>
+								<img src="img/info_image_Bg.png" alt="" />
+							</div>
+							<div class="info_name"></div>
+						</div>
+					</div>
+					<div class="backstageListOne">
+						<div class="title active">
+							<span></span>
+							<div class="manage">用户管理</div>
+							<i></i>
+						</div>
+						<ul class="ul">
+							<li>
+								<a href="backstage_admin_list.html">用户列表</a>
+							</li>
+							<li  class=" active">
+								<a href="backstage_new-user.html">新增用户</a>
+							</li>
+							<li>
+								<a href="backstage_user-log.html">用户日志</a>
+							</li>
+						</ul>
+					</div>
+					<div class="backstageListTwo">
+						<div class="title">
+							<span></span>
+							<div class="manage">系统管理</div>
+							<i></i>
+						</div>
+						<ul class="ul">
+							<li>
+								<a href="backstage_notice.html">任务通知</a>
+							</li>
+							<li>
+								<a href="backstage_unit-info.html">单位信息</a>
+							</li>
+							<li>
+								<a href="backstage_channel.html">栏目标签</a>
+							</li>
+							<li>
+								<a href="backstage_backup.html">数据备份</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="leftText">设计管家后台管理</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="img/info_image.png" /></div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录时间：<i>2017-09-01</i><i>09:01:00</i>
+						</div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录IP：<i>255.255.255.255</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content" name="newUser">
+				<!--右侧内容区-->
+				<div class="firstNav">
+					<a href="###">管理员管理</a>&nbsp;&gt;&nbsp;
+					<a>新建用户</a>
+				</div>
+				<div class="newUsers" id = "add_nor">
+					<div class="first">
+						<div class="box">
+							<div class="boxLeft">
+								<ul class="boxUl">
+									<li>
+										<div>账号：</div>
+										<span><input type="text" name="input" id="new_username" value="" placeholder="输入账号" /></span>
+									</li>
+									<li>
+										<div>姓名：</div>
+										<span><input type="text" name="input" id="new_nickname" value="" placeholder="输入姓名" /></span>
+									</li>
+									<li>
+										<div>出生年月：</div>
+										<span>
+											<input type="text" name=""  value="2017-09-01" id="testone"/>
+										</span>
+									</li>
+									<li>
+										<div>毕业院校：</div>
+										<span><input type="text" name="input" id="new_school" value="" placeholder="输入院校" /></span>
+									</li>
+									<li>
+										<div>职称：</div>
+										<span>
+											<input type="text" name="" id="new_position_list" value=""   placeholder="输入职称"/>
+											 
+											 
+										</span>
+									</li>
+									<li>
+										<div>手机：</div>
+										<span><input type="text" name="input" id="new_mobile" value="" placeholder="输入手机号" /></span>
+									</li>
+								</ul>
+							</div>
+							<div class="boxRight">
+								<ul class="boxUl">
+									<li>
+										<div>密码：</div>
+										<span><input type="password" name="input" id="new_password" value="" placeholder="输入密码" /></span>
+									</li>
+									<li>
+										<div>性别：</div>
+										<span>
+											<input type="text" name="" id="" value="" disabled="disabled" placeholder="输入性别"/>
+											<i><img src="img/black_tri.png"/></i>
+											<select name="page" id="new_sex_list">
+												
+												<option value="1">男</option>
+												<option value="2">女</option>												
+											</select>
+										</span>
+									</li>
+									<li>
+										<div>参加工作时间：</div>
+										<span>
+											<input type="text" name=""  value="2017-09-01" id="testtwo"/>
+										</span>
+									</li>
+									<li>
+										<div>学历：</div>
+										<span>
+											<input type="text" name="" id="" value="" disabled="disabled" placeholder="输入学历"/>
+											<i><img src="img/black_tri.png"/></i>
+											<select name="page" id="edu_list">
+														
+												<option value="1">博士</option>
+												<option value="2">硕士</option>
+												<option value="3">研究生</option>
+												<option value="4">本科</option>
+												<option value="5">大专</option>
+												<option value="6">高中</option>
+												<option value="7">中专</option>
+												<option value="8">初中</option>
+												<option value="9">小学</option>
+											</select>
+										</span>
+									</li>
+									<li>
+										<div>所属工种：</div>
+										<span>
+											<input type="text" name="" id="" value="" disabled="disabled" placeholder="输入工种"/>
+											<i><img src="img/black_tri.png"/></i>
+											<select name="page" id="work_type_list">
+												
+												<option value="1">asd</option>
+												<option value="2">zxc</option>
+												<option value="3">qwe</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+											</select>
+										</span>
+									</li>
+									<li>
+										<div>QQ：</div>
+										<span><input type="text" name="input" id="new_qq" value="" placeholder="输入QQ号" /></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="second">
+						<div class="Sheader">权限分配</div>
+						<div class="Sbody"  id="autho_add">
+							<p>普通权限：</p>
+							<div>
+								<span data-type=""><a><img  id="autho_1" src="img/backstage_checkbox_kong.png" alt="" /></a><i>新建项目</i></span>
+								<span data-type=""><a><img  id="autho_2" src="img/backstage_checkbox_kong.png" alt="" /></a><i>编辑相关项目</i></span>
+								<span data-type=""><a><img  id="autho_3" src="img/backstage_checkbox_kong.png" alt="" /></a><i>合同及项目收支</i><i>（仅限于项目主管所关联负责的项目）</i></span>
+							</div>
+						</div>
+					</div>
+					<div class="third">
+						<div class="Theader">权限解释</div>
+						<div class="Tbody">
+							<div class="box">
+								<table border="" cellspacing="" cellpadding="" class="Ttable">
+									<tr>
+										<th class="one">序号</th>
+										<th class="two">权限名称</th>
+										<th class="three">描述</th>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>新建项目</td>
+										<td>创建新的立项信息</td>
+									</tr>
+									<tr class="four">
+										<td>2</td>
+										<td>编辑相关项目</td>
+										<td>编辑用户关联参与的项目信息</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>合同及项目收支</td>
+										<td>项目主管可以查看关联参与项目的合同、收款支出情况</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="forth">
+						<div class="box">
+							<button type="button" class="left" id="btn_add">确&nbsp;&nbsp;&nbsp;定</button>
+							<button type="button" class="right">取&nbsp;&nbsp;&nbsp;消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstage_newUser.js" type="text/javascript" charset="utf-8"></script>
+		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#testone',
+			});
+			laydate.render({
+				elem: '#testtwo',
+			});
+		</script>
+	</body>
+	
+	<script src="js/ad_regular.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/regular.css"></link>
+		
+
+</html>

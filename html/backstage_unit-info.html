@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家后台管理</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/backstage.css"/>
+		<link rel="stylesheet" type="text/css" href="css/backstageLeft.css"/>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="img/info_image.png" alt="" class="photo"/>
+								<img src="img/info_image_Bg.png" alt="" />
+							</div>
+							<div class="info_name"></div>
+						</div>
+					</div>
+					<div class="backstageListOne">
+						<div class="title ">
+							<span></span>
+							<div class="manage">用户管理</div>
+							<i></i>
+						</div>
+						<ul class="ul" style="display:none;">
+							<li>
+								<a href="backstage_admin_list.html">用户列表</a>
+							</li>
+							<li  >
+								<a href="backstage_new-user.html">新增用户</a>
+							</li>
+							<li>
+								<a href="backstage_user-log.html">用户日志</a>
+							</li>						
+						</ul>
+					</div>
+					<div class="backstageListTwo">
+						<div class="title active">
+							<span></span>
+							<div class="manage">系统管理</div>
+							<i></i>
+						</div>
+						<ul class="ul" style="display: block;">
+							<li>
+								<a href="backstage_notice.html">任务通知</a>
+							</li>
+							<li class=" active">
+								<a href="backstage_unit-info.html">单位信息</a>
+							</li>
+							<li>
+								<a href="backstage_channel.html">栏目标签</a>
+							</li>
+							<li>
+								<a href="backstage_backup.html">数据备份</a>
+							</li>						
+						</ul>						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="leftText">设计管家后台管理</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png"/></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="img/info_image.png"/></div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录时间：<i>2017-09-01</i><i>09:01:00</i>
+						</div>
+					</div>
+					<div class="LastDataTime rightDiv">
+						<div>
+							上次登录IP：<i>255.255.255.255</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content" name="backstageAdmin" names="unitInfo">
+				<!--右侧内容区-->
+				<div class="firstNav">
+					<a href="###">管理员管理</a>&nbsp;&gt;&nbsp;<a>单位信息</a>
+				</div>
+				<div class="box">
+					<div class="third">
+						<div class="thirdBox">
+							<div class="thirdBoxDiv">
+								<div>单位名称：</div>
+								<span><input type="text" name="" id="name" value="" placeholder="输入单位名称"/></span>
+							</div>
+							<div class="thirdBoxDiv">
+								<div>单位电话：</div>
+								<span><input type="text" name="" id="mobile" value="" placeholder="输入电话" /></span>
+							</div>
+							<div class="thirdBoxDiv">
+								<div>单位地址：</div>
+								<span><input type="text" name="" id="address" value="" placeholder="输入地址" /></span>
+							</div>
+							<div class="thirdBoxDiv">
+								<div>邮政编码：</div>
+								<span><input type="text" name="" id="zipcode" value="" placeholder="输入邮政编码" /></span>
+							</div>
+							<div class="thirdBoxDiv">
+								<div>单位邮箱：</div>
+								<span><input type="text" name="" id="email" value="" placeholder="输入邮箱" /></span>
+							</div>
+						</div>
+						<div class="thirdBoxButton">
+							<button type="button" id="btn_newIfo">确&nbsp;&nbsp;定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png"/>
+			<!--弹框区-->
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstage_unitInfo.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstage_uIfo.js" type="text/javascript" charset="utf-8"></script>
+	
+	</body>
+</html>

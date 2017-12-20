@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/pandect.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/pandect.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="img/info_image.png" alt="" class="photo" />
+								<img src="img/info_image_Bg.png" alt="" />
+							</div>
+							<div class="info_name">谢晓明</div>
+							<div class="rows">
+								<div><span class="one"><img src="img/icon-suotou.png" alt="" /></span></div>
+								<div><span class="two"><img src="img/icon-yaoshi.png" alt="" /></span></div>
+								<div><span class="three"><img src="img/icon-camera.png" alt="" /></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="listBtn">
+						<a href="task.html" class="list_1 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<i>任务</i>
+							</div>
+						</a>
+						<a href="msg.html" class="list_2 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-tongzhi-white.png" alt="" />
+									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i>3</i></span>
+								</div>
+								<i>通知</i>
+							</div>
+						</a>
+						<a href="pandect.html" class="list_3 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-zonglan-white.png" alt="" /></div>
+								<i>总览</i>
+							</div>
+						</a>
+						<a href="user.html" class="list_4 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-yonghu-white.png" alt="" /></div>
+								<i>用户</i>
+							</div>
+						</a>
+						<a href="administration.html" class="list_5 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-guanli-white.png" alt="" /></div>
+								<i>管理</i>
+							</div>
+						</a>
+						<a href="finance.html" class="list_6 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-caiwu-white.png" alt="" /></div>
+								<i>财务</i>
+							</div>
+						</a>
+						<a href="backstage_general.html" class="list_7 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-houtai-white.png" alt="" /></div>
+								<i>后台</i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="left">
+					<div class="icon-search">
+						<img src="img/icon-search-orange.png" alt="" />
+					</div>
+					<div class="search-inp">
+						<input type="text" class="p-search" name="text" id="text" placeholder="请输入关键词搜索" />
+					</div>
+				</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="img/info_image.png" /></div>
+					</div>
+					<div class="helpBtn rightDiv">
+						<div><img src="img/icon-bangzhu-white.png" /></div>
+					</div>
+					<div class="dataTime rightDiv">
+						<div>
+							<i>2017</i>年<i>09</i>月<i>01</i>日&nbsp;&nbsp;&nbsp;&nbsp;星期<i>五</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<!--右侧内容区-->
+				<div class="center_content">
+					<div class="content_header">
+						<ul class="user_tab clearfix">
+							<li>
+								<a href="index.html">项目信息</a>
+							</li>
+							<li>
+								<a href="process.html">过程管理</a>
+							</li>
+							<li>
+								<a href="count.html">统计分析</a>
+							</li>
+							<li class="active">
+								<a href="pandect.html">总览</a>
+							</li>
+						</ul>
+						<div class="current_task">
+							<span class="task">当前项目：</span>
+							<span class="task_name"></span>
+						</div>
+					</div>
+					<div class="content_detail">
+						<div class="tab">
+							<ul class="tab_left clearfix">
+								<li class="active">
+									<a href="javascript:void(0)">项目信息</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">员工任务</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">人才绩效</a>
+								</li>
+							</ul>
+							<div class="tab_right">导出表格</div>
+						</div>
+						<!--项目信息-->
+						<div class="item_content clearfix">
+							<div class="item_time clearfix">
+								<div class="time_left">
+									<span>从</span>
+									<input type="text" id="one" value="2017-08-23" />
+								</div>
+								<div class="time_right">
+									<span>至</span>
+									<input type="text" id="two" value="2017-08-23" />
+								</div>
+								<div class="search c">搜索</div>
+							</div>
+							<!--进行中列表-->
+							<div class="list_detail">
+								<div class="go_list ">
+									进行中列表
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">项目名称</td>
+											<td class="style">建筑类型</td>
+											<td class="district">所属地域</td>
+											<td class="unit">建设单位</td>
+											<td class="item_manage">项目主管</td>
+											<td class="plan_time">立项日期</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody id="go_list_aa">
+
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span id="count_aa">0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less pr_aa"><</i><span class="number cu_a">1</span><span>/</span><span class="total_num aa">1</span><i class="more af_aa">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--进行中列表结束-->
+							<div class="black"></div>
+							<!--已完成列表-->
+							<div class="list_detail">
+								<div class="go_list">
+									已完成列表
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">项目名称</td>
+											<td class="style">建筑类型</td>
+											<td class="district">所属地域</td>
+											<td class="unit">建设单位</td>
+											<td class="item_manage">项目主管</td>
+											<td class="plan_time">立项日期</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody id="go_list_bb">
+										<!--<tr>
+											<td>100000</td>
+											<td>新通知</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="edit"><a href="#">编辑</a></span><span class="check"><a href="#">查看</a></span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>100000</td>
+											<td>2017-08-20</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="edit"><a href="#">编辑</a></span><span class="check"><a href="#">查看</a></span></td>
+										</tr>-->
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span id="count_bb">0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less pr_bb"><</i><span class="number cu_b">1</span><span>/</span><span class="total_num bb">1</span><i class="more  af_bb">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--已完成列表结束-->
+							<div class="black"></div>
+							<!--未实施列表-->
+							<div class="list_detail">
+								<div class="go_list">
+									未实施列表
+								</div>
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">项目名称</td>
+											<td class="style">建筑类型</td>
+											<td class="district">所属地域</td>
+											<td class="unit">建设单位</td>
+											<td class="item_manage">项目主管</td>
+											<td class="plan_time">立项日期</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody id="go_list_cc">
+										<!--<tr>
+											<td>100000</td>
+											<td>新通知</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="edit"><a href="#">编辑</a></span><span class="check"><a href="#">查看</a></span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>100000</td>
+											<td>2017-08-20</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="check"><a href="#">查看</a></span></td>
+										</tr>-->
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span id="count_cc">1</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less pr_cc"><</i><span class="number cu_c">1</span><span>/</span><span class="total_num cc">1</span><i class="more af_cc">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--未实施列表结束-->
+						</div>
+						<!--项目信息结束-->
+						<!--员工任务-->
+						<div class="staff_content clearfix">
+							<div class="staff_time clearfix">
+								<div class="time_left">
+									<span>从</span>
+									<input type="text" placeholder="2017-09-07" id="three" />
+								</div>
+								<div class="time_right">
+									<span>至</span>
+									<input type="text" placeholder="2017-09-07" id="four" />
+								</div>
+								<div class="staff_search">
+									<a><img id="query_a" src="img/icon-search-orange.png" alt=""></a>
+									<input type="text" name="" id="query_key_a" value="" placeholder="姓名或者项目名" />
+								</div>
+								<div class="search a">搜索</div>
+							</div>
+							<div class="list_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="item_name">姓名</td>
+											<td class="style">创建任务</td>
+											<td class="district">新任务</td>
+											<td class="unit">进行中任务</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody id="task_list_ee">
+										<!--<tr>
+											<td>100000</td>
+											<td>新通知</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td class="handle"><span class="check"><a href="#">详情</a></span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>100000</td>
+											<td>2017-08-20</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>建筑</td>
+											<td class="handle"><span class="check"><a href="#">详情</a></span></td>
+										</tr>-->
+									</tbody>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span id="total_a">0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less" id="prev_t"><</i><span class="number a">1</span><span>/</span><span class="total_num a">1</span><i class="more" id="after_t">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--员工任务结束 -->
+						<!--人才绩效-->
+						<div class="perf_content clearfix">
+							<div class="perf_time clearfix">
+								<div class="time_left">
+									<span>从</span>
+									<input type="text" placeholder="2017-09-07" id="five" />
+								</div>
+								<div class="time_right">
+									<span>至</span>
+									<input type="text" placeholder="2017-09-07" id="six" />
+								</div>
+								<div class="search c">搜索</div>
+								<div class="sort">汇总排序</div>
+								<div class="staff_search">
+									<a><img id="query_b" src="img/icon-search-orange.png" alt=""></a>
+
+									<input type="text" name="" id="query_key_b" value="" placeholder="姓名或者项目名" />
+								</div>
+							</div>
+							<div class="list_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="name">姓名</td>
+											<td class="build">参与项目</td>
+											<td class="newtask">分工情况</td>
+											<td class="task">提成总额</td>
+											<td class="plan_time">立项时间</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody id="go_list_men">
+										<!--<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="handle"><span class="check"></span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="handle"><span class="check"></span></td>
+										</tr>-->
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span id="count_men">0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less pr_men"><</i><span class="number cu_men">1</span><span>/</span><span class="total_num men">1</span><i class="more af_men">></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--人才绩效结束 -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<div class="scroll" id="scroll">
+				<!--绩效详情-->
+				<div class="perf_detail">
+					<div class="perf_detail_head">
+						<span>绩效详情</span>
+						<i></i>
+					</div>
+					<div class="perf_detail_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix n1">
+									<span>姓名：</span>
+									<input type="text" placeholder="输入内容" disabled="disabled" />
+								</div>
+								<div class="right clearfix n2">
+									<span>项目名称：</span>
+									<input type="text" placeholder="输入内容" disabled="disabled" />
+								</div>
+								<div class="left clearfix n3">
+									<span>项目主管：</span>
+									<input type="text" placeholder="输入内容" disabled="disabled" />
+								</div>
+								<div class="right clearfix group n4">
+									<span>工种负责：</span>
+									<input type="text" placeholder="建筑" disabled="disabled" />
+								</div>
+								<div class="left clearfix n5">
+									<span>计提总额：</span>
+									<input type="text" placeholder="输入内容" disabled="disabled" />
+								</div>
+							</div>
+							<div class="color"></div>
+							<div class="job_logging" id="scors_list">
+								<div class="job_logging_title">
+									<span>时间阶段：</span><span>2017.07.09-2017.09.36</span>
+								</div>
+								<div class="logging_detail clearfix">
+									<div class="logging_head clearfix">
+										<div class="left clearfix">
+											<span>姓名：</span>
+											<input type="text" id="info_user_name" placeholder="输入内容" disabled="disabled" />
+										</div>
+										<div class="right clearfix">
+											<span>项目名称：</span>
+											<input type="text" id="info_user_name" placeholder="输入内容" disabled="disabled" />
+										</div>
+										<div class="left clearfix">
+											<span>项目主管：</span>
+											<input type="text" id="info_user_name" placeholder="输入内容" disabled="disabled" />
+										</div>
+										<div class="right clearfix group">
+											<span>工种负责：</span>
+											<input type="text" id="info_user_name" placeholder="建筑" disabled="disabled" />
+										</div>
+									</div>
+									<div class="logging_bottom">
+										<div class="job_logging_header">回复内容</div>
+										<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+									</div>
+								</div>
+								<div class="job_logging_title">
+									<span>时间阶段：</span><span>2017.07.09-2017.09.36</span>
+								</div>
+								<div class="logging_detail clearfix">
+									<div class="logging_head clearfix">
+										<div class="left clearfix">
+											<span>姓名：</span>
+											<input type="text" id="info_user_name" placeholder="输入内容" disabled="disabled" />
+										</div>
+										<div class="right clearfix">
+											<span>项目名称：</span>
+											<input type="text" id="info_user_name" placeholder="输入内容" disabled="disabled" />
+										</div>
+										<div class="left clearfix">
+											<span>项目主管：</span>
+											<input type="text" id="info_user_name" placeholder="输入内容" disabled="disabled" />
+										</div>
+										<div class="right clearfix group">
+											<span>工种负责：</span>
+											<input type="text" id="info_user_name" placeholder="建筑" disabled="disabled" />
+										</div>
+									</div>
+									<div class="logging_bottom">
+										<div class="job_logging_header">回复内容</div>
+										<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--绩效详情结束-->
+			</div>
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#one',
+			});
+			laydate.render({
+				elem: '#two',
+			});
+			laydate.render({
+				elem: '#three',
+			});
+			laydate.render({
+				elem: '#four',
+			});
+			laydate.render({
+				elem: '#five',
+			});
+			laydate.render({
+				elem: '#six',
+			});
+		</script>
+
+		<!--<script src="js/prandect_list.js" type="text/javascript" charset="utf-8"></script>-->
+
+	</body>
+
+</html>

@@ -1,0 +1,55 @@
+#boxPock  .rr{
+	text-align: right;
+
+}
+
+#boxPock #editU .er.rr{
+	color:#ff0000;
+	font-size: 10px;
+	border: none;
+	padding-top:5px;
+	width:300px;
+}
+#boxPock #editU .cor.rr{
+	color:#00ff00;
+	font-size: 10px;
+	border: none;
+	padding-top:5px;
+	width:300px;
+}
+
+/*  表单 —— 增加用户*/
+#boxPock #add_nor .er.rr{
+	color:#ff0000;
+	font-size: 10px;
+	border: none;
+	padding-top:5px;
+	width:300px;
+}
+#boxPock #add_nor .cor.rr{
+	color:#00ff00;
+	font-size: 10px;
+	border: none;
+	padding-top:5px;
+	width:300px;
+}
+
+/*  独立页 —— 增加用户*/
+#bodyRight #content #add_nor .er.rr{
+	color:#ff0000;
+	font-size: 10px;
+	border: none;
+	padding-top:5px;
+	width:300px;
+	text-align: right;
+
+}
+#bodyRight #content #add_nor .cor.rr{
+	color:#00ff00;
+	font-size: 10px;
+	border: none;
+	padding-top:5px;
+	width:300px;
+	text-align: right;
+
+}

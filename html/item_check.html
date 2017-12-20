@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>设计管家</title>
+		<link rel="stylesheet" type="text/css" href="css/citySet.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/item_edit.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/Popt.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/cityJson.js"></script>
+		<script type="text/javascript" src="js/citySet.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/item_edit.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="" alt="" class="photo" />
+								<img src="" alt="" />
+							</div>
+							<div class="info_name"></div>
+							<div class="rows">
+								<div><span class="one"><img src="img/icon-suotou.png" alt="" /></span></div>
+								<div><span class="two"><img src="img/icon-yaoshi.png" alt="" /></span></div>
+								<div><span class="three"><img src="img/icon-camera.png" alt="" /></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="listBtn">
+						<a href="task.html" class="list_1 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<i>任务</i>
+							</div>
+						</a>
+						<a href="msg.html" class="list_2 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-tongzhi-white.png" alt="" />
+									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
+								<i>通知</i>
+							</div>
+						</a>
+						<a href="pandect.html" class="list_3 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-zonglan-white.png" alt="" /></div>
+								<i>总览</i>
+							</div>
+						</a>
+						<a href="user.html" class="list_4 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-yonghu-white.png" alt="" /></div>
+								<i>用户</i>
+							</div>
+						</a>
+						<a href="administration.html" class="list_5 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-guanli-white.png" alt="" /></div>
+								<i>管理</i>
+							</div>
+						</a>
+						<a href="finance.html" class="list_6 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-caiwu-white.png" alt="" /></div>
+								<i>财务</i>
+							</div>
+						</a>
+						<a href="backstage_general.html" class="list_7 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-houtai-white.png" alt="" /></div>
+								<i>后台</i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="left">
+					<div class="icon-search">
+						<img src="img/icon-search-orange.png" alt="" />
+					</div>
+					<div class="search-inp">
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
+					</div>
+				</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="" /></div>
+					</div>
+					<div class="helpBtn rightDiv">
+						<div><img src="img/icon-bangzhu-white.png" /></div>
+					</div>
+					<div class="dataTime rightDiv">
+						<div>
+							<i>2017</i>年<i>09</i>月<i>01</i>日&nbsp;&nbsp;&nbsp;&nbsp;星期<i>五</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<!--右侧内容区-->
+				<div class="item_msg">
+					<div class="msg_head">
+						<span>项目信息</span>
+					</div>
+					<form id="myform">
+						<div class="msg_bottom">
+							<div class="basic_msg">
+								<div class="basic_head"><span>基本信息</span></div>
+								<table border="1" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr class="e9ecf1">
+											<td class="item">项目编号：</td>
+											<td class="item_num number"></td>
+											<td class="item">项目名称：</td>
+											<td class="item_num name"></td>
+										</tr>
+										<tr>
+											<td class="item">立项时间：</td>
+											<td class="item_num project_time">
+												
+											</td>
+											<td class="item">所需区域：</td>
+											<td class="item_num"><i class="province"></i>&nbsp;<i class="city"></i></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td class="item">建筑类型：</td>
+											<td class="item_num style">
+												<input type="" name="" id="" value="1" class="building_type" disabled="disabled"/>																					
+											</td>
+											<td class="item">阶段类型：</td>
+											<td class="item_num style">
+												<input type="" name="" id="" value="1" class="stage" disabled="disabled"/>
+											</td>
+										</tr>
+										<tr>
+											<td class="item">项目地址：</td>
+											<td class="item_num"><input type="" name="address" id="" value="维权撒多" class="address" disabled="disabled"/></td>
+											<td class="item">项目进度：</td>
+											<td class="item_num"></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td class="item">合同附件：</td>
+											<td class="item_num file"><span class="filename">合同名字</span></td>
+											<td class="item">收款情况：</td>
+											<td class="item_num"><input type="text" disabled="disabled" /></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!--//基本资料-->
+							<div class="unit_msg">
+								<div class="unit_msg_head"><span>建设单位基本资料</span></div>
+								<table border="1" cellspacing="0">
+									<tbody>
+										<tr class="e9ecf1">
+											<td class="item">建设单位：</td>
+											<td class="item_num"><input type="text" name="build" class="build" disabled="disabled"/></td>
+											<td class="item">项目主管：</td>
+											<td class="item_num"><input type="text" name="supervisor" value="" class="supervisor" disabled="disabled"/></td>
+										</tr>
+										<tr>
+											<td class="item">联系电话：</td>
+											<td class="item_num"><input type="text" name="tel" value="" class="tel" disabled="disabled"/></td>
+											<td class="item">主管(联系电话)：</td>
+											<td class="item_num"><input type="text" name="supervisor_tel" value="" class="supervisor_tel" disabled="disabled"/></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td class="item">电子邮箱：</td>
+											<td class="item_num"><input type="text" name="email" value="" class="email" disabled="disabled"/></td>
+											<td class="item">联系地址：</td>
+											<td class="item_num"><input type="text" name="contact_address" value="" class="contact_address" disabled="disabled"/></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="project_data">
+								<div class="project_main">
+									<div class="msg_head1 clearfix">
+										<div class="head_left">项目组信息</div>
+										<div class="head_right clearfix">
+											<div class="list">
+												<div class="small_item">子项目:</div>
+												<input type="text" name="" id="" value="" class="floor" />
+												<i><img src="img/black_tri.png"/></i>
+												<select name="">
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="item_table">
+										<table border="1" cellspacing="0">
+											<tbody>
+												<tr class="director_z">
+													<td class="item">项目主管：</td>
+													<td class="item_num"></td>
+												</tr>
+												<tr>
+													<td class="item">规格负责：</td>
+													<td class="item_num"></td>
+												</tr>
+												<tr>
+													<td class="item">方案负责：</td>
+													<td class="item_num"></td>
+												</tr>
+												<tr>
+
+													<td class="item">建筑负责：</td>
+													<td class="item_num"></td>
+												</tr>
+												<tr>
+													<td class="item">结构负责：</td>
+													<td class="item_num"></td>
+												</tr>
+												<tr>
+													<td class="item">电气负责：</td>
+													<td class="item_num"></td>
+												</tr>
+												<tr>
+													<td class="item">排水负责：</td>
+													<td class="item_num"></td>
+												</tr>
+												<tr>
+													<td class="item">暖通负责：</td>
+													<td class="item_num"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!--//项目组信息-->
+							<div class="cnt_footer_check">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+						<input type="hidden" name="ject_id" value="1" id="ject_id" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

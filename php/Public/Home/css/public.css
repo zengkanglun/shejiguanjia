@@ -1,0 +1,415 @@
+html,
+body {
+  min-width: 1360px;
+  height: 100%;
+  background-color: #5b636c;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+* {
+  font-family: "微软雅黑";
+}
+#bodyLeft {
+  width: 220px;
+  height: 100%;
+  background-color: #293541;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+#bodyLeft .logoDiv {
+  width: 100%;
+  height: 80px;
+  background-color: #fd813e;
+  line-height: 80px;
+  font-size: 46px;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+#bodyLeft .userinfo {
+  width: 220px;
+}
+#bodyLeft .userinfo .information {
+  width: 100%;
+  padding: 20px 0 25px;
+  border-bottom: 1px solid #4a4e58;
+}
+#bodyLeft .userinfo .information .info_image {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 16px;
+  overflow: hidden;
+  position: relative;
+}
+#bodyLeft .userinfo .information .info_image img {
+  position: relative;
+  z-index: 1;
+}
+#bodyLeft .userinfo .information .info_image img + img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#bodyLeft .userinfo .information .info_name {
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 25px;
+}
+#bodyLeft .userinfo .information .rows {
+  width: 100%;
+  overflow: hidden;
+}
+#bodyLeft .userinfo .information .rows div {
+  width: 33.33333333%;
+  float: left;
+}
+#bodyLeft .userinfo .information .rows div span {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: auto;
+  overflow: hidden;
+}
+#bodyLeft .userinfo .information .rows .one {
+  width: 18px;
+}
+#bodyLeft .userinfo .information .rows .three {
+  padding: 2px 0;
+}
+#bodyLeft .listBtn {
+  width: 100%;
+}
+#bodyLeft .listBtn .list_a {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+#bodyLeft .listBtn .list_a .a_box {
+  width: 70px;
+  height: 100%;
+  margin: auto;
+  position: relative;
+}
+#bodyLeft .listBtn .list_a .a_box div {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+#bodyLeft .listBtn .list_a .a_box div span {
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+#bodyLeft .listBtn .list_a .a_box div span img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+#bodyLeft .listBtn .list_a .a_box div span i {
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  line-height: 20px;
+  font-size: 12px;
+  color: white;
+  position: relative;
+  z-index: 4;
+}
+#bodyLeft .listBtn .list_a .a_box i {
+  display: block;
+  font-size: 16px;
+  color: #FFFFFF;
+  height: 100%;
+  line-height: 60px;
+  float: right;
+}
+#bodyRight {
+	width: 100%;
+  min-width: 1360px;
+  padding-left: 220px;
+  position: absolute;
+  top: 0;
+  left: 0px;
+}
+#bodyRight #header {
+  width: 100%;
+  height: 80px;
+  background-color: #293541;
+  margin-bottom: 26px;
+  box-shadow: 0px 2px 10px 0px #293541;
+  position: relative;
+}
+#bodyRight #header .left {
+  height: 22px;
+  position: absolute;
+  top: 0;
+  left: 31px;
+  bottom: 0;
+  margin: auto;
+}
+#bodyRight #header .left .icon-search {
+  width: 22px;
+  height: 100%;
+  overflow: hidden;
+  float: left;
+  margin-right: 23px;
+  cursor: pointer;
+}
+#bodyRight #header .left .search-inp {
+  width: 200px;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+}
+#bodyRight #header .left .search-inp input {
+  width: 100%;
+  height: 100%;
+  display: block;
+  float: left;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 0 10px;
+}
+#bodyRight #header .leftText {
+  height: 100%;
+  line-height: 80px;
+  font-size: 30px;
+  color: #FFFFFF;
+  padding-left: 27px;
+}
+#bodyRight #header .right {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#bodyRight #header .right .rightDiv {
+  height: 100%;
+  position: relative;
+  float: right;
+}
+#bodyRight #header .right .rightDiv div {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+#bodyRight #header .right .closeBtn {
+  width: 24px;
+  margin-right: 50px;
+}
+#bodyRight #header .right .closeBtn div {
+  height: 24px;
+}
+#bodyRight #header .right .info-image {
+  width: 40px;
+  margin-right: 17px;
+}
+#bodyRight #header .right .info-image div {
+  height: 40px;
+}
+#bodyRight #header .right .helpBtn {
+  width: 26px;
+  margin-right: 59px;
+}
+#bodyRight #header .right .helpBtn div {
+  height: 26px;
+}
+#bodyRight #header .right .dataTime {
+  min-width: 200px;
+  margin-right: 86px;
+}
+#bodyRight #header .right .dataTime div {
+  width: 100%;
+  height: 100%;
+  line-height: 80px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+}
+#bodyRight #header .right .dataTime div i {
+  color: #FD813E;
+}
+#bodyRight #header .right .LastDataTime {
+  min-width: 300px;
+  height: 100%;
+  margin-right: 7px;
+}
+#bodyRight #header .right .LastDataTime div {
+  width: 100%;
+  height: 100%;
+  line-height: 80px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+}
+#bodyRight #header .right .LastDataTime div i {
+  color: #FD813E;
+  margin-right: 15px;
+}
+#bodyRight #header .right .LastDataTime + .LastDataTime {
+  min-width: 225px;
+  margin-right: 40px;
+}
+#bodyRight #header .right .LastDataTime + .LastDataTime div {
+  width: 100%;
+  height: 100%;
+  line-height: 80px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+}
+#bodyRight #header .right .LastDataTime + .LastDataTime div i {
+  color: #FD813E;
+  margin-right: 0px;
+}
+#bodyRight #content {
+  width: 100%;
+  padding: 0 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#boxPock {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: none;
+}
+#boxPock .boxPockBg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#bodyLeft .bodyLeftFu {
+  width: 220px;
+  height: 100%;
+  padding-top: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+#bodyLeft .bodyLeftFu .bodyLeftBox {
+  width: 240px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+tbody tr td span {
+  border-bottom: 1px solid #333333;
+  margin: 0 2px;
+}
+tbody tr td span:hover {
+  color: #FD813E !important;
+  border-bottom: 1px solid #FD813E;
+}
+.msg_remind {
+  padding: 0 10px;
+  height: 50px;
+  font-size: 16px;
+  font-family: "microsoft yahei";
+  background: #000000;
+  color: #FFFFFF;
+  max-width: 200px;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: -100px;
+}
+
+/*//锁屏*/
+.lock {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: black;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+
+.lock_bg {
+	width: 400px;
+	height: 200px;
+	background: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.lock_bg .password {
+	width: 100%;
+	height: 50px;
+}
+
+.lock_bg .password span {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	line-height: 30px;
+	width: 100px;
+	text-align: right;
+	margin-top: 70px;
+	float: left;
+	margin-left: 50px;
+}
+
+.lock_bg .password input {
+	width: 140px;
+	height: 30px;
+	float: left;
+	border: 1px solid #333333;
+	border-radius: 5px;
+	margin-top: 70px;
+}
+
+.lock_bg button {
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	line-height: 35px;
+	border-radius: 5px;
+	background: #FD813E;
+	position: absolute;
+	left: 50%;
+	bottom: 30px;
+	margin-left: -50px;
+}

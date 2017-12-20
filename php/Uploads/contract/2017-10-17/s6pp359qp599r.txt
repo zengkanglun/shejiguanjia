@@ -1,0 +1,8 @@
+
+git add * //选择上传的文件
+
+git commit -m '备注' //添加到本地缓存和填写备注
+
+git push //上传
+
+git pull //更新

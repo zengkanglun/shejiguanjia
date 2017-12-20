@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>任务</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/task_detail.css" />
+		<link rel="stylesheet" type="text/css" href="css/laydate.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/task.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+				<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="" alt="" class="photo" />
+								<img src="" alt="" />
+							</div>
+							<div class="info_name"></div>
+							<div class="rows">
+								<div><span class="one"><img src="img/icon-suotou.png" alt="" /></span></div>
+								<div><span class="two"><img src="img/icon-yaoshi.png" alt="" /></span></div>
+								<div><span class="three"><img src="img/icon-camera.png" alt="" /></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="listBtn">
+						<a href="task.html" class="list_1 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<i>任务</i>
+							</div>
+						</a>
+						<a href="msg.html" class="list_2 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-tongzhi-white.png" alt="" />
+									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
+								<i>通知</i>
+							</div>
+						</a>
+						<a href="pandect.html" class="list_3 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-zonglan-white.png" alt="" /></div>
+								<i>总览</i>
+							</div>
+						</a>
+						<a href="user.html" class="list_4 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-yonghu-white.png" alt="" /></div>
+								<i>用户</i>
+							</div>
+						</a>
+						<a href="administration.html" class="list_5 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-guanli-white.png" alt="" /></div>
+								<i>管理</i>
+							</div>
+						</a>
+						<a href="finance.html" class="list_6 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-caiwu-white.png" alt="" /></div>
+								<i>财务</i>
+							</div>
+						</a>
+						<a href="backstage_general.html" class="list_7 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-houtai-white.png" alt="" /></div>
+								<i>后台</i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="left">
+					<div class="icon-search">
+						<img src="img/icon-search-orange.png" alt="" />
+					</div>
+					<div class="search-inp">
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
+					</div>
+				</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="" /></div>
+					</div>
+					<div class="helpBtn rightDiv">
+						<div><img src="img/icon-bangzhu-white.png" /></div>
+					</div>
+					<div class="dataTime rightDiv">
+						<div>
+							<i>2017</i>年<i>09</i>月<i>01</i>日&nbsp;&nbsp;&nbsp;&nbsp;星期<i>五</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<!--右侧内容区-->
+				<div class="center_content">
+					<div class="content_header">
+						任务详情
+					</div>
+					<div class="content_detail">
+						<!--新任务-->
+						<div class="new_task clearfix bigtask">
+							<div class="new_task_head clearfix">
+								<span class="left">新任务</span>
+								<span class="more">更多></span>
+							</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号<i></i></td>
+										<td class="steman">创建人</td>
+										<td class="settime">创建时间</td>
+										<td class="job">类型</td>
+										<td class="title">标题</td>
+										<td class="plan_time">计划开始时间</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>100000</td>
+										<td>新任务</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--新任务结束-->
+						<!--任务进行中-->
+						<div class="task_go clearfix bigtask">
+							<div class="task_go_head clearfix">
+								<span class="left">任务进行中</span>
+								<span class="more">更多></span>
+							</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号<i></i></td>
+										<td class="steman">创建人</td>
+										<td class="settime">创建时间</td>
+										<td class="job">类型</td>
+										<td class="title">标题</td>
+										<td class="plan_time">接受时间
+										</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>100000</td>
+										<td>新任务</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--任务进行中结束-->
+						<!--历史任务-->
+						<div class="history_task clearfix bigtask">
+							<div class="history_task_head clearfix">
+								<span class="left">历史任务</span>
+								<span class="more">更多></span>
+							</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号<i></i></td>
+										<td class="steman">创建人</td>
+										<td class="settime">创建时间</td>
+										<td class="job">类型</td>
+										<td class="title">标题</td>
+										<td class="plan_time">完成时间</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>100000</td>
+										<td>新任务</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--历史任务结束-->
+						<!--创建任务结束-->
+						<div class="build_task clearfix bigtask">
+							<div class="build_task_head clearfix">
+								<span class="left">创建任务详情</span>
+								<span class="more">更多></span>
+							</div>
+							<table border="1" cellspacing="0">
+								<thead>
+									<tr>
+										<td class="orderlist">序号<i></i></td>
+										<td class="steman">创建人</td>
+										<td class="settime">创建时间</td>
+										<td class="job">类型</td>
+										<td class="title">标题</td>
+										<td class="plan_time">状态</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>100000</td>
+										<td>新任务</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+									<tr class="e9ecf1">
+										<td>100000</td>
+										<td>2017-08-20</td>
+										<td>建筑</td>
+										<td>建筑</td>
+										<td class="title"><span>张三李四</span></td>
+										<td>2017-8-29</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--创建任务结束-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<div class="scroll" id="scroll">
+				<!--新建任务增加-->
+				<div class="newtask_add">
+					<div class="newtask_add_head">
+						<span>新建任务</span>
+						<i></i>
+					</div>
+					<div class="newtask_add_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>相关项目：</span>
+									<input type="text" placeholder="相关项目" />
+									<i><img src="img/black_tri.png"/></i>
+									<select name="">
+										<option value="">fghgjhkh</option>
+										<option value="">fghgjhkh</option>
+										<option value="">fghgjhkh</option>
+									</select>
+								</div>
+								<div class="right clearfix">
+									<span>类型：</span>
+									<input type="text" placeholder="分派" />
+									<i><img src="img/black_tri.png"/></i>
+									<select name="">
+										<option value="">fghgjhkh</option>
+										<option value="">fghgjhkh</option>
+										<option value="">fghgjhkh</option>
+									</select>
+								</div>
+								<div class="left clearfix group">
+									<span>接受群体：</span>
+									<input type="text"  disabled="disabled"/>
+								</div>
+								<div class="right clearfix">
+									<span>计划开始时间：</span>
+									<input type="text"  id="one" disabled="disabled"/>
+								</div>
+								<div class="left clearfix">
+									<span>标题：</span>
+									<input type="text"  disabled="disabled"/>
+								</div>
+								<div class="right clearfix">
+									<span>上传附件：</span>
+									<span class="choose_file">选择</span>
+									<span class="download">下载</span>
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">任务内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn1">提&nbsp;&nbsp;&nbsp;交</button>
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--新建任务增加结束-->
+				<!--任务进行中增加-->
+				<div class="taskgo_add">
+					<div class="taskgo_add_head">
+						<span>进行中详情</span>
+						<i></i>
+					</div>
+					<div class="taskgo_add_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>相关项目：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>类型：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="left clearfix group">
+									<span>接受群体：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>计划开始时间：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="left clearfix">
+									<span>标题：</span>
+									<input type="text" disabled="disabled" />
+								</div>
+								<div class="right clearfix file">
+									<span>下载附件：</span>
+									<span class="choose_file">合同名字</span>
+									<span class="download">下载</span>
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">任务内容</div>
+								<textarea name="" rows="" cols=""  disabled="disabled"></textarea>
+							</div>
+							<div class="color"></div>
+							<div class="cnt_reply">
+								<div class="cnt_bottom_header">回复内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容"></textarea>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--任务进行中增加结束-->
+				<!--新任务详情-->
+				<div class="newtask_detail">
+					<div class="newtask_detail_head">
+						<span>新任务详情</span>
+						<i></i>
+					</div>
+					<div class="newtask_detail_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>相关项目：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>类型：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="left clearfix group">
+									<span>接受群体：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>计划开始时间：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="left clearfix">
+									<span>标题：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix file">
+									<span>上传附件：</span>
+									<span class="choose_file">选择</span>
+									<span class="download">下载</span>
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">任务内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+							</div>
+							<div class="color"></div>
+							<div class="cnt_reply">
+								<div class="cnt_bottom_header">回复内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容"></textarea>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn1">接受任务</button>
+								<button type="button" class="btn3">拒受任务</button>
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--新任务详情结束-->
+				<!--历史任务详情-->
+				<div class="histask_detail">
+					<div class="histask_detail_head">
+						<span>历史任务详情</span>
+						<i></i>
+					</div>
+					<div class="histask_detail_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>相关项目：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>类型：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="left clearfix group">
+									<span>接受群体：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>计划开始时间：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="left clearfix">
+									<span>标题：</span>
+									<input type="text" disabled="disabled" />
+								</div>
+								<div class="right clearfix file">
+									<span>下载附件：</span>
+									<span class="choose_file">选择</span>
+									<span class="download">下载</span>
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">任务内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+							</div>
+							<div class="color"></div>
+							<div class="cnt_reply">
+								<div class="cnt_bottom_header">回复内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容"></textarea>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;定</button>
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--历史任务详情结束-->
+				<!--新建任务详情-->
+				<div class="newbuild_detail">
+					<div class="newbuild_detail_head">
+						<span>创建任务</span>
+						<i></i>
+					</div>
+					<div class="newbuild_detail_bottom">
+						<div class="add_content">
+							<div class="cnt_header">
+								<div class="left clearfix">
+									<span>相关项目：</span>
+									<input type="text" disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>类型：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="left clearfix group">
+									<span>接受群体：</span>
+									<input type="text"  disabled="disabled" />
+								</div>
+								<div class="right clearfix">
+									<span>计划开始时间：</span>
+									<input type="text" disabled="disabled" />
+								</div>
+								<div class="left clearfix">
+									<span>标题：</span>
+									<input type="text" disabled="disabled" />
+								</div>
+								<div class="right clearfix file">
+									<span>下载附件：</span>
+									<span class="choose_file">合同名字</span>
+									<span class="download">下载</span>
+								</div>
+							</div>
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">任务内容</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+							</div>
+							<div class="color"></div>
+							<div class="cnt_reply">
+								<div class="cnt_bottom_header"><span>状态</span></div>
+								<div class="reply_ul clearfix">
+									<li class="clearfix">
+										<div class="cnt_detail">
+											<span>李四：</span><span>已读已读已读已读已读已读已读</span>
+										</div>
+										<div class="time">-2071-07-06 12:23</div>
+									</li>
+									<li class="clearfix">
+										<div class="cnt_detail">
+											<span>李四：</span><span>已读已读已读已读已读已读已读</span>
+										</div>
+										<div class="time">-2071-07-06 12:23</div>
+									</li>
+								</div>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--新建任务详情结束-->
+				<!--拒绝原因-->
+				<div class="refuse_detail">
+					<div class="refuse_detail_head">
+						<span>拒绝原因</span>
+						<i></i>
+					</div>
+					<div class="refuse_detail_bottom">
+						<div class="add_content">
+							<div class="cnt_bottom">
+								<div class="cnt_bottom_header">拒绝原因</div>
+								<textarea name="" rows="" cols="" placeholder="请输入内容"></textarea>
+							</div>
+							<div class="cnt_footer">
+								<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;定</button>
+								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--拒绝原因结束-->
+			</div>
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#one',
+			});
+			laydate.render({
+				elem: '#two',
+			});
+			laydate.render({
+				elem: '#three',
+			});
+			laydate.render({
+				elem: '#four',
+			});
+			laydate.render({
+				elem: '#five',
+			});
+		</script>
+	</body>
+
+</html>
