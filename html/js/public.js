@@ -38,19 +38,7 @@ function toast(n) {
 $(document).on("click",".logoDiv",function(){
 	location.href="index.html"
 })
-function lock() {
-	var lock;
-	lock += '<div class="lock">';
-	lock += '<div class="lock_bg">';
-	lock += '<div class="password">';
-	lock += '<span>密码：</span>';
-	lock += '<input type="password" />';
-	lock += '</div>';
-	lock += '<button>解锁</button>';
-	lock += '</div>';
-	lock += '</div>';
-	$("body").append(lock);
-}
+
 
 //搜索项目
 $(document).on("click",".icon-search img",function(){
@@ -147,7 +135,8 @@ function search(name){
 //	},
 //	async: true
 //});
-///*锁屏*/
+
+/*锁屏*/
 $(document).on("click", ".userinfo .rows .one", function() {
 	$.ajax({
 		type: "post",
@@ -170,6 +159,21 @@ $(document).on("click", ".userinfo .rows .one", function() {
 		async: true
 	});
 })
+function lock() {
+    var lock;
+    lock += '<div class="lock">';
+    lock += '<div class="lock_bg">';
+    lock += '<div class="password">';
+    lock += '<span>密码：</span>';
+    lock += '<input type="password" />';
+    lock += '</div>';
+    lock += '<button>解锁</button>';
+    lock += '</div>';
+    lock += '</div>';
+    $("body").append(lock);
+}
+
+
 /*解锁*/
 $(document).on("click", ".lock button", function() {
 	var password = $(".lock .password input").val();
