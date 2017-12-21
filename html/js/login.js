@@ -3,8 +3,8 @@ $(function() {
 	var d = new Date();
 	var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
 	var str1 = "星期" + "日一二三四五六".charAt(new Date().getDay());
-	$(".headright").text(str + " " + str1)
-
+    localStorage.setItem('nowDate',str + ' ' + str1);
+	$(".headright").text(localStorage.getItem('nowDate'));
 	$(document).on("click", ".btn1", function() {
 		var account = $(".account").val();
 		var password = $(".password").val();

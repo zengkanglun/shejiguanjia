@@ -208,9 +208,6 @@ pageadd();
 
 function pageadd() {
 	var img = sessionStorage.getItem("img");
-	var d = new Date();
-	var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
-	var str1 = "星期" + "日一二三四五六".charAt(new Date().getDay());
 	var username = sessionStorage.getItem("username");
 	var authority = sessionStorage.getItem("authority");
 	//	var num = authority.indexOf(4);
@@ -231,7 +228,7 @@ function pageadd() {
 	$(".bodyLeftFu .info_name").text(nickname);
 	$(".bodyLeftFu .info_image .photo").attr("src", img);
 	$("#bodyRight .right .info-image img").attr("src", img);
-	$("#bodyRight .dataTime div").html(str + '&nbsp;&nbsp;&nbsp;&nbsp;' + str1);
+	$("#bodyRight .dataTime div").html(localStorage.getItem('nowDate'));
 	$("#bodyRight .last_time i").html(last_time);
 	$("#bodyRight .last_ip i").html(last_ip);
 }
@@ -278,41 +275,7 @@ $(document).on("click", ".closeBtn", function() {
 var itemName = sessionStorage.getItem("itemName");
 $(".current_task .task_name").text(itemName);
 
-/*修改密码*/
-function psw() {
-	var changePsw = "";
-	changePsw += '<div class="login_psw">';
-	changePsw += '<div class="psw_header">';
-	changePsw += '修改密码';
-	changePsw += '<i></i>';
-	changePsw += '</div>';
-	changePsw += '<div class="psw_content">';
-	changePsw += '<div class="psw_detail name">';
-	changePsw += '<div class="psw_detail_left">姓名:</div>';
-	changePsw += '<input readonly="readonly" type="text" name="" value="李四" class="nickname" />';
-	changePsw += '</div>';
-	changePsw += '<div class="psw_detail">';
-	changePsw += '<div class="psw_detail_left">账号:</div>';
-	changePsw += '<input readonly="readonly" type="text" name="" value="输入账号" class="username" />';
-	changePsw += '</div>';
-	changePsw += '<div class="psw_detail">';
-	changePsw += '<div class="psw_detail_left">旧密码:</div>';
-	changePsw += '<input type="password" name="" id="" value="输入旧密码" class="psw_detail_right oldPwd" />';
-	changePsw += '</div>';
-	changePsw += '<div class="psw_detail">';
-	changePsw += '<div class="psw_detail_left">新密码:</div>';
-	changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd" />';
-	changePsw += '</div>';
-	changePsw += '<div class="psw_detail">';
-	changePsw += '<div class="psw_detail_left">再次确认:</div>';
-	changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd1" />';
-	changePsw += '</div>';
-	changePsw += '</div>';
-	changePsw += '<button type="button" class="btn1" id="editPwd">确&nbsp;&nbsp;定</button>';
-	changePsw += '<button type="button" class="btn2" id="editPwd">取&nbsp;&nbsp;消</button>';
-	changePsw += '</div>';
-	$("#boxPock .scroll").append(changePsw);
-}
+
 ///*修改密码*/
 $(document).on("click", ".userinfo .rows .two", function() {
 	$("#boxPock").show();
@@ -340,6 +303,42 @@ $(document).on("click", ".userinfo .rows .two", function() {
 		async: true
 	});
 })
+/*修改密码*/
+function psw() {
+    var changePsw = "";
+    changePsw += '<div class="login_psw">';
+    changePsw += '<div class="psw_header">';
+    changePsw += '修改密码';
+    changePsw += '<i></i>';
+    changePsw += '</div>';
+    changePsw += '<div class="psw_content">';
+    changePsw += '<div class="psw_detail name">';
+    changePsw += '<div class="psw_detail_left">姓名:</div>';
+    changePsw += '<input readonly="readonly" type="text" name="" value="李四" class="nickname" />';
+    changePsw += '</div>';
+    changePsw += '<div class="psw_detail">';
+    changePsw += '<div class="psw_detail_left">账号:</div>';
+    changePsw += '<input readonly="readonly" type="text" name="" value="输入账号" class="username" />';
+    changePsw += '</div>';
+    changePsw += '<div class="psw_detail">';
+    changePsw += '<div class="psw_detail_left">旧密码:</div>';
+    changePsw += '<input type="password" name="" id="" value="输入旧密码" class="psw_detail_right oldPwd" />';
+    changePsw += '</div>';
+    changePsw += '<div class="psw_detail">';
+    changePsw += '<div class="psw_detail_left">新密码:</div>';
+    changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd" />';
+    changePsw += '</div>';
+    changePsw += '<div class="psw_detail">';
+    changePsw += '<div class="psw_detail_left">再次确认:</div>';
+    changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd1" />';
+    changePsw += '</div>';
+    changePsw += '</div>';
+    changePsw += '<button type="button" class="btn1" id="editPwd">确&nbsp;&nbsp;定</button>';
+    changePsw += '<button type="button" class="btn2" id="editPwd">取&nbsp;&nbsp;消</button>';
+    changePsw += '</div>';
+    $("#boxPock .scroll").append(changePsw);
+}
+
 $(document).on("click", ".login_psw .psw_header i,.login_psw .btn2", function() {
 	$("#boxPock").hide();
 	$("#boxPock .scroll .login_psw").remove();
