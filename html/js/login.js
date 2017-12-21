@@ -11,7 +11,7 @@ $(function() {
 		login(account, password);
 	})
 
-	$(document).on("keydown", function() {
+	$(document).on("keydown", function(event) {
 		if(event.keyCode == 13) {
 			var account = $(".account").val();
 			var password = $(".password").val();
