@@ -465,3 +465,6 @@ $.ajax({
 	},
 	async: true
 });
+
+// 加载左侧菜单
+$('#bodyLeft').load('leftMenu.html')
