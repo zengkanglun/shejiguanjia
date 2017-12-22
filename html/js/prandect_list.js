@@ -19,24 +19,24 @@ $(function() {
 
 		}
 		$(e_id + " .detail").on("click", function() {
-			console.log("detail")
+			//			console.log("detail")
 			//viewP($(this).data("id"));
 		});
 		$(e_id + " .edit").on("click", function() {
-			console.log("edit")
+			//			console.log("edit")
 			editP($(this).data("id"));
 		});
 		$(e_id + " .jour").on("click", function() {
-			console.log("jour")
+			//			console.log("jour")
 		});
 		$(".delete").on("click", function() {
-			console.log("delete")
+			//			console.log("delete")
 			deleteP($(this).data("id"));
-			console.log($(this).data("id"))
+			//			console.log($(this).data("id"))
 		});
 		$(e_id + " .cover").on("click", function() {
 			deletePCover($(this).data("id"));
-			console.log("jour")
+			//			console.log("jour")
 		});
 
 	}
@@ -58,19 +58,19 @@ $(function() {
 
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
+					//					console.log(1);
+					//					console.log(data.msg);
+					//					console.log(data.data);
 					$("#total_a").html(data.data.count);
 					$(".total_num.a").html(data.data.page);
 					rendTListParam(data.data.data, "#task_list_ee");
 					total_num_norT = parseInt(data.data.page);
 				} else {
-					console.log(data.msg + 5 + data.data)
+					//					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+				//				console.log(0)
 			},
 			async: true
 		});
@@ -92,7 +92,7 @@ $(function() {
 		if(to)
 			bundle.end_time = to;
 		if(title)
-			bundle.title = title;
+			bundle.name = title;
 		var token = localStorage.getItem("token");
 		$.ajax({
 			type: "get",
@@ -103,20 +103,18 @@ $(function() {
 			dataType: 'json',
 			data: bundle,
 			success: function(data) {
-				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
+				if(data.status == 1) {
 					$("#total_a").html(data.data.count);
 					$(".total_num.a").html(data.data.page);
 					rendTListParam(data.data.data, "#task_list_ee");
+					 
+					total_num_norT = parseInt(data.data.page);
+					
 				} else {
-					console.log(data.msg + 5 + data.data)
+
 				}
 			},
-			error: function(data) {
-				console.log(0)
-			},
+			error: function(data) {},
 			async: true
 		});
 
@@ -130,8 +128,11 @@ $(function() {
 		//getPrevPage();
 		if(g_pageCurT < 1)
 			g_pageCurT = 1;
-		getPageParamT(g_pageCurT);
 		$(".number.a").html(g_pageCurT);
+		var key = $("#query_key_a").val();
+		var date_f = $("#three").val();
+		var date_t = $("#four").val();
+		getPageParamT(g_pageCurT, date_f, date_t, key);
 	})
 	//下一页
 	$("#after_t").on("click", function() {
@@ -139,27 +140,47 @@ $(function() {
 		//getNextPage();
 		if(g_pageCurT > total_num_norT)
 			g_pageCurT--;
-		getPageParamT(g_pageCurT);
+		//getPageParamT(g_pageCurT);
 
 		$(".number.a").html(g_pageCurT);
+		var key = $("#query_key_a").val();
+		var date_f = $("#three").val();
+		var date_t = $("#four").val();
+		getPageParamT(g_pageCurT, date_f, date_t, key);
 	})
 
 	//task任务
 	$(".search.a").on("click", function() {
+		g_pageCurT = 1;
+		$(".number.a").html(g_pageCurT);
+		var key = $("#query_key_a").val();
 		var date_f = $("#three").val();
 		var date_t = $("#four").val();
-		getPageParamT(g_pageCurT, date_f, date_t);
+		getPageParamT(g_pageCurT, date_f, date_t, key);
+
+	})
+
+	$(".go.a").on("click", function() {
+		var key = $("#query_key_a").val();
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			g_pageCurT = jump_num;
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			getPageParamT(g_pageCurT, $("#three").val(), $("#four").val(), key);
+			$(".number.a").html(g_pageCurT);
+		} else {
+			toast("请输入正常页码")
+		}
 
 	})
 
 	//key查询
 	$("#query_a").on("click", function() {
+
+		g_pageCurT = 1;
+		$(".number.a").html(g_pageCurT);
 		var key = $("#query_key_a").val();
-		/*if(key!="")
-			key="/"+key;
-		console.log(key)*/
-		//getPList(key);
-		getPageParamT(g_pageCurT, undefined, undefined, key)
+		getPageParamT(g_pageCurT, $("#three").val(), $("#four").val(), key)
 
 	})
 
@@ -167,9 +188,14 @@ $(function() {
 	//项目管理 e_id:：渲染元素id
 	var rendPRListParam = function(data, e_id, type) {
 		$(e_id).html("");
-        console.log()
 		for(var i in data) {
 			var tsk = data[i];
+			var et = "";
+			if(tsk.edit == 0)
+				et = '<span class="check"  data-id="' + tsk.id + '">查看</span>';
+			else
+				et = '<span class="edit"  data-id="' + tsk.id + '">编辑</span><span class="check"  data-id="' + tsk.id + '">查看</span>';
+
 			var item = $('<tr>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
 				'<td>' + tsk.name + '</td>' +
@@ -179,8 +205,9 @@ $(function() {
 				'<td>' + tsk.nickname + '</td>' +
 				'<td class=" "> ' + tsk.project_time + ' </td>' +
 				'<td class="handle">' +
-				'<span class="edit"  data-id="' + tsk.id + '">编辑</span>' +
-				'<span class="check"  data-id="' + tsk.id + '">查看</span>' +
+				/*'<span class="edit"  data-id="' + tsk.id + '">编辑</span>' +
+				'<span class="check"  data-id="' + tsk.id + '">查看</span>' +*/
+				et +
 				'</td>' +
 				'</tr>');
 			$(e_id).append(item);
@@ -212,9 +239,6 @@ $(function() {
 			data: bundle,
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
 
 					//if(type==1)
 					rendPRListParam(data.data.get_on, "#go_list_aa", type);
@@ -240,11 +264,11 @@ $(function() {
 					g_pages_c = pages[2];
 					total_num_cc = parseInt(data.data.page);
 				} else {
-					console.log(data.msg + 5 + data.data)
+					//					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+				//				console.log(0)
 			},
 			async: true
 		});
@@ -295,8 +319,47 @@ $(function() {
 		refresh();
 	})
 
+	//
+
+	$(".go.aa").on("click", function() {
+
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			g_curpag_a = jump_num;
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			refresh();
+		} else {
+			toast("请输入正常页码")
+		}
+
+	})
+	$(".go.bb").on("click", function() {
+
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			g_curpag_b = jump_num;
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			refresh();
+		} else {
+			toast("请输入正常页码")
+		}
+
+	})
+	$(".go.cc").on("click", function() {
+
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			g_curpag_c = jump_num;
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			refresh();
+		} else {
+			toast("请输入正常页码")
+		}
+
+	})
+
 	var refresh = function() {
-		getPRcListParam();
+		getPRcListParam(undefined, $("#one").val(), $("#two").val(), undefined);
 		$(".cu_a").html(g_curpag_a);
 		$(".cu_b").html(g_curpag_b);
 		$(".cu_c").html(g_curpag_c);
@@ -304,9 +367,15 @@ $(function() {
 	}
 
 	$(".search.c").on("click", function() {
+		g_curpag_a = 1;
+		g_curpag_b = 1;
+		g_curpag_c = 1;
 		var fr = $("#one").val();
 		var to = $("#two").val();
 		getPRcListParam(1, fr, to, 1);
+		$(".cu_a").html(g_curpag_a);
+		$(".cu_b").html(g_curpag_b);
+		$(".cu_c").html(g_curpag_c);
 	})
 
 	getPRcListParam(1, undefined, undefined, 1); //
@@ -315,7 +384,7 @@ $(function() {
 
 	//******************//
 	var rendMenScores = function(data) {
-		console.log("scores:" + JSON.stringify(data));
+		//		console.log("scores:" + JSON.stringify(data));
 		var list = data.list;
 		var info = data.project_info;
 		$(".perf_detail .n1 input").val(info.user_name);
@@ -376,9 +445,9 @@ $(function() {
 			data: bundle,
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
+					//					console.log(1);
+					//					console.log(data.msg);
+					//					console.log(data.data);
 					rendMenScores(data.data);
 				}
 			}
@@ -418,7 +487,7 @@ $(function() {
 	}
 
 	//人才绩效总揽
-	var getPmenListParam = function(page, frome, to, type,key) {
+	var getPmenListParam = function(page, frome, to, type, key) {
 		var bundle = {};
 		//if(page)
 		//	bundle.p = page;
@@ -441,9 +510,9 @@ $(function() {
 			data: bundle,
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
+					//					console.log(1);
+					//					console.log(data.msg);
+					//					console.log(data.data);
 
 					rendPmenListParam(data.data.list, "#go_list_men", type);
 
@@ -457,11 +526,11 @@ $(function() {
 
 					g_pages_men = parseInt(data.data.totalPage);
 				} else {
-					console.log(data.msg + 5 + data.data)
+					//					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+				//				console.log(0)
 			},
 			async: true
 		});
@@ -471,21 +540,21 @@ $(function() {
 	var g_curpag_men = 1; //当前浏览页数
 	var g_pages_men = 1; //总页数
 
-	$(".pr_men").on("click", function() {
-		g_curpag_men -= 1;
-		if(g_curpag_men < 1)
-			g_curpag_men = 1;
-		refresh();
-	})
-	$(".af_men").on("click", function() {
-		g_curpag_men += 1;
-		if(g_curpag_men > g_pages_men)
-			g_curpag_men -= 1;
-		refreshmen();
-	})
+	//	$(".pr_men").on("click", function() {
+	//		g_curpag_men -= 1;
+	//		if(g_curpag_men < 1)
+	//			g_curpag_men = 1;
+	//		refresh();
+	//	})
+	//	$(".af_men").on("click", function() {
+	//		g_curpag_men += 1;
+	//		if(g_curpag_men > g_pages_men)
+	//			g_curpag_men -= 1;
+	//		refreshmen();
+	//	})
 
 	var refreshmen = function() {
-		getPmenListParam();
+		///getPmenListParam();
 		$(".cu_men").html(g_curpag_men);
 
 	}
@@ -493,33 +562,103 @@ $(function() {
 	$(".search.c").on("click", function() {
 		var fr = $("#five").val();
 		var to = $("#six").val();
-		getPmenListParam(1, fr, to, 1);
-		//alert(fr+to)
+		///getPmenListParam(1, fr, to, 1);
 	})
 
-    	//key查询
+	//key查询
 	$("#query_b").on("click", function() {
 		var key = $("#query_key_b").val();
-		getPmenListParam(g_curpag_men, undefined, undefined, 1, key);
+		///getPmenListParam(g_curpag_men, undefined, undefined, 1, key);
 		//getPmenListParam(g_curpag_men, "undefined", "undefined", 1, key);
 
 	})
-	getPmenListParam(1, undefined, undefined, 1); //
-	
+	///getPmenListParam(1, undefined, undefined, 1); //
+
 	/*页面跳转*/
-	$(document).on("click",".item_content tbody .edit",function(){
+	$(document).on("click", ".item_content tbody .edit", function() {
 		var project_id = $(this).attr("data-id");
-		localStorage.setItem("project_id",project_id);
-		setTimeout(function(){
-			location.href="item_edit.html";
-		},1000)
+		localStorage.setItem("project_id", project_id);
+		setTimeout(function() {
+			location.href = "item_edit.html";
+		}, 1000)
 	})
-	$(document).on("click",".item_content tbody .check",function(){
+	$(document).on("click", ".item_content tbody .check", function() {
 		var project_id = $(this).attr("data-id");
-		localStorage.setItem("project_id",project_id);
-		setTimeout(function(){
-			location.href="index.html";
-		},1000)
+		localStorage.setItem("project_id", project_id);
+		setTimeout(function() {
+			//			location.href = "index.html?project_id=" + project_id;
+			location.href = "index.html"
+		}, 1000)
 	})
+	/*员工任务*/
+	$(document).on("click", ".staff_content tbody .detail", function() {
+		var uid = $(this).attr("data-id");
+		localStorage.setItem("uid", uid);
+		setTimeout(function() {
+			location.href = "task_detail.html";
+		}, 500)
+	})
+
+})
+
+/*导出表格*/
+
+var getExportParam = function(api) {
+	var token = localStorage.getItem("token");
+	location.href = host_host_host + api;
+	$.ajax({
+		type: "get",
+		url: host_host_host + "/index.php/Home/Admin/managers_export",
+		dataType: 'json',
+		headers: {
+			accept: "usertoken:" + token,
+		},
+		data: {
+
+		},
+		success: function(data) {
+			toast(data.msg);
+			if(data.status == 1) { //success
+
+			} else {
+
+			}
+		},
+		error: function(data) {
+			//				console.log(0)
+		},
+		async: true
+	});
+
+}
+
+//导出表格
+$("#btn-export").on("click", function() {
+	var type = $("#btn-export").data("type");
+	var api = "";
+	if(type == "0")
+		api = "";
+	else if(type == "1")
+		api = "/home/task/export_task";
+	else if(type == "2")
+		api = "";
+
+	getExportParam(api);
+
+})
+
+//tab栏切换
+$(".tab .tab_left li").on("click", function() {
+
+})
+$(".tab .tab_left li").eq(0).on("click", function() {
+	$("#btn-export").data("type", "0");
+})
+$(".tab .tab_left li").eq(1).on("click", function() {
+	$("#btn-export").data("type", "1");
+
+})
+$(".tab .tab_left li").eq(2).on("click", function() {
+	$("#btn-export").data("type", "2");
 
 })

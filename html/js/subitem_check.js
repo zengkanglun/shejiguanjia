@@ -19,7 +19,7 @@ $(function() {
 		},
 		success: function(data) {
 			if(data.status == 1) {
-				console.log(data);
+				//				console.log(data);
 				var datas = data.data;
 				var str = '';
 				for(var i = 0; i < datas.child.length; i++) {
@@ -57,7 +57,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var datas = data.data;
 					var str = '';
 					for(var i = 0; i < datas.user.length; i++) {
@@ -86,18 +86,32 @@ $(function() {
 	}
 	/*分页*/
 	$(document).on('click', '.item_worker .paging .page_right .less', function() {
-		var p = $(this).siblings('.number').text();
+		var p = Number($(this).siblings('.number').text());
 		if(p > 1) {
 			p--;
 			childPer(child_id, p);
+		}else{
+			toast("已经是第一页了")
 		}
 	})
 	$(document).on('click', '.item_worker .paging .page_right .more', function() {
-		var p = $(this).siblings('.number').text();
-		var all = $(this).siblings('.total_num').text();
+		var p = Number($(this).siblings('.number').text());
+		var all = Number($(this).siblings('.total_num').text());
 		if(p < all) {
 			p++;
 			childPer(child_id, p);
+		}else{
+			toast("已经是最后一页了")
+		}
+	})
+	/*跳页*/
+	$(document).on("click", ".item_worker .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			childPer(child_id, jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 	/*子分类点击*/
@@ -121,7 +135,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var datas = data.data;
 					var str = '';
 					$('.big_content tbody').html('');
@@ -173,8 +187,8 @@ $(function() {
 			id.push($('.cnt_detail tbody tr').eq(i).find('.item').attr('data-id'));
 			user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
 		}
-		console.log(id);
-		console.log(user);
+		//		console.log(id);
+		//		console.log(user);
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')

@@ -39,7 +39,7 @@ function copyfiles($file1,$file2){
  */
 function datetime($data=array(),$key){
     foreach($data as $k=>$vo){
-        $data[$k][$key] = date('Y-m-d',$vo[$key]);
+        $data[$k][$key] = date('Y-m-d',$vo[$key]) ? date('Y-m-d',$vo[$key]) : '暂无';
     }
 
     return $data;

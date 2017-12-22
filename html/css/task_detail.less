@@ -110,7 +110,7 @@ body {
                                     }
                                 }
                             }
-                            .e9ecf1 {
+                            tr:nth-child(2n) {
                                 background: #e9ecf1;
                             }
                         }
@@ -206,7 +206,7 @@ body {
                                     }
                                 }
                             }
-                            .e9ecf1 {
+                            tr:nth-child(2n) {
                                 background: #e9ecf1;
                             }
                         }
@@ -303,7 +303,7 @@ body {
                                     }
                                 }
                             }
-                            .e9ecf1 {
+                            tr:nth-child(2n) {
                                 background: #e9ecf1;
                             }
                         }
@@ -400,7 +400,7 @@ body {
                                     }
                                 }
                             }
-                            .e9ecf1 {
+                            tr:nth-child(2n) {
                                 background: #e9ecf1;
                             }
                         }
@@ -434,299 +434,7 @@ body {
         display: block;
         overflow: hidden;
     }
-    //新建任务添加
-    .newtask_add {
-        width: 990px;
-        height: 650px;
-        position: absolute;
-        margin: auto;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #4d555d;
-        display: none;
-        z-index: 10;
-        overflow-y: auto;
-        background: rgba(77, 85, 93, 0.8);
-        .newtask_add_head {
-            width: 100%;
-            height: 56px;
-            background: #293541;
-            text-align: center;
-            line-height: 56px;
-            line-height: 56px\9;
-            color: #ffffff;
-            position: relative;
-            i {
-                position: absolute;
-                width: 16px;
-                height: 16px;
-                background: url(../img/icon_off.png) no-repeat;
-                top: 20px;
-                right: 20px;
-                cursor: pointer;
-            }
-        }
-        .newtask_add_bottom {
-            width: 100%;
-            padding: 37px;
-            .add_content {
-                width: 100%;
-                .cnt_header {
-                    height: 200px;
-                    width: 100%;
-                    padding: 39px 36px 34px 34px;
-                    box-sizing: border-box;
-                    border-bottom: 1px solid #eeeeee;
-                    font-size: 14px;
-                    background: #ffffff;
-                    .left {
-                        height: 36px;
-                        float: left;
-                        position: relative;
-                        margin-bottom: 20px;
-                        span {
-                            float: left;
-                            display: block;
-                            height: 36px;
-                            line-height: 36px;
-                            line-height: 36px\9;
-                            color: #010028;
-                            width: 100px;
-                            text-align: right;
-                        }
-                        input {
-                            float: left;
-                            width: 140px;
-                            height: 36px;
-                            line-height: 34px;
-                            line-height: 34px\9;
-                            border: 1px solid #c8d2dc;
-                            background: #fafafa;
-                            padding-left: 20px;
-                            box-sizing: border-box;
-                            color: #293541;
-                            font-size: 14px;
-                            margin-left: 15px;
-                        }
-                        i {
-                            width: 33px;
-                            height: 36px;
-                            display: block;
-                            position: absolute;
-                            border-left: 1px solid #c8d2dc;
-                            top: 0;
-                            right: 0;
-                            img {
-                                width: 11px;
-                                height: 8px;
-                                position: absolute;
-                                top: 14px;
-                                left: 11px;
-                            }
-                        }
-                        select {
-                            width: 140px;
-                            height: 36px;
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            opacity: 0;
-                            cursor: pointer;
-                        }
-                    }
-                    .group {
-                        .choose {
-                            width: 62px;
-                            height: 32px;
-                            line-height: 30px;
-                            line-height: 30px\9;
-                            text-align: center;
-                            color: #FD813E;
-                            border-radius: 5px;
-                            border: 1px solid #FD813E;
-                            margin-top: 2px;
-                            margin-left: 15px;
-                            cursor: pointer;
-                        }
-                    }
-                    .right {
-                        height: 36px;
-                        float: right;
-                        position: relative;
-                        margin-left: 180px;
-                        margin-bottom: 20px;
-                        span {
-                            float: left;
-                            display: block;
-                            height: 36px;
-                            line-height: 36px;
-                            line-height: 36px\9;
-                            color: #010028;
-                            width: 100px;
-                            text-align: right;
-                        }
-                        input {
-                            float: left;
-                            width: 140px;
-                            height: 36px;
-                            line-height: 34px;
-                            line-height: 34px\9;
-                            border: 1px solid #c8d2dc;
-                            background: #fafafa;
-                            padding-left: 20px;
-                            box-sizing: border-box;
-                            color: #293541;
-                            font-size: 14px;
-                            margin-left: 15px;
-                        }
-                        i {
-                            width: 33px;
-                            height: 36px;
-                            display: block;
-                            position: absolute;
-                            border-left: 1px solid #c8d2dc;
-                            top: 0;
-                            right: 0;
-                            cursor: pointer;
-                            img {
-                                width: 11px;
-                                height: 8px;
-                                position: absolute;
-                                top: 14px;
-                                left: 11px;
-                            }
-                        }
-                        select {
-                            width: 140px;
-                            height: 36px;
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            opacity: 0;
-                            cursor: pointer;
-                        }
-                        #one {
-                            background-image: url(../img/timechoose.png);
-                            background-position: right center;
-                            background-size: 36px 40px;
-                            background-repeat: no-repeat;
-                            background-position-y: -3px;
-                            cursor: pointer;
-                        }
-                    }
-                    .file {
-                        width: 225px;
-                        input {
-                            width: 150px;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            opacity: 0;
-                            filter: alpha(opacity=0);
-                            cursor: pointer;
-                        }
-                        .choose_file {
-                            width: 80px;
-                            height: 32px;
-                            line-height: 30px;
-                            line-height: 30px\9;
-                            text-align: center;
-                            color: #FD813E;
-                            border-radius: 5px;
-                            border: 1px solid #FD813E;
-                            margin-top: 2px;
-                            margin-left: 15px;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                            overflow: hidden;
-                        }
-                        .download {
-                            width: 62px;
-                            height: 32px;
-                            line-height: 30px;
-                            line-height: 30px\9;
-                            text-align: center;
-                            color: #FD813E;
-                            border-radius: 5px;
-                            border: 1px solid #FD813E;
-                            margin-top: 2px;
-                            margin-left: 15px;
-                            cursor: pointer;
-                        }
-                    }
-                }
-                .cnt_bottom {
-                    padding: 22px 36px 30px 34px;
-                    background: #ffffff;
-                    .cnt_bottom_header {
-                        height: 26px;
-                        padding-left: 15px;
-                        border-left: 4px solid #FD813E;
-                        box-sizing: border-box;
-                        font-size: 24px;
-                        color: #293541;
-                    }
-                    textarea {
-                        width: 100%;
-                        height: 174px;
-                        background: #EEEEEE;
-                        border-radius: 5px;
-                        margin-top: 22px;
-                        outline: none;
-                        border: none;
-                        resize: none;
-                        color: #5b636c;
-                        padding: 15px;
-                        font-size: 16px;
-                        letter-spacing: 1px;
-                    }
-                }
-                .cnt_footer {
-                    width: 100%;
-                    height: 100px;
-                    .btn1 {
-                        width: 160px;
-                        height: 50px;
-                        text-align: center;
-                        line-height: 50px;
-                        line-height: 50px\9;
-                        border-radius: 5px;
-                        display: block;
-                        margin: 50px auto;
-                        background: #FD813E;
-                        margin-bottom: 50px;
-                        padding: 0;
-                        font-size: 16px;
-                        outline: none;
-                        box-shadow: 0px 0px 10px #FD813E;
-                        float: left;
-                        margin-left: 250px;
-                    }
-                    .btn2 {
-                        width: 160px;
-                        height: 50px;
-                        text-align: center;
-                        line-height: 50px;
-                        line-height: 50px\9;
-                        border-radius: 5px;
-                        display: block;
-                        margin: 50px auto;
-                        background: #9DAAB8;
-                        margin-bottom: 50px;
-                        padding: 0;
-                        font-size: 16px;
-                        outline: none;
-                        float: right;
-                        margin-right: 250px;
-                    }
-                }
-            }
-        }
-    }
-    //新建任务添加结束
-    //任务进行中增加
+    //任务进行中详情
     .taskgo_add {
         width: 990px;
         height: 80%;
@@ -790,7 +498,7 @@ body {
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -856,12 +564,10 @@ body {
                             line-height: 36px;
                             line-height: 36px\9;
                             color: #010028;
-                            width: 100px;
-                            text-align: right;
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -909,15 +615,7 @@ body {
                         }
                     }
                     .file {
-                        input {
-                            width: 150px;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            opacity: 0;
-                            filter: alpha(opacity=0);
-                            cursor: pointer;
-                        }
+                        width: 255px;
                         .choose_file {
                             width: 80px;
                             height: 32px;
@@ -1046,7 +744,7 @@ body {
             }
         }
     }
-    //任务进行中增加结束
+    //任务进行中详情结束
     //新任务详情
     .newtask_detail {
         width: 990px;
@@ -1063,7 +761,7 @@ body {
         z-index: 10;
         background: rgba(77, 85, 93, 0.8);
         .newtask_detail_head {
-            width: 100%;
+            width: 970px;
             height: 56px;
             background: #293541;
             text-align: center;
@@ -1082,7 +780,7 @@ body {
             }
         }
         .newtask_detail_bottom {
-            width: 100%;
+            width: 970px;
             padding: 37px;
             .add_content {
                 width: 100%;
@@ -1111,7 +809,7 @@ body {
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -1177,12 +875,10 @@ body {
                             line-height: 36px;
                             line-height: 36px\9;
                             color: #010028;
-                            width: 100px;
-                            text-align: right;
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -1230,15 +926,7 @@ body {
                         }
                     }
                     .file {
-                        input {
-                            width: 150px;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            opacity: 0;
-                            filter: alpha(opacity=0);
-                            cursor: pointer;
-                        }
+                        width: 255px;
                         .choose_file {
                             width: 80px;
                             height: 32px;
@@ -1295,57 +983,9 @@ body {
                         letter-spacing: 1px;
                     }
                 }
-                .color {
-                    width: 100%;
-                    height: 26px;
-                }
-                .cnt_reply {
-                    padding: 22px 36px 30px 34px;
-                    background: #ffffff;
-                    .cnt_bottom_header {
-                        height: 26px;
-                        padding-left: 15px;
-                        border-left: 4px solid #FD813E;
-                        box-sizing: border-box;
-                        font-size: 24px;
-                        color: #293541;
-                    }
-                    textarea {
-                        width: 100%;
-                        height: 112px;
-                        background: #EEEEEE;
-                        border-radius: 5px;
-                        margin-top: 22px;
-                        outline: none;
-                        border: none;
-                        resize: none;
-                        color: #5b636c;
-                        padding: 15px;
-                        font-size: 16px;
-                        letter-spacing: 1px;
-                    }
-                }
                 .cnt_footer {
                     width: 100%;
                     height: 100px;
-                    .btn1,
-                    .btn3 {
-                        width: 160px;
-                        height: 50px;
-                        text-align: center;
-                        line-height: 50px;
-                        line-height: 50px\9;
-                        border-radius: 5px;
-                        display: block;
-                        margin: 50px auto;
-                        background: #FD813E;
-                        margin-bottom: 50px;
-                        padding: 0;
-                        font-size: 16px;
-                        outline: none;
-                        box-shadow: 0px 0px 10px #FD813E;
-                        float: left;
-                    }
                     .btn2 {
                         width: 160px;
                         height: 50px;
@@ -1359,15 +999,6 @@ body {
                         margin-bottom: 50px;
                         padding: 0;
                         font-size: 16px;
-                        outline: none;
-                        float: left;
-                    }
-                    .btn1 {
-                        margin-left: 180px;
-                    }
-                    .btn3,
-                    .btn2 {
-                        margin-left: 34px;
                     }
                 }
             }
@@ -1438,7 +1069,7 @@ body {
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -1504,8 +1135,6 @@ body {
                             line-height: 36px;
                             line-height: 36px\9;
                             color: #010028;
-                            width: 100px;
-                            text-align: right;
                         }
                         #four {
                             background-image: url(../img/timechoose.png);
@@ -1517,7 +1146,7 @@ body {
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -1557,15 +1186,7 @@ body {
                         }
                     }
                     .file {
-                        input {
-                            width: 150px;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            opacity: 0;
-                            filter: alpha(opacity=0);
-                            cursor: pointer;
-                        }
+                        width: 255px;
                         .choose_file {
                             width: 80px;
                             height: 32px;
@@ -1655,24 +1276,6 @@ body {
                 .cnt_footer {
                     width: 100%;
                     height: 100px;
-                    .btn1,
-                    .btn3 {
-                        width: 160px;
-                        height: 50px;
-                        text-align: center;
-                        line-height: 50px;
-                        line-height: 50px\9;
-                        border-radius: 5px;
-                        display: block;
-                        margin: 50px auto;
-                        background: #FD813E;
-                        margin-bottom: 50px;
-                        padding: 0;
-                        font-size: 16px;
-                        outline: none;
-                        box-shadow: 0px 0px 10px #FD813E;
-                        float: left;
-                    }
                     .btn2 {
                         width: 160px;
                         height: 50px;
@@ -1686,15 +1289,6 @@ body {
                         margin-bottom: 50px;
                         padding: 0;
                         font-size: 16px;
-                        outline: none;
-                        float: left;
-                    }
-                    .btn1 {
-                        margin-left: 275px;
-                    }
-                    .btn3,
-                    .btn2 {
-                        margin-left: 34px;
                     }
                 }
             }
@@ -1765,7 +1359,7 @@ body {
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -1819,7 +1413,6 @@ body {
                         }
                     }
                     .right {
-                        width: 250px;
                         height: 36px;
                         float: right;
                         position: relative;
@@ -1832,8 +1425,6 @@ body {
                             line-height: 36px;
                             line-height: 36px\9;
                             color: #010028;
-                            width: 100px;
-                            text-align: right;
                         }
                         #five {
                             background-image: url(../img/timechoose.png);
@@ -1845,7 +1436,7 @@ body {
                         }
                         input {
                             float: left;
-                            width: 158px;
+                            width: 170px;
                             height: 36px;
                             line-height: 34px;
                             line-height: 34px\9;
@@ -1885,6 +1476,7 @@ body {
                         }
                     }
                     .file {
+                        width: 255px;
                         .choose_file {
                             width: 80px;
                             height: 32px;
@@ -1978,6 +1570,22 @@ body {
                                 color: #5B636C;
                                 line-height: 30px;
                                 line-height: 30px\9;
+                                .ow_ren {
+                                    display: block;
+                                    width: 20%;
+                                    line-height: 30px;
+                                    line-height: 30px\9;
+                                    float: left;
+                                    word-wrap: break-word;
+                                }
+                                .ow_zht {
+                                    display: block;
+                                    width: 80%;
+                                    line-height: 30px;
+                                    line-height: 30px\9;
+                                    float: left;
+                                    word-wrap: break-word;
+                                }
                             }
                             .time {
                                 width: 20%;
@@ -2128,4 +1736,95 @@ body {
         }
     }
     //拒绝原因结束
+    //确认删除
+    .del {
+        width: 400px;
+        height: 256px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background: #5b636c;
+        display: none;
+        z-index: 10;
+        overflow-y: auto;
+        background: rgba(77, 85, 93, 0.8);
+        .del_head {
+            width: 100%;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .del_bottom {
+            width: 100%;
+            height: 200px;
+            background: #ffffff;
+            overflow: hidden;
+            .sure {
+                width: 230px;
+                height: 36px;
+                line-height: 36px;
+                line-height: 36px\9;
+                //              border: 1px solid #e3e3e3;
+                text-align: center;
+                //              background: #e5e5e5;
+                margin: 50px auto;
+                margin-bottom: 0;
+            }
+            .foot {
+                width: 100%;
+                height: 100px;
+                overflow: hidden;
+                .btn1 {
+                    width: 100px;
+                    height: 36px;
+                    text-align: center;
+                    line-height: 36px;
+                    line-height: 36px\9;
+                    border-radius: 5px;
+                    display: block;
+                    margin-top: 30px;
+                    background: #FD813E;
+                    padding: 0;
+                    font-size: 16px;
+                    outline: none;
+                    box-shadow: 0px 0px 10px #FD813E;
+                    float: left;
+                    margin-left: 80px;
+                }
+                .btn2 {
+                    width: 100px;
+                    height: 36px;
+                    text-align: center;
+                    line-height: 36px;
+                    line-height: 36px\9;
+                    border-radius: 5px;
+                    display: block;
+                    margin-top: 30px;
+                    background: #9DAAB8;
+                    padding: 0;
+                    font-size: 16px;
+                    outline: none;
+                    float: left;
+                    margin-left: 35px;
+                }
+            }
+        }
+    }
+    //确认删除结束
 }

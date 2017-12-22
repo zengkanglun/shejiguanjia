@@ -40,10 +40,12 @@ $(function() {
 	itemNOWlist(1, 1);
 	/*项目管理进行中页面增加*/
 	$(document).on("click", ".item_manage1 .third .page_right .more", function() {
-		var total_num = $(".item_manage1 .third .page_right .total_num").text();
-		var num = $(".item_manage1 .third .page_right .number").text();
+		var total_num = Number($(".item_manage1 .third .page_right .total_num").text());
+		var num = Number($(".item_manage1 .third .page_right .number").text());
 		var pastnum = $(".item_manage1 .forth .page_right .number").text();
+		console.log(total_num, num)
 		if(num >= total_num) {
+			console.log("大于")
 			toast("已经是最后一页了")
 		} else {
 			num++;
@@ -53,14 +55,25 @@ $(function() {
 	})
 	/*项目管理进行中页面减少*/
 	$(document).on("click", ".item_manage1 .third .page_right .less", function() {
-		var num = $(".item_manage1 .third .page_right .number").text();
-		var pastnum = $(".item_manage1 .forth .page_right .number").text();
+		var num = Number($(".item_manage1 .third .page_right .number").text());
+		var pastnum = Number($(".item_manage1 .forth .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".item_manage1 .third .page_right .number").text(num);
 			itemNOWlist(num, pastnum);
+		}
+	})
+	/*项目管理进行中跳页*/
+	$(document).on("click", ".item_manage1 .third .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		var pastnum = $(".item_manage1 .forth .page_right .number").text();
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			itemNOWlist(jump_num, pastnum);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 	/*项目管理已完成页面增加*/
@@ -88,6 +101,17 @@ $(function() {
 			itemNOWlist(num, pastnum);
 		}
 	})
+	/*项目管理已完成跳页*/
+	$(document).on("click", ".item_manage1 .forth .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		var pastnum = $(".item_manage1 .third .page_right .number").text();
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			itemNOWlist(pastnum, jump_num);
+		} else {
+			toast("请输入正常页码")
+		}
+	})
 	/*进行中,已完成的页面*/
 	function itemNOWlist(p1, p2) {
 		$.ajax({
@@ -103,7 +127,6 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
 					var nowList = "";
 					var datas = data.data.get_on;
 					for(var i = 0; i < datas.length; i++) {
@@ -140,7 +163,6 @@ $(function() {
 					$(".item_manage1 .third .page_right .total_num").text(data.data.page[0]);
 					var pastList = "";
 					var pastData = data.data.end;
-					console.log(pastData.length)
 					for(var i = 0; i < pastData.length; i++) {
 						pastList += '<div class="item_table clearfix" data-id="' + pastData[i].id + '">';
 						pastList += '<div class="list_one">' + (i + 1) + '</div>';
@@ -240,12 +262,12 @@ $(function() {
 	var userItemID; /*项目id*/
 	var itemListid; /*子项目id*/
 	var listId; /*列表Id*/
-	var workType_id;/*工种id*/
+	var workType_id; /*工种id*/
 	$(document).on("click", ".item_manage1 .third .member_work .operate", function() {
 		laborNum = 1;
 		$("#boxPock").show();
 		$("#boxPock .userAdminSeven").show();
-		userItemID = $(this).parents(".item_table").attr("data-id");
+		userItemID = $(this).parents(".item_table").attr("data-id");//点击操作按钮 拿到用户id jene
 		item_msg(userItemID);
 	})
 	$(document).on("click", ".item_manage1 .forth .member_work .operate", function() {
@@ -277,16 +299,23 @@ $(function() {
 		var txt = $(this).text();
 		$(this).addClass("active").siblings().removeClass("active");
 		$(".manage_left").text(txt);
+		$(".item_choose input").val(" ");
+		$(".item_choose input").attr("data-id", 0);
+		$(".userAdminSeven .w_choose li").remove();
+		$(".userAdminSeven table tbody tr").remove();
 		work_manage(itemListid);
 	})
 	/*工种编辑情况*/
 	$(document).on("click", ".userAdminSeven tbody .edit", function() {
 		$("#boxPock .userAdminSeven").hide();
 		$("#boxPock .item_check1").show();
-		var user_id = $(this).parents("tr").attr("user-id"); /*用户id*/		
+		var user_id = $(this).parents("tr").attr("user-id"); /*用户id*/
 		itemListid = $(".userAdminSeven .subitem_name li.active").attr("data-id");
 		listId = $(this).parents("tr").attr("item-id");
 		workType_id = $(".userAdminSeven .item_choose input").attr("data-id");
+		var name = $(this).parents("tr").find("td").eq(1).text();
+		var work = $(this).parents("tr").find("td").eq(3).text();
+		var content1 = $(this).parents("tr").find("td").eq(4).text();
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/project/history",
@@ -300,9 +329,12 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
-					$(".item_check1 .nickname").val(data.data.staff.nickname);
-					$(".item_check1 .labor").val(data.data.staff.labor);
+					//					console.log(data)
+					$(".item_check1 .nickname").val(name);
+					$(".item_check1 .labor").val(work);
+					$(".item_check1 .cnt_bottom textarea").text(content1);
+					//					$(".item_check1 .nickname").val(data.data.staff.nickname);
+					//					$(".item_check1 .labor").val(data.data.staff.labor);
 					var datas = data.data.project_staff;
 					var content = "";
 					for(var i = 0; i < datas.length; i++) {
@@ -355,7 +387,7 @@ $(function() {
 					toast(data.msg);
 					$(".userAdminSeven").show();
 					$("#boxPock .item_check1").hide();
-					msgID(itemListid,workType_id);
+					msgID(itemListid, workType_id);
 				} else {
 
 				}
@@ -370,7 +402,7 @@ $(function() {
 	$(document).on("click", ".userAdminSeven tbody .del", function() {
 		itemListid = $(".subitem_name li.active").attr("data-id"); /*子项目id*/
 		listId = $(this).parents("tr").attr("item-id"); /*列表id*/
-		workType_id = $(".userAdminSeven .item_choose input").attr("data-id");/*工种id*/
+		workType_id = $(".userAdminSeven .item_choose input").attr("data-id"); /*工种id*/
 		$(".userAdminSeven").hide();
 		$("#boxPock .delremind").show();
 	})
@@ -392,7 +424,7 @@ $(function() {
 					toast(data.msg);
 					$(".userAdminSeven").show();
 					$("#boxPock .delremind").hide();
-					msgID(itemListid,workType_id);
+					msgID(itemListid, workType_id);
 				} else {
 
 				}
@@ -518,7 +550,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					var item_table = "";
 					for(var i = 0; i < data.data.user.length; i++) {
 						item_table += '<tr user-id="' + data.data.user[i].user_id + '" item-id="' + data.data.user[i].id + '">';
@@ -606,15 +638,15 @@ $(function() {
 				},
 				success: function(data) {
 					if(data.status == 1) {
-						msgID(itemListid,workType_id)
+						msgID(itemListid, workType_id)
 						$("#boxPock .userAdminSeven").show();
 						$("#boxPock .addMember").hide();
 					} else {
-
+						toast(data.msg)
 					}
 				},
 				error: function(data) {
-
+					toast(data.msg)
 				},
 				async: true
 			});
@@ -756,8 +788,9 @@ $(function() {
 		})
 	}
 
-	/*项目管理计提*/
+	/*项目管理计提===============*/
 	var itemId; /*项目id*/
+	var countListid; /*子项目id*/
 	var itemNum;
 	$(document).on("click", ".item_manage1 .third .count_system .manage,.item_manage1 .third .count_manage .operate", function() {
 		itemNum = 1;
@@ -834,6 +867,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
+					//					console.log(data)
 					/*新建项目信息*/
 					var newItem = "";
 					for(var i = 0; i < data.data.current_work_list.length; i++) {
@@ -850,19 +884,25 @@ $(function() {
 					$(".userAdminFive .newCount tbody").append(newItem);
 					/*进行中的项目*/
 					var goItem = "";
-					for(var i = 0; i < data.data.current_commission_list.length; i++) {
-						goItem += '<tr data-id="' + data.data.current_commission_list[i].project_commission_id + '">';
+					var datas = data.data.current_commission_list.list;
+					for(var i = 0; i < datas.length; i++) {
+						goItem += '<tr data-id="' + datas[i].project_commission_id + '">';
 						goItem += '<td>' + (i + 1) + '</td>';
-						goItem += '<td>' + data.data.current_commission_list[i].start_time + '/' + data.data.current_commission_list[i].end_time + '</td>';
-						goItem += '<td class="work" data-id="' + data.data.current_commission_list[i].work_id + '">' + data.data.current_commission_list[i].work_name + '</td>';
-						goItem += '<td>' + data.data.current_commission_list[i].username + '</td>';
-						goItem += '<td>' + data.data.current_commission_list[i].commission_rate + '</td>';
-						goItem += '<td class="plan" data-id="' + data.data.current_commission_list[i].is_submit + '"><i class="add"></i><span class="detail">详情</span><span class="urge">催促</span></td>';
-						goItem += '<td class="handle" data-id="' + data.data.current_commission_list[i].status + '"><i class="check">已审核</i><i class="nocheck">未审核</i><span class="back">退回</span><i class="defate">审核失败</i></td>';
+						goItem += '<td>' + datas[i].start_time + '/' + datas[i].end_time + '</td>';
+						goItem += '<td class="work" data-id="' + datas[i].work_id + '">' + datas[i].work_name + '</td>';
+						goItem += '<td>' + datas[i].username + '</td>';
+						goItem += '<td>' + datas[i].commission_rate + '</td>';
+						goItem += '<td class="plan" data-id="' + datas[i].is_submit + '"><i class="add"></i><span class="detail">详情</span><span class="urge">催促</span></td>';
+						goItem += '<td class="handle" data-id="' + datas[i].status + '"><i class="check">已审核</i><i class="nocheck">未审核</i><span class="back">退回</span><i class="defate">审核失败</i></td>';
 						goItem += '</tr>';
 					}
 					$(".userAdminFive .nowCount tbody tr").remove();
 					$(".userAdminFive .nowCount tbody").append(goItem);
+					if(data.data.current_commission_list.is_submit == 0) {
+						$(".nowCount .nowbutton").show();
+					} else {
+						$(".nowCount .nowbutton").hide();
+					}
 					$(".userAdminFive tbody td.plan").each(function() {
 						if($(this).attr("data-id") == 0) {
 							$(this).find(".add").text("未提交");
@@ -913,6 +953,22 @@ $(function() {
 		var project_child_id = $(this).attr("data-id");
 		countItem(itemId, project_child_id);
 	})
+	/*计算计提比例*/
+	var rateNum;
+	var arr;
+	$(document).on("blur", ".userAdminFive .newCount tbody .rate input", function() {
+		rateNum = 0;
+		arr = [];
+		$(".userAdminFive .newCount tbody .rate input").each(function() {
+			var num = $(this).val();
+			arr.push(num)
+		})
+		for(var i = 0; i < arr.length; i++) {
+			rateNum += Number(arr[i]);
+		}
+		rateNum.toFixed(2)
+	})
+
 	/*项目管理新建计提*/
 	$(document).on("click", ".userAdminFive .newbutton", function() {
 		var commission = [];
@@ -927,43 +983,53 @@ $(function() {
 			}
 			commission.push(obj)
 		})
-		$.ajax({
-			type: "post",
-			url: host_host_host + "/Home/Commission/createProjectCommission",
-			dataType: 'json',
-			headers: {
-				accept: "usertoken:" + token,
-			},
-			data: {
-				project_child_id: project_child_id,
-				start_time: start_time,
-				end_time: end_time,
-				commission: commission
-			},
-			success: function(data) {
-				if(data.status == 1) {
-					toast(data.msg)
-				} else {
+		//		console.log(rateNum);
+		if(!rateNum) {
+			toast("请填写计提比例")
+		} else if(rateNum > 100) {
+			toast("计提总比例超出百分百")
+		} else if(rateNum < 100) {
+			var num = (100 - rateNum).toFixed(2);
+			toast("还有" + num + "百分比未分配")
+		} else {
+			$.ajax({
+				type: "post",
+				url: host_host_host + "/Home/Commission/createProjectCommission",
+				dataType: 'json',
+				headers: {
+					accept: "usertoken:" + token,
+				},
+				data: {
+					project_child_id: project_child_id,
+					start_time: start_time,
+					end_time: end_time,
+					commission: commission
+				},
+				success: function(data) {
+					if(data.status == 1) {
+						toast(data.msg);
+						countItem(itemId, project_child_id);
+					} else {
+						toast(data.msg)
+					}
+				},
+				error: function(data) {
 
-				}
-			},
-			error: function(data) {
-
-			},
-			async: true
-		});
-
+				},
+				async: true
+			});
+		}
 	})
 	/*查看方案详情*/
 	var project_child_id;
 	var work_id;
 	var project_commission_id;
 	var planNum;
-	$(document).on("click", ".userAdminFive .list_detail tbody .plan .detail", function() {
+	$(document).on("click", ".userAdminFive .nowCount tbody .plan .detail", function() {
 		project_child_id = $(".userAdminFive .floor_ul li.active").attr("data-id");
 		work_id = $(this).parents("td").siblings(".work").attr("data-id");
 		project_commission_id = $(this).parents("tr").attr("data-id");
-		itemDetail(project_child_id, work_id, project_commission_id);
+		itemDetail(work_id, project_commission_id);
 		planNum = 1;
 		if(planNum == 1) {
 			$(".item_plan .cnt_footer").show();
@@ -975,7 +1041,8 @@ $(function() {
 	$(document).on("click", ".userAdminFive .pastCount tbody .handle .detail", function() {
 		project_child_id = $(".userAdminFive .floor_ul li.active").attr("data-id");
 		work_id = $(this).parents("td").siblings(".work").attr("data-id");
-		itemDetail(project_child_id, work_id);
+		project_commission_id = $(this).parents("tr").attr("data-id");
+		itemDetail(work_id, project_commission_id);
 		planNum = 2;
 		if(planNum == 2) {
 			$(".item_plan .cnt_footer").hide();
@@ -983,16 +1050,15 @@ $(function() {
 		}
 	})
 
-	function itemDetail(child_id, work_id, project_commission_id) {
+	function itemDetail(work_id, project_commission_id) {
 		$.ajax({
 			type: "get",
-			url: host_host_host + "/Home/Commission/getProjectWorkCommission",
+			url: host_host_host + "/Home/Finance/getProjectStaffCommission",
 			dataType: 'json',
 			headers: {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				project_child_id: project_child_id,
 				work_id: work_id,
 				project_commission_id: project_commission_id
 			},
@@ -1000,11 +1066,11 @@ $(function() {
 				if(data.status == 1) {
 					$("#boxPock .userAdminFive").hide();
 					$("#boxPock .item_plan").show();
-					console.log(data)
-					$(".start_time").val(data.data.work_info.start_time + "/" + data.data.work_info.end_time);
-					$(".item_plan .work_name").val(data.data.work_info.work_name);
-					$(".item_plan .username").val(data.data.work_info.username);
-					$(".item_plan .commission_rate").val(data.data.work_info.commission_rate);
+					//					console.log(data)
+					$(".item_plan .start_time").val(data.data.info.start_time + "/" + data.data.info.end_time);
+					$(".item_plan .work_name").val(data.data.info.work_name);
+					$(".item_plan .username").val(data.data.info.username);
+					$(".item_plan .commission_rate").val(data.data.info.commission_rate);
 					var planItem = "";
 					for(var i = 0; i < data.data.list.length; i++) {
 						planItem += '<tr>';
@@ -1027,8 +1093,9 @@ $(function() {
 			async: true
 		});
 	}
-	/*方案审核*/
+	/*方案审核通过*/
 	$(document).on("click", ".item_plan .btn1", function() {
+		var project_child_id = $(".userAdminFive .floor_ul li.active").attr("data-id");
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Commission/projectWorkCommissionHandle",
@@ -1042,11 +1109,13 @@ $(function() {
 				status: 1
 			},
 			success: function(data) {
-				console.log(data)
 				if(data.status == 1) {
-					location.reload();
+					toast(data.msg);
+					$(".item_plan").hide();
+					$(".userAdminFive").show();
+					countItem(itemId, project_child_id);
 				} else {
-
+					toast(data.msg);
 				}
 			},
 			error: function(data) {
@@ -1055,7 +1124,9 @@ $(function() {
 			async: true
 		});
 	})
+	/*方案审核不通过*/
 	$(document).on("click", ".item_plan .btn3", function() {
+		var project_child_id = $(".userAdminFive .floor_ul li.active").attr("data-id");
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Commission/projectWorkCommissionHandle",
@@ -1069,11 +1140,13 @@ $(function() {
 				status: 2
 			},
 			success: function(data) {
-				console.log(data)
 				if(data.status == 1) {
-					location.reload();
+					toast(data.msg);
+					$(".item_plan").hide();
+					$(".userAdminFive").show();
+					countItem(itemId, project_child_id);
 				} else {
-
+					toast(data.msg);
 				}
 			},
 			error: function(data) {
@@ -1083,8 +1156,9 @@ $(function() {
 		});
 	})
 	/*确认方案*/
-	$(document).on("click", ".userAdminFive .nowbutton", function() {
-		project_commission_id = $(".userAdminFive .nowCount table tr").attr("data-id");
+	$(document).on("click", ".userAdminFive .nowCount .nowbutton", function() {
+		var project_child_id = $(".userAdminFive .floor_ul li.active").attr("data-id");
+		project_commission_id = $(".userAdminFive .nowCount tbody tr").attr("data-id");
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Commission/submitWorkCommission",
@@ -1096,14 +1170,12 @@ $(function() {
 				project_commission_id: project_commission_id,
 			},
 			success: function(data) {
-				console.log(data)
+				//				console.log(data)
 				if(data.status == 1) {
-					toast(data.msg)
-					setTimeout(function() {
-						location.reload();
-					}, 2000);
+					toast(data.msg);
+					countItem(itemId, project_child_id);
 				} else {
-
+					toast(data.msg);
 				}
 			},
 			error: function(data) {
@@ -1132,7 +1204,7 @@ $(function() {
 				if(data.status == 1) {
 					$("#boxPock .userAdminFive").hide();
 					$("#boxPock .labour").show();
-					console.log(data)
+					//					console.log(data)
 					$(".labour .start_time").val(data.data.work_info.start_time + "/" + data.data.work_info.end_time);
 					$(".labour .work_name").val(data.data.work_info.work_name);
 					$(".labour .username").val(data.data.work_info.username);
@@ -1166,6 +1238,7 @@ $(function() {
 	$(document).on("click", ".userAdminFive .nowCount span.back", function() {
 		var project_commission_id = $(this).parents("tr").attr("data-id");
 		var work_id = $(this).parents("tr").find(".work").attr("data-id");
+		var project_child_id = $(".userAdminFive .floor_ul li.active").attr("data-id");
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Commission/rockBack",
@@ -1180,11 +1253,9 @@ $(function() {
 			success: function(data) {
 				if(data.status == 1) {
 					toast(data.msg);
-					setTimeout(function() {
-						location.reload();
-					}, 2000);
+					countItem(itemId, project_child_id);
 				} else {
-
+					toast(data.msg);
 				}
 			},
 			error: function(data) {
@@ -1227,7 +1298,7 @@ $(function() {
 		var work_id = $(this).parents("tr").find(".work").attr("data-id");
 		$.ajax({
 			type: "post",
-			url: host_host_host + "/Home/Commission/sendUrge",
+			url: host_host_host + "/Home/Commission/sendNotice",
 			dataType: 'json',
 			headers: {
 				accept: "usertoken:" + token,
@@ -1249,20 +1320,19 @@ $(function() {
 			async: true
 		});
 	})
-	/*工种负责人====*/
-	$(document).on("click", ".item_manage1 .third tbody .work_count .operate", function() {
+	/*工种负责人=======*/
+	$(document).on("click", ".item_manage1 .third .count_system .work,.item_manage1 .third .count_work .operate", function() {
 		itemNum = 1;
-
 	})
-	$(document).on("click", ".item_manage1 .forth tbody .work_count .operate", function() {
+	$(document).on("click", ".item_manage1 .forth .count_system .work,.item_manage1 .forth .count_work .operate", function() {
 		itemNum = 2;
 	})
 	$(document).on("click", ".worktype .btn2", function() {
 		$(".worktype").hide();
 		$("#boxPock").hide()
 	})
-	$(document).on("click", ".item_manage1 tbody .work_count .operate", function() {
-		itemId = $(this).parents("tr").attr("data-id");
+	$(document).on("click", ".item_manage1 .count_system .work,.item_manage1 .count_work .operate", function() {
+		itemId = $(this).parents(".item_table").attr("data-id"); /*项目id*/
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Commission/getProjectStaffCommission",
@@ -1275,7 +1345,6 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
 					$("#boxPock").show();
 					$("#boxPock .worktype").show();
 					$(".worktype .project_name").val(data.data.project_info.project_name);
@@ -1283,18 +1352,20 @@ $(function() {
 					$(".worktype .stage").val(data.data.project_info.stage);
 					$(".worktype .username").val(data.data.project_info.username);
 					$(".worktype .rate").val(data.data.project_info.rate);
-					$(".worktype_bottom .floor").text(data.data.project_child_list[0].name);
+					$(".worktype_bottom .floor").text(data.data.project_child_info[0].project_child_name);
 					var item_ul = "";
 					var goItem = "";
 					var pastItem = "";
+					var datas = data.data.project_child_info;
 					/*项目信息*/
-					for(var i = 0; i < data.data.project_child_list.length; i++) {
-						item_ul += '<li data-id="' + data.data.project_child_list[i].id + '">' + data.data.project_child_list[i].name + '</li>';
+					for(var i = 0; i < datas.length; i++) {
+						item_ul += '<li data-id="' + datas[i].project_child_id + '">' + datas[i].project_child_name + '</li>';
 					}
 					$(".worktype .floor_ul").html("");
 					$(".worktype .floor_ul").append(item_ul);
 					$(".worktype .floor_ul li").eq(0).addClass("active");
-					workItem(itemId);
+					countListid = datas[0].project_child_id;
+					work1_manage(countListid);
 					if(itemNum == 1) {
 						$(".worktype .newCount,.worktype .history_list").show();
 					} else {
@@ -1310,8 +1381,43 @@ $(function() {
 			async: true
 		});
 	})
+	/*/*第二步工种负责人表格*/
+	function work1_manage(id) {
+		$.ajax({
+			type: "get",
+			url: host_host_host + "/home/project/work_list",
+			dataType: 'json',
+			headers: {
+				accept: "usertoken:" + token,
+			},
+			data: {
+				id: id
+			},
+			success: function(data) {
+				if(data.status == 1) {
+					//					console.log(data)
+					var item_li = "";
+					for(var i = 0; i < data.data.length; i++) {
+						item_li += '<li data-id="' + data.data[i].id + '">' + data.data[i].name + '</li>';
+					}
+					$(".worktype .w_choose1 li").remove();
+					$(".worktype .w_choose1").append(item_li);
+					$(".worktype .item_choose1 input").val(data.data[0].name);
+					$(".worktype .item_choose1 input").attr("data-id", data.data[0].id);
+					workType_id = data.data[0].id;
+					workItem(itemId, countListid, workType_id); /*调取第三步*/
+				} else {
 
-	function workItem(id, child_id) {
+				}
+			},
+			error: function(data) {
+
+			},
+			async: true
+		});
+	}
+
+	function workItem(id, child_id, work_id) {
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Commission/getProjectStaffCommission",
@@ -1321,15 +1427,16 @@ $(function() {
 			},
 			data: {
 				project_id: id,
-				project_child_id: child_id
+				project_child_id: child_id,
+				work_id: work_id,
 			},
 			success: function(data) {
 				if(data.status == 1) {
 					/*进行中的项目*/
-					console.log(data)
+					//					console.log(data)
 					var goItem = "";
 					var datas = data.data.current_staff_commission.current_list;
-					console.log(datas)
+					//					console.log(datas)
 					for(var i = 0; i < datas.length; i++) {
 						goItem += '<tr data-id="' + data.data.current_staff_commission.project_work_commission_id + '">';
 						goItem += '<td>' + (i + 1) + '</td>';
@@ -1337,8 +1444,8 @@ $(function() {
 						goItem += '<td class="work" data-id="' + datas[i].project_staff_commission_id + '" user-id="' + datas[i].user_id + '">' + datas[i].username + '</td>';
 						goItem += '<td>' + datas[i].labor + '</td>';
 						goItem += '<td><span class="detail">详情</span></td>';
-						goItem += '<td class="rate"><input type="text" placeholder="请输入比例"/></td>';
-						goItem += '<td class="handle"><i class="check">已审核</i><i class="nocheck">未审核</i></td>';
+						goItem += '<td class="rate"><input type="text" placeholder="请输入比例" value="' + datas[i].commission_rate + '"/></td>';
+						goItem += '<td class="handle"><i class="check">已审核</i><i class="nocheck">未审核</i><i class="check_fail">审核失败</i></td>';
 						goItem += '</tr>';
 					}
 					$(".worktype .nowCount tbody tr").remove();
@@ -1348,9 +1455,15 @@ $(function() {
 						if(num == 0) {
 							$(this).find(".nocheck").show();
 							$(this).find(".check").hide();
-						} else {
+							$(this).find(".check_fail").hide();
+						} else if(num == 1) {
 							$(this).find(".nocheck").hide();
 							$(this).find(".check").show();
+							$(this).find(".check_fail").hide();
+						} else {
+							$(this).find(".nocheck").hide();
+							$(this).find(".check").hide();
+							$(this).find(".check_fail").show();
 						}
 					})
 					var is_submit = data.data.current_staff_commission.is_submit;
@@ -1362,21 +1475,23 @@ $(function() {
 						$(".worktype .workbutton").hide();
 					}
 					/*历史项目*/
-					var pastItem = "";
+					var pastItem1 = "";
 					var hisDatas = data.data.history_staff_commission;
+					//					console.log(data)
 					for(var i = 0; i < hisDatas.length; i++) {
-						pastItem += '<tr data-id="' + hisDatas[i].project_id + '">';
-						pastItem += '<td>' + (i + 1) + '</td>';
-						pastItem += '<td>' + hisDatas[i].start_time + '/' + hisDatas[i].end_time + '</td>';
-						pastItem += '<td class="work" user-id="' + hisDatas[i].user_id + '">' + datas[i].username + '</td>';
-						pastItem += '<td>' + datas[i].labor + '</td>';
-						pastItem += '<td>' + datas[i].content + '</td>';
-						pastItem += '<td>' + datas[i].commission_rate + '</td>';
-						pastItem += '<td class="handle"><span class="detail1">详情</span></td>';
-						pastItem += '</tr>';
+						pastItem1 += '<tr data-id="' + hisDatas[i].project_id + '">';
+						pastItem1 += '<td>' + (i + 1) + '</td>';
+						pastItem1 += '<td>' + hisDatas[i].start_time + '/' + hisDatas[i].end_time + '</td>';
+						pastItem1 += '<td class="work" user-id="' + hisDatas[i].user_id + '">' + hisDatas[i].nickname + '</td>';
+						pastItem1 += '<td>' + hisDatas[i].labor + '</td>';
+						pastItem1 += '<td>' + hisDatas[i].content + '</td>';
+						pastItem1 += '<td>' + hisDatas[i].commission_rate + '</td>';
+						pastItem1 += '<td class="handle"><span class="detail1">详情</span></td>';
+						pastItem1 += '</tr>';
 					}
+					//					console.log(pastItem1)
 					$(".worktype .history_list tbody tr").remove();
-					$(".worktype .history_list tbody").append(pastItem);
+					$(".worktype .history_list tbody").append(pastItem1);
 				} else {
 
 				}
@@ -1390,44 +1505,87 @@ $(function() {
 
 	/*子项目切换*/
 	$(document).on("click", ".worktype .floor_ul li", function() {
-		var project_child_id = $(this).attr("data-id");
-		workItem(itemId, project_child_id);
+		countListid = $(this).attr("data-id");
+		$(".worktype .w_choose1 li").remove();
+		$(".worktype .item_choose1 input").val("");
+		$(".worktype .item_choose1 input").attr("data-id", 0);
+		$(".worktype .nowCount tbody tr").remove();
+		$(".worktype .plansure").hide();
+		$(".worktype .workbutton").hide();
+		work1_manage(countListid);
+	})
+	/*负责人切换*/
+	$(document).on("click", ".worktype .item_choose1 i", function() {
+		$(".worktype .w_choose1").slideToggle();
+	})
+	$(document).on("click", ".worktype .w_choose1 li", function() {
+		$(".worktype .item_choose1 input").val($(this).text());
+		$(".worktype .item_choose1 input").attr("data-id", $(this).attr("data-id"));
+		$(".worktype .w_choose1").slideUp();
+		countListid = $(".worktype .floor_ul li.active").attr("data-id");
+		workType_id = $(this).attr("data-id");
+		workItem(itemId, countListid, workType_id); /*调取第三步*/
 	})
 	/*公众负责人确认方案*/
+	$(document).on("blur", ".worktype .nowCount tbody .rate input", function() {
+		rateNum = 0;
+		arr = [];
+		$(".worktype .nowCount tbody .rate input").each(function() {
+			var num = $(this).val();
+			arr.push(num)
+		})
+		for(var i = 0; i < arr.length; i++) {
+			rateNum += Number(arr[i]);
+		}
+		rateNum.toFixed(2);
+	})
 	$(document).on("click", ".worktype .workbutton", function() {
 		var commission = [];
 		var obj;
-		var project_work_commission_id = $(".worktype .nowCount tr").attr("data-id");
-		$(".worktype .newCount table tbody tr").each(function() {
+		var project_work_commission_id = $(".worktype .nowCount tbody tr").attr("data-id");
+		countListid = $(".worktype .floor_ul li.active").attr("data-id");
+		workType_id = $(".worktype .item_choose1 input").attr("data-id");
+		$(".worktype .nowCount table tbody tr").each(function() {
 			obj = {
-				work_id: $(this).find(".work").attr("data-id"),
+				project_staff_commission_id: $(this).find(".work").attr("data-id"),
 				rate: $(this).find(".rate input").val()
 			}
 			commission.push(obj)
 		})
-		$.ajax({
-			type: "post",
-			url: host_host_host + "/Home/Commission/createProjectStaffCommission",
-			dataType: 'json',
-			headers: {
-				accept: "usertoken:" + token,
-			},
-			data: {
-				project_work_commission_id: project_work_commission_id,
-				commission: commission
-			},
-			success: function(data) {
-				if(data.status == 1) {
-					toast(data.msg)
-				} else {
+		//		console.log(rateNum)
+		if(!rateNum) {
+			toast("请填写计提比例")
+		} else if(rateNum > 100) {
+			toast("计提总比例超出百分百")
+		} else if(rateNum < 100) {
+			var num = (100 - rateNum).toFixed(2);
+			toast("还有" + num + "百分比未分配")
+		} else {
+			$.ajax({
+				type: "post",
+				url: host_host_host + "/Home/Commission/createProjectStaffCommission",
+				dataType: 'json',
+				headers: {
+					accept: "usertoken:" + token,
+				},
+				data: {
+					project_work_commission_id: project_work_commission_id,
+					commission: commission
+				},
+				success: function(data) {
+					if(data.status == 1) {
+						toast(data.msg);
+						workItem(itemId, countListid, workType_id);
+					} else {
+						toast(data.msg)
+					}
+				},
+				error: function(data) {
 
-				}
-			},
-			error: function(data) {
-
-			},
-			async: true
-		});
+				},
+				async: true
+			});
+		}
 
 	})
 	/*工种负责人详情*/
@@ -1449,7 +1607,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					var datas = data.data.project_info;
 					var dataList = data.data.list;
 					var list = "";
@@ -1507,10 +1665,10 @@ $(function() {
 		$("#boxPock .item_check").show();
 		var user_id = $(this).parents("tr").find(".work").attr("user-id");
 		var chile_id = $(".worktype .floor_ul li.active").attr("data-id");
-		console.log(user_id)
+		//		console.log(user_id)
 		$.ajax({
 			type: "post",
-			url: host_host_host + "/home/project/history",
+			url: host_host_host + "/home/project/history_2",
 			dataType: 'json',
 			headers: {
 				accept: "usertoken:" + token,
@@ -1521,7 +1679,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					$(".item_check .nickname").val(data.data.staff.nickname);
 					$(".item_check .name").val(data.data.staff.work.name);
 					$(".item_check .director").val(data.data.staff.director);
@@ -1560,13 +1718,16 @@ $(function() {
 		var workDuty = $(this).parents("li").attr("data-id");
 		localStorage.setItem("project_id", project_id);
 		localStorage.setItem("workDuty", workDuty);
-		console.log(project_id, workDuty)
+		//		console.log(project_id, workDuty)
+		console.log(workDuty)
 		location.href = "subitem_edit.html";
 	})
 	/*项目主管和系统管理员成员管理已完成的操作*/
 	$(document).on("click", ".item_manage1 .forth .member_system .manage,.item_manage1 .forth .member_manage .operate", function() {
 		var project_id = $(this).parents(".item_table").attr("data-id");
+		var workDuty = $(this).parents("li").attr("data-id");
 		localStorage.setItem("project_id", project_id);
+		localStorage.setItem("workDuty", workDuty);
 		location.href = "subitem_check.html";
 	})
 
@@ -1574,13 +1735,19 @@ $(function() {
 	$(document).on("click", ".item_manage1 .third .item_manage .operate,.item_manage1 .third .item_system .operate", function() {
 		var project_id = $(this).parents(".item_table").attr("data-id");
 		localStorage.setItem("project_id", project_id);
+		localStorage.setItem("labor_num", 1);//jene 12-18
+		var st = localStorage.getItem("labor_num");//jene 12-18
+		
+		var workDuty = $(this).parents("li").attr("data-id");
+		localStorage.setItem("workDuty", workDuty);
+		
 		location.href = "item_edit.html";
 	})
 
 	/*项目主管和系统管理员已完成的操作*/
 	$(document).on("click", ".item_manage1 .forth .item_manage .operate,.item_manage1 .forth .item_system .operate", function() {
 		var project_id = $(this).parents(".item_table").attr("data-id");
-		localStorage.setItem("project_id", project_id);
+		localStorage.setItem("labor_num", 2);//jene 12-18
 		location.href = "item_check.html";
 	})
 

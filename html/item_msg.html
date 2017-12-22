@@ -14,11 +14,10 @@
 		<script type="text/javascript" src="js/cityJson.js"></script>
 		<script type="text/javascript" src="js/citySet.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/item_msg.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
-				<div id="bodyLeft">
+		<div id="bodyLeft">
 			<!--左侧边栏-->
 			<div class="logoDiv">
 				LOGO
@@ -40,9 +39,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -50,7 +52,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -131,9 +133,9 @@
 								<table border="1" cellspacing="0">
 									<tbody>
 										<tr class="e9ecf1">
-											<td class="item">项目编号：</td>
+											<td class="item"><i class="xinghao">*</i>项目编号：</td>
 											<td class="item_num"><input type="text" placeholder="请输入内容" name="number" class="number" /></td>
-											<td class="item">项目名称：</td>
+											<td class="item"><i class="xinghao">*</i>项目名称：</td>
 											<td class="item_num"><input type="text" placeholder="请输入内容" class="name" name="name" /></td>
 										</tr>
 										<tr>
@@ -141,7 +143,7 @@
 											<td class="item_num style">
 												<input type="" id="basicone" placeholder="请选择时间" class="project_time" name="project_time" />
 											</td>
-											<td class="item">所需区域：</td>
+											<td class="item">所属区域：</td>
 											<td class="item_num style">
 												<input type="text" name="area" value="请选择区域" id="city" />
 											</td>
@@ -152,12 +154,12 @@
 												<input type="" id="" value="" class="building_type" />
 												<i><img src="img/black_tri.png"/></i>
 												<select name="" class="build_style">
-													
+
 												</select>
 											</td>
 											<td class="item">阶段类型：</td>
 											<td class="item_num style">
-												<input type=""  id="" value="" class="stage" />
+												<input type="" id="" value="" class="stage" />
 												<i><img src="img/black_tri.png"/></i>
 												<select name="" class="stage_style">
 
@@ -224,6 +226,11 @@
 							<button type="button" class="btn1" id="form_btn">提&nbsp;&nbsp;&nbsp;交</button>
 						</div>
 					</form>
+				</div>
+				<!--/*单位信息*/-->
+				<div class="danw">
+					单位信息：
+					<span></span>
 				</div>
 			</div>
 		</div>
@@ -364,6 +371,7 @@
 			<!--//11-->
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/item_msg.js" type="text/javascript" charset="utf-8"></script>
 		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function() {

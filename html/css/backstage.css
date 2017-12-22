@@ -1037,7 +1037,7 @@
   background: rgba(91, 99, 108, 0.5);
 }
 #boxPock .send_add .send_add_head {
-  width: 100%;
+  width: 970px;
   height: 56px;
   background: #293541;
   text-align: center;
@@ -1056,7 +1056,7 @@
   cursor: pointer;
 }
 #boxPock .send_add .send_add_bottom {
-  width: 100%;
+  width: 970px;
   padding: 37px;
 }
 #boxPock .send_add .send_add_bottom .add_content {

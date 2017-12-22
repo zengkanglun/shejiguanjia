@@ -35,9 +35,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span  class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -45,7 +48,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span  class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -116,9 +119,9 @@
 			<div id="content">
 				<!--右侧内容区-->
 				<div class="first">
-					<a href="index.html">项目信息</a>
+					<!--<a href="index.html">项目信息</a>
 					<a href="process.html">过程管理</a>
-					<a href="count.html">统计分析</a>
+					<a href="count.html">统计分析</a>-->
 					<a href="javascript:void(0)" class="firstActive">管理</a>
 					<!--<div>当前项目：中山市中创新科技产业园</div>-->
 					<div class="current_task">
@@ -133,7 +136,7 @@
 							<span>项目管理</span>
 							<i></i>
 						</div>
-						<div class="xs-3">
+						<div class="xs-3 Q_rygl">
 							<span>人员管理</span>
 							<i></i>
 						</div>
@@ -156,7 +159,7 @@
 									<td class="title1">项目名称</td>
 									<td class="item">管理权限</td>
 									<td class="setman">项目信息</td>
-									<td class="plan_time">成员管理</td>
+									<td class="plan_time">项目组管理</td>
 									<td class="handle">项目计提</td>
 								</tr>
 							</thead>
@@ -170,7 +173,12 @@
 									记录数：<span>0</span>条
 								</div>
 								<div class="page_right">
-									<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+									<span>页数</span><i class="less">&lt;</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+								</div>
+								<div class="jump">
+									<span>跳页至</span>
+									<input type="number" class="jump_page" />
+									<div class="go">GO</div>
 								</div>
 							</div>
 						</div>
@@ -200,13 +208,22 @@
 									记录数：<span>0</span>条
 								</div>
 								<div class="page_right">
-									<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+									<span>页数</span><i class="less">&lt;</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+								</div>
+								<div class="jump">
+									<span>跳页至</span>
+									<input type="number" class="jump_page" />
+									<div class="go">GO</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!--项目管理结束-->
+				<div class="danw">
+					单位信息：
+					<span></span>
+				</div>
 			</div>
 		</div>
 		<div id="boxPock">
@@ -260,17 +277,17 @@
 								<div class="item_time clearfix">
 									<div class="time_left">
 										<span>从</span>
-										<input type="text" value="2017-09-07" id="user_one" />
+										<input type="text" placeholder="请选择时间" id="user_one" />
 									</div>
 									<div class="time_right">
 										<span>至</span>
-										<input type="text" value="2017-09-28" id="user_two" />
+										<input type="text" placeholder="请选择时间" id="user_two" />
 									</div>
 								</div>
 								<table border="1" cellspacing="0">
 									<thead>
 										<tr>
-											<td class="orderlist">序号<i></i></td>
+											<td class="orderlist">序号</td>
 											<td class="item_name">工种</td>
 											<td class="income">工种负责</td>
 											<td class="expend">工作情况</td>
@@ -279,14 +296,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>100000</td>
-											<td>经营统计</td>
-											<td>建筑</td>
-											<td class="work_status"><span class="check">查看</span></td>
-											<td><input type="text" placeholder="请输入内容" /></td>
-											<td class="handle"><span>通知</span></td>
-										</tr>
+										
 									</tbody>
 								</table>
 								<button type="button" class="newbutton">确&nbsp;定</button>
@@ -301,7 +311,7 @@
 								<table border="1" cellspacing="0">
 									<thead>
 										<tr>
-											<td class="orderlist">序号<i></i></td>
+											<td class="orderlist">序号</td>
 											<td class="item_name">时间</td>
 											<td class="income">工种</td>
 											<td class="expend">工种负责</td>
@@ -311,15 +321,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>100000</td>
-											<td>经营统计</td>
-											<td>建筑</td>
-											<td>建筑</td>
-											<td>张三李四</td>
-											<td class="plan"><span class="add">已提交</span><span class="detail">详情</span></td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
+										
 									</tbody>
 								</table>
 								<button type="button" class="nowbutton">确定方案</button>
@@ -334,7 +336,7 @@
 								<table border="1" cellspacing="0">
 									<thead>
 										<tr>
-											<td class="orderlist">序号<i></i></td>
+											<td class="orderlist">序号</td>
 											<td class="item_name">时间</td>
 											<td class="income">工种</td>
 											<td class="expend">工种负责</td>
@@ -343,15 +345,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>100000</td>
-											<td>经营统计</td>
-											<td>建筑</td>
-											<td>建筑</td>
-											<td>张三李四</td>
-											<td>张三李四</td>
-											<td class="handle"><span class="detail">详情</span></td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -397,14 +391,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>100000</td>
-										<td>经营统计</td>
-										<td>建筑</td>
-										<td>建筑</td>
-										<td>张三李四</td>
-										<td class="handle"><span class="edit">编辑</span><span class="del">删除</span></td>
-									</tr>
+									
 								</tbody>
 							</table>
 							<!--<div class="paging">
@@ -569,19 +556,19 @@
 						<div class="cnt_header">
 							<div class="left clearfix">
 								<span>时间区间：</span>
-								<input type="text" value="输入内容" disabled="disabled" class="start_time" />
+								<input type="text"  disabled="disabled" class="start_time" />
 							</div>
 							<div class="left clearfix">
 								<span>所属工种：</span>
-								<input type="text" value="输入内容" disabled="disabled" class="work_name" />
+								<input type="text"  disabled="disabled" class="work_name" />
 							</div>
 							<div class="left clearfix">
 								<span>工种负责：</span>
-								<input type="text" value="输入内容" disabled="disabled" class="username" />
+								<input type="text"  disabled="disabled" class="username" />
 							</div>
 							<div class="left clearfix group">
 								<span>项目计提占比：</span>
-								<input type="text" value="建筑" disabled="disabled" class="commission_rate" />
+								<input type="text"  disabled="disabled" class="commission_rate" />
 							</div>
 						</div>
 						<div class="plan_cnt">
@@ -597,13 +584,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>10000</td>
-										<td>建筑</td>
-										<td>建筑</td>
-										<td>建筑</td>
-										<td>2017-03-04</td>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>
@@ -655,18 +636,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>10000</td>
-										<td>建筑</td>
-										<td>建筑</td>
-										<td>每天努力的搬砖</td>
-									</tr>
-									<tr class="e9ecf1">
-										<td>10000</td>
-										<td>建筑</td>
-										<td>建筑</td>
-										<td>建筑</td>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>
@@ -710,18 +680,17 @@
 									<span class="floor">一号楼</span>
 								</div>
 							</div>
-							<div class="bigfloor">
+							<div class="bigfloor clearfix">
 								<ul class="floor_ul clearfix">
-									<li class="active">
-										一号楼
-									</li>
-									<li>
-										二号楼
-									</li>
-									<li>
-										三号楼
-									</li>
+									
 								</ul>
+								<div class="item_choose1">
+									<input type="text" value="" disabled="disabled"/>
+									<ul class="w_choose1">
+										
+									</ul>
+									<i><img src="img/black_tri.png" alt="" /></i>
+								</div>
 							</div>
 							<!--计提进行中-->
 							<div class="list_detail nowCount">
@@ -731,7 +700,7 @@
 								<table border="1" cellspacing="0">
 									<thead>
 										<tr>
-											<td class="orderlist">序号<i></i></td>
+											<td class="orderlist">序号</td>
 											<td class="item_name">时间区间</td>
 											<td class="income">姓名</td>
 											<td class="expend">分工情况</td>
@@ -741,15 +710,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>100000</td>
-											<td>经营统计</td>
-											<td>建筑</td>
-											<td>建筑</td>
-											<td><span class="detail">详情</span></td>
-											<td><input type="text" placeholder="请输入内容" /></td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
+										
 									</tbody>
 								</table>
 								<div class="plansure">已提交</div>
@@ -775,24 +736,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>100000</td>
-											<td>经营统计</td>
-											<td>建筑</td>
-											<td>建筑</td>
-											<td></td>
-											<td></td>
-											<td class="handle"><span class="detail1">详情</span></td>
-										</tr>
-										<tr class="e9ecf1">
-											<td>100000</td>
-											<td>2017-08-20</td>
-											<td>建筑</td>
-											<td>张三李四</td>
-											<td></td>
-											<td></td>
-											<td class="handle"><span class="detail1">详情</span></td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -815,24 +759,24 @@
 							<div class="cnt_header">
 								<div class="header_left clearfix">
 									<span>姓名：</span>
-									<input type="text" value="张三" disabled="disabled" class="nickname" />
+									<input type="text" value="" disabled="disabled" class="nickname" />
 								</div>
 								<div class="header_right clearfix">
 									<span>工种参与：</span>
-									<input type="text" value="重要修改" disabled="disabled" class="name" />
+									<input type="text" value="" disabled="disabled" class="name" />
 								</div>
 								<div class="header_left clearfix">
 									<span>工种负责人：</span>
-									<input type="text" value="重要修改" disabled="disabled" class="director" />
+									<input type="text" value="" disabled="disabled" class="director" />
 								</div>
 								<div class="header_right clearfix">
 									<span>分工情况：</span>
-									<input type="text" value="重要修改" disabled="disabled" class="labor" />
+									<input type="text" value="" disabled="disabled" class="labor" />
 								</div>
 							</div>
 							<div class="cnt_bottom">
 								<div class="cnt_bottom_header">当前工作内容</div>
-								<textarea name="" rows="" cols="" value="请输入内容" disabled="disabled" class="content"></textarea>
+								<textarea name="" rows="" cols="" value="" disabled="disabled" class="content"></textarea>
 							</div>
 							<div class="history_work">
 								<div class="cnt_bottom_header">历史工作内容</div>
@@ -840,13 +784,13 @@
 									<div class="stage_head">
 										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
 									</div>
-									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+									<textarea name="" rows="" cols="" placeholder="" disabled="disabled"></textarea>
 								</div>
 								<div class="first_stage">
 									<div class="stage_head">
 										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
 									</div>
-									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+									<textarea name="" rows="" cols="" placeholder="" disabled="disabled"></textarea>
 								</div>
 							</div>
 							<div class="cnt_footer">
@@ -1228,7 +1172,7 @@
 							</div>
 							<div class="cnt_bottom">
 								<div class="cnt_bottom_header">当前工作内容</div>
-								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
+								<textarea name="" rows="" cols="" disabled="disabled"></textarea>
 							</div>
 							<div class="history_work">
 								<div class="cnt_bottom_header">历史工作内容</div>
@@ -1236,14 +1180,8 @@
 									<div class="stage_head">
 										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
 									</div>
-									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
-								</div>
-								<div class="first_stage">
-									<div class="stage_head">
-										<span>阶段：</span><span>2017.08.06-2017.09.10</span>
-									</div>
-									<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled"></textarea>
-								</div>
+									<textarea name="" rows="" cols="" placeholder="" disabled="disabled"></textarea>
+								</div>							
 							</div>
 							<div class="cnt_footer">
 								<div class="foot_first">
@@ -1320,7 +1258,6 @@
 			});
 			laydate.render({
 				elem: '#edittwo',
-				user_one
 			});
 			laydate.render({
 				elem: '#user_one',

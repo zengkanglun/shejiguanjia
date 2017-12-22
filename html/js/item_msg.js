@@ -250,7 +250,7 @@ $(function() {
 		data: {},
 		success: function(data) {
 			if(data.status == 1) {
-				console.log(data)
+//				console.log(data)
 				var build_style = "";
 				for(var i = 0; i < data.data.length; i++) {
 					build_style += '<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>';
@@ -275,8 +275,16 @@ $(function() {
 	/*提交发送*/
 	$(document).on('click', '#form_btn', function() {
 		var form = new FormData($("#myform")[0]);
-		form.append("province", $("#hcity").val());
-		form.append("city", $("#hproper").val());
+		var hcity = $("#hcity").val();
+		var hproper = $("#hproper").val();
+		if(!hcity){
+			hcity = "";			
+		}
+		if(!hproper){
+			hproper="";
+		}
+		form.append("province", hcity);
+		form.append("city",hproper);
 		form.append("building_type", $(".basic_msg .building_type").attr("id"));
 		form.append("stage", $(".basic_msg .stage").attr("id"));
 		$.ajax({

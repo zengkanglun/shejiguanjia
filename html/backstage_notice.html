@@ -12,8 +12,6 @@
 		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/backstage_notice.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -27,7 +25,7 @@
 					<div class="userinfo">
 						<div class="information">
 							<div class="info_image">
-								<img src="" alt="" class="photo"/>
+								<img src="" alt="" class="photo" />
 								<img src="img/info_image_Bg.png" alt="" />
 							</div>
 							<div class="info_name"></div>
@@ -37,9 +35,8 @@
 						<div class="title ">
 							<span></span>
 							<div class="manage">用户管理</div>
-							<i></i>
 						</div>
-						<ul class="ul" style="display:none;">
+						<ul class="ul">
 							<li>
 								<a href="backstage_admin_list.html">用户列表</a>
 							</li>
@@ -55,9 +52,8 @@
 						<div class="title active">
 							<span></span>
 							<div class="manage">系统管理</div>
-							<i></i>
 						</div>
-						<ul class="ul" style="display: block;">
+						<ul class="ul">
 							<li class=" active">
 								<a href="backstage_notice.html">任务通知</a>
 							</li>
@@ -87,14 +83,14 @@
 					<div class="info-image rightDiv">
 						<div><img src="img/info_image.png" /></div>
 					</div>
-					<div class="LastDataTime rightDiv last_time">
-						<div>
-							上次登录时间：<i>2017-09-01</i>
+					<div class="LastDataTime rightDiv">
+						<div class="last_time">
+							上次登录时间：<i></i>
 						</div>
 					</div>
-					<div class="LastDataTime rightDiv last_ip">
-						<div>
-							上次登录IP：<i>255.255.255.255</i>
+					<div class="LastDataTime rightDiv">
+						<div class="last_ip">
+							上次登录IP：<i></i>
 						</div>
 					</div>
 				</div>
@@ -124,12 +120,12 @@
 							<div class="left">
 								<div>从</div>
 								<span class="one">
-								<input type="text" name="" id="notice_three" value="2017-09-01" placeholder=""/>
+								<input type="text" name="" id="notice_three" placeholder="请选择时间"/>
 								<a><i></i></a>
 							</span>
 								<div>至</div>
 								<span class="two">
-								<input type="text" name="" id="notice_four" value="2017-09-01"  placeholder=""/>
+								<input type="text" name="" id="notice_four" placeholder="请选择时间"/>
 								<a><i></i></a>
 							</span>
 							</div>
@@ -156,46 +152,7 @@
 									<th class="nine">操作</th>
 								</tr>
 								<tbody id="notice_list">
-									<tr>
-										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
-										<td>2017</td>
-										<td>小白</td>
-										<td>通知1</td>
-										<td>项目1</td>
-										<td>经理</td>
-										<td>张三、李四</td>
-										<td>2017-12-02</td>
-										<td>
-											<div class="tableFirstRows">
-												<div data-num="1">
-													<a href="###" class="detail">详情</a>
-												</div>
-												<div data-num="2">
-													<a href="###">删除</a>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr class="tableTrBackground">
-										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
-										<td>2017</td>
-										<td>小白</td>
-										<td>通知2</td>
-										<td>项目1</td>
-										<td>经理</td>
-										<td>张三、李四</td>
-										<td>2017-12-02</td>
-										<td>
-											<div class="tableFirstRows">
-												<div data-num="1">
-													<a href="###" class="detail">详情</a>
-												</div>
-												<div data-num="2">
-													<a href="###">删除</a>
-												</div>
-											</div>
-										</td>
-									</tr>
+
 									<tr>
 										<td></td>
 										<td></td>
@@ -237,7 +194,12 @@
 										记录数：<span id="total_a">0</span>条
 									</div>
 									<div class="page_right">
-										<span>页数</span><i class="less"><</i><span class="number a" id="prev">1</span><span>/</span><span class="total_num a">0</span><i class="more" id="after">></i>
+										<span>页数</span><i class="less" id="prev"><</i><span class="number a">1</span><span>/</span><span class="total_num a">0</span><i class="more" id="after">></i>
+									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go n">GO</div>
 									</div>
 								</div>
 							</div>
@@ -250,11 +212,11 @@
 							<div class="left">
 								<div>从</div>
 								<span class="one">
-								<input type="text" name="" value="2017-09-01" id="notice_one"/>
+								<input type="text" name="" placeholder="请输入时间" id="notice_one"/>
 							</span>
 								<div>至</div>
 								<span class="two">
-								<input type="text" name=""  value="2017-09-01" id="notice_two"/>
+								<input type="text" name=""  placeholder="请输入时间" id="notice_two"/>
 							</span>
 							</div>
 							<div class="right">
@@ -279,45 +241,7 @@
 									<th class="eight">操作</th>
 								</tr>
 								<tbody id="task_list">
-									<tr>
-										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
-										<td>1</td>
-										<td>小白</td>
-										<td>2017-11-10</td>
-										<td>类型1</td>
-										<td>任务1</td>
-										<td>张三</td>
-										<td>
-											<div class="tableFirstRows">
-												<div data-num="1" class="detail">
-													<a href="###">详情</a>
-												</div>
-												<div data-num="2" class="del">
-													<a href="###">删除</a>
-												</div>
-											</div>
-										</td>
-									</tr>
 
-									<tr class="tableTrBackground">
-										<td class="choose"><span class="active"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>
-										<td>2</td>
-										<td>小白</td>
-										<td>2017-11-13</td>
-										<td>类型2</td>
-										<td>任务1</td>
-										<td>李四</td>
-										<td>
-											<div class="tableFirstRows">
-												<div data-num="1" class="detail">
-													<a href="###">详情</a>
-												</div>
-												<div data-num="2" class="del">
-													<a href="###">删除</a>
-												</div>
-											</div>
-										</td>
-									</tr>
 									<tr>
 										<td></td>
 										<td></td>
@@ -361,11 +285,21 @@
 									<div class="page_right">
 										<span>页数</span><i class="less" id="prevT"><</i><span class="number b">1</span><span>/</span><span class="total_num b">0</span><i class="more" id="afterT">></i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go t">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!--已发任务结束-->
+				</div>
+				<!--/*单位信息*/-->
+				<div class="danw">
+					单位信息：
+					<span></span>
 				</div>
 			</div>
 		</div>
@@ -409,7 +343,7 @@
 								<textarea name="" rows="" cols="" placeholder="请输入内容" id="content" disabled="disabled"></textarea>
 							</div>
 							<div class="color"></div>
-							<div class="cnt_reply">
+							<div class="cnt_reply aa">
 								<div class="cnt_bottom_header"><span>状态</span></div>
 								<div class="reply_ul clearfix">
 									<li class="clearfix">
@@ -468,7 +402,7 @@
 								<textarea name="" rows="" cols="" placeholder="请输入内容" id="content" disabled="disabled"></textarea>
 							</div>
 							<div class="color"></div>
-							<div class="cnt_reply">
+							<div class="cnt_reply bb">
 								<div class="cnt_bottom_header"><span>状态</span></div>
 								<div class="reply_ul clearfix">
 									<li class="clearfix">
@@ -490,7 +424,9 @@
 			</div>
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
 		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstage_notice.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/notice_list.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			lay('#version').html('-v' + laydate.v);

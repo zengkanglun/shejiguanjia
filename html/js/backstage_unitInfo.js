@@ -17,7 +17,7 @@ $(function () {
 		for (var i = 0;i < phoneNum.split("").length;i++) {
 			if (/-|\d/g.test(phoneNum.split("")[i])) {
 				unitInfoObj.phone = $(this).val();
-				console.log($(this).val());
+//				console.log($(this).val());
 			}else{
 				$(this).val("");
 			}

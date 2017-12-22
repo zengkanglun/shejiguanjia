@@ -3,23 +3,24 @@ $(function() {
 	$("#content .center_content .content_header .user_tab li").remove();
 	tapChoose = sessionStorage.getItem("tapList");
 	tapChoose = tapChoose.split('class="active"').join('class');
-	if (tapChoose.indexOf("任务") < 0) {
-		tapChoose += '<li class="active"><a href="task.html">任务</a><i><img src="img/icon_del.png" alt="" /></i></li>';
-	}else{
-		tapChoose = tapChoose.split('<li class><a href="task.html">任务</a><i><img src="img/icon_del.png" alt="" /></i></li>').join('<li class="active"><a href="task.html">任务</a><i><img src="img/icon_del.png" alt="" /></i></li>');
+	if(tapChoose.indexOf("任务") < 0) {
+		tapChoose += '<li class="active" name="task"><a href="task.html">任务</a><i><img src="img/icon_del.png" alt="" /></i></li>';
+	} else {
+		tapChoose = tapChoose.split('<li class name="task"><a href="task.html">任务</a><i><img src="img/icon_del.png" alt="" /></i></li>').join('<li class="active" name="task"><a href="task.html">任务</a><i><img src="img/icon_del.png" alt="" /></i></li>');
 	}
-	sessionStorage.setItem("tapList",tapChoose);
+	sessionStorage.setItem("tapList", tapChoose);
 	$("#content .center_content .content_header .user_tab").append(tapChoose);
-	$(document).on("click","#content .center_content .content_header .user_tab li i",function () {
+	$(document).on("click", "#content .center_content .content_header .user_tab li i", function() {
 		$(this).parent().remove();
 		tapChoose = $("#content .center_content .content_header .user_tab").html();
-		sessionStorage.setItem("tapList",tapChoose);
-		if ($(this).parent().attr("class") == "active") {
+		sessionStorage.setItem("tapList", tapChoose);
+		if($(this).parent().attr("class") == "active") {
 			location.href = "index.html";
 		}
 	})
+	$("#content .center_content .content_header .user_tab").find("li[name='task']").addClass("active");
 	/*==========*/
-	
+
 	var token = localStorage.getItem("token");
 	//tab栏切换
 	$(".detail_tab li").on("click", function() {
@@ -28,21 +29,32 @@ $(function() {
 		$(".content_detail .bigtask").hide();
 		$(".content_detail .bigtask").eq(index).show();
 		if(index == 0) {
-			newTask(1)
+			newTask(1);
+			$(".new_task .page_right .number").text(1);
+			$(".new_task .jump .jump_page").val("");			
 		} else if(index == 1) {
-			taskGo(1)
+			taskGo(1);
+			$(".task_go .page_right .number").text(1);
+			$(".task_go .jump .jump_page").val("");			
 		} else if(index == 2) {
-			historyTask(1)
+			historyTask(1);
+			$(".history_task .page_right .number").text(1);
+			$(".history_task .jump .jump_page").val("");			
 		} else {
-			buildTask(1)
+			buildTask(1);
+			$(".build_task .page_right .number").text(1);
+			$(".build_task .jump .jump_page").val("");			
 		}
 	})
 
 	//新增任务
+	var task_Num;
 	$(document).on("click", ".build_task_left", function() {
+		task_Num = true;
 		$("#boxPock").show();
 		$("#boxPock .newtask_add").show();
 		$("#boxPock .newtask_add input").val("");
+		$("#boxPock .newtask_add textarea").val("");
 		/*===*/
 		//类型
 		var str = "";
@@ -56,7 +68,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					for(var i = 0; i < data.data.length; i++) {
 						str += '<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>';
 					}
@@ -80,7 +92,7 @@ $(function() {
 			data: {},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var list = "";
 					for(var i = 0; i < data.data.length; i++) {
 						list += '<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>';
@@ -266,7 +278,7 @@ $(function() {
 		});
 		//人员勾选
 		$(document).on("click", ".subitem_choose .admin li i", function() {
-			var id = $(this).parents("li").attr("data-id");			
+			var id = $(this).parents("li").attr("data-id");
 			if(arr.indexOf(id) == -1) {
 				$(this).parents("li").addClass("active");
 				arr.push(id);
@@ -274,7 +286,7 @@ $(function() {
 				var lis = '<li><img src="img/icon_del.png"/><span data-id="' + id + '">' + txt + '</span></li>';
 				$(".item_right_ctn .work_style ul").append(lis)
 			} else {
-				
+
 			}
 		});
 		$(document).on("click", ".subitem_choose .admin li.active i", function() {
@@ -331,8 +343,8 @@ $(function() {
 	newTask(1);
 	/*新任务增加*/
 	$(document).on("click", ".new_task .page_right .more", function() {
-		var total_num = $(".new_task .page_right .total_num").text();
-		var num = $(".new_task .page_right .number").text();
+		var total_num = Number($(".new_task .page_right .total_num").text());
+		var num = Number($(".new_task .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
@@ -343,13 +355,23 @@ $(function() {
 	})
 	/*新任务减少*/
 	$(document).on("click", ".new_task .page_right .less", function() {
-		var num = $(".new_task .page_right .number").text();
+		var num = Number($(".new_task .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".new_task .page_right .number").text(num);
 			newTask(num);
+		}
+	})
+	/*新任务跳页*/
+	$(document).on("click", ".new_task .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			newTask(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -366,7 +388,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var str = "";
 					for(var i = 0; i < data.data.data.length; i++) {
 						str += '<tr data-id="' + data.data.data[i].id + '">';
@@ -393,8 +415,8 @@ $(function() {
 	/*新任务增加*/
 	taskGo(1);
 	$(document).on("click", ".task_go .page_right .more", function() {
-		var total_num = $(".task_go .page_right .total_num").text();
-		var num = $(".task_go .page_right .number").text();
+		var total_num = Number($(".task_go .page_right .total_num").text());
+		var num = Number($(".task_go .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
@@ -405,13 +427,23 @@ $(function() {
 	})
 	/*新任务减少*/
 	$(document).on("click", ".task_go .page_right .less", function() {
-		var num = $(".task_go .page_right .number").text();
+		var num = Number($(".task_go .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".task_go .page_right .number").text(num);
 			taskGo(num);
+		}
+	})
+	/*任务进行中跳页*/
+	$(document).on("click", ".task_go .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			taskGo(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -428,7 +460,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var str = "";
 					for(var i = 0; i < data.data.data.length; i++) {
 						str += '<tr data-id="' + data.data.data[i].id + '">';
@@ -454,8 +486,8 @@ $(function() {
 	/*获取历史列表*/
 	historyTask(1)
 	$(document).on("click", ".history_task .page_right .more", function() {
-		var total_num = $(".history_task .page_right .total_num").text();
-		var num = $(".history_task .page_right .number").text();
+		var total_num = Number($(".history_task .page_right .total_num").text());
+		var num = Number($(".history_task .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
@@ -466,13 +498,23 @@ $(function() {
 	})
 	/*新任务减少*/
 	$(document).on("click", ".history_task .page_right .less", function() {
-		var num = $(".history_task .page_right .number").text();
+		var num = Number($(".history_task .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".history_task .page_right .number").text(num);
 			historyTask(num);
+		}
+	})
+	/*历史任务跳页*/
+	$(document).on("click", ".history_task .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			historyTask(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -489,7 +531,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var str = "";
 					for(var i = 0; i < data.data.data.length; i++) {
 						str += '<tr data-id="' + data.data.data[i].id + '">';
@@ -515,8 +557,8 @@ $(function() {
 	/*获取我创建的列表*/
 	buildTask(1);
 	$(document).on("click", ".build_task .page_right .more", function() {
-		var total_num = $(".build_task .page_right .total_num").text();
-		var num = $(".build_task .page_right .number").text();
+		var total_num = Number($(".build_task .page_right .total_num").text());
+		var num = Number($(".build_task .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
@@ -527,13 +569,23 @@ $(function() {
 	})
 	/*新任务减少*/
 	$(document).on("click", ".build_task .page_right .less", function() {
-		var num = $(".build_task .page_right .number").text();
+		var num = Number($(".build_task .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".build_task .page_right .number").text(num);
 			buildTask(num);
+		}
+	})
+	/*创建任务跳页*/
+	$(document).on("click", ".build_task .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			buildTask(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -550,7 +602,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var str = "";
 					for(var i = 0; i < data.data.data.length; i++) {
 						str += '<tr data-id="' + data.data.data[i].id + '">';
@@ -574,6 +626,7 @@ $(function() {
 	}
 
 	/*新建任务提交*/
+	var taskbol = true;
 	$(document).on('click', '#task_ok', function() {
 		/*相关项目*/
 		var about = $('#task_aboutname').val();
@@ -610,35 +663,34 @@ $(function() {
 			toast("请填写标题");
 			return false;
 		};
-		if(task_textarea == "") {
-			toast("请填写内容");
-			return false;
-		};
-
 		var form = new FormData($("#taskForm")[0]);
 		form.append("project_id", $("#task_aboutname").attr("data-id"));
 		form.append("type", $("#task_typename").attr("data-id"));
-		$.ajax({
-			url: host_host_host + "/index.php/Home/Task/create",
-			type: "post",
-			headers: {
-				accept: "usertoken:" + token,
-			},
-			data: form,
-			processData: false,
-			contentType: false,
-			success: function(data) {
-				if(data.status == 1) {
-					toast("新建成功")
-					buildTask(1)
-					$(".newtask_add").hide();
-					$("#boxPock").hide();					
-				} else {
-					toast(data.msg)
-				}
-			},
-			error: function(e) {}
-		});
+		if(taskbol) {
+			taskbol = false;
+			$.ajax({
+				url: host_host_host + "/index.php/Home/Task/create",
+				type: "post",
+				headers: {
+					accept: "usertoken:" + token,
+				},
+				data: form,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					if(data.status == 1) {
+						toast("新建成功")
+						buildTask(1)
+						$(".newtask_add").hide();
+						$("#boxPock").hide();
+					} else {
+						toast(data.msg)
+					}
+					taskbol = true;
+				},
+				error: function(e) {}
+			});
+		}
 
 	});
 
@@ -672,14 +724,15 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$('.newtask_detail #nd_what').val(data.data.project_id);
 					$('.newtask_detail #nd_type').val(data.data.type);
-					$('.newtask_detail #nd_who').val(data.data.user_id);
+					$('.newtask_detail #nd_who').val(data.data.to_user);
 					$('.newtask_detail #nd_start').val(data.data.start_time);
 					$('.newtask_detail #nd_title').val(data.data.title);
 					$('.newtask_detail #nd_file').text(data.data.file_name);
 					$('.newtask_detail #nd_content').text(data.data.content);
+					$('.newtask_detail #nd_repr').text();
 
 				} else {}
 			},
@@ -695,7 +748,8 @@ $(function() {
 	/*任务进行中详情*/
 	$(document).on('click', '#task_doing .title', function() {
 		do_id = $(this).parents('tr').find(".title").attr('data-id');
-		console.log(do_id);
+		var id = $(this).parent("tr").attr("data-id");
+		//		console.log(do_id);
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Task/task_info",
@@ -704,19 +758,20 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				id: do_id
+				id: do_id,
+				sid: id
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$('.taskgo_add #do_what').val(data.data.project_id);
 					$('.taskgo_add #do_type').val(data.data.type);
-					$('.taskgo_add #do_who').val(data.data.user_id);
+					$('.taskgo_add #do_who').val(data.data.to_user);
 					$('.taskgo_add #do_start').val(data.data.start_time);
 					$('.taskgo_add #do_title').val(data.data.title);
 					$('.taskgo_add #do_file').text(data.data.file_name);
 					$('.taskgo_add #do_content').text(data.data.content);
-					$('.taskgo_add #do_ref').text(data.data.reply);
+					$('.taskgo_add #do_ref').text(data.data.reply_content);
 				} else {}
 			},
 			error: function(data) {},
@@ -731,7 +786,7 @@ $(function() {
 	/*历史任务详情*/
 	$(document).on('click', '#task_his .title', function() {
 		his_id = $(this).parents('tr').find(".title").attr('data-id');
-		console.log(his_id);
+		var id = $(this).parent("tr").attr("data-id");
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Task/task_info",
@@ -740,19 +795,20 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				id: his_id
+				id: his_id,
+				sid: id
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$('.histask_detail #his_what').val(data.data.project_id);
 					$('.histask_detail #his_type').val(data.data.type);
-					$('.histask_detail #his_who').val(data.data.user_id);
+					$('.histask_detail #his_who').val(data.data.to_user);
 					$('.histask_detail #his_start').val(data.data.start_time);
 					$('.histask_detail #his_title').val(data.data.title);
 					$('.histask_detail #his_file').text(data.data.file_name);
 					$('.histask_detail #his_content').text(data.data.content);
-					$('.histask_detail #his_ref').text(data.data.reply);
+					$('.histask_detail #his_ref').text(data.data.reply_content);
 				} else {}
 			},
 			error: function(data) {},
@@ -779,17 +835,26 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$('.newbuild_detail #ow_what').val(data.data.project_id);
 					$('.newbuild_detail #ow_type').val(data.data.type);
-					$('.newbuild_detail #ow_who').val(data.data.user_id);
+					$('.newbuild_detail #ow_who').val(data.data.to_user);
 					$('.newbuild_detail #ow_start').val(data.data.start_time);
 					$('.newbuild_detail #ow_title').val(data.data.title);
 					$('.newbuild_detail #ow_file').text(data.data.file_name);
 					$('.newbuild_detail #ow_content').text(data.data.content);
-					$('.newbuild_detail #ow_ren').text(data.data.to_user);
-					$('.newbuild_detail #ow_zht').text(data.data.replay);
-					$('.newbuild_detail #ow_shij').text(data.data.update_at);
+					var datas = data.data.reply;
+					var lis = '';
+					for(var i = 0; i < datas.length; i++) {
+						lis += '<li class="clearfix">';
+						lis += '<div class="cnt_detail">';
+						lis += '<span class="ow_ren">' + datas[i].uid + ':</span><span class="ow_zht">' + datas[i].reply + '</span>';
+						lis += '</div>';
+						lis += '<div class="time">' + datas[i].addtime + '</div>';
+						lis += '</li>';
+					}
+					$('.newbuild_detail .reply_ul li').remove();
+					$('.newbuild_detail .reply_ul').append(lis);
 
 				} else {
 					toast(data.msg);
@@ -813,7 +878,6 @@ $(function() {
 	/*接受任务*/
 	$(document).on('click', '.newtask_detail .btn1', function() {
 		var nd_repr = $('#nd_repr').val();
-		console.log(da_id, nd_repr);
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Task/accept",
@@ -841,7 +905,7 @@ $(function() {
 	/*拒绝任务*/
 	$(document).on('click', '.refuse_detail .btn1', function() {
 		var refuse_content = $('#refuse_content').val();
-		console.log(ddd, refuse_content);
+		//		console.log(ddd, refuse_content);
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Task/reject",
@@ -855,7 +919,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					toast(data.msg);
 					newTask(1)
 					$("#boxPock").hide();
@@ -877,7 +941,7 @@ $(function() {
 	$(document).on("click", ".new_task tbody .handle .check", function() {
 		refuseNum = 1;
 		ddd = $(this).parents('tr').attr('data-id');
-		console.log(ddd);
+		//		console.log(ddd);
 		$("#boxPock").show();
 		$("#boxPock .refuse_detail").show();
 	});
@@ -916,7 +980,7 @@ $(function() {
 	/*任务进行中  确认完成*/
 	$(document).on('click', '#task_doing .sure', function() {
 		var fin_id = $(this).parents('tr').attr('data-id');
-		console.log(fin_id);
+		//		console.log(fin_id);
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Task/finish",
@@ -945,7 +1009,7 @@ $(function() {
 	/*历史任务 回退*/
 	$(document).on('click', '#task_his .back', function() {
 		var back_id = $(this).parents('tr').attr('data-id');
-		console.log(back_id);
+		//		console.log(back_id);
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Task/back",

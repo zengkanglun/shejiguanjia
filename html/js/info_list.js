@@ -111,7 +111,7 @@ $(function() {
 				url: host_host_host + 'info',
 			})
 			.done(function(data) {
-				console.log(data);
+//				console.log(data);
 				$(e_id).data("id", id);
 				renderMsgNew(data.data, e_id);
 				$(e_id + " .download").data("id", id);
@@ -121,7 +121,7 @@ $(function() {
 
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 
 	}
@@ -130,7 +130,7 @@ $(function() {
 		var newP = {};
 		newP.id = $("#form_new").data("id"); //;""+7;//列表id 非父id;
 		var token = localStorage.getItem("token");
-		console.log(JSON.stringify(newP))
+//		console.log(JSON.stringify(newP))
 		$.ajax({
 				method: 'POST',
 				dataType: 'json',
@@ -142,15 +142,15 @@ $(function() {
 			})
 			.done(function(data) {
 				if(data.status == 1) { //success
-					console.log(1)
-					console.log(JSON.stringify(data));
+//					console.log(1)
+//					console.log(JSON.stringify(data));
 				} else {
-					console.log(data.msg + 5 + data.data)
+//					console.log(data.msg + 5 + data.data)
 				}
 			})
 			.fail(function(data) {})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 	}
 	//回复新的通知
@@ -159,7 +159,7 @@ $(function() {
 		newP.id = $("#form_new").data("id"); //;""+7;//列表id 非父id;
 		newP.content = "" + $("#form_new #reply").val(); //page
 		var token = localStorage.getItem("token");
-		console.log(JSON.stringify(newP))
+//		console.log(JSON.stringify(newP))
 		$.ajax({
 				method: 'POST',
 				dataType: 'json',
@@ -171,20 +171,20 @@ $(function() {
 			})
 			.done(function(data) {
 				if(data.status == 1) { //success
-					console.log(1)
-					console.log(JSON.stringify(data));
+//					console.log(1)
+//					console.log(JSON.stringify(data));
 				} else {
-					console.log(data.msg + 5 + data.data)
+//					console.log(data.msg + 5 + data.data)
 				}
-				console.log(data);
-				console.log(JSON.stringify(data));
+//				console.log(data);
+//				console.log(JSON.stringify(data));
 			})
 			.fail(function(data) {
-				console.log("fail!");
-				console.log(JSON.stringify(data));
+//				console.log("fail!");
+//				console.log(JSON.stringify(data));
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 	}
 	//回复新的 通知
@@ -192,13 +192,13 @@ $(function() {
 	$('#form_new #btn_new').on("click", function() {
 		read(); //设置已读
 		var reply = "" + $('#form_new #reply').val();
-		console.log(reply)
+//		console.log(reply)
 		if(reply !== "")
 			reply(); //设置已回复
 	})
 	//显示 通知  read
 	var renderMsg = function(data) {
-		console.log(JSON.stringify(data));
+//		console.log(JSON.stringify(data));
 		$('#form_send #project_id').val(data.project_id);
 		$('#form_send #msg_type').val(data.type);
 		$('#form_send #title').val(data.title);
@@ -224,17 +224,17 @@ $(function() {
 				url: host_host_host + '/index.php/home/Notice/info',
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log(JSON.stringify(data));
+//				console.log(data);
+//				console.log(JSON.stringify(data));
 				renderMsg(data.data);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("fail!" + JSON.stringify(data));
+//				console.log("fail!" + data.msg);
+//				console.log("fail!" + data.data);
+//				console.log("fail!" + JSON.stringify(data));
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 	}
 	//删除通知
@@ -254,17 +254,17 @@ $(function() {
 				url: host_host_host + '/index.php/home/Notice/del',
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log(JSON.stringify(data));
+//				console.log(data);
+//				console.log(JSON.stringify(data));
 				renderMsg(data.data);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("fail!" + JSON.stringify(data));
+//				console.log("fail!" + data.msg);
+//				console.log("fail!" + data.data);
+//				console.log("fail!" + JSON.stringify(data));
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 
 	}
@@ -289,9 +289,9 @@ $(function() {
 		}
 		$(e_id + " .check").on("click", function() {
 			var id = $(this).data("id");
-			console.log(id);
+//			console.log(id);
 			//getInfo(id);//@@
-			console.log("type:" + type)
+//			console.log("type:" + type)
 			if(type == 1)
 				var form_id = "#form_new"
 			if(type == 2)
@@ -319,7 +319,7 @@ $(function() {
 			dataType: 'json',
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+//					console.log(data);
 					toast(data.msg)
 					renderMsgListNew(data.data.data);
 				} else {
@@ -396,7 +396,7 @@ $(function() {
 				}
 			},
 			error: function(data) {
-				console.log(0 + JSON.stringify(data))
+//				console.log(0 + JSON.stringify(data))
 			}
 		})
 	}
@@ -434,7 +434,7 @@ $(function() {
 				} else {}
 			},
 			error: function(data) {
-				console.log(0)
+//				console.log(0)
 			},
 			async: true
 		});
@@ -446,9 +446,9 @@ $(function() {
 	$(".download").on("click", function() {
 		var id = $(this).data("id");
 		var type = 2;
-		var op = host_host_host + "/index.php/Home/notice/download?id=" + id + "type=" + type;
+		var op = host_host_host + "/index.php/Home/notice/download?id=" + id + "&type=" + type;
 		window.open(op);
-		window.open(host_host_host + "/index.php/Home/notice/download?id=" + id + "type=" + type);
+		window.open(host_host_host + "/index.php/Home/notice/download?id=" + id + "&type=" + type);
 		$.ajax({
 			type: "GET",
 			headers: {
@@ -462,14 +462,14 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(data.msg);
-					console.log("[download:::]" + JSON.stringify(data))
+//					console.log(data.msg);
+//					console.log("[download:::]" + JSON.stringify(data))
 					//xiazai
 				} else
-					console.log(50 + JSON.stringify(data))
+//					console.log(50 + JSON.stringify(data))
 			},
 			error: function(data) {
-				console.log(0 + JSON.stringify(data))
+//				console.log(0 + JSON.stringify(data))
 			}
 		})
 	})

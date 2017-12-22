@@ -36,9 +36,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -46,7 +49,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -198,6 +201,11 @@
 									<div class="page_right">
 										<span>页数</span><i class="less" id="prev_new">&lt;</i><span class="number a">1</span><span>/</span><span class="total_num a">1</span><i class="more" id="after_new">&gt;</i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -247,6 +255,11 @@
 									<div class="page_right">
 										<span>页数</span><i class="less" id="prev_read">&lt;</i><span class="number b">1</span><span>/</span><span class="total_num b">1</span><i class="more" id="after_read">&gt;</i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -295,6 +308,11 @@
 									</div>
 									<div class="page_right">
 										<span>页数</span><i class="less" id="prev_reply">&lt;</i><span class="number c">1</span><span>/</span><span class="total_num c">1</span><i class="more" id="after_reply">&gt;</i>
+									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
 									</div>
 								</div>
 							</div>
@@ -349,11 +367,20 @@
 									<div class="page_right">
 										<span>页数</span><i class="less" id="prev_send">&lt;</i><span class="number d">1</span><span>/</span><span class="total_num d">1</span><i class="more" id="after_send">&gt;</i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<!--已发通知结束-->
-
+					</div>
+					<!--/*单位信息*/-->
+					<div class="danw">
+						单位信息：
+						<span></span>
 					</div>
 				</div>
 			</div>
@@ -381,7 +408,7 @@
 									</div>
 									<div class="right clearfix">
 										<span>相关项目：</span>
-										<input type="text" value="条目一" class="clause" />
+										<input type="text" class="clause" />
 										<i><img src="img/black_tri.png"/></i>
 										<select name="" id="project_id_list">
 										</select>
@@ -441,7 +468,7 @@
 								</div>
 								<div class="left clearfix file">
 									<span>下载附件：</span>
-									<span class="contract">合同名字合同名字</span>
+									<span class="contract"></span>
 									<span class="download">下载</span>
 								</div>
 							</div>
@@ -452,15 +479,15 @@
 							<div class="color"></div>
 							<div class="cnt_reply">
 								<div class="cnt_bottom_header"><span>状态</span></div>
-								<div class="reply_ul clearfix">
+								<ul class="reply_ul clearfix">
 									<li class="clearfix">
 										<div class="cnt_detail">
-											<span id="to_userwwb">李四：</span><span id="replywwb">已读已读已读已读已读已读已读</span>
+											<span id="to_userwwb"></span><span id="replywwb"></span>
 										</div>
-										<div class="time" id="addtimewwb">-2071-07-06 12:23</div>
+										<div class="time" id="addtimewwb"></div>
 									</li>
 
-								</div>
+								</ul>
 							</div>
 							<div class="cnt_footer">
 								<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>

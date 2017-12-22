@@ -10,12 +10,13 @@
 namespace Home\Controller;
 use Think\Db;
 use OT\Database;
-
+use Think\Controller;
+use Org\Net\Http;
 /**
  * 数据库备份还原控制器
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
-class DatabaseController extends CommonController{
+class DatabaseController extends Controller{
 
     /**
      * 数据库备份
@@ -265,6 +266,80 @@ class DatabaseController extends CommonController{
 
         } else {
             ajax_error('参数错误！');
+        }
+    }
+
+    public function backup_by_shell()
+    {
+        if(!is_file('backupmysql.sh') || !is_file('backupmysql.conf'))
+        {
+            ajax_error('backup shell or backup config  cannot found!');
+        }
+
+        if(is_executable('backupmysql.sh'))
+        {
+            exec('backupmysql.sh',$result);
+            //$file_name = C('DB_NAME').'-'.date('Y-m-d',time()).'mysqlbackup.sql';
+            $dir = './backups/mysql/';
+            $file_name = 'sheji_test-'.date('Y-m-d',time()).'-mysqlbackup.sql';
+            Http::download($dir.$file_name);
+        }
+
+        ajax_error('backup shell cannot execute!please "chmod a+x backupmysql.sh"');
+    }
+
+    public function recover_by_shell()
+    {
+        $res = uploads('sql/recover/',['sql'],$this->max_upload_size);
+        if(!is_array($res))
+        {
+            ajax_error('文件上传失败-'.$res);
+        }
+        $sql_file = $res[0];
+        if(!is_file('recovermysql.sh') || !is_file($sql_file))
+        {
+            ajax_error('recovermysql.sh file not found or sqlbackup file not found');
+        }
+
+        if(is_executable('recovermysql.sh') && is_read($sql_file))
+        {
+            exec("recovermysql.sh {$sql_file}");
+            ajax_success('recover successed');
+        }
+
+        ajax_error('recover fail!');
+    }
+
+    public function sql_list()
+    {
+        $path = 'backups/mysql/';
+        $flag = \FilesystemIterator::KEY_AS_FILENAME;
+        $glob = new \FilesystemIterator($path,  $flag);
+
+        $list = array();
+        foreach ($glob as $name => $file) {
+            if(preg_match('/^\d{8,8}-\d{6,6}-\d+\.sql(?:\.gz)?$/', $name)){
+                $name = sscanf($name, '%4s%2s%2s-%2s%2s%2s-%d');
+
+                $date = "{$name[0]}-{$name[1]}-{$name[2]}";
+                $time = "{$name[3]}:{$name[4]}:{$name[5]}";
+                $part = $name[6];
+                $info = pathinfo($file);
+                if(isset($list["{$date} {$time}"])){
+                    $info = $list["{$date} {$time}"];
+                    $info['part'] = max($info['part'], $part);
+                    $info['size'] = $info['size'] + $file->getSize();
+                } else {
+                    $info['part'] = $part;
+                    $info['size'] = $file->getSize();
+                }
+                $extension        = strtoupper(pathinfo($file->getFilename(), PATHINFO_EXTENSION));
+                $info['compress'] = ($extension === 'SQL') ? '-' : $extension;
+                $info['time']     = strtotime("{$date} {$time}");
+                $info['times']     = "{$date} {$time}";
+
+                $list[] = $info;
+            }
         }
     }
 

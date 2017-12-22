@@ -12,9 +12,12 @@
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
 	</head>
-
+	<style>
+		input{
+			font-size: 14px;
+		}
+	</style>
 	<body>
 		<div id="bodyLeft">
 			<!--左侧边栏-->
@@ -26,7 +29,7 @@
 					<div class="userinfo">
 						<div class="information">
 							<div class="info_image">
-								<img src="img/info_image.png" alt="" class="photo"/>
+								<img src="img/info_image.png" alt="" class="photo" />
 								<img src="img/info_image_Bg.png" alt="" />
 							</div>
 							<div class="info_name"></div>
@@ -36,13 +39,12 @@
 						<div class="title active">
 							<span></span>
 							<div class="manage">用户管理</div>
-							<i></i>
 						</div>
 						<ul class="ul">
 							<li>
 								<a href="backstage_admin_list.html">用户列表</a>
 							</li>
-							<li  class=" active">
+							<li class="active">
 								<a href="backstage_new-user.html">新增用户</a>
 							</li>
 							<li>
@@ -51,10 +53,9 @@
 						</ul>
 					</div>
 					<div class="backstageListTwo">
-						<div class="title">
+						<div class="title ">
 							<span></span>
 							<div class="manage">系统管理</div>
-							<i></i>
 						</div>
 						<ul class="ul">
 							<li>
@@ -87,13 +88,13 @@
 						<div><img src="img/info_image.png" /></div>
 					</div>
 					<div class="LastDataTime rightDiv">
-						<div>
-							上次登录时间：<i>2017-09-01</i><i>09:01:00</i>
+						<div class="last_time">
+							上次登录时间：<i></i>
 						</div>
 					</div>
 					<div class="LastDataTime rightDiv">
-						<div>
-							上次登录IP：<i>255.255.255.255</i>
+						<div class="last_ip">
+							上次登录IP：<i></i>
 						</div>
 					</div>
 				</div>
@@ -104,7 +105,7 @@
 					<a href="###">管理员管理</a>&nbsp;&gt;&nbsp;
 					<a>新建用户</a>
 				</div>
-				<div class="newUsers" id = "add_nor">
+				<div class="newUsers" id="add_nor">
 					<div class="first">
 						<div class="box">
 							<div class="boxLeft">
@@ -120,7 +121,7 @@
 									<li>
 										<div>出生年月：</div>
 										<span>
-											<input type="text" name=""  value="2017-09-01" id="testone"/>
+											<input type="text" name="" placeholder="请选择时间" id="testone" />
 										</span>
 									</li>
 									<li>
@@ -153,7 +154,7 @@
 											<input type="text" name="" id="" value="" disabled="disabled" placeholder="输入性别"/>
 											<i><img src="img/black_tri.png"/></i>
 											<select name="page" id="new_sex_list">
-												
+												<option value="-1">-</option>
 												<option value="1">男</option>
 												<option value="2">女</option>												
 											</select>
@@ -162,7 +163,7 @@
 									<li>
 										<div>参加工作时间：</div>
 										<span>
-											<input type="text" name=""  value="2017-09-01" id="testtwo"/>
+											<input type="text" name="" placeholder="请选择时间" id="testtwo"/>
 										</span>
 									</li>
 									<li>
@@ -171,16 +172,18 @@
 											<input type="text" name="" id="" value="" disabled="disabled" placeholder="输入学历"/>
 											<i><img src="img/black_tri.png"/></i>
 											<select name="page" id="edu_list">
-														
-												<option value="1">博士</option>
-												<option value="2">硕士</option>
-												<option value="3">研究生</option>
-												<option value="4">本科</option>
-												<option value="5">大专</option>
-												<option value="6">高中</option>
-												<option value="7">中专</option>
-												<option value="8">初中</option>
-												<option value="9">小学</option>
+												
+												<option value="8">-</option>
+												<option value="7">博士</option>
+												<option value="6">硕士</option>
+												
+												<option value="5">本科</option>
+												<option value="4">大专</option>
+												<option value="3">高中</option>
+												<option value="2">中专</option>
+												<option value="1">初中</option>
+												<option value="0">小学</option>
+												
 											</select>
 										</span>
 									</li>
@@ -214,7 +217,7 @@
 					</div>
 					<div class="second">
 						<div class="Sheader">权限分配</div>
-						<div class="Sbody"  id="autho_add">
+						<div class="Sbody" id="autho_add">
 							<p>普通权限：</p>
 							<div>
 								<span data-type=""><a><img  id="autho_1" src="img/backstage_checkbox_kong.png" alt="" /></a><i>新建项目</i></span>
@@ -259,6 +262,11 @@
 						</div>
 					</div>
 				</div>
+				<!--/*单位信息*/-->
+				<div class="danw">
+					单位信息：
+					<span></span>
+				</div>
 			</div>
 		</div>
 		<div id="boxPock">
@@ -266,6 +274,7 @@
 			<!--弹框区-->
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/backstage_newUser.js" type="text/javascript" charset="utf-8"></script>
 		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
@@ -278,9 +287,8 @@
 			});
 		</script>
 	</body>
-	
+
 	<script src="js/ad_regular.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css" href="css/regular.css"></link>
-		
 
 </html>

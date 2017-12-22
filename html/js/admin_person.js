@@ -59,8 +59,8 @@ $(function() {
 	})
 	/*用户管理增加*/
 	$(document).on("click", ".member_manage2 .third .page_right .more", function() {
-		var total_num = $(".member_manage2 .third .page_right .total_num").text();
-		var num = $(".member_manage2 .third .page_right .number").text();
+		var total_num = Number($(".member_manage2 .third .page_right .total_num").text());
+		var num = Number($(".member_manage2 .third .page_right .number").text());
 		var startTime = $("#admin_three").val();
 		var endtime = $("#admin_four").val();
 		var name = $("#search_name").val();
@@ -74,7 +74,7 @@ $(function() {
 	})
 	/*用户管理减少*/
 	$(document).on("click", ".member_manage2 .third .page_right .less", function() {
-		var num = $(".member_manage2 .third .page_right .number").text();
+		var num = Number($(".member_manage2 .third .page_right .number").text());
 		var startTime = $("#admin_three").val();
 		var endtime = $("#admin_four").val();
 		var name = $("#search_name").val();
@@ -84,6 +84,19 @@ $(function() {
 			num--;
 			$(".member_manage2 .third .page_right .number").text(num);
 			person(num, startTime, endtime, name);
+		}
+	})
+	/*用户管理跳页*/
+	$(document).on("click", ".member_manage2 .third .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		var startTime = $("#admin_three").val();
+		var endtime = $("#admin_four").val();
+		var name = $("#search_name").val();
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			person(jump_num, startTime, endtime, name);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 	/*历史用户增加*/
@@ -103,7 +116,7 @@ $(function() {
 	/*历史用户减少*/
 	$(document).on("click", ".member_manage2 .forth .page_right .less", function() {
 		var num = $(".member_manage2 .forth .page_right .number").text();
-		console.log(num)
+		//		console.log(num)
 		var startTime = $("#admin_three").val();
 		var endtime = $("#admin_four").val();
 		if(num == 1) {
@@ -112,6 +125,19 @@ $(function() {
 			num--;
 			$(".member_manage2 .forth .page_right .number").text(num);
 			hisPerson(num, startTime, endtime);
+		}
+	})
+	/*用户管理跳页*/
+	$(document).on("click", ".member_manage2 .forth .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		var startTime = $("#admin_three").val();
+		var endtime = $("#admin_four").val();
+		var name = $("#search_name").val();
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			person(jump_num, startTime, endtime, name);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 	/*人员管理之用户管理*/
@@ -131,7 +157,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					$(".member_manage2 .third tbody tr").remove();
 					/*人员管理的用户管理*/
 					var person = "";
@@ -218,7 +244,7 @@ $(function() {
 	$(document).on("click", ".member_manage2 .forth td span", function() {
 		ckeckNum = 2;
 		var id = $(this).parents("td").attr("data-id");
-		console.log(id)
+		//		console.log(id)
 		hisCheck(id);
 		$("#boxPock").show();
 		$(".history_person").show();
@@ -242,7 +268,7 @@ $(function() {
 			success: function(data) {
 				if(data.status == 1) {
 					if(ckeckNum == 1) {
-						console.log(data)
+						//						console.log(data)
 						var authority = data.data.authority.split(",");
 						//根据权限列表值，显示
 						//"authority":"1,2,3"
@@ -319,7 +345,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					var authority = data.data.authority.split(",");
 					//根据权限列表值，显示
 					//"authority":"1,2,3"
@@ -493,40 +519,31 @@ $(function() {
 		newP.qq = $(".add_person .qq").val();
 		newP.sex = $(".add_person .sex").attr("data-id");
 		newP.authority = arrUser.join(",");
-		if(newP.sex == -1) {
-			toast("请选择性别")
-		} else if(newP.work_type == "请选择工种") {
-			toast("请选择工种")
-		} else if(newP.edu == -1) {
-			toast("请选择学历")
-		} else if(!(/^1[34578]\d{9}$/.test(newP.mobile))) {
-			toast("手机号有误，请重新输入")
-		} else {
-			$.ajax({
-				type: "post",
-				url: host_host_host + "/index.php/home/manage/create",
-				dataType: 'json',
-				headers: {
-					accept: "usertoken:" + token,
-				},
-				data: newP,
-				success: function(data) {
-					console.log(data)
-					if(data.status == 1) {
-						toast(data.msg);
-						person(1);
-						$(".add_person").hide();
-						$("#boxPock").hide();
-					} else {
-						toast(data.msg)
-					}
-				},
-				error: function(data) {
+		$.ajax({
+			type: "post",
+			url: host_host_host + "/index.php/home/manage/create",
+			dataType: 'json',
+			headers: {
+				accept: "usertoken:" + token,
+			},
+			data: newP,
+			success: function(data) {
+				//					console.log(data)
+				if(data.status == 1) {
+					toast(data.msg);
+					person(1);
+					$(".add_person").hide();
+					$("#boxPock").hide();
+				} else {
+					toast(data.msg)
+				}
+			},
+			error: function(data) {
 
-				},
-				async: true
-			});
-		}
+			},
+			async: true
+		});
+
 	})
 	$(".add_person .add_person_head i,.add_person .btn2").on("click", function() {
 		$("#boxPock").hide();

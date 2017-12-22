@@ -50,11 +50,11 @@ $(function() {
 			$(e_id).append(item);
 
 		}
-		console.log(55 + e_id)
+//		console.log(55 + e_id)
 		$(".tableFirstRows .edit").on("click", function() {
 			var id = $(this).data("id");
 			$("#boxPock #edit_add").data("id", id);
-			console.log(id + ":::::" + $("#boxPock #edit_add").data("id"))
+//			console.log(id + ":::::" + $("#boxPock #edit_add").data("id"))
 			openEdit(id);
 		})
 		$(".tableFirstRows .del").on("click", function() {
@@ -75,16 +75,16 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
+//					console.log(1);
+//					console.log(data.msg);
+//					console.log(data.data);
 					rendChannelParam(data.data, e_id);
 				} else {
-					console.log(data.msg + 5 + data.data)
+//					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+//				console.log(0)
 			},
 			async: true
 		});
@@ -139,25 +139,25 @@ $(function() {
 			id = "task_type";
 		}
 
-		console.log(index + txt + "____" + id);
+//		console.log(index + txt + "____" + id);
 		getChannelParam(typeN, "#" + id);
-		console.log(index + txt);
+//		console.log(index + txt);
 
 		$("#boxPock #edit").data("type", "add_" + typeN); //控制弹窗类型
 		$("#boxPock #edit_add").data("type", "edit_" + typeN); //控制弹窗类型
-		console.log($("#boxPock .edit").data("type"));
+//		console.log($("#boxPock .edit").data("type"));
 	})
 
 	//新增一个栏目标签
 
 	var newpFParam = function(addtyN) {
 
-		console.log(5);
+//		console.log(5);
 
 		var newP = {};
 		newP.name = "" + $("#short").val();
 
-		console.log(JSON.stringify(newP))
+//		console.log(JSON.stringify(newP))
 		token = localStorage.getItem("token");
 		$.ajax({
 				method: 'POST',
@@ -171,21 +171,21 @@ $(function() {
 			.done(function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1);
+//					console.log(1);
 					fresh_add(addtyN); //刷新当前列表
 				} else {
-					console.log(data.msg + 5 + data.data)
+//					console.log(data.msg + 5 + data.data)
 				}
-				console.log(data);
-				console.log(JSON.stringify(data));
+//				console.log(data);
+//				console.log(JSON.stringify(data));
 			})
 			.fail(function(data) {
 				toast("失败！");
-				console.log("fail!");
+//				console.log("fail!");
 			})
 			.always(function(data) {
-				console.log("always!");
-				console.log(JSON.stringify(data));
+//				console.log("always!");
+//				console.log(JSON.stringify(data));
 
 				//关闭弹窗
 				$("#boxPock").hide();
@@ -198,13 +198,13 @@ $(function() {
 
 	var editpFParam = function(addtyN) {
 
-		console.log(5);
+//		console.log(5);
 
 		var newP = {};
 		newP.id = "" + $("#boxPock #edit_add").data("id");
 		newP.name = "" + $("#shortE").val();
 
-		console.log(JSON.stringify(newP))
+//		console.log(JSON.stringify(newP))
 		token = localStorage.getItem("token");
 		$.ajax({
 
@@ -220,21 +220,21 @@ $(function() {
 			.done(function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1);
+//					console.log(1);
 					fresh(addtyN); //刷新当前列表
 				} else {
 					console.log(data.msg + 5 + data.data)
 				}
-				console.log(data);
-				console.log(JSON.stringify(data));
+//				console.log(data);
+//				console.log(JSON.stringify(data));
 			})
 			.fail(function(data) {
 				toast("失败");
-				console.log("fail!");
+//				console.log("fail!");
 			})
 			.always(function(data) {
-				console.log("always!");
-				console.log(JSON.stringify(data));
+//				console.log("always!");
+//				console.log(JSON.stringify(data));
 				//关闭弹窗
 				$("#boxPock").hide();
 				$("#boxPock .del").hide();
@@ -246,7 +246,7 @@ $(function() {
 	//process_type"" 不同页的增加按钮，将类型赋给共有的那个弹窗
 	$(".addChannelBtn").on("click", function() {
 		var adTyp = $(this).data("id");
-		console.log(adTyp);
+//		console.log(adTyp);
 		$("#boxPock #edit").data("type", "add_" + adTyp)
 		$("#boxPock").show();
 		$("#boxPock #edit").show();
@@ -346,7 +346,7 @@ $(function() {
 			typeN = "admin_overhead_type";
 			id = "admin_overhead_type";
 		}
-		console.log("[::]fresh:" + addtyN);
+//		console.log("[::]fresh:" + addtyN);
 		getChannelParam(typeN, "#" + id);
 	}
 	//更新成功后刷新列表
@@ -401,7 +401,7 @@ $(function() {
 			typeN = "admin_overhead_type";
 			id = "admin_overhead_type";
 		}
-		console.log("[::]fresh:" + addtyN);
+//		console.log("[::]fresh:" + addtyN);
 		getChannelParam(typeN, "#" + id);
 	}
 	////********************
@@ -431,7 +431,7 @@ $(function() {
 			var typeN = "task_type";
 			var id = "task_type";
 
-			console.log(typeN + "____" + id);
+//			console.log(typeN + "____" + id);
 			getChannelParam(typeN, "#" + id);
 			adjWin(typeN);
 		})
@@ -439,7 +439,7 @@ $(function() {
 		$("#notice").on("click", function() {
 			var typeN = "notice_type";
 			var id = "notice_type";
-			console.log(typeN + "____" + id);
+//			console.log(typeN + "____" + id);
 			getChannelParam(typeN, "#" + id);
 			adjWin(typeN);
 		})
@@ -449,7 +449,7 @@ $(function() {
 			var id = "project_overhead_type";
 			getChannelParam(typeN, "#" + id);
 			adjWin(typeN);
-			console.log("财务")
+//			console.log("财务")
 		})
 		//后台
 		$("#backstage").on("click", function() {
@@ -457,7 +457,7 @@ $(function() {
 			var id = "role_type";
 			getChannelParam(typeN, "#" + id);
 			adjWin(typeN);
-			console.log("后台")
+//			console.log("后台")
 		})
 
 		//第一次加载列表（在用户点击tab之前）

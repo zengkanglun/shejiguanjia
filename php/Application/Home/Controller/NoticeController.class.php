@@ -91,7 +91,7 @@ class NoticeController extends CommonController
     public function reply()
     {
         $model = M('noticeReceive');
-        $count = $model->where(['uid'=>$this->user_id,'status'=>1])->count();
+        $count = $model->where(['uid'=>$this->user_id,'status'=>3])->count();
         $page  = new Page($count,5);
         $data['count'] = $count;
         $data['page']  = ceil($count/5);
@@ -120,13 +120,13 @@ class NoticeController extends CommonController
     public function own_reply()
     {
         $model = M('notice');
-        $count = $model->where(['user_id'=>$this->user_id])->count();
+        $count = $model->where(['user_id'=>$this->user_id,'status'=>0])->count();
         $page  = new Page($count,5);
         $data['count'] = $count;
         $data['page']  = ceil($count/5);
 
         $data['data']  = $model
-            ->where(['user_id'=>$this->user_id])
+            ->where(['user_id'=>$this->user_id,'status'=>0])
             ->field(['type','project_id','title','user_id','addtime','id'])
             ->limit($page->firstRow.','.$page->listRows)
             ->select();
@@ -148,6 +148,7 @@ class NoticeController extends CommonController
     public function info()
     {
         $id     = I('get.id',0);
+        $sid    = I('get.sid',0);
 //        $data   = M('noticeReceive')
 //            ->alias('a')
 //            ->join('__NOTICE__ b on a.pid=b.id')
@@ -156,14 +157,29 @@ class NoticeController extends CommonController
 //            ->find();
         $data = D('notice')
             ->where(['id'=>$id])
-            ->field(['type','project_id','title','user_id','file_name','content','reply'])
+            ->field(['type','project_id','title','user_id','IFNULL(file_name,"") AS file_name','content','reply','receiver'])
             ->find();
         if(!$data)
         {
             ajax_error('数据不存在');
         }
+        $data['reply']      = M('noticeReceive')->where(['pid'=>$id])->field(['uid','addtime','reply'])->select();
+        foreach ($data['reply'] as $k=>$v) {
+            if(!$v['reply'])
+            {
+                unset($data['reply'][$k]);
+                continue;
+            }
+
+            $data['reply'][$k]['uid'] = M('user')->where(['id'=>$v['uid']])->getField('nickname');
+            $data['reply'][$k]['addtime'] = date('Y-m-d',$v['addtime']);
+        }
+        if($sid)
+        {
+            $data['reply_content'] = M('noticeReceive')->where(['id'=>$sid])->getField('reply');
+        }
         $data['project_id'] = M('project')->where(['id'=>$data['project_id']])->getField('name');
-        $data['user_id']    = M('user')->where(['id'=>$data['user_id']])->getField('nickname');
+        $data['user_id']    = M('user')->where(['id'=>['in',$data['receiver']]])->getField('group_concat(nickname)');
         $data['addtime']    = date('Y-m-d',$data['addtime']);
         $data['type']       = M('noticeType')->where(['id'=>$data['type']])->getField('name');
         ajax_success('获取成功',$data);
@@ -179,20 +195,25 @@ class NoticeController extends CommonController
             $post       = I('post.');
             // notice receive id
             $id         = $post['id'];
-            $content    = $post['content'];
+            $content    = $post['content'] ? $post['content'] : '已回复';
             if(!$id || !$content)
             {
                 ajax_error('数据非法');
             }
 
-            $pid        = M('noticeReceive')->where(['id'=>$id])->getField('pid');
-
-            if(M('notice')->where(['id'=>$pid])->save(['reply'=>$content]))
+            if(M('noticeReceive')->where(['id'=>$id])->save(['reply'=>$content]))
             {
-                // 更改状态为已回复
                 M('noticeReceive')->where(['id'=>$id])->save(['status'=>3]);
                 ajax_success('回复成功');
             }
+//            $pid        = M('noticeReceive')->where(['id'=>$id])->getField('pid');
+//
+//            if(M('notice')->where(['id'=>$pid])->save(['reply'=>$content]))
+//            {
+//                // 更改状态为已回复
+//                M('noticeReceive')->where(['id'=>$id])->save(['status'=>3]);
+//                ajax_success('回复成功');
+//            }
 
             ajax_error('回复失败');
         }
@@ -229,7 +250,7 @@ class NoticeController extends CommonController
             case 2:
             case 3:
                 $data = M('noticeReceive')->where(['id'=>$id])->field(['uid','pid'])->find();
-                if(!$data || $data['user_id'] != $this->user_id)
+                if(!$data || $data['uid'] != $this->user_id)
                 {
                     ajax_error('任务不存在或任务不属于你');
                 }
@@ -237,13 +258,24 @@ class NoticeController extends CommonController
                 {
                     M('recycled')->add(['pid'=>$id,'kind'=>3,'type'=>$type,'del_time'=>time(),'user_id'=>$this->user_id]);
                     $title = M('notice')->where(['id'=>$data['pid']])->getField('title');
-                    $this->log("删除了任务{$title}",4);
+                    $this->log("删除了通知{$title}",4);
                     ajax_success();
                 }
 
                 ajax_error();
                 break;
             case 4:
+                $data = M('notice')->where(['id'=>$id])->field(['user_id','title'])->find();
+                if(!$data || ($data['user_id'] != $this->user_id))
+                {
+                    ajax_error('任务不存在或任务不属于你');
+                }
+                if(M('notice')->where(['id'=>$id])->save(['status'=>1]))
+                {
+                    M('recycled')->add(['pid'=>$id,'kind'=>3,'type'=>$type,'del_time'=>time(),'user_id'=>$this->user_id]);
+                    $this->log("删除了通知{$title}",4);
+                    ajax_success();
+                }
                 break;
         }
 

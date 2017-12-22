@@ -386,6 +386,48 @@ body {
 #bodyRight #content .center_content .recycle .info_detail .paging .page .page_right i.more {
   margin-left: 5px;
 }
+#bodyRight #content .center_content .recycle .process_detail .paging .page .jump,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .jump,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .jump {
+  float: left;
+  margin-left: 10px;
+  height: 36px;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .jump span,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .jump span,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .jump span {
+  float: left;
+  font-size: 14px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .jump input,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .jump input,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .jump input {
+  width: 40px;
+  height: 25px;
+  line-height: 25px;
+  line-height: 25px\9;
+  border: 1px solid #333333;
+  float: left;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+#bodyRight #content .center_content .recycle .process_detail .paging .page .jump .go,
+#bodyRight #content .center_content .recycle .task_detail .paging .page .jump .go,
+#bodyRight #content .center_content .recycle .info_detail .paging .page .jump .go {
+  width: 40px;
+  line-height: 25px;
+  line-height: 25px\9;
+  float: left;
+  margin-left: 10px;
+  background: #FD813E;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 5px;
+  cursor: pointer;
+}
 #bodyRight #content .center_content .recycle .process_detail,
 #bodyRight #content .center_content .recycle .info_detail {
   display: none;
@@ -422,30 +464,60 @@ body {
   line-height: 26px;
   line-height: 26px\9;
 }
-#bodyRight #content .center_content .perf .task_detail {
+#bodyRight #content .center_content .perf .perf_manage {
+  width: 100%;
+  margin: 20px 0;
+  margin-bottom: 0;
+  padding-left: 30px;
+  box-sizing: border-box;
+  height: 36px;
+}
+#bodyRight #content .center_content .perf .perf_manage li {
+  width: 80px;
+  height: 36px;
+  line-height: 36px;
+  float: left;
+  margin-right: 20px;
+  background: #9daab8;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+}
+#bodyRight #content .center_content .perf .perf_manage li.active {
+  background: #FD813E;
+}
+#bodyRight #content .center_content .perf .task_detail,
+#bodyRight #content .center_content .perf .manage_detail {
   width: 100%;
   padding: 33px 36px;
   box-sizing: border-box;
 }
-#bodyRight #content .center_content .perf .task_detail table {
+#bodyRight #content .center_content .perf .task_detail table,
+#bodyRight #content .center_content .perf .manage_detail table {
   width: 100%;
   border: #c8d2dc;
 }
-#bodyRight #content .center_content .perf .task_detail table thead {
+#bodyRight #content .center_content .perf .task_detail table thead,
+#bodyRight #content .center_content .perf .manage_detail table thead {
   background: #9daab8;
   height: 50px;
 }
-#bodyRight #content .center_content .perf .task_detail table thead td {
+#bodyRight #content .center_content .perf .task_detail table thead td,
+#bodyRight #content .center_content .perf .manage_detail table thead td {
   height: 50px;
   text-align: center;
   color: #333333;
   font-weight: bold;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .orderlist {
+#bodyRight #content .center_content .perf .task_detail table thead .orderlist,
+#bodyRight #content .center_content .perf .manage_detail table thead .orderlist {
   width: 106px;
   position: relative;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .orderlist i {
+#bodyRight #content .center_content .perf .task_detail table thead .orderlist i,
+#bodyRight #content .center_content .perf .manage_detail table thead .orderlist i {
   position: absolute;
   width: 11px;
   height: 8px;
@@ -454,56 +526,82 @@ body {
   right: 20px;
   cursor: pointer;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .settime {
+#bodyRight #content .center_content .perf .task_detail table thead .settime,
+#bodyRight #content .center_content .perf .manage_detail table thead .settime {
   width: 121px;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .job-style {
+#bodyRight #content .center_content .perf .task_detail table thead .job-style,
+#bodyRight #content .center_content .perf .manage_detail table thead .job-style {
   width: 142px;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .job {
+#bodyRight #content .center_content .perf .task_detail table thead .job,
+#bodyRight #content .center_content .perf .manage_detail table thead .job {
   width: 122px;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .title {
+#bodyRight #content .center_content .perf .task_detail table thead .title,
+#bodyRight #content .center_content .perf .manage_detail table thead .title {
   width: 200px;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .del {
+#bodyRight #content .center_content .perf .task_detail table thead .del,
+#bodyRight #content .center_content .perf .manage_detail table thead .del {
   width: 104px;
 }
-#bodyRight #content .center_content .perf .task_detail table thead .handle {
+#bodyRight #content .center_content .perf .task_detail table thead .handle,
+#bodyRight #content .center_content .perf .manage_detail table thead .handle {
   width: 105px;
 }
-#bodyRight #content .center_content .perf .task_detail table tbody {
+#bodyRight #content .center_content .perf .task_detail table tfoot,
+#bodyRight #content .center_content .perf .manage_detail table tfoot {
   height: 50px;
+  background: #9DAAB8;
 }
-#bodyRight #content .center_content .perf .task_detail table tbody tr {
-  height: 50px;
-  background: #ffffff;
-}
-#bodyRight #content .center_content .perf .task_detail table tbody tr td {
+#bodyRight #content .center_content .perf .task_detail table tfoot td,
+#bodyRight #content .center_content .perf .manage_detail table tfoot td {
   height: 50px;
   text-align: center;
   color: #333333;
 }
-#bodyRight #content .center_content .perf .task_detail table tbody tr .handle {
+#bodyRight #content .center_content .perf .task_detail table tbody,
+#bodyRight #content .center_content .perf .manage_detail table tbody {
+  height: 50px;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr,
+#bodyRight #content .center_content .perf .manage_detail table tbody tr {
+  height: 50px;
+  background: #ffffff;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr td,
+#bodyRight #content .center_content .perf .manage_detail table tbody tr td {
+  height: 50px;
+  text-align: center;
   color: #333333;
 }
-#bodyRight #content .center_content .perf .task_detail table tbody tr .handle span {
+#bodyRight #content .center_content .perf .task_detail table tbody tr .handle,
+#bodyRight #content .center_content .perf .manage_detail table tbody tr .handle {
+  color: #333333;
+}
+#bodyRight #content .center_content .perf .task_detail table tbody tr .handle span,
+#bodyRight #content .center_content .perf .manage_detail table tbody tr .handle span {
   padding: 0px 2px;
   cursor: pointer;
 }
-#bodyRight #content .center_content .perf .task_detail table tbody tr:nth-child(2n) {
+#bodyRight #content .center_content .perf .task_detail table tbody tr:nth-child(2n),
+#bodyRight #content .center_content .perf .manage_detail table tbody tr:nth-child(2n) {
   background: #e9ecf1;
 }
-#bodyRight #content .center_content .perf .task_detail .paging {
+#bodyRight #content .center_content .perf .task_detail .paging,
+#bodyRight #content .center_content .perf .manage_detail .paging {
   width: 100%;
   height: 36px;
   margin-top: 25px;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page {
+#bodyRight #content .center_content .perf .task_detail .paging .page,
+#bodyRight #content .center_content .perf .manage_detail .paging .page {
   float: right;
   height: 36px;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page .page_left {
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_left,
+#bodyRight #content .center_content .perf .manage_detail .paging .page .page_left {
   float: left;
   height: 36px;
   line-height: 36px;
@@ -512,26 +610,30 @@ body {
   color: #333333;
   margin-right: 15px;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page .page_right {
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right,
+#bodyRight #content .center_content .perf .manage_detail .paging .page .page_right {
   float: left;
   height: 36px;
   line-height: 36px;
   line-height: 36px\9;
   font-size: 14px;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page .page_right span {
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right span,
+#bodyRight #content .center_content .perf .manage_detail .paging .page .page_right span {
   display: block;
   float: left;
   height: 36px;
   line-height: 36px;
   line-height: 36px\9;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page .page_right .number {
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right .number,
+#bodyRight #content .center_content .perf .manage_detail .paging .page .page_right .number {
   color: #fd813e;
   display: block;
   float: left;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i {
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i,
+#bodyRight #content .center_content .perf .manage_detail .paging .page .page_right i {
   width: 16px;
   height: 16px;
   background: #E5E5E5;
@@ -544,11 +646,16 @@ body {
   margin-top: 10px;
   cursor: pointer;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i.less {
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i.less,
+#bodyRight #content .center_content .perf .manage_detail .paging .page .page_right i.less {
   margin-left: 5px;
 }
-#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i.more {
+#bodyRight #content .center_content .perf .task_detail .paging .page .page_right i.more,
+#bodyRight #content .center_content .perf .manage_detail .paging .page .page_right i.more {
   margin-left: 5px;
+}
+#bodyRight #content .center_content .perf .manage_detail {
+  display: none;
 }
 #bodyRight #content .center_content .perf .process_detail,
 #bodyRight #content .center_content .perf .info_detail {
@@ -586,7 +693,7 @@ body {
   background: rgba(77, 85, 93, 0.8);
 }
 #boxPock .perf_detail .pref_head {
-  width: 100%;
+  width: 970px;
   height: 56px;
   background: #293541;
   text-align: center;
@@ -1091,7 +1198,7 @@ body {
   height: 40px;
   position: absolute;
   left: 150px;
-  bottom: 40px;
+  bottom: 20px;
   opacity: 0;
   filter: alpha(opacity=0);
 }
@@ -1111,4 +1218,178 @@ body {
   outline: none;
   box-shadow: 0px 0px 10px #FD813E;
   margin-top: 30px;
+}
+#boxPock .cleanMsg {
+  width: 400px;
+  height: 256px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #5b636c;
+  display: none;
+  z-index: 10;
+  overflow-y: auto;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .cleanMsg .clean_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .cleanMsg .clean_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .cleanMsg .clean_bottom {
+  width: 100%;
+  height: 200px;
+  background: #ffffff;
+  overflow: hidden;
+}
+#boxPock .cleanMsg .clean_bottom .sure {
+  width: 230px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  text-align: center;
+  margin: 50px auto;
+  margin-bottom: 0;
+}
+#boxPock .cleanMsg .clean_bottom .foot {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+#boxPock .cleanMsg .clean_bottom .foot .btn1 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #FD813E;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  float: left;
+  margin-left: 80px;
+}
+#boxPock .cleanMsg .clean_bottom .foot .btn2 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #9DAAB8;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  float: left;
+  margin-left: 35px;
+}
+#boxPock .delMsg {
+  width: 400px;
+  height: 256px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #5b636c;
+  display: none;
+  z-index: 10;
+  overflow-y: auto;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .delMsg .del_head {
+  width: 100%;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .delMsg .del_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .delMsg .del_bottom {
+  width: 100%;
+  height: 200px;
+  background: #ffffff;
+  overflow: hidden;
+}
+#boxPock .delMsg .del_bottom .sure {
+  width: 230px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  text-align: center;
+  margin: 50px auto;
+  margin-bottom: 0;
+}
+#boxPock .delMsg .del_bottom .foot {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+#boxPock .delMsg .del_bottom .foot .btn1 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #FD813E;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  float: left;
+  margin-left: 80px;
+}
+#boxPock .delMsg .del_bottom .foot .btn2 {
+  width: 100px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  line-height: 36px\9;
+  border-radius: 5px;
+  display: block;
+  margin-top: 30px;
+  background: #9DAAB8;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  float: left;
+  margin-left: 35px;
 }

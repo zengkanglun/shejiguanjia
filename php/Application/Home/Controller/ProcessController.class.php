@@ -222,6 +222,7 @@ class ProcessController extends CommonController
                 $data['letter'] = D('Letter')->relation(['LetterType','user'])->order("add_time desc")->page($post['p'],10)->where('data_type = 1 && status = 0 && project_id = '.$post['project_id'])->select();
                 foreach($data['letter'] as $key=>$vo){
                     $data['letter'][$key]['time'] = date('Y-m-d',$vo['time']);
+                    $data['letter'][$key]['filename'] = $vo['filename'] ? $vo['filename'] : '';
                 }
                 $count = D('Letter')->relation(['LetterType','user'])->where('data_type = 1 && status = 0 && project_id = '.$post['project_id'])->count();
                 $data['count'] = $count;
@@ -247,17 +248,20 @@ class ProcessController extends CommonController
             //自动验证
             $rules = [
                 ['type', 'number', '类型不合法'],
-                ['content', 'require', '内容不能为空'],
+               // ['content', 'require', '内容不能为空'],
                 ['time', 'require', '时间不能为空'],
                 ['data_type', 'require', '数据类型不能为空'],
             ];
 
             $letter = M('letter');
             if($letter->validate($rules)->create()){
-                $file = uploads('',array('jpg','gif','bmp','png','jpeg','xlsx','doc','docx','xls','txt'),'','./Uploads/contract/');
+                if($_FILES['contract']['name'])
+                {
+                    $file = uploads('',array('jpg','gif','bmp','png','jpeg','xlsx','doc','docx','xls','txt'),'','./Uploads/contract/');
 
-                $letter->filename = $_FILES['contract']['name']; //合同原文件名
-                $letter->file = $file[0]; //文件路径
+                    $letter->filename = $_FILES['contract']['name']; //合同原文件名
+                    $letter->file = $file[0]; //文件路径
+                }
                 $letter->user_id = $this->user_id;
                 $letter->time = strtotime($post['time']);
                 $letter->add_time = time();
@@ -330,6 +334,7 @@ class ProcessController extends CommonController
                 $data['letter'] = D('Letter')->relation(['ArchiveType','user'])->order("add_time desc")->page($post['p'],10)->where('data_type = 2 && status = 0 && project_id = '.$post['project_id'])->select();
                 foreach($data['letter'] as $key=>$vo){
                     $data['letter'][$key]['time'] = date('Y-m-d',$vo['time']);
+                    $data['letter'][$key]['filename'] = $vo['filename'] ? $vo['filename'] : '';
                 }
                 $count = D('Letter')->relation(['ArchiveType','user'])->where('data_type = 2 && status = 0 && project_id = '.$post['project_id'])->count();
                 $data['count'] = $count;

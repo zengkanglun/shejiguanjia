@@ -72,7 +72,7 @@ $(function() {
 		},
 		success: function(data) {
 			if(data.status == 1) {
-				console.log(data);
+//				console.log(data);
 				/*项目收款*/
 				var xmsk = '';
 				for(var i = 0; i < data.data.schedule_list.length; i++) {
@@ -133,7 +133,7 @@ $(function() {
 				});
 
 			} else {
-				console.log(data);
+//				console.log(data);
 			}
 		},
 		error: function(data) {},
@@ -161,7 +161,7 @@ $(function() {
 	/*项目收款详情*/
 	$(document).on('click', '.collect_detail .handle .check', function() {
 		var xmskid = $(this).attr('data-id');
-		console.log(xmskid);
+//		console.log(xmskid);
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Finance/censusReceiptDetails",
@@ -174,7 +174,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+//					console.log(data);
 					$('#xmsk_d_name').val(data.data.project_name);
 					$('#xmsk_d_time').val(data.data.project_time);
 					$('#xmsk_d_stage').val(data.data.project_stage);
@@ -182,25 +182,25 @@ $(function() {
 					var xmsk_d = '';
 					xmsk_d += '<div class="bigstage first_stage">';
 					xmsk_d += '	<div class="stage_header">';
-					xmsk_d += '		<span>' + data.data.child.name + '</span>';
+					xmsk_d += '		<span>' + data.data.child.schedule_name + '</span>';
 					xmsk_d += '	</div>';
 					xmsk_d += '	<div class="stage_bottom">';
 					xmsk_d += '		<div class="service_content clearfix">';
 					xmsk_d += '			<div class="service">';
 					xmsk_d += '				<div class="service_left">服务内容：</div>';
-					xmsk_d += '				<input type="text" placeholder="分派" disabled="disabled" value="' + data.data.child.content + '" />';
+					xmsk_d += '				<input type="text"  disabled="disabled" value="' + data.data.child.content + '" />';
 					xmsk_d += '			</div>';
 					xmsk_d += '			<div class="stage_sum">';
 					xmsk_d += '				<div class="stage_sum_left">阶段总额：</div>';
-					xmsk_d += '				<input type="text" placeholder="20%" disabled="disabled" value="' + data.data.child.money + '" />';
+					xmsk_d += '				<input type="text"  disabled="disabled" value="' + data.data.child.money + '" />';
 					xmsk_d += '			</div>';
 					xmsk_d += '			<div class="pay">';
 					xmsk_d += '				<div class="pay_left">已收款：</div>';
-					xmsk_d += '				<input type="text" placeholder="20%" disabled="disabled" value="' + data.data.child.receive + '" />';
+					xmsk_d += '				<input type="text"  disabled="disabled" value="' + data.data.child.receive + '" />';
 					xmsk_d += '			</div>';
 					xmsk_d += '			<div class="nopay">';
 					xmsk_d += '				<div class="nopay_left">未收款：</div>';
-					xmsk_d += '				<input type="text" placeholder="20%" disabled="disabled" value="' + data.data.child.debt + '" />';
+					xmsk_d += '				<input type="text"  disabled="disabled" value="' + data.data.child.debt + '" />';
 					xmsk_d += '			</div>';
 					xmsk_d += '		</div>';
 					xmsk_d += '		<div class="table">';
@@ -229,12 +229,12 @@ $(function() {
 					xmsk_d += '			<div class="process_head">';
 					xmsk_d += '				<div class="head_left">过程记录</div>';
 					xmsk_d += '			</div>';
-					xmsk_d += '			<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled">' + data.data.child.process + '</textarea>';
+					xmsk_d += '			<textarea name="" rows="" cols=""  disabled="disabled">' + data.data.child.process + '</textarea>';
 					xmsk_d += '		</div>';
 					xmsk_d += '	</div>';
 					xmsk_d += '</div>';
 
-					console.log(xmsk_d)
+//					console.log(xmsk_d)
 					$('#xmsk_d').html(xmsk_d);
 
 				} else {
@@ -249,7 +249,7 @@ $(function() {
 	/*项目支出详情*/
 	$(document).on('click', '#xmzc .handle .check', function() {
 		var xmzcid = $(this).attr('data-id');
-		console.log(xmzcid);
+//		console.log(xmzcid);
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Finance/censusExpenseDetails",
@@ -262,7 +262,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+//					console.log(data);
 					$('#xmzc_d_name').val(data.data.project_name);
 					$('#xmzc_d_time').val(data.data.project_time);
 					$('#xmzc_d_type').val(data.data.overhead_type_name);
@@ -271,7 +271,7 @@ $(function() {
 					$('#xmzc_d_ex_time').val(data.data.expense_time);
 					$('#xmzc_d_ex_con').val(data.data.expense_content);
 				} else {
-					console.log(data);
+//					console.log(data);
 				}
 			},
 			error: function(data) {},
@@ -283,7 +283,7 @@ $(function() {
 	var xmjtfaid;
 	$(document).on('click', '#xmjt .plan .check', function() {
 		xmjtfaid = $(this).attr('data-id');
-		console.log(xmjtfaid);
+//		console.log(xmjtfaid);
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Finance/getProjectWorkCommission",
@@ -296,7 +296,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+//					console.log(data);
 					var xmjtfa = '';
 
 					for(var i = 0; i < data.data.length; i++) {
@@ -318,7 +318,7 @@ $(function() {
 					}
 					$('#xmjtfa').html(xmjtfa);
 				} else {
-					console.log(data);
+//					console.log(data);
 				}
 			},
 			error: function(data) {},
@@ -329,7 +329,7 @@ $(function() {
 	/*项目计提-查看项目组提成方案详情*/
 	$(document).on('click', '#xmjtfa .work_plan span', function() {
 		var xmjtxqid = $(this).attr('data-id');
-		console.log(xmjtxqid);
+//		console.log(xmjtxqid);
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Finance/getProjectStaffCommission",
@@ -343,7 +343,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+//					console.log(data);
 					$('#xmjtxq_time').val(data.data.info.start_time + '--' + data.data.info.end_time);
 					$('#xmjtxq_work_name').val(data.data.info.work_name);
 					$('#xmjtxq_username').val(data.data.info.username);
@@ -359,7 +359,7 @@ $(function() {
 					}
 					$('#xmjtxq_list').html(xmjtxq);
 				} else {
-					console.log(data);
+//					console.log(data);
 				}
 			},
 			error: function(data) {},

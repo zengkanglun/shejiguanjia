@@ -16,7 +16,7 @@ body {
   margin-bottom: 0;
 }
 #bodyRight #content .center_content .content_header .user_tab li {
-  width: 156px;
+  width: 115px;
   height: 54px;
   background: #ffffff;
   margin-right: 1px;
@@ -2384,18 +2384,19 @@ body {
   float: left;
 }
 #boxPock .item_edit .item_edit_bottom .item_top .uploading .load_right {
-  width: 80px;
+  width: 200px;
   height: 32px;
   line-height: 30px;
   line-height: 30px\9;
-  border: 1px solid #FD813E;
   color: #FD813E;
   text-align: center;
   float: left;
   margin-left: 10px;
   font-size: 14px;
-  border-radius: 5px;
   cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #boxPock .item_edit .item_edit_bottom .item_top .uploading input {
   width: 170px;
@@ -2791,7 +2792,7 @@ body {
 }
 #boxPock .item_editDetail .item_editDetail_bottom .item_top {
   width: 100%;
-  height: 150px;
+  height: 200px;
   background: #ffffff;
   padding: 24px 39px 30px 49px;
   box-sizing: border-box;
@@ -4241,7 +4242,7 @@ body {
   background: rgba(77, 85, 93, 0.8);
 }
 #boxPock .countDetail .countDetail_head {
-  width: 100%;
+  width: 970px;
   height: 56px;
   background: #293541;
   text-align: center;
@@ -4265,40 +4266,53 @@ body {
 }
 #boxPock .countDetail .countDetail_bottom .floor {
   width: 100%;
-  height: 50px;
+  padding: 10px;
   background: #ffffff;
   border-bottom: 1px solid #C8D2DC;
 }
 #boxPock .countDetail .countDetail_bottom .floor .floor_ul {
   list-style: none;
-  height: 50px;
   float: left;
+  width: 70%;
 }
 #boxPock .countDetail .countDetail_bottom .floor .floor_ul li {
-  width: 100px;
-  height: 50px;
-  box-sizing: border-box;
-  float: left;
-}
-#boxPock .countDetail .countDetail_bottom .floor .floor_ul li a {
   display: block;
-  width: 100px;
-  height: 50px;
-  line-height: 50px;
-  line-height: 50px\9;
+  width: 80px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
   float: left;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 0 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background: #9daab8;
 }
 #boxPock .countDetail .countDetail_bottom .floor .floor_ul li.active {
-  border-bottom: 4px solid #FD813E;
-}
-#boxPock .countDetail .countDetail_bottom .floor .floor_ul li.active a {
-  color: #FD813E;
+  background: #FD813E;
 }
 #boxPock .countDetail .countDetail_bottom .floor .floor_right {
+  width: 25%;
   float: right;
   height: 50px;
   padding-right: 10px;
+  line-height: 50px;
+  line-height: 50px\9;
+}
+#boxPock .countDetail .countDetail_bottom .floor .floor_right span {
+  width: 54%;
+  display: block;
+  height: 50px;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  float: right;
   line-height: 50px;
   line-height: 50px\9;
 }
@@ -4451,6 +4465,23 @@ body {
   text-align: center;
   cursor: pointer;
 }
+#boxPock .countDetail .countDetail_bottom .count_cnt .jtbtn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 20px auto;
+  background: #FD813E;
+  margin-bottom: 20px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  display: none;
+}
 #boxPock .countDetail .countDetail_bottom .count_cnt .histroy_count {
   width: 100%;
   background: #FFFFFF;
@@ -4531,24 +4562,6 @@ body {
   height: 100px;
   overflow: hidden;
 }
-#boxPock .countDetail .countDetail_bottom .count_cnt .cnt_footer .btn1 {
-  width: 160px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  line-height: 50px\9;
-  border-radius: 5px;
-  display: block;
-  margin: 50px auto;
-  background: #FD813E;
-  margin-bottom: 50px;
-  padding: 0;
-  font-size: 16px;
-  outline: none;
-  box-shadow: 0px 0px 10px #FD813E;
-  float: left;
-  margin-left: 250px;
-}
 #boxPock .countDetail .countDetail_bottom .count_cnt .cnt_footer .btn2 {
   width: 160px;
   height: 50px;
@@ -4563,8 +4576,6 @@ body {
   padding: 0;
   font-size: 16px;
   outline: none;
-  float: right;
-  margin-right: 250px;
 }
 #boxPock .count_edit {
   width: 970px;
@@ -4608,24 +4619,6 @@ body {
   height: 100px;
   overflow: hidden;
 }
-#boxPock .count_edit .cnt_footer .btn1 {
-  width: 160px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  line-height: 50px\9;
-  border-radius: 5px;
-  display: block;
-  margin: 20px auto;
-  background: #FD813E;
-  margin-bottom: 50px;
-  padding: 0;
-  font-size: 16px;
-  outline: none;
-  box-shadow: 0px 0px 10px #FD813E;
-  float: left;
-  margin-left: 250px;
-}
 #boxPock .count_edit .cnt_footer .btn2 {
   width: 160px;
   height: 50px;
@@ -4640,8 +4633,6 @@ body {
   padding: 0;
   font-size: 16px;
   outline: none;
-  float: right;
-  margin-right: 250px;
 }
 #boxPock .count_edit .count_go_cnt {
   background: #ffffff;
@@ -4802,7 +4793,8 @@ body {
   text-align: center;
   color: #333333;
 }
-#boxPock .item_plan .item_plan_bottom .plan_cnt table tbody tr .handle span {
+#boxPock .item_plan .item_plan_bottom .plan_cnt table tbody tr .handle span,
+#boxPock .item_plan .item_plan_bottom .plan_cnt table tbody tr .sub span {
   padding: 0px 2px;
   cursor: pointer;
 }
@@ -4859,6 +4851,120 @@ body {
 #boxPock .item_plan .cnt_footer .btn2,
 #boxPock .item_plan .cnt_footer .btn3 {
   margin-left: 30px;
+}
+#boxPock .item_plan1 {
+  width: 990px;
+  height: 600px;
+  background: #4d555d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  overflow-y: auto;
+  display: none;
+  background: rgba(77, 85, 93, 0.8);
+}
+#boxPock .item_plan1 .item_plan1_head {
+  width: 970px;
+  height: 56px;
+  background: #293541;
+  text-align: center;
+  line-height: 56px;
+  line-height: 56px\9;
+  color: #ffffff;
+  position: relative;
+}
+#boxPock .item_plan1 .item_plan1_head i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_off.png) no-repeat;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .item_plan1 .item_plan1_bottom {
+  width: 970px;
+  padding: 30px;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt {
+  background: #ffffff;
+  padding: 30px;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table {
+  width: 100%;
+  border: #c8d2dc;
+  margin-bottom: 15px;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table thead {
+  background: #9daab8;
+  height: 50px;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table thead td {
+  width: 117px;
+  height: 50px;
+  text-align: center;
+  color: #667788;
+  position: relative;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table thead td i {
+  position: absolute;
+  width: 11px;
+  height: 8px;
+  background: url(../img/black_tri.png) no-repeat;
+  top: 21px;
+  right: 20px;
+  cursor: pointer;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table tbody {
+  height: 50px;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table tbody tr {
+  height: 50px;
+  background: #ffffff;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table tbody tr td {
+  height: 50px;
+  text-align: center;
+  color: #333333;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table tbody tr .handle span,
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table tbody tr .sub span {
+  padding: 0px 2px;
+  cursor: pointer;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table tbody tr .item_name a {
+  display: block;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  line-height: 50px\9;
+}
+#boxPock .item_plan1 .item_plan1_bottom .plan_cnt table tbody tr:nth-child(2n) {
+  background: #e9ecf1;
+}
+#boxPock .item_plan1 .cnt_footer {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+#boxPock .item_plan1 .cnt_footer .btn2 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 20px auto;
+  background: #9DAAB8;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
 }
 #boxPock .worker_style {
   width: 990px;
@@ -5079,7 +5185,7 @@ body {
   cursor: pointer;
 }
 #boxPock .count_floor .count_floor_bottom {
-  width: 100%;
+  width: 970px;
   padding: 37px;
   box-sizing: border-box;
 }
@@ -5131,6 +5237,7 @@ body {
   position: relative;
   margin-bottom: 20px;
   font-size: 14px;
+  width: 50%;
 }
 #boxPock .count_floor .count_floor_bottom .floor_cnt .responsibe .duty span {
   float: left;
@@ -5287,7 +5394,7 @@ body {
   background: rgba(77, 85, 93, 0.8);
 }
 #boxPock .item_check .item_check_head {
-  width: 100%;
+  width: 970px;
   height: 56px;
   background: #293541;
   text-align: center;
@@ -6001,40 +6108,53 @@ body {
 }
 #boxPock .his_count .his_count_bottom .floor {
   width: 100%;
-  height: 50px;
+  padding: 10px;
   background: #ffffff;
   border-bottom: 1px solid #C8D2DC;
 }
 #boxPock .his_count .his_count_bottom .floor .floor_ul {
   list-style: none;
-  height: 50px;
   float: left;
+  width: 70%;
 }
 #boxPock .his_count .his_count_bottom .floor .floor_ul li {
-  width: 100px;
-  height: 50px;
-  box-sizing: border-box;
-  float: left;
-}
-#boxPock .his_count .his_count_bottom .floor .floor_ul li a {
   display: block;
-  width: 100px;
-  height: 50px;
-  line-height: 50px;
-  line-height: 50px\9;
+  width: 80px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
   float: left;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 0 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background: #56B4F8;
 }
 #boxPock .his_count .his_count_bottom .floor .floor_ul li.active {
-  border-bottom: 4px solid #FD813E;
-}
-#boxPock .his_count .his_count_bottom .floor .floor_ul li.active a {
-  color: #FD813E;
+  background: #FD813E;
 }
 #boxPock .his_count .his_count_bottom .floor .floor_right {
+  width: 25%;
   float: right;
   height: 50px;
   padding-right: 10px;
+  line-height: 50px;
+  line-height: 50px\9;
+}
+#boxPock .his_count .his_count_bottom .floor .floor_right span {
+  width: 54%;
+  display: block;
+  height: 50px;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  float: right;
   line-height: 50px;
   line-height: 50px\9;
 }

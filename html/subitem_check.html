@@ -37,9 +37,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -47,7 +50,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -204,12 +207,12 @@
 										</tr>-->
 									</tbody>
 								</table>
-								<div class="beixuan">
+								<!--<div class="beixuan">
 									<div class="alternative">备选工种：</div>
 									<ul class="design clearfix">
 
 									</ul>
-								</div>
+								</div>-->
 							</div>
 
 						</div>
@@ -258,10 +261,20 @@
 									记录数：<span></span>条
 								</div>
 								<div class="page_right">
-									<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+									<span>页数</span><i class="less">&lt;</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+								</div>
+								<div class="jump">
+									<span>跳页至</span>
+									<input type="number" class="jump_page" />
+									<div class="go">GO</div>
 								</div>
 							</div>
 						</div>
+					</div>
+					<!--/*单位信息*/-->
+					<div class="danw">
+						单位信息：
+						<span></span>
 					</div>
 				</div>
 			</div>

@@ -12,8 +12,6 @@
 		<link rel="stylesheet" type="text/css" href="css/backup.css" />
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/backup.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -27,7 +25,7 @@
 					<div class="userinfo">
 						<div class="information">
 							<div class="info_image">
-								<img src="" alt="" class="photo"/>
+								<img src="" alt="" class="photo" />
 								<img src="img/info_image_Bg.png" alt="" />
 							</div>
 							<div class="info_name"></div>
@@ -37,13 +35,12 @@
 						<div class="title">
 							<span></span>
 							<div class="manage">用户管理</div>
-							<i></i>
 						</div>
-						<ul class="ul" style="display:none;">
+						<ul class="ul">
 							<li>
 								<a href="backstage_admin_list.html">用户列表</a>
 							</li>
-							<li  >
+							<li>
 								<a href="backstage_new-user.html">新增用户</a>
 							</li>
 							<li>
@@ -55,9 +52,8 @@
 						<div class="title active">
 							<span></span>
 							<div class="manage">系统管理</div>
-							<i></i>
 						</div>
-						<ul class="ul"  style="display: block;">
+						<ul class="ul">
 							<li>
 								<a href="backstage_notice.html">任务通知</a>
 							</li>
@@ -67,9 +63,9 @@
 							<li>
 								<a href="backstage_channel.html">栏目标签</a>
 							</li>
-							<li class=" active">
+							<li class="active">
 								<a href="backstage_backup.html">数据备份</a>
-							</li>	
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -88,13 +84,13 @@
 						<div><img src="img/info_image.png" /></div>
 					</div>
 					<div class="LastDataTime rightDiv">
-						<div>
-							上次登录时间：<i>2017-09-01</i><i>09:01:00</i>
+						<div class="last_time">
+							上次登录时间：<i></i>
 						</div>
 					</div>
 					<div class="LastDataTime rightDiv">
-						<div>
-							上次登录IP：<i>255.255.255.255</i>
+						<div class="last_ip">
+							上次登录IP：<i></i>
 						</div>
 					</div>
 				</div>
@@ -148,6 +144,10 @@
 						</div>
 					</div>-->
 				</div>
+				<div class="danw" style="margin-top: 20px;color: #333333;">
+					单位信息：
+					<span></span>
+				</div>
 			</div>
 		</div>
 		<div id="boxPock">
@@ -162,49 +162,13 @@
 					</div>
 					<div class="recovery_bottom">
 						<div class="data_hidden">
-							<ul class="data_backup" id = "data_backup_list" >
+							<ul class="data_backup" id="data_backup_list">
 								<li>
 									<span>当前系统版本号</span>
 									<span>（v1.0.0）</span>
 									<span class="dele">删除</span>
 									<span class="recover">恢复</span>
-								</li>
-								<li>
-									<span>当前系统版本号</span>
-									<span>（v1.0.0）</span>
-									<span class="dele">删除</span>
-									<span class="recover">恢复</span>
-								</li>
-								<li>
-									<span>当前系统版本号</span>
-									<span>（v1.0.0）</span>
-									<span class="dele">删除</span>
-									<span class="recover">恢复</span>
-								</li>
-								<li>
-									<span>当前系统版本号</span>
-									<span>（v1.0.0）</span>
-									<span class="dele">删除</span>
-									<span class="recover">恢复</span>
-								</li>
-								<li>
-									<span>当前系统版本号</span>
-									<span>（v1.0.0）</span>
-									<span class="dele">删除</span>
-									<span class="recover">恢复</span>
-								</li>
-								<li>
-									<span>当前系统版本号</span>
-									<span>（v1.0.0）</span>
-									<span class="dele">删除</span>
-									<span class="recover">恢复</span>
-								</li>
-								<li>
-									<span>当前系统版本号</span>
-									<span>（v1.0.0）</span>
-									<span class="dele">删除</span>
-									<span class="recover">恢复</span>
-								</li>
+								</li>								
 							</ul>
 						</div>
 					</div>
@@ -246,6 +210,8 @@
 			</div>
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backup.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function() {
 				//select选中
@@ -255,7 +221,7 @@
 				})
 			})
 		</script>
-		
+
 		<script src="js/backup_data.js" type="text/javascript" charset="utf-8"></script>
 
 	</body>

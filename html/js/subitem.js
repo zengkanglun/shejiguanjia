@@ -20,11 +20,11 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				id:id
+				id: id
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					director = data.data.nickname;
 					director_id = data.data.director_id;
 					design = "";
@@ -300,18 +300,19 @@ $(function() {
 		$(document).on('click', '#jobbtn', function() {
 			$("#subitem_choose,#boxPock").hide();
 			var listxt = $(".item_right_ctn ul li span").text();
-			if($(".item_right_ctn ul li").length>0){
+			if($(".item_right_ctn ul li").length > 0) {
 				var dataId = $(".item_right_ctn ul li span").attr("data-id");
-			}else{
+			} else {
 				var dataId = 0;
 			}
 			$(".admin li").removeClass("active");
 			$(".item_right_ctn .work_style").remove();
 			people.siblings(".show").val(listxt);
-			people.siblings(".show").attr("data-id",dataId);
+			people.siblings(".show").attr("data-id", dataId);
 		})
 
 		/*子项目提交*/
+		var subNum = true;
 		$(document).on("click", "#sub_btn", function() {
 			child = [];
 			var workArr = [];
@@ -324,44 +325,48 @@ $(function() {
 						work_id: $(this).find(".item").attr("data-id"),
 						user_id: $(this).find(".item_num .show").attr("data-id"),
 					};
-					console.log(workObj)
 					workArr.push(workObj);
 				})
-				console.log(workArr)
 				obj = {
 					name: $(this).find(".list .floor").val(),
 					work: workArr
 				}
 				child.push(obj);
 			})
-			console.log(child)
 			/*发送请求*/
-			$.ajax({
-				type: "post",
-				url: host_host_host + "/home/project/child",
-				dataType: 'json',
-				headers: {
-					accept: "usertoken:" + token,
-				},
-				data: {
-					ject_id: id,
-					child: child
-				},
-				success: function(data) {
-					if(data.status == 1) {
-						toast(data.msg)
-						setTimeout(function() {
-							location.href = "index.html"
-						}, 1000)
-					} else {
-
-					}
-				},
-				error: function(data) {
-
-				},
-				async: true
-			});
+			if(subNum) {
+				subNum = false;
+				$.ajax({
+					type: "post",
+					url: host_host_host + "/home/project/child",
+					dataType: 'json',
+					headers: {
+						accept: "usertoken:" + token,
+					},
+					data: {
+						ject_id: id,
+						child: child
+					},
+					success: function(data) {
+						if(data.status == 1) {
+							toast(data.msg)
+							setTimeout(function() {
+								subNum = true;
+								location.href = "index.html"
+							}, 1000)
+						} else {
+							toast(data.msg)
+						}
+					},
+					error: function(data) {
+						subNum = true;
+					},
+					async: true
+				});
+			}
+		})
+		$(document).on('click', '#goback', function() {
+			window.history.go(-1);
 		})
 	}
 })

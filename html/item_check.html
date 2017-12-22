@@ -13,7 +13,6 @@
 		<script type="text/javascript" src="js/cityJson.js"></script>
 		<script type="text/javascript" src="js/citySet.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/item_edit.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -39,9 +38,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span  class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -49,7 +51,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span  class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -130,40 +132,40 @@
 								<table border="1" cellpadding="0" cellspacing="0">
 									<tbody>
 										<tr class="e9ecf1">
-											<td class="item">项目编号：</td>
+											<td class="item"><i class="xinghao">*</i>项目编号：</td>
 											<td class="item_num number"></td>
-											<td class="item">项目名称：</td>
+											<td class="item"><i class="xinghao">*</i>项目名称：</td>
 											<td class="item_num name"></td>
 										</tr>
 										<tr>
 											<td class="item">立项时间：</td>
 											<td class="item_num project_time">
-												
+
 											</td>
-											<td class="item">所需区域：</td>
+											<td class="item">所属区域：</td>
 											<td class="item_num"><i class="province"></i>&nbsp;<i class="city"></i></td>
 										</tr>
 										<tr class="e9ecf1">
 											<td class="item">建筑类型：</td>
 											<td class="item_num style">
-												<input type="" name="" id="" value="1" class="building_type" disabled="disabled"/>																					
+												<input type="" name="" id="" value="1" class="building_type" disabled="disabled" />
 											</td>
 											<td class="item">阶段类型：</td>
 											<td class="item_num style">
-												<input type="" name="" id="" value="1" class="stage" disabled="disabled"/>
+												<input type="" name="" id="" value="1" class="stage" disabled="disabled" />
 											</td>
 										</tr>
 										<tr>
 											<td class="item">项目地址：</td>
-											<td class="item_num"><input type="" name="address" id="" value="维权撒多" class="address" disabled="disabled"/></td>
+											<td class="item_num"><input type="" name="address" id="" value="" class="address" disabled="disabled" /></td>
 											<td class="item">项目进度：</td>
-											<td class="item_num"></td>
+											<td class="item_num process"></td>
 										</tr>
 										<tr class="e9ecf1">
 											<td class="item">合同附件：</td>
 											<td class="item_num file"><span class="filename">合同名字</span></td>
 											<td class="item">收款情况：</td>
-											<td class="item_num"><input type="text" disabled="disabled" /></td>
+											<td class="item_num receipt"><input type="text" disabled="disabled" /></td>
 										</tr>
 									</tbody>
 								</table>
@@ -175,21 +177,21 @@
 									<tbody>
 										<tr class="e9ecf1">
 											<td class="item">建设单位：</td>
-											<td class="item_num"><input type="text" name="build" class="build" disabled="disabled"/></td>
+											<td class="item_num"><input type="text" name="build" class="build" disabled="disabled" /></td>
 											<td class="item">项目主管：</td>
-											<td class="item_num"><input type="text" name="supervisor" value="" class="supervisor" disabled="disabled"/></td>
+											<td class="item_num"><input type="text" name="supervisor" value="" class="supervisor" disabled="disabled" /></td>
 										</tr>
 										<tr>
 											<td class="item">联系电话：</td>
-											<td class="item_num"><input type="text" name="tel" value="" class="tel" disabled="disabled"/></td>
+											<td class="item_num"><input type="text" name="tel" value="" class="tel" disabled="disabled" /></td>
 											<td class="item">主管(联系电话)：</td>
-											<td class="item_num"><input type="text" name="supervisor_tel" value="" class="supervisor_tel" disabled="disabled"/></td>
+											<td class="item_num"><input type="text" name="supervisor_tel" value="" class="supervisor_tel" disabled="disabled" /></td>
 										</tr>
 										<tr class="e9ecf1">
 											<td class="item">电子邮箱：</td>
-											<td class="item_num"><input type="text" name="email" value="" class="email" disabled="disabled"/></td>
+											<td class="item_num"><input type="text" name="email" value="" class="email" disabled="disabled" /></td>
 											<td class="item">联系地址：</td>
-											<td class="item_num"><input type="text" name="contact_address" value="" class="contact_address" disabled="disabled"/></td>
+											<td class="item_num"><input type="text" name="contact_address" value="" class="contact_address" disabled="disabled" /></td>
 										</tr>
 									</tbody>
 								</table>
@@ -257,12 +259,18 @@
 						<input type="hidden" name="ject_id" value="1" id="ject_id" />
 					</form>
 				</div>
+				<!--/*单位信息*/-->
+				<div class="danw">
+					单位信息：
+					<span></span>
+				</div>
 			</div>
 		</div>
 		<div id="boxPock">
 			<img class="boxPockBg" src="img/boxPockBg.png" />
 			<!--弹框区-->
 			<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+			<script src="js/item_check.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 
 </html>

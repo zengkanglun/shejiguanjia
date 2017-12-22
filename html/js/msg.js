@@ -3,16 +3,23 @@ $(function() {
 	$("#content .center_content .content_header .user_tab li").remove();
 	tapChoose = sessionStorage.getItem("tapList");
 	tapChoose = tapChoose.split('class="active"').join('class');
-	if (tapChoose.indexOf("通知") < 0) {
-		tapChoose += '<li class="active"><a href="msg.html">通知</a><i><img src="img/icon_del.png" alt="" /></i></li>';
-	}else{
-		tapChoose = tapChoose.split('<li class><a href="msg.html">通知</a><i><img src="img/icon_del.png" alt="" /></i></li>').join('<li class="active"><a href="msg.html">通知</a><i><img src="img/icon_del.png" alt="" /></i></li>');
+	if(tapChoose.indexOf("通知") < 0) {
+		tapChoose += '<li class="active" name="msg"><a href="msg.html">通知</a><i><img src="img/icon_del.png" alt="" /></i></li>';
+	} else {
+		tapChoose = tapChoose.split('<li class name="msg"><a href="msg.html">通知</a><i><img src="img/icon_del.png" alt="" /></i></li>').join('<li class="active" name="msg"><a href="msg.html">通知</a><i><img src="img/icon_del.png" alt="" /></i></li>');
 	}
-	sessionStorage.setItem("tapList",tapChoose);
+	sessionStorage.setItem("tapList", tapChoose);
 	$("#content .center_content .content_header .user_tab").append(tapChoose);
+	$(document).on("click", "#content .center_content .content_header .user_tab li i", function() {
+		$(this).parent().remove();
+		tapChoose = $("#content .center_content .content_header .user_tab").html();
+		sessionStorage.setItem("tapList", tapChoose);
+		if($(this).parent().attr("class") == "active") {
+			location.href = "index.html";
+		}
+	})
+	$("#content .center_content .content_header .user_tab").find("li[name='msg']").addClass("active");
 	/*==========*/
-	
-	
 	var token = localStorage.getItem("token");
 	//tab栏切换
 	$(".detail_tab li").on("click", function() {
@@ -21,13 +28,21 @@ $(function() {
 		$(".content_detail .msg_notice").hide();
 		$(".content_detail .msg_notice").eq(index).show();
 		if(index == 0) {
-			newMsg(1)
+			newMsg(1);
+			$(".new_msg .page_right .number").text(1);
+			$(".new_msg .paging .jump input").val("")
 		} else if(index == 1) {
-			hasread(1)
+			hasread(1);
+			$(".hasread .page_right .number").text(1);
+			$(".hasread .paging .jump input").val("")
 		} else if(index == 2) {
-			replied(1)
+			replied(1);
+			$(".replied .page_right .number").text(1);
+			$(".replied .paging .jump input").val("")
 		} else {
-			inform(1)
+			inform(1);
+			$(".inform .page_right .number").text(1);
+			$(".inform .paging .jump input").val("")
 		}
 	})
 	//select选中
@@ -39,8 +54,8 @@ $(function() {
 	newMsg(1)
 	/*新通知增加*/
 	$(document).on("click", ".new_msg .page_right .more", function() {
-		var total_num = $(".new_msg .page_right .total_num").text();
-		var num = $(".new_msg .page_right .number").text();
+		var total_num = Number($(".new_msg .page_right .total_num").text());
+		var num = Number($(".new_msg .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
@@ -51,13 +66,23 @@ $(function() {
 	})
 	/*新通知减少*/
 	$(document).on("click", ".new_msg .page_right .less", function() {
-		var num = $(".new_msg .page_right .number").text();
+		var num = Number($(".new_msg .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".new_msg .page_right .number").text(num);
 			newMsg(num);
+		}
+	})
+	/*新通知跳页*/
+	$(document).on("click", ".new_msg .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			newMsg(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -74,7 +99,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var newmsg = "";
 					var datas = data.data.data;
 					for(var i = 0; i < datas.length; i++) {
@@ -121,7 +146,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$(".msgcheck_add .msg_type").val(data.data.type);
 					$(".msgcheck_add .project_id").val(data.data.project_id);
 					$(".msgcheck_add .title").val(data.data.title);
@@ -168,7 +193,7 @@ $(function() {
 	/*新通知回复*/
 	$(document).on("click", ".msgcheck_add .btn1", function() {
 		var content = $(".msgcheck_add .c_reply .reply").val();
-		console.log(content)
+		//		console.log(content)
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Notice/reply_content",
@@ -199,25 +224,35 @@ $(function() {
 	/*获取已读通知列表*/
 	/*已读通知增加*/
 	$(document).on("click", ".hasread .page_right .more", function() {
-		var total_num = $(".hasread .page_right .total_num").text();
-		var num = $(".hasread .page_right .number").text();
+		var total_num = Number($(".hasread .page_right .total_num").text());
+		var num = Number($(".hasread .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
 			num++;
 			$(".hasread .page_right .number").text(num);
-			newMsg(num);
+			hasread(num);
 		}
 	})
 	/*已读通知减少*/
 	$(document).on("click", ".hasread .page_right .less", function() {
-		var num = $(".hasread .page_right .number").text();
+		var num = Number($(".hasread .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".hasread .page_right .number").text(num);
-			newMsg(num);
+			hasread(num);
+		}
+	})
+	/*已读通知跳页*/
+	$(document).on("click", ".hasread .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			hasread(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -234,7 +269,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var newmsg = "";
 					var datas = data.data.data;
 					for(var i = 0; i < datas.length; i++) {
@@ -279,7 +314,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$(".hasread_msg .msg_type").val(data.data.type);
 					$(".hasread_msg .project_id").val(data.data.project_id);
 					$(".hasread_msg .title").val(data.data.title);
@@ -299,7 +334,7 @@ $(function() {
 	/*已读通知回复*/
 	$(document).on("click", ".hasread_msg .btn1", function() {
 		var content = $(".hasread_msg .c_reply .reply").val();
-		console.log(content)
+		//		console.log(content)
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/Home/Notice/reply_content",
@@ -334,8 +369,8 @@ $(function() {
 	/*获取已回复通知列表*/
 	/*已回复增加*/
 	$(document).on("click", ".replied .page_right .more", function() {
-		var total_num = $(".replied .page_right .total_num").text();
-		var num = $(".replied .page_right .number").text();
+		var total_num = Number($(".replied .page_right .total_num").text());
+		var num = Number($(".replied .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
@@ -346,13 +381,23 @@ $(function() {
 	})
 	/*已回复通知减少*/
 	$(document).on("click", ".replied .page_right .less", function() {
-		var num = $(".replied .page_right .number").text();
+		var num = Number($(".replied .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".replied .page_right .number").text(num);
 			replied(num);
+		}
+	})
+	/*已回复通知跳页*/
+	$(document).on("click", ".replied .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			replied(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -369,7 +414,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var newmsg = "";
 					var datas = data.data.data;
 					for(var i = 0; i < datas.length; i++) {
@@ -401,6 +446,7 @@ $(function() {
 		$("#boxPock").show();
 		$("#boxPock .hasreply_msg").show();
 		pid = $(this).parents("tr").attr("pid");
+		var id = $(this).parents("tr").attr("data-id");
 		listId = $(this).parents("tr").attr("data-id");
 		$.ajax({
 			type: "get",
@@ -410,17 +456,30 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				id: pid
+				id: pid,
+				sid: id,
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$(".hasreply_msg .msg_type").val(data.data.type);
 					$(".hasreply_msg .project_id").val(data.data.project_id);
 					$(".hasreply_msg .title").val(data.data.title);
 					$(".hasreply_msg .user_id").val(data.data.user_id);
 					$(".hasreply_msg .contract").text(data.data.file_name);
 					$(".hasreply_msg .content2").text(data.data.content);
+					var datas = data.data.reply;
+					var lis = '';
+					for(var i = 0; i < datas.length; i++) {
+						lis += '<li class="clearfix">';
+						lis += '<div class="cnt_detail">';
+						lis += '<span class="ow_ren">' + datas[i].uid + ':</span><span class="ow_zht">' + datas[i].reply + '</span>';
+						lis += '</div>';
+						lis += '<div class="time">' + datas[i].addtime + '</div>';
+						lis += '</li>';
+					}
+					$('.hasreply_msg .reply_ul li').remove();
+					$('.hasreply_msg .reply_ul').append(lis);
 				} else {
 
 				}
@@ -438,8 +497,8 @@ $(function() {
 	/*获取已发通知列表*/
 	/*已发通知增加*/
 	$(document).on("click", ".inform .page_right .more", function() {
-		var total_num = $(".inform .page_right .total_num").text();
-		var num = $(".inform .page_right .number").text();
+		var total_num = Number($(".inform .page_right .total_num").text());
+		var num = Number($(".inform .page_right .number").text());
 		if(num >= total_num) {
 			toast("已经是最后一页了")
 		} else {
@@ -450,13 +509,23 @@ $(function() {
 	})
 	/*已发通知减少*/
 	$(document).on("click", ".inform .page_right .less", function() {
-		var num = $(".inform .page_right .number").text();
+		var num = Number($(".inform .page_right .number").text());
 		if(num == 1) {
 			toast("已经是第一页了")
 		} else {
 			num--;
 			$(".inform .page_right .number").text(num);
 			inform(num);
+		}
+	})
+	/*已发通知知跳页*/
+	$(document).on("click", ".inform .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			inform(jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 
@@ -473,7 +542,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var newmsg = "";
 					var datas = data.data.data;
 					for(var i = 0; i < datas.length; i++) {
@@ -517,13 +586,25 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					$(".send_add .msg_type").val(data.data.type);
 					$(".send_add .project_id").val(data.data.project_id);
 					$(".send_add .title").val(data.data.title);
 					$(".send_add .user_id").val(data.data.user_id);
 					$(".send_add .contract").text(data.data.file_name);
 					$(".send_add .content3").text(data.data.content);
+					var datas = data.data.reply;
+					var lis = '';
+					for(var i = 0; i < datas.length; i++) {
+						lis += '<li class="clearfix">';
+						lis += '<div class="cnt_detail">';
+						lis += '<span class="ow_ren">' + datas[i].uid + ':</span><span class="ow_zht">' + datas[i].reply + '</span>';
+						lis += '</div>';
+						lis += '<div class="time">' + datas[i].addtime + '</div>';
+						lis += '</li>';
+					}
+					$('.send_add .reply_ul li').remove();
+					$('.send_add .reply_ul').append(lis);
 				} else {
 
 				}
@@ -540,7 +621,9 @@ $(function() {
 		$("#boxPock .send_add").hide();
 	})
 	/*新建通知============*/
+	var msgNum;
 	$(document).on("click", ".new_build_msg .left", function() {
+		msgNum = true;
 		$("#boxPock").show();
 		$("#boxPock .newmsg_add").show();
 		$("#boxPock .newmsg_add input").val("");
@@ -609,36 +692,43 @@ $(function() {
 		$("#boxPock .newmsg_add").hide();
 	})
 	/*提交新通知*/
+	var msgBol = true;
 	$(document).on("click", "#btn_add_msg", function() {
-		var form = new FormData($("#msgForm")[0]);
-		form.append("type", $(".newmsg_add .add_style").attr("data-id"));
-		form.append("project_id", $(".newmsg_add .clause").attr("data-id"));
-		if($(".newmsg_add .add_style").attr("data-id") == -1) {
-			toast("请选择类型")
-		} else if($(".newmsg_add .clause").attr("data-id") == -1) {
-			toast("请选择相关项目")
-		} else {
-			$.ajax({
-				url: host_host_host + "/index.php/Home/Notice/create",
-				type: "post",
-				headers: {
-					accept: "usertoken:" + token,
-				},
-				data: form,
-				processData: false,
-				contentType: false,
-				success: function(data) {
-					if(data.status == 1) {
-						toast(data.msg)
-						$(".newmsg_add").hide();
-						$("#boxPock").hide();
-						inform(1);
-					} else {
-						toast(data.msg)
-					}
-				},
-				error: function(e) {}
-			});
+		if(msgBol) {
+			msgBol = false;
+			var form = new FormData($("#msgForm")[0]);
+			form.append("type", $(".newmsg_add .add_style").attr("data-id"));
+			form.append("project_id", $(".newmsg_add .clause").attr("data-id"));
+			if($(".newmsg_add .add_style").attr("data-id") == -1) {
+				toast("请选择类型")
+			} else if($(".newmsg_add .clause").attr("data-id") == -1) {
+				toast("请选择相关项目")
+			} else if($("#title").val() == "") {
+				toast("请输入标题")
+			} else {
+				$.ajax({
+					url: host_host_host + "/index.php/Home/Notice/create",
+					type: "post",
+					headers: {
+						accept: "usertoken:" + token,
+					},
+					data: form,
+					processData: false,
+					contentType: false,
+					success: function(data) {
+						if(data.status == 1) {
+							toast(data.msg)
+							$(".newmsg_add").hide();
+							$("#boxPock").hide();
+							inform(1);
+						} else {
+							toast("请检查数据是否完整")
+						}
+						msgBol = true;
+					},
+					error: function(e) {}
+				});
+			}
 		}
 	})
 	$(document).on("change", "#project_id_list", function() {
@@ -725,19 +815,19 @@ $(function() {
 	/*下载附件*/
 	$(document).on("click", ".msgcheck_add .download", function() {
 		var id = pid;
-		location.href = host_host_host + "/home/notice/download" + id;
+		location.href = host_host_host + "/home/notice/download/id/" + id;
 	})
 	$(document).on("click", ".hasread_msg .download", function() {
 		var id = pid;
-		location.href = host_host_host + "/home/notice/download" + id;
+		location.href = host_host_host + "/home/notice/download/id/" + id;
 	})
 	$(document).on("click", ".hasreply_msg .download", function() {
 		var id = pid;
-		location.href = host_host_host + "/home/notice/download" + id;
+		location.href = host_host_host + "/home/notice/download/id/" + id;
 	})
 	$(document).on("click", ".send_add .download", function() {
 		var id = listId;
-		location.href = host_host_host + "/home/notice/download" + id;
+		location.href = host_host_host + "/home/notice/download/id/" + id;
 	})
 	/*选人添加人员*/
 	addPeople();

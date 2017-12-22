@@ -92,6 +92,6 @@ $(function() {
 	});
 	/*Debug输出表格所填项*/
 	newUserWeb.find(".first .box .boxUl li input").on("input", function() {
-		console.log(newUserObj);
+//		console.log(newUserObj);
 	});
 });

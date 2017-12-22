@@ -680,6 +680,7 @@ body {
   right: 0;
   bottom: 0;
   margin: auto;
+  display: none;
 }
 #boxPock .item_success .item_success_head {
   width: 100%;

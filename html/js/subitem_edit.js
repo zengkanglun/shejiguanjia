@@ -19,7 +19,7 @@ $(function() {
 		},
 		success: function(data) {
 			if(data.status == 1) {
-				console.log(data);
+				//				console.log(data);
 				var datas = data.data;
 				var str = '';
 				for(var i = 0; i < datas.child.length; i++) {
@@ -33,6 +33,7 @@ $(function() {
 				}
 				nmain(datas.child[0].id);
 				$('.floor_cnt_ul ').html(str);
+				$(".big_content .list_name .floor").val(data.data.child[0].name)
 			} else {
 				toast(data.msg);
 			}
@@ -57,7 +58,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var datas = data.data;
 					var str = '';
 					for(var i = 0; i < datas.user.length; i++) {
@@ -86,18 +87,32 @@ $(function() {
 	}
 	/*分页*/
 	$(document).on('click', '.item_worker .paging .page_right .less', function() {
-		var p = $(this).siblings('.number').text();
+		var p = Number($(this).siblings('.number').text());
 		if(p > 1) {
 			p--;
 			childPer(child_id, p);
+		} else {
+			toast("已经是第一页了")
 		}
 	})
 	$(document).on('click', '.item_worker .paging .page_right .more', function() {
-		var p = $(this).siblings('.number').text();
-		var all = $(this).siblings('.total_num').text();
+		var p = Number($(this).siblings('.number').text());
+		var all = Number($(this).siblings('.total_num').text());
 		if(p < all) {
 			p++;
 			childPer(child_id, p);
+		} else {
+			toast("已经是最后一页了")
+		}
+	})
+	/*跳页*/
+	$(document).on("click", ".item_worker .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			childPer(child_id, jump_num);
+		} else {
+			toast("请输入正常页码")
 		}
 	})
 	/*子分类点击*/
@@ -107,7 +122,10 @@ $(function() {
 		child_id = id;
 		nmain(id);
 		childPer(child_id, 1);
+		var name = $(this).text();
+		$(".big_content .list_name .floor").val(name)
 	})
+	
 
 	function nmain(id) {
 		$.ajax({
@@ -122,7 +140,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var datas = data.data;
 					var str = '';
 					$('.big_content tbody').html('');
@@ -176,8 +194,8 @@ $(function() {
 			id.push($('.cnt_detail tbody tr').eq(i).find('.item').attr('data-id'));
 			user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
 		}
-		console.log(id);
-		console.log(user);
+		//		console.log(id);
+		//		console.log(user);
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')
@@ -197,7 +215,7 @@ $(function() {
 				if(data.status == 1) {
 					toast(data.msg);
 					setTimeout(function() {
-						location.reload();
+						location.href = "administration.html"
 					}, 500)
 				} else {
 					toast(data.msg);
@@ -362,13 +380,23 @@ $(function() {
 		})
 	}
 
-	$(document).on('click', '.btn2', function() {
+	$(document).on('click', '.count_edit_footer .btn2', function() {
 		window.history.go(-1);
 	})
 
 	/*删除子项目*/
+	var item_id;
 	$(document).on("click", ".item_del", function() {
-		var item_id = $(".floor_cnt_ul li.active").attr("data-id");
+		item_id = $(".floor_cnt_ul li.active").attr("data-id");
+		$("#boxPock").show();
+		$(".del_c").show();
+	})
+	$(".del_c .btn2,.del_c .del_head i").on("click", function() {
+		$("#boxPock").hide();
+		$(".del_c").hide();
+	})
+	
+	$(".del_c .btn1").on("click", function() {
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/project/delechild",
@@ -382,7 +410,11 @@ $(function() {
 			success: function(data) {
 				if(data.status == 1) {
 					toast(data.msg);
-					location.reload();
+					$("#boxPock").hide();
+					$(".del_c").hide();
+					setTimeout(function() {
+						location.href = "administration.html";
+					}, 500)
 				} else {
 					toast(data.msg)
 				}

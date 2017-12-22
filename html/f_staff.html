@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>财务</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/finance.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="bodyLeft">
+			<!--左侧边栏-->
+			<div class="logoDiv">
+				LOGO
+			</div>
+			<div class="bodyLeftFu">
+				<div class="bodyLeftBox">
+					<div class="userinfo">
+						<div class="information">
+							<div class="info_image">
+								<img src="" alt="" class="photo" />
+								<img src="" alt="" />
+							</div>
+							<div class="info_name"></div>
+							<div class="rows">
+								<div><span class="one"><img src="img/icon-suotou.png" alt="" /></span></div>
+								<div><span class="two"><img src="img/icon-yaoshi.png" alt="" /></span></div>
+								<div><span class="three"><img src="img/icon-camera.png" alt="" /></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="listBtn">
+						<a href="task.html?name=1" class="list_1 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
+								<i>任务</i>
+							</div>
+						</a>
+						<a href="msg.html" class="list_2 list_a">
+							<div class="a_box">
+								<div>
+									<img src="img/icon-tongzhi-white.png" alt="" />
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
+								<i>通知</i>
+							</div>
+						</a>
+						<a href="pandect.html" class="list_3 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-zonglan-white.png" alt="" /></div>
+								<i>总览</i>
+							</div>
+						</a>
+						<a href="user.html" class="list_4 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-yonghu-white.png" alt="" /></div>
+								<i>用户</i>
+							</div>
+						</a>
+						<a href="administration.html" class="list_5 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-guanli-white.png" alt="" /></div>
+								<i>管理</i>
+							</div>
+						</a>
+						<a href="finance.html" class="list_6 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-caiwu-white.png" alt="" /></div>
+								<i>财务</i>
+							</div>
+						</a>
+						<a href="backstage_general.html" class="list_7 list_a">
+							<div class="a_box">
+								<div><img src="img/icon-houtai-white.png" alt="" /></div>
+								<i>后台</i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bodyRight">
+			<!--右侧区域-->
+			<div id="header">
+				<!--右侧头部-->
+				<div class="left">
+					<div class="icon-search">
+						<img src="img/icon-search-orange.png" alt="" />
+					</div>
+					<div class="search-inp">
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
+					</div>
+				</div>
+				<div class="right">
+					<div class="closeBtn rightDiv">
+						<div><img src="img/icon-tuichu-white.png" /></div>
+					</div>
+					<div class="info-image rightDiv">
+						<div><img src="" /></div>
+					</div>
+					<div class="helpBtn rightDiv">
+						<div><img src="img/icon-bangzhu-white.png" /></div>
+					</div>
+					<div class="dataTime rightDiv">
+						<div>
+							<i>2017</i>年<i>09</i>月<i>01</i>日&nbsp;&nbsp;&nbsp;&nbsp;星期<i>五</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<!--右侧内容区-->
+				<div class="center_content">
+					<div class="content_header">
+						<ul class="user_tab clearfix">
+							<li class="active">
+								<a href="finance.html">财务</a>
+							</li>
+						</ul>
+						<div class="current_task">
+							<span class="task">当前项目：</span>
+							<span class="task_name"></span>
+						</div>
+					</div>
+					<div class="content_detail">
+						<div class="tab">
+							<ul class="tab_left clearfix">
+								<li>
+									<a href="finance.html">项目收入</a>
+								</li>
+								<li>
+									<a href="f_pay.html">项目支出</a>
+								</li>
+								<li>
+									<a href="f_jiti.html">项目计提</a>
+								</li>
+								<li class="active">
+									<a href="f_staff.html">行政支出</a>
+								</li>
+								<li>
+									<a href="f_count.html">经营统计</a>
+								</li>
+							</ul>
+							<div class="tab_right staff_dc">导出表格</div>
+						</div>
+						<!--行政支出-->
+						<div class="staff_content clearfix item_finance" style="display: block;">
+							<div class="staff_time clearfix">
+								<div class="staff_add clearfix">
+									<img src="img/icon_add.png" alt="" />
+									<span>新增</span>
+								</div>
+								<div class="time_left">
+									<span>从</span>
+									<input type="text" id="staffone" placeholder="请选择时间" />
+								</div>
+								<div class="time_right">
+									<span>至</span>
+									<input type="text" id="stafftwo" placeholder="请选择时间" />
+								</div>
+								<div class="search">搜索</div>
+							</div>
+							<div class="list_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<tr>
+											<td class="orderlist">序号</td>
+											<td class="name">类型</td>
+											<td class="cnt">内容</td>
+											<td class="newtask">金额</td>
+											<td class="plan_time">立项时间</td>
+											<td class="handle">操作</td>
+										</tr>
+									</thead>
+									<tbody>
+										<!--<tr>
+											<td>100000</td>
+											<td>新通知</td>
+											<td>新通知</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="check">查看</span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="check">查看</span></td>
+										</tr>-->
+									</tbody>
+									<tfoot>
+										<tr>
+											<td>合计</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tfoot>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span>0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less"><</i><span class="number">0</span><span>/</span><span class="total_num">0</span><i class="more">></i>
+										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go">GO</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--行政支出结束 -->
+					</div>
+					<!--/*单位信息*/-->
+					<div class="danw" style="margin-top: 0;">
+						单位信息：
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="boxPock">
+			<img class="boxPockBg" src="img/boxPockBg.png" />
+			<!--弹框区-->
+			<div class="scroll" id="scroll">
+				<!--行政支出-->
+				<div class="expend_detail">
+					<div class="expend_detail_head">
+						<span>行政支出</span>
+						<i></i>
+					</div>
+					<div class="expend_detail_bottom">
+						<div class="job_logging">
+							<div class="logging_detail clearfix">
+								<div class="logging_head clearfix">
+									<div class="left clearfix n1">
+										<span>经手：</span>
+										<input type="text" disabled="disabled" />
+									</div>
+									<div class="right clearfix n2">
+										<span>报账时间：</span>
+										<input type="text" disabled="disabled" />
+									</div>
+									<div class="left clearfix n3">
+										<span>类型：</span>
+										<input type="text" disabled="disabled" />
+									</div>
+									<div class="right clearfix group n4">
+										<span>金额：</span>
+										<input type="text" disabled="disabled" />
+									</div>
+								</div>
+								<div class="logging_bottom n5">
+									<div class="job_logging_header">内容</div>
+									<textarea name="" rows="" cols="" disabled="disabled"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--行政支出结束-->
+				<!--行政支出编辑-->
+				<div class="expend_edit">
+					<div class="expend_edit_head">
+						<span>行政支出</span>
+						<i></i>
+					</div>
+					<div class="expend_edit_bottom">
+						<div class="job_logging">
+							<div class="logging_detail clearfix">
+								<div class="logging_head clearfix">
+									<div class="left clearfix user">
+										<span>经手：</span>
+										<input data-id="0" type="text" placeholder="输入内容" class="c_man" data-id="0" />
+										<div class="choose">选人</div>
+									</div>
+									<div class="right clearfix time">
+										<span>报账时间：</span>
+										<input type="text" placeholder="请选择时间" readonly="readonly" id="expendone" />
+									</div>
+									<div class="left clearfix type">
+										<span>类型：</span>
+										<input type="text" placeholder="请选择类型" disabled="disabled" />
+										<i><img src="img/black_tri.png"/></i>
+										<select name="">
+											<!--<option value="">条目一</option>
+											<option value="">条目二</option>
+											<option value="">条目三</option>
+											<option value="">条目四</option>-->
+										</select>
+									</div>
+									<div class="right clearfix group">
+										<span>金额：</span>
+										<input type="text" placeholder="请输入金额" />
+
+									</div>
+								</div>
+								<div class="logging_bottom">
+									<div class="job_logging_header">内容</div>
+									<textarea name="" rows="" cols="" placeholder="请输入内容"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;认</button>
+							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
+					</div>
+				</div>
+				<!--行政支出编辑结束-->
+				<!--子项目目录-选人-->
+				<div class="subitem_choose" id="subitem_choose">
+					<div class="subitem_choose_head">
+						<div class="search_left">项目组管理</div>
+						<div class="search_right">
+							<img src="img/icon-search-orange.png" alt="" />
+							<input type="text" placeholder="输入姓名搜索" />
+						</div>
+						<i></i>
+					</div>
+					<div class="subitem_choose_bottom">
+						<div class="item clearfix">
+							<div class="item_left clearfix">
+								<ul class="item_name clearfix">
+									<li class="active">
+										<a href="javascript:void(0)">工种</a>
+									</li>
+									<!--<li>
+										<a href="javascript:void(0)">项目组</a>
+									</li>-->
+									<li>
+										<a href="javascript:void(0)">全部</a>
+									</li>
+								</ul>
+								<!--当前项目-->
+								<div class="item_detail now_item admin">
+									<div class="now_item_cnt">
+										<!--<div class="jobstyle" data-id="1">
+											<div class="job">
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>规划工种</span>
+												<s><img src="img/arrow_bottom.png"/></s>
+											</div>
+											<ul class="worker">
+												<li>
+													<i><img src="img/icon_checked.png" alt="" /></i>
+													<span>赵三</span>
+												</li>
+												<li>
+													<i><img src="img/icon_checked.png" alt="" /></i>
+													<span>钱三</span>
+												</li>
+												<li>
+													<i><img src="img/icon_checked.png" alt="" /></i>
+													<span>孙三</span>
+												</li>
+											</ul>
+										</div>-->
+									</div>
+								</div>
+								<!--历史项目-->
+								<!--<div class="item_detail history_item admin">
+									<div class="jobstyle">
+										<div class="job">
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>sadad</span>
+											<s><img src="img/arrow_bottom.png"/></s>
+										</div>
+										<ul class="worker">
+											<li>
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>张三</span>
+											</li>
+											<li>
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>张三</span>
+											</li>
+											<li>
+												<i><img src="img/icon_checked.png" alt="" /></i>
+												<span>张三</span>
+											</li>
+										</ul>
+									</div>
+								</div>-->
+								<!--全部项目-->
+								<div class="all_item admin">
+									<ul class="Allworker">
+										<!--<li>
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>张三</span>
+										</li>
+										<li>
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>张三</span>
+										</li>
+										<li>
+											<i><img src="img/icon_checked.png" alt="" /></i>
+											<span>张三</span>
+										</li>-->
+									</ul>
+								</div>
+							</div>
+							<div class="haschoose">已选人员：</div>
+							<div class="item_right">
+								<div class="item_right_ctn">
+									<div class="work_style" data-id="1">
+										<!--<ul class="clearfix">
+											<li>
+												<img src="img/icon_del.png" />
+												<span>赵三</span>
+											</li>
+											<li>
+												<img src="img/icon_del.png" />
+												<span>钱三</span>
+											</li>										
+										</ul>-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cnt_footer">
+							<button type="button" class="btn1" id="jobbtn">确&nbsp;&nbsp;&nbsp;定</button>
+						</div>
+					</div>
+				</div>
+				<!--子项目目录-选人结束-->
+			</div>
+		</div>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/f_staff.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/f_power.js" type="text/javascript" charset="utf-8"></script>
+		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#staffone',
+			});
+			laydate.render({
+				elem: '#stafftwo',
+			});
+			laydate.render({
+				elem: '#expendone',
+			});
+		</script>
+		<script type="text/javascript">
+			$(".staff_dc").on("click", function() {
+				location.href = host_host_host + "/Home/Finance/admin_overhead_export";
+			})
+		</script>
+	</body>
+
+</html>

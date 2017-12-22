@@ -16,7 +16,7 @@ body {
   margin-bottom: 0;
 }
 #bodyRight #content .center_content .content_header .user_tab li {
-  width: 156px;
+  width: 115px;
   height: 54px;
   background: #ffffff;
   margin-right: 1px;
@@ -25,6 +25,7 @@ body {
   float: left;
   overflow: hidden;
   box-shadow: 0px 2px 3px #f1f1f3;
+  position: relative;
 }
 #bodyRight #content .center_content .content_header .user_tab li a {
   display: block;
@@ -35,6 +36,18 @@ body {
   line-height: 54px;
   line-height: 54px\9;
   letter-spacing: 1px;
+}
+#bodyRight #content .center_content .content_header .user_tab li i {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+}
+#bodyRight #content .center_content .content_header .user_tab li i img {
+  width: 13px;
+  height: 13px;
 }
 #bodyRight #content .center_content .content_header .user_tab li.active {
   background: #fd813e;

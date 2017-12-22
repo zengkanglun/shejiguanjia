@@ -1,4 +1,4 @@
-var host_host_host = "http://localhost/php/index.php";
+var host_host_host = "http://sheji.antiphon.cc/php";
 var tapChoose = null;
 var token = localStorage.getItem("token");
 var windowWidthR, resizeWidth;
@@ -14,6 +14,7 @@ $(function() {
 	$("#bodyLeft .bodyLeftFu .bodyLeftBox").height($(window).height() - $("#bodyLeft .logoDiv").height());
 	$("#bodyRight #content").height($(window).height() - $("#bodyRight #header").outerHeight(true));
 });
+
 window.onresize = function() {
 	if($(window).width() <= 1360) {
 		windowWidthR = 1360;
@@ -34,109 +35,76 @@ function toast(n) {
 	}, 2000);
 
 }
-/*logo点击回到首页*/
-$(document).on("click",".logoDiv",function(){
-	location.href="index.html"
+/*login点击回到首页*/
+$(document).on("click", ".logoDiv", function() {
+	location.href = "index.html"
 })
 
-
-//搜索项目
-$(document).on("click",".icon-search img",function(){
-	var name = $(".p-search").val();
-	console.log(name);
-	search(name);
-})
-function search(name){
-    $.ajax({
-        type: "post",
-        dataType: 'json',
-        url: host_host_host + "/home/public/p_search",
-        headers: {
-            accept: "usertoken:" + token,
-        },
-        data:{
-        	name:name,
-        },
-        success: function (data) {
-			if(data.status=1){
-				console.log(data);
-				//window.location('pandect.html');
-				$("#go_list_aa tr").remove();
-				var project = '';
-				for(var i = 0; i<data.data.length; i++){
-					project += '<tr>';
-					project += '<td>'+ (i+1) + '</td>';
-					project += '<td>'+ data.data[i].name +'</td>';
-					project += '<td>'+ data.data[i].building_type +'</td>';
-                    project += '<td>'+ data.data[i].province + data.data[i].city +'</td>';
-                    project += '<td>'+ data.data[i].build +'</td>';
-                    project += '<td>'+ data.data[i].direct_name +'</td>';
-                    project += '<td>'+ data.data[i].add_time +'</td>';
-                    project += '<td class="handle"><span class="edit"><a href="#">编辑</a></span><span class="check"><a href="#">查看</a></span></td>';
-					project += '</tr>';
-				}
-
-				$("#go_list_aa").append(project);
-			}else{
-				alert("没有相关项目");
-			}
-        }
-    })
+function lock() {
+	var lock;
+	lock += '<div class="lock">';
+	lock += '<div class="lock_bg">';
+	lock += '<div class="password">';
+	lock += '<span>密码：</span>';
+	lock += '<input type="password" />';
+	lock += '</div>';
+	lock += '<button>解锁</button>';
+	lock += '</div>';
+	lock += '</div>';
+	$("body").append(lock);
 }
 
 /*判断token是否失效*/
-//ajaxLogin();
-//
-//function ajaxLogin() {
-//	$.ajax({
-//		type: "get",
-//		dataType: 'json',
-//		headers: {
-//			accept: "usertoken:" + token,
-//		},
-//		url: host_host_host + "/home/user/check_token",
-//		data: {},
-//		success: function(data) {
-//			console.log(data)
-//			if(data.status = 1) {
-//				console.log(data.status)
-//			} else {
-//				location.href = "login.html"
-//			}
-//		},
-//		error: function(data) {
-//			console.log(data)
-//		},
-//		async: true
-//	});
-//}
-//setInterval(function() {
-//	ajaxLogin();
-//}, 30000)
+ajaxLogin();
+
+function ajaxLogin() {
+	$.ajax({
+		type: "get",
+		dataType: 'json',
+		headers: {
+			accept: "usertoken:" + token,
+		},
+		url: host_host_host + "/home/user/check_token",
+		data: {},
+		success: function(data) {
+			if(data.status == 1) {
+
+			} else {
+				location.href = "login.html"
+			}
+		},
+		error: function(data) {
+			//			console.log(data)
+		},
+		async: true
+	});
+}
+setInterval(function() {
+	ajaxLogin();
+}, 60000)
 
 /*判断是否锁屏*/
-//$.ajax({
-//	type: "get",
-//	dataType: 'json',
-//	headers: {
-//		accept: "usertoken:" + token,
-//	},
-//	url: host_host_host + "/home/user/check_lock",
-//	data: {},
-//	success: function(data) {
-//		if(data.status == 1) {
-//			$("body .lock").remove();
-//		} else {
-//			//			lock()
-//		}
-//	},
-//	error: function(data) {
-//		console.log(data)
-//	},
-//	async: true
-//});
-
-/*锁屏*/
+$.ajax({
+	type: "get",
+	dataType: 'json',
+	headers: {
+		accept: "usertoken:" + token,
+	},
+	url: host_host_host + "/home/user/check_lock",
+	data: {},
+	success: function(data) {
+		if(data.status == 1) {
+			$("body .lock").remove();
+		} else {
+			lock();
+		}
+	},
+	error: function(data) {
+		//		console.log(data)
+	},
+	async: true
+});
+///*锁屏*/
 $(document).on("click", ".userinfo .rows .one", function() {
 	$.ajax({
 		type: "post",
@@ -154,30 +122,15 @@ $(document).on("click", ".userinfo .rows .one", function() {
 			}
 		},
 		error: function(data) {
-			console.log(data)
+			//			console.log(data)
 		},
 		async: true
 	});
 })
-function lock() {
-    var lock;
-    lock += '<div class="lock">';
-    lock += '<div class="lock_bg">';
-    lock += '<div class="password">';
-    lock += '<span>密码：</span>';
-    lock += '<input type="password" />';
-    lock += '</div>';
-    lock += '<button>解锁</button>';
-    lock += '</div>';
-    lock += '</div>';
-    $("body").append(lock);
-}
-
-
 /*解锁*/
 $(document).on("click", ".lock button", function() {
 	var password = $(".lock .password input").val();
-	console.log(token);
+	//	console.log(token);
 	$.ajax({
 		type: "post",
 		dataType: 'json',
@@ -196,7 +149,7 @@ $(document).on("click", ".lock button", function() {
 			}
 		},
 		error: function(data) {
-			console.log(data)
+			//			console.log(data)
 		},
 		complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数　
 		},
@@ -208,27 +161,53 @@ pageadd();
 
 function pageadd() {
 	var img = sessionStorage.getItem("img");
+	var d = new Date();
+	var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
+	var str1 = "星期" + "日一二三四五六".charAt(new Date().getDay());
 	var username = sessionStorage.getItem("username");
 	var authority = sessionStorage.getItem("authority");
-	//	var num = authority.indexOf(4);
 	var is_super = sessionStorage.getItem("is_super");
 	var last_time = sessionStorage.getItem("last_time");
 	var last_ip = sessionStorage.getItem("last_ip");
 	var nickname = sessionStorage.getItem("nickname");
-	//	if(num != -1) {
-	//		$(".list_6").show();
-	//	}
-	//	if(is_super == 1) {
-	//		$(".list_7").show();
-	//		$(".list_6").show();
-	//	} else {
-	//		$(".list_7").hide();
-	//		$(".list_6").hide();
-	//	}
+	if(!username) {
+		location.href = "login.html";
+		return false;
+	}
+//	if(!authority) {
+//		location.href = "login.html";
+//		return false;
+//	}
+	if(!is_super) {
+		location.href = "login.html";
+		return false;
+	}
+	//	console.log(authority)
+	/*判断权限*/
+	if(is_super == 1) {
+		$(".list_7").show();
+		$(".list_6").show();
+		$(".Q_rygl").show();
+		$(".Q_ygrw").show();
+		$(".Q_rcjx").show();
+	} else {
+		$(".list_7").hide();
+		$(".list_6").hide();
+		if(authority.indexOf(4) != -1) {
+			$(".list_6").show();
+		}
+		if(authority.indexOf(5) == -1) {
+			$(".Q_rygl").hide();
+		}
+		if(authority.indexOf(7) == -1) {
+			$(".Q_ygrw").hide();
+			$(".Q_rcjx").hide();
+		}
+	}
 	$(".bodyLeftFu .info_name").text(nickname);
 	$(".bodyLeftFu .info_image .photo").attr("src", img);
 	$("#bodyRight .right .info-image img").attr("src", img);
-	$("#bodyRight .dataTime div").html(localStorage.getItem('nowDate'));
+	$("#bodyRight .dataTime div").html(str + '&nbsp;&nbsp;&nbsp;&nbsp;' + str1);
 	$("#bodyRight .last_time i").html(last_time);
 	$("#bodyRight .last_ip i").html(last_ip);
 }
@@ -262,7 +241,12 @@ $(document).on("click", ".closeBtn", function() {
 					location.href = "login.html"
 				}, 1000)
 			} else {
-				location.href = "login.html"
+				toast(data.msg);
+				localStorage.clear();
+				sessionStorage.clear();
+				setTimeout(function() {
+					location.href = "login.html"
+				}, 1000)
 			}
 		},
 		error: function(data) {
@@ -273,9 +257,48 @@ $(document).on("click", ".closeBtn", function() {
 })
 /*项目名字*/
 var itemName = sessionStorage.getItem("itemName");
-$(".current_task .task_name").text(itemName);
+if(!itemName) {
+	itemName = "";
+	$(".current_task .task_name").text(itemName);
+} else {
+	$(".current_task .task_name").text(itemName);
+}
 
-
+/*修改密码*/
+function psw() {
+	var changePsw = "";
+	changePsw += '<div class="login_psw">';
+	changePsw += '<div class="psw_header">';
+	changePsw += '修改密码';
+	changePsw += '<i></i>';
+	changePsw += '</div>';
+	changePsw += '<div class="psw_content">';
+	changePsw += '<div class="psw_detail name">';
+	changePsw += '<div class="psw_detail_left">姓名:</div>';
+	changePsw += '<input readonly="readonly" type="text" name="" value="李四" class="nickname" />';
+	changePsw += '</div>';
+	changePsw += '<div class="psw_detail">';
+	changePsw += '<div class="psw_detail_left">账号:</div>';
+	changePsw += '<input readonly="readonly" type="text" name="" value="输入账号" class="username" />';
+	changePsw += '</div>';
+	changePsw += '<div class="psw_detail">';
+	changePsw += '<div class="psw_detail_left">旧密码:</div>';
+	changePsw += '<input type="password" name="" id="" value="输入旧密码" class="psw_detail_right oldPwd" />';
+	changePsw += '</div>';
+	changePsw += '<div class="psw_detail">';
+	changePsw += '<div class="psw_detail_left">新密码:</div>';
+	changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd" />';
+	changePsw += '</div>';
+	changePsw += '<div class="psw_detail">';
+	changePsw += '<div class="psw_detail_left">再次确认:</div>';
+	changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd1" />';
+	changePsw += '</div>';
+	changePsw += '</div>';
+	changePsw += '<button type="button" class="btn1" id="editPwd">确&nbsp;&nbsp;定</button>';
+	changePsw += '<button type="button" class="btn2" id="editPwd">取&nbsp;&nbsp;消</button>';
+	changePsw += '</div>';
+	$("#boxPock .scroll").append(changePsw);
+}
 ///*修改密码*/
 $(document).on("click", ".userinfo .rows .two", function() {
 	$("#boxPock").show();
@@ -290,7 +313,7 @@ $(document).on("click", ".userinfo .rows .two", function() {
 		data: {},
 		success: function(data) {
 			if(data.status == 1) {
-				console.log(data);
+				//				console.log(data);
 				$(".login_psw .nickname").val(data.data.nickname);
 				$(".login_psw .username").val(data.data.username);
 			} else {
@@ -303,42 +326,6 @@ $(document).on("click", ".userinfo .rows .two", function() {
 		async: true
 	});
 })
-/*修改密码*/
-function psw() {
-    var changePsw = "";
-    changePsw += '<div class="login_psw">';
-    changePsw += '<div class="psw_header">';
-    changePsw += '修改密码';
-    changePsw += '<i></i>';
-    changePsw += '</div>';
-    changePsw += '<div class="psw_content">';
-    changePsw += '<div class="psw_detail name">';
-    changePsw += '<div class="psw_detail_left">姓名:</div>';
-    changePsw += '<input readonly="readonly" type="text" name="" value="李四" class="nickname" />';
-    changePsw += '</div>';
-    changePsw += '<div class="psw_detail">';
-    changePsw += '<div class="psw_detail_left">账号:</div>';
-    changePsw += '<input readonly="readonly" type="text" name="" value="输入账号" class="username" />';
-    changePsw += '</div>';
-    changePsw += '<div class="psw_detail">';
-    changePsw += '<div class="psw_detail_left">旧密码:</div>';
-    changePsw += '<input type="password" name="" id="" value="输入旧密码" class="psw_detail_right oldPwd" />';
-    changePsw += '</div>';
-    changePsw += '<div class="psw_detail">';
-    changePsw += '<div class="psw_detail_left">新密码:</div>';
-    changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd" />';
-    changePsw += '</div>';
-    changePsw += '<div class="psw_detail">';
-    changePsw += '<div class="psw_detail_left">再次确认:</div>';
-    changePsw += '<input type="password" name="" id="" value="输入新密码" class="psw_detail_right newPwd1" />';
-    changePsw += '</div>';
-    changePsw += '</div>';
-    changePsw += '<button type="button" class="btn1" id="editPwd">确&nbsp;&nbsp;定</button>';
-    changePsw += '<button type="button" class="btn2" id="editPwd">取&nbsp;&nbsp;消</button>';
-    changePsw += '</div>';
-    $("#boxPock .scroll").append(changePsw);
-}
-
 $(document).on("click", ".login_psw .psw_header i,.login_psw .btn2", function() {
 	$("#boxPock").hide();
 	$("#boxPock .scroll .login_psw").remove();
@@ -397,7 +384,7 @@ $(document).on("click", ".userinfo .rows .three", function() {
 	$("#boxPock").show();
 	change_pic();
 	var img = sessionStorage.getItem("img")
-	console.log(img)
+	//	console.log(img)
 	$(".change_pic .photo").attr("src", img);
 })
 $(document).on("click", ".change_pic .pic_head i", function() {
@@ -416,7 +403,7 @@ $(document).on("change", ".change_pic .file", function() {
 $(document).on("click", ".change_pic .btn1", function() {
 	var form = new FormData($(".change_pic #login_pic")[0]);
 	$.ajax({
-		url: host_host_host + "/home/user/head_img",
+		url: host_host_host + "/index.php/home/user/head_img",
 		type: "post",
 		headers: {
 			accept: "usertoken:" + token,
@@ -449,12 +436,16 @@ $.ajax({
 	data: {},
 	success: function(data) {
 		if(data.status == 1) {
-			console.log(data.msg)
 			if(data.msg == 0) {
-				$(".a_box span img").hide()
+				$(".a_box .l_msg").hide()
 			} else {
-				$(".a_box span img").show()
-				$(".a_box span i").text(data.msg)
+				$(".a_box .l_msg").show()
+				var num = Number(data.msg);
+				if(num >= 100) {
+					$(".a_box .l_msg i").text("···");
+				} else {
+					$(".a_box .l_msg i").text(num);
+				}
 			}
 		} else {
 
@@ -465,4 +456,73 @@ $.ajax({
 	},
 	async: true
 });
+/*显示任务消息条数*/
+$.ajax({
+	type: "get",
+	url: host_host_host + "/home/task/new_task_num",
+	dataType: 'json',
+	headers: {
+		accept: "usertoken:" + token,
+	},
+	data: {},
+	success: function(data) {
+		if(data.status == 1) {
+			if(data.data == 0) {
+				$(".a_box .l_task").hide()
+			} else {
+				$(".a_box .l_task").show();
+				var num = Number(data.data);
+				if(num >= 100) {
+					$(".a_box .l_task i").text("···");
+				} else {
+					$(".a_box .l_task i").text(num);
+				}
+			}
+		} else {
 
+		}
+	},
+	error: function(data) {
+
+	},
+	async: true
+});
+/*单位信息获取*/
+$.ajax({
+	type: "get",
+	url: host_host_host + "/index.php/Home/Admin/info",
+	dataType: 'json',
+	headers: {
+		accept: "usertoken:" + token,
+	},
+	data: {},
+	success: function(data) {
+		if(data.status == 1) {
+			$(".danw span").text(data.data[0].address)
+		} else {
+
+		}
+	},
+	error: function(data) {
+
+	},
+	async: true
+});
+/*人员搜索*/
+$(document).on("keyup", ".subitem_choose .search_right input", function() {
+	var name = $(this).val();
+	if(name) {
+		$(".subitem_choose_bottom .item_name li").eq(1).addClass("active").siblings().removeClass("active");
+		$(".subitem_choose_bottom .admin").hide();
+		$(".subitem_choose_bottom .admin").eq(1).show();
+		$(".Allworker li").each(function() {
+			if(($(this).find("span").text()).indexOf(name) == -1) {
+				$(this).hide();
+			} else {
+				$(this).show();
+			}
+		})
+	} else {
+		$(".Allworker li").show();
+	}
+})

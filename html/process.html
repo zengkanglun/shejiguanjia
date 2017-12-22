@@ -9,8 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/public.css" />
 		<link rel="stylesheet" type="text/css" href="css/process.css" />
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/process.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>	
 	</head>
 
 	<body>
@@ -36,9 +35,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -46,7 +48,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -186,6 +188,11 @@
 										<!--下一页-->
 										<i class="more" id="pro_next">&gt;</i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -223,6 +230,11 @@
 										<span class="total_num" id="cttotal_page"></span>
 										<!--下一页-->
 										<i class="more" id="ct_next">&gt;</i>
+									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
 									</div>
 								</div>
 							</div>
@@ -263,6 +275,11 @@
 										<!--下一页-->
 										<i class="more" id="letter_next">&gt;</i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -270,11 +287,11 @@
 						<!--项目分工-->
 						<div class="item_detail clearfix pro_tab">
 							<div class="item_detail_head clearfix">
-								<div class="item_ul" id="xiangm_li">
+								<ul class="item_ul" id="xiangm_li">
 									<!--<li class="active">一号楼</li>
 									<li>二号楼</li>
 									<li>三号楼</li>-->
-								</div>
+								</ul>
 								<!--<div class="item_head_right"><span>当前子项目：</span><span>一号楼</span></div>-->
 							</div>
 							<table border="1" cellspacing="0">
@@ -324,6 +341,11 @@
 										<!--下一页-->
 										<i class="more" id="xiangm_next">&gt;</i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -363,10 +385,20 @@
 										<!--下一页-->
 										<i class="more" id="guid_next">&gt;</i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<!--结束-->
+					</div>
+					<!--/*单位信息*/-->
+					<div class="danw">
+						单位信息：
+						<span></span>
 					</div>
 				</div>
 			</div>
@@ -422,7 +454,7 @@
 							<div class="cnt_header">
 								<div class="header_left clearfix">
 									<span>类型：</span>
-									<input type="text" placeholder="" id="pro_type1" />
+									<input type="text" placeholder="" id="pro_type1" data-id="-1" />
 									<i><img src="img/black_tri.png"/></i>
 									<select name="" id="process_type_list1">
 										<!--<option value="1">重要修改</option>
@@ -538,7 +570,7 @@
 								</div>
 								<div class="header_left clearfix">
 									<span>类型：</span>
-									<input type="text" placeholder="" id="chutu_type_name" />
+									<input type="text" placeholder="" id="chutu_type_name" data-id="-1" />
 									<i><img src="img/black_tri.png"/></i>
 									<select name="" id="chutu_type_list">
 										<!--<option value="1">蓝图</option>
@@ -650,9 +682,9 @@
 								<div class="cnt_header">
 									<div class="header_left clearfix">
 										<span>类型：</span>
-										<input type="text" value="" id="letter_edit_typename" />
+										<input type="text" value="" id="letter_edit_typename" data-id="-1" />
 										<i><img src="img/black_tri.png"/></i>
-										<select name="type" id="letter_type_list">
+										<select id="letter_type_list">
 											<!--<option value="">业主发函</option>
 										<option value="">fghgjhkh</option>
 										<option value="">fghgjhkh</option>-->
@@ -762,7 +794,6 @@
 				</div>
 				<!--图纸归档增加结束-->
 				<!--图纸归档编辑-->
-
 				<div class="picture_edit">
 					<div class="picture_edit_head">
 						<span>图纸归档</span>
@@ -774,9 +805,9 @@
 								<div class="cnt_header">
 									<div class="header_left clearfix">
 										<span>类型：</span>
-										<input type="text" value="业主发函" id="tu_edit_typename" />
+										<input type="text" value="" id="tu_edit_typename" data-id="-1" />
 										<i><img src="img/black_tri.png"/></i>
-										<select name="type" id="archive_type_list">
+										<select id="archive_type_list">
 											<!--<option value="1">业主发函</option>
 										<option value="2">fghgjhkh</option>
 										<option value="3">fghgjhkh</option>-->
@@ -905,19 +936,19 @@
 							<div class="cnt_header">
 								<div class="header_left clearfix">
 									<span>姓名：</span>
-									<input type="text" placeholder="" disabled="disabled" id="xm_lo_nickname" />
+									<input type="text" disabled="disabled" id="xm_lo_nickname" />
 								</div>
 								<div class="header_right clearfix">
 									<span>工种参与：</span>
-									<input type="text" placeholder="" disabled="disabled" id="xm_lo_workname" />
+									<input type="text" disabled="disabled" id="xm_lo_workname" />
 								</div>
 								<div class="header_left clearfix">
 									<span>工种负责人：</span>
-									<input type="text" placeholder="重要修改" disabled="disabled" id="xm_lo_director" />
+									<input type="text" disabled="disabled" id="xm_lo_director" />
 								</div>
 								<div class="header_right clearfix">
 									<span>分工情况：</span>
-									<input type="text" placeholder="" disabled="disabled" id="xm_lo_labor" />
+									<input type="text" disabled="disabled" id="xm_lo_labor" />
 								</div>
 							</div>
 							<div class="cnt_bottom">
@@ -1083,6 +1114,7 @@
 			</div>
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/process.js" type="text/javascript" charset="utf-8"></script>
 		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			lay('#version').html('-v' + laydate.v);
@@ -1104,6 +1136,29 @@
 			laydate.render({
 				elem: '#pic_add_two',
 			});
+			/*tap选项栏*/
+
+			if(sessionStorage.getItem("tapList") != null) {
+				$("#content .center_content .content_header .user_tab li").remove();
+				tapChoose = sessionStorage.getItem("tapList");
+				tapChoose = tapChoose.split('class="active"').join('class');
+
+				sessionStorage.setItem("tapList", tapChoose);
+				$("#content .center_content .content_header .user_tab").append(tapChoose);
+				$("#content .center_content .content_header .user_tab li:eq(1)").addClass("active");
+			} else {
+				tapChoose = $("#content .center_content .content_header .user_tab").html();
+				sessionStorage.setItem("tapList", tapChoose);
+			}
+			$(document).on("click", "#content .center_content .content_header .user_tab li i", function() {
+				$(this).parent().remove();
+				tapChoose = $("#content .center_content .content_header .user_tab").html();
+				sessionStorage.setItem("tapList", tapChoose);
+				if($(this).parent().attr("class") == "active") {
+					location.href = "index.html";
+				}
+			})
+			/*==========*/
 		</script>
 
 		<!--<script src="js/process_data.js" type="text/javascript" charset="utf-8"></script>-->

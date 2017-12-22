@@ -1052,6 +1052,22 @@ body {
   line-height: 30px;
   line-height: 30px\9;
 }
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_ren {
+  display: block;
+  width: 20%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
+#boxPock .send_add .send_add_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_zht {
+  display: block;
+  width: 80%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
 #boxPock .send_add .send_add_bottom .add_content .cnt_reply .reply_ul li .time {
   width: 20%;
   float: right;
@@ -1392,6 +1408,22 @@ body {
   color: #5B636C;
   line-height: 30px;
   line-height: 30px\9;
+}
+#boxPock .msgcheck_add .msgcheck_add_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_ren {
+  display: block;
+  width: 20%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
+#boxPock .msgcheck_add .msgcheck_add_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_zht {
+  display: block;
+  width: 80%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
 }
 #boxPock .msgcheck_add .msgcheck_add_bottom .add_content .cnt_reply .reply_ul li .time {
   width: 20%;
@@ -1753,6 +1785,22 @@ body {
   line-height: 30px;
   line-height: 30px\9;
 }
+#boxPock .hasread_msg .hasread_msg_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_ren {
+  display: block;
+  width: 20%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
+#boxPock .hasread_msg .hasread_msg_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_zht {
+  display: block;
+  width: 80%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
 #boxPock .hasread_msg .hasread_msg_bottom .add_content .cnt_reply .reply_ul li .time {
   width: 20%;
   float: right;
@@ -2111,6 +2159,22 @@ body {
   color: #5B636C;
   line-height: 30px;
   line-height: 30px\9;
+}
+#boxPock .hasreply_msg .hasreply_msg_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_ren {
+  display: block;
+  width: 20%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
+#boxPock .hasreply_msg .hasreply_msg_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_zht {
+  display: block;
+  width: 80%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
 }
 #boxPock .hasreply_msg .hasreply_msg_bottom .add_content .cnt_reply .reply_ul li .time {
   width: 20%;

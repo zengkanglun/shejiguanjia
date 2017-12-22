@@ -2338,6 +2338,22 @@ body {
   line-height: 30px;
   line-height: 30px\9;
 }
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_ren {
+  display: block;
+  width: 20%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
+#boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .reply_ul li .cnt_detail .ow_zht {
+  display: block;
+  width: 80%;
+  line-height: 30px;
+  line-height: 30px\9;
+  float: left;
+  word-wrap: break-word;
+}
 #boxPock .newbuild_detail .newbuild_detail_bottom .add_content .cnt_reply .reply_ul li .time {
   width: 20%;
   float: right;

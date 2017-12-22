@@ -36,9 +36,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -46,7 +49,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -286,6 +289,11 @@
 						</div>
 						<!--结束-->
 					</div>
+					<!--/*单位信息*/-->
+					<div class="danw">
+						单位信息：
+						<span></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -413,7 +421,7 @@
 						</div>
 						<div class="item_bottom">
 							<div class="item_content">报账内容</div>
-							<textarea name="" rows="" cols="" class="project_name"></textarea>
+							<textarea name="" rows="" cols="" class="expense_content"></textarea>
 						</div>
 						<div class="item_footer">
 							<button type="button" class="btn2">返&nbsp;&nbsp;&nbsp;回</button>
@@ -432,19 +440,19 @@
 							<div class="cnt_header clearfix">
 								<div class="header_left clearfix">
 									<span>时间区间：</span>
-									<input type="text" value="2017-08-01" disabled="disabled" class="start_time"/>
+									<input type="text" value="2017-08-01" disabled="disabled" class="start_time" />
 								</div>
 								<div class="header_right clearfix">
 									<span>所属工种：</span>
-									<input type="text" value="建筑" disabled="disabled" class="work_name"/>
+									<input type="text" value="建筑" disabled="disabled" class="work_name" />
 								</div>
 								<div class="header_left clearfix">
 									<span>工种负责：</span>
-									<input type="text" value="建筑" disabled="disabled" class="username"/>
+									<input type="text" value="建筑" disabled="disabled" class="username" />
 								</div>
 								<div class="header_right clearfix">
 									<span>项目计提占比：</span>
-									<input type="text" value="50%" disabled="disabled" class="commission_rate"/>
+									<input type="text" value="50%" disabled="disabled" class="commission_rate" />
 								</div>
 							</div>
 							<div class="cnt_bottom clearfix">
@@ -487,6 +495,31 @@
 			</div>
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*tap选项栏*/
+
+			if(sessionStorage.getItem("tapList") != null) {
+				$("#content .center_content .content_header .user_tab li").remove();
+				tapChoose = sessionStorage.getItem("tapList");
+				tapChoose = tapChoose.split('class="active"').join('class');
+
+				sessionStorage.setItem("tapList", tapChoose);
+				$("#content .center_content .content_header .user_tab").append(tapChoose);
+				$("#content .center_content .content_header .user_tab li:eq(2)").addClass("active");
+			} else {
+				tapChoose = $("#content .center_content .content_header .user_tab").html();
+				sessionStorage.setItem("tapList", tapChoose);
+			}
+			$(document).on("click", "#content .center_content .content_header .user_tab li i", function() {
+				$(this).parent().remove();
+				tapChoose = $("#content .center_content .content_header .user_tab").html();
+				sessionStorage.setItem("tapList", tapChoose);
+				if($(this).parent().attr("class") == "active") {
+					location.href = "index.html";
+				}
+			})
+			/*==========*/
+		</script>
 	</body>
 
 </html>

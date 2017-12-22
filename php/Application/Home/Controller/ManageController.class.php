@@ -28,9 +28,9 @@ class ManageController extends CommonController
             $where['nickname'] = array('like','%'.$post['name'].'%');
         }
         // 时间搜索
-        if($post['start_time'] && $post['end_time'])
+        if($post['startTime'] && $post['endTime'])
         {
-            $where['add_time'] = ['between',strtotime($post['start_time']).','.strtotime($post['end_time'])];
+            $where['add_time'] = ['between',strtotime($post['startTime']).','.strtotime($post['endTime'])];
         }
         $where['is_del'] = 0;
         $where['administer'] = 0;
@@ -162,7 +162,7 @@ class ManageController extends CommonController
             }
             foreach ($post as $k=>$v)
             {
-                if(!$v)
+                if($v!=0 && !$v)
                 {
                     unset($post[$k]);
                 }
@@ -172,11 +172,47 @@ class ManageController extends CommonController
             {
                 if($model->add($post))
                 {
+                    $this->log("人事新建了用户{$post['nickname']}",8);
                     ajax_success('创建成功');
                 }
             }
 
             ajax_error('创建失败');
         }
+    }
+
+    /**
+     * 用户列表+离线用户导出
+     */
+    public function users_export()
+    {
+        $where = [];
+        $where['is_del'] = 0;
+        $where['administer'] = 0;
+        $where['is_super'] = 0;
+        $model = M('user');
+        $data  = $model->where($where)->field(['nickname','work_type','worktime','username'])->select();
+        foreach ($data as $k=>$v)
+        {
+            $data[$k]['work_type_name'] = M('work')->where(['id'=>$v['work_type']])->getField('name');
+            unset($data[$k]['work_type']);
+        }
+        array_unshift($data,['用户姓名','工作时间','用户账号','所属工种']);
+        export($data,date('Y-m-d').'-用户导出');
+        unset($data);
+
+        $where = [];
+
+        $model = M('user');
+        $where['is_del'] = 1;
+        $data  = $model->where($where)->field(['nickname','work_type','worktime','username','del_time'])->select();
+        foreach ($data as $k=>$v)
+        {
+            $data[$k]['work_type_name'] = M('work')->where(['id'=>$v['work_type']])->getField('name');
+            $data[$k]['del_time'] = date('Y-m-d',$v['del_time']);
+            unset($data[$k]['work_type']);
+        }
+        array_unshift($data,['用户姓名','工作时间','用户账号','离职时间','所属工种']);
+        export($data,date('Y-m-d').'-离线用户导出');
     }
 }

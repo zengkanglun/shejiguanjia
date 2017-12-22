@@ -30,7 +30,7 @@ class AdminController extends CommonController
             $where['nickname'] = array('like','%'.$post['name'].'%');
         }
         $where['is_del'] = 0;
-        $where['administer'] = 0;
+        //$where['administer'] = 0;
         $model = M('user');
         $count = $model->where($where)->count();
         $page  = new Page($count,$size);
@@ -209,7 +209,7 @@ class AdminController extends CommonController
             }
             foreach ($post as $k=>$v)
             {
-                if(!$v)
+                if($v!=0 && !$v)
                 {
                     unset($post[$k]);
                 }
@@ -270,14 +270,14 @@ class AdminController extends CommonController
             $post = I('post.');
             $model = D('user');
             $uid = $post['uid'];
-            unset($post['uid']);
-            unset($post['password']);
-            foreach ($post as $k => $value) {
-                if(!$value)
-                {
-                    unset($post[$k]);
-                }
-            }
+//            unset($post['uid']);
+//            unset($post['password']);
+//            foreach ($post as $k => $value) {
+//                if(!$value)
+//                {
+//                    unset($post[$k]);
+//                }
+//            }
 
             $temp_uid = $model->where(['username'=>$post['username']])->getField('id');
             if($temp_uid && $temp_uid != $uid)
@@ -285,15 +285,15 @@ class AdminController extends CommonController
                 ajax_error('账号不得重复');
             }
             $post['administer'] = 1;
-            if($post = $model->create($post))
-            {
-                if($model->where(['id'=>$uid])->save(['is_administer'=>1,'role'=>$post['role']]))
+//            if($post = $model->create($post))
+//            {
+                if($model->where(['id'=>$uid])->save(['administer'=>1,'role'=>$post['role'],'authority'=>$post['authority']]))
                 {
                     $nickname = $model->where(['id'=>$uid])->getField('nickname');
                     $this->log("超级管理员将{$nickname}添加为管理层",8);
                     ajax_success('增加成功');
                 }
-            }
+//            }
 
             ajax_error('增加失败');
         }
@@ -396,7 +396,14 @@ class AdminController extends CommonController
     {
         $id = I('get.id',0);
         $type = I('get.type',0);
+        $name = I('get.name','');
         $model = D('ActionLog');
+
+        if($name)
+        {
+            $ids = M('user')->where(['nickname'=>['like',"%{$name}%"]])->getField('group_concat(id)');
+            $where['user_id'] = ['in',$ids];
+        }
 
         if($id)
         {
@@ -452,6 +459,9 @@ class AdminController extends CommonController
      */
     public function notice()
     {
+        //end_time=2017-09-01
+        //p=1
+        //start_time=2017-09-01
         $get   = I('get.');
         $where = [];
         if($get['title'])
@@ -894,7 +904,7 @@ class AdminController extends CommonController
         {
             $post = I('post.');
 
-            if(M('taskType')->add($post))
+            if(M('noticeType')->add($post))
             {
                 $this->log("超级管理员添加了通知类型",8);
                 ajax_success('添加成功');
@@ -912,7 +922,7 @@ class AdminController extends CommonController
         {
             $post = I('post.');
             $post['type'] = 1;
-            if(M('overhead')->add($post))
+            if(M('overheadType')->add($post))
             {
                 $this->log("超级管理员添加了项目支出类型",8);
                 ajax_success('添加成功');
@@ -930,7 +940,7 @@ class AdminController extends CommonController
         {
             $post = I('post.');
             $post['type'] = 2;
-            if(M('taskType')->add($post))
+            if(M('overheadType')->add($post))
             {
                 $this->log("超级管理员添加了行政类型",8);
                 ajax_success('添加成功');
@@ -1152,7 +1162,7 @@ class AdminController extends CommonController
 
             $id = $post['id'];
             unset($post['id']);
-            if(M('overhead')->where(['id'=>$id])->save($post))
+            if(M('overheadType')->where(['id'=>$id])->save($post))
             {
                 ajax_success('编辑成功');
             }
@@ -1172,7 +1182,7 @@ class AdminController extends CommonController
 
             $id = $post['id'];
             unset($post['id']);
-            if(M('overhead')->where(['id'=>$id])->save($post))
+            if(M('overheadType')->where(['id'=>$id])->save($post))
             {
                 ajax_success('编辑成功');
             }
@@ -1205,7 +1215,7 @@ class AdminController extends CommonController
     public function download()
     {
         $type = I('get.type',0);
-
+        $path = strstr($_SERVER['SCRIPT_NAME'],'/index.php',1);
         switch ($type)
         {
             case 1:
@@ -1219,7 +1229,7 @@ class AdminController extends CommonController
 
                 if($data['file'])
                 {
-                    if(!is_file($_SERVER['DOCUMENT_ROOT'].$data['file']))
+                    if(!is_file($_SERVER['DOCUMENT_ROOT'].$path.$data['file']))
                     {
                         ajax_error('文件不存在');
                     }
@@ -1235,7 +1245,7 @@ class AdminController extends CommonController
 
                 if($data['file'])
                 {
-                    if(!is_file($_SERVER['DOCUMENT_ROOT'].$data['file']))
+                    if(!is_file($_SERVER['DOCUMENT_ROOT'].$path.$data['file']))
                     {
                         ajax_error('文件不存在');
                     }
@@ -1249,5 +1259,65 @@ class AdminController extends CommonController
             default:
                 ajax_error();
         }
+    }
+
+    /**
+     * 用户导出+离线用户导出
+     */
+    public function users_export()
+    {
+        $where = [];
+        $where['is_del'] = 0;
+        $where['administer'] = 0;
+        $where['is_super'] = 0;
+        $model = M('user');
+        $data  = $model->where($where)->field(['nickname','work_type','worktime','username'])->select();
+        foreach ($data as $k=>$v)
+        {
+            $data[$k]['work_type_name'] = M('work')->where(['id'=>$v['work_type']])->getField('name');
+            unset($data[$k]['work_type']);
+        }
+        array_unshift($data,['用户姓名','工作时间','用户账号','所属工种']);
+        export($data,date('Y-m-d').'-用户导出');
+        unset($data);
+
+        $where = [];
+
+        $model = M('user');
+        $where['is_del'] = 1;
+        $data  = $model->where($where)->field(['nickname','work_type','worktime','username','del_time'])->select();
+        foreach ($data as $k=>$v)
+        {
+            $data[$k]['work_type_name'] = M('work')->where(['id'=>$v['work_type']])->getField('name');
+            $data[$k]['del_time'] = date('Y-m-d',$v['del_time']);
+            unset($data[$k]['work_type']);
+        }
+        array_unshift($data,['用户姓名','工作时间','用户账号','离职时间','所属工种']);
+        export($data,date('Y-m-d').'-离线用户导出');
+    }
+
+    /**
+     * 管理层导出
+     */
+    public function managers_export()
+    {
+        $where = [];
+
+        $where['is_del'] = 0;
+        $where['administer'] = 1;
+        $model = M('user');
+        $data  = $model
+            ->where($where)
+            ->field(['nickname','work_type','worktime','username','mobile','role'])
+            ->select();
+        foreach ($data as $k=>$v)
+        {
+            $data[$k]['work_type_name'] = M('work')->where(['id'=>$v['work_type']])->getField('name');
+            unset($data[$k]['work_type']);
+            $data[$k]['role_name']      = M('roleType')->where(['id'=>$v['role']])->getField('name');
+            unset($data[$k]['role']);
+        }
+        array_unshift($data,['用户姓名','工作时间','用户账号','用户手机','所属工种','用户角色']);
+        export($data,date('Y-m-d').'-管理层导出');
     }
 }

@@ -76,10 +76,6 @@ class PublicController extends Controller
             $new_data['last_ip']  = $data['last_login_ip'];
             $new_data['uid']      = $data['id'];
 
-            //查找最新参与项目
-            $new_id = M('project')->order('id desc')->field('id')->select();
-            $new_data['project_id'] = $new_id[0]['id'];
-
             ajax_success('登录成功',$new_data);
         }
     }
@@ -166,23 +162,7 @@ class PublicController extends Controller
         $data = M('project')->field(['id','name'])->select();
         ajax_success('获取成功',$data);
     }
-
-    public function p_search(){
-        $project_name = I('post.name');
-        $data['name'] = array('like',"%$project_name%");
-        $res = M('project')->where($data)->select();
-        if($res){
-            for ($i=0; $i<count($res); $i++){
-                $user = M('user')->where(array('id'=> $res[$i]['director_id']))->find();
-                $res[$i]['direct_name'] = $user['nickname'];
-                $res[$i]['add_time'] = date('Y-m-d',$res[$i]['add_time']);
-            }
-            ajax_success('成功',$res);
-            //ajax_success('',$user);
-        }else{
-            ajax_error('不存在相关项目');
-        }
-    }
+    
 //    public function test()
 //    {
 //    	$data = array(

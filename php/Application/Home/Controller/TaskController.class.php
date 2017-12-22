@@ -86,6 +86,7 @@ class TaskController extends CommonController
             ->limit($page->firstRow.','.$page->listRows)
             ->select();
         foreach ($data['data'] as $k => $v) {
+            $data['data'][$k]['add_time']= date('Y-m-d',$v['add_time']);
             $data['data'][$k]['user_id'] = M('user')->where(['id'=>$v['user_id']])->getField('nickname');
             $data['data'][$k]['type']    = M('taskType')->where(['id'=>$v['type']])->getField('name');
             $data['data'][$k]['receive_time'] = date('Y-m-d',$v['receive_time']);
@@ -131,6 +132,7 @@ class TaskController extends CommonController
             $data['data'][$k]['user_id'] = M('user')->where(['id'=>$v['user_id']])->getField('nickname');
             $data['data'][$k]['type']    = M('taskType')->where(['id'=>$v['type']])->getField('name');
             $data['data'][$k]['finish_time'] = date('Y-m-d',$v['finish_time']);
+            $data['data'][$k]['add_time']= date('Y-m-d',$v['add_time']);
         }
 
         ajax_success('获取成功',$data);
@@ -177,6 +179,7 @@ class TaskController extends CommonController
     public function task_info()
     {
         $id = I('get.id',0);
+        $sid= I('get.sid',0);
         $data = M('task')
             ->where(['id'=>$id])
             ->field(
@@ -186,7 +189,7 @@ class TaskController extends CommonController
                     'user_id',
                     'start_time',
                     'title',
-                    'file_name',
+                    'IFNULL(file_name,"") as file_name',
                     'content',
                     'reply',
                     'update_at',
@@ -198,12 +201,26 @@ class TaskController extends CommonController
         {
             ajax_error('任务不存在');
         }
-
+        $data['reply']     = M('taskReceive')->where(['pid'=>$id])->field(['uid','addtime','reply'])->select();
+        foreach ($data['reply'] as $k=>$v)
+        {
+            if(!$v['reply'])
+            {
+                unset($data['reply'][$k]);
+                continue;
+            }
+            $data['reply'][$k]['uid'] = M('user')->where(['id'=>$v['uid']])->getField('nickname');
+            $data['reply'][$k]['addtime'] = date('Y-m-d',$v['addtime']);
+        }
+        if($sid)
+        {
+            $data['reply_content'] = M('taskReceive')->where(['id'=>$sid])->getField('reply');
+        }
         $data['project_id'] = M('project')->where(['id'=>$data['project_id']])->getField('name');
         $data['type']       = M('taskType')->where(['id'=>$data['type']])->getField('name');
-        $data['user_id']    = M('user')->where(['id'=>$data['user_id']])->getField('nickname');
+        $data['user_id']    = M('user')->where(['id'=>['in',$data['user_id']]])->getField('group_concat(nickname)');
         $data['update_at']  = date('Y-m-d',$data['update_at']);
-        $data['to_user']    = M('user')->where(['id'=>$data['to_user']])->getField('nickname');
+        $data['to_user']    = M('user')->where(['id'=>['in',$data['to_user']]])->getField('group_concat(nickname)');
         ajax_success('获取成功',$data);
     }
 
@@ -220,14 +237,14 @@ class TaskController extends CommonController
         {
             ajax_error('该任务不属于你');
         }
-
-        if(M('taskReceive')->where(['id'=>$id])->save(['status'=>2,'receive_time'=>time()]))
+        $content = $post['content'] ? $post['content'] : '已接受';
+        if(M('taskReceive')->where(['id'=>$id])->save(['status'=>2,'receive_time'=>time(),'reply'=>$content]))
         {
-            if($post['content'])
-            {
-                $pid = M('taskReceive')->where(['id'=>$id])->getField('pid');
-                M('task')->where(['id'=>$pid])->save(['update_at'=>time(),'reply'=>$post['content']]);
-            }
+//            if($post['content'])
+//            {
+//                $pid = M('taskReceive')->where(['id'=>$id])->getField('pid');
+//                M('task')->where(['id'=>$pid])->save(['update_at'=>time(),'reply'=>$post['content']]);
+//            }
 
             ajax_success('接收成功');
         }
@@ -247,13 +264,14 @@ class TaskController extends CommonController
             ajax_error('该任务不属于你');
         }
 
-        if(M('taskReceive')->where(['id'=>$id])->save(['status'=>3,'receive_time'=>time()]))
+        $content = $post['content'] ? $post['content'] : '已拒绝';
+        if(M('taskReceive')->where(['id'=>$id])->save(['status'=>3,'receive_time'=>time(),'finish_time'=>time(),'reply'=>$content]))
         {
-            if($post['content'])
-            {
-                $pid = M('taskReceive')->where(['id'=>$id])->getField('pid');
-                M('task')->where(['id'=>$pid])->save(['update_at'=>time(),'reply'=>$post['content']]);
-            }
+//            if($post['content'])
+//            {
+//                $pid = M('taskReceive')->where(['id'=>$id])->getField('pid');
+//                M('task')->where(['id'=>$pid])->save(['update_at'=>time(),'reply'=>$post['content']]);
+//            }
 
             ajax_success('拒绝成功');
         }
@@ -314,7 +332,7 @@ class TaskController extends CommonController
         {
             ajax_error('任务不存在或者任务不属于你');
         }
-        if(M('taskReceive')->where(['id'=>$id])->save(['status'=>5]))
+        if(M('taskReceive')->where(['id'=>$id])->save(['status'=>5,'finish_time'=>time()]))
         {
             $title = M('task')->where(['id'=>$data['pid']])->getField('title');
             $this->log("完成了任务{$title}",3);
@@ -448,7 +466,16 @@ class TaskController extends CommonController
         $where['is_super'] = 0;
         $where['administer'] = 0;
         $where['is_del'] = 0;
-
+        if($name = I('get.name'))
+        {
+            $where['nickname'] = ['LIKE',"%$name%"];
+        }
+        $start_time = strtotime(I('get.start_time'));
+        $end_time   = strtotime(I('get.end_time'));
+        if($start_time && $end_time && $start_time < $end_time)
+        {
+            $where['add_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+        }
         $count = $model->where($where)->count();
         $page  = new Page($count,5);
 
@@ -474,9 +501,12 @@ class TaskController extends CommonController
     	$temp    = M('user')->where(['is_del'=>0])->field(['id','nickname'])->select();
     	foreach ($temp as $k=>$v)
     	{
-    		$temp[$k]['new']   = M('taskReceive')->where(['a.uid'=>$v['id']])->alias('a')->join('__TASK__ b on a.pid=b.id')->getField('b.title');
-    		$temp[$k]['doing'] = M('taskReceive')->where(['a.uid'=>$v['id']])->alias('a')->join('__TASK__ b on a.pid=b.id')->getField('b.title');
-    		$temp[$k]['own']   = M('task')->where(['user_id'=>$v['id']])->getField('title');
+//    		$temp[$k]['new']   = M('taskReceive')->where(['a.uid'=>$v['id']])->alias('a')->join('__TASK__ b on a.pid=b.id')->getField('b.title');
+    		$temp[$k]['new']   = M('taskReceive')->where(['a.uid'=>$v['id']])->alias('a')->join('__TASK__ b on a.pid=b.id')->count();
+//    		$temp[$k]['doing'] = M('taskReceive')->where(['a.uid'=>$v['id']])->alias('a')->join('__TASK__ b on a.pid=b.id')->getField('b.title');
+    		$temp[$k]['doing'] = M('taskReceive')->where(['a.uid'=>$v['id']])->alias('a')->join('__TASK__ b on a.pid=b.id')->count();
+//    		$temp[$k]['own']   = M('task')->where(['user_id'=>$v['id']])->getField('title');
+    		$temp[$k]['own']   = M('task')->where(['user_id'=>$v['id']])->count();
     		unset($temp[$k]['id']);
     	}
     	$data = $temp;

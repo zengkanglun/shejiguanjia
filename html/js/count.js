@@ -32,7 +32,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					var incomeList = "";
 					var expendList = "";
 					var datas = data.data.schedule_list;
@@ -85,10 +85,11 @@ $(function() {
 							countList += '<td>' + countDatas[i].commission_list[j].work_name + '</td>';
 							countList += '<td>' + countDatas[i].commission_list[j].username + '</td>';
 							countList += '<td>';
-							for(var k = 0; k < countDatas[i].commission_list[j].user_list.length; k++) {
-								var arr = countDatas[i].commission_list[j].user_list[k];
-								countList += '' + arr + '';
-							}
+							countList += countDatas[i].commission_list[j].user_list;
+							//							for(var k = 0; k < countDatas[i].commission_list[j].user_list.length; k++) {
+							//								var arr = countDatas[i].commission_list[j].user_list;
+							//								countList += arr;
+							//							}
 							countList += '</td>';
 							countList += '<td>' + countDatas[i].commission_list[j].commission_rate + '</td>';
 							countList += '<td class="handle" work_id="' + countDatas[i].commission_list[j].work_id + '"><span class="check">详情</span></td>';
@@ -119,8 +120,10 @@ $(function() {
 		});
 	}
 	//项目收款详情
-	$(document).on("click", ".collect_detail .handle .check", function() {
+	$(document).on("click", ".collect_detail tbody .handle .check", function() {
+
 		var schedule_id = $(this).parents("td").attr("data-id");
+		//		console.log('wqewqeqw',schedule_id)
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Finance/censusReceiptDetails",
@@ -133,7 +136,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					$("#boxPock").show();
 					$(".item_check").show();
 					$(".item_check .project_name").val(data.data.project_name);
@@ -142,59 +145,59 @@ $(function() {
 					$(".item_check .project_money").val(data.data.project_money);
 					var stage = "";
 					var datas = data.data.child;
-						stage += '<div class="stage">';
-						stage += '<div class="stage_header">';
-						stage += '<span>' + datas.schedule_name + '</span>';
-						stage += '</div>';
-						stage += '<div class="stage_bottom">';
-						stage += '<div class="service_content clearfix">';
-						stage += '<div class="service">';
-						stage += '<div class="service_left">服务内容：</div>';
-						stage += '<input type="text" value="' + datas.content + '" disabled="disabled" />';
-						stage += '</div>';
-						stage += '<div class="stage_sum">';
-						stage += '<div class="stage_sum_left">阶段总额：</div>';
-						stage += '<input type="text" value="' + datas.money + '" disabled="disabled"/>';
-						stage += '</div>';
-						stage += '<div class="pay">';
-						stage += '<div class="pay_left">已收款：</div>';
-						stage += '<input type="text" value="' + datas.receive + '" disabled="disabled" />';
-						stage += '</div>';
-						stage += '<div class="nopay">';
-						stage += '<div class="nopay_left">未收款：</div>';
-						stage += '<input type="text" value="' + datas.debt + '" disabled="disabled" />';
-						stage += '</div>';
-						stage += '</div>';
-						stage += '<div class="table">';
-						stage += '<table border="1" cellspacing="0">';
-						stage += '<thead>';
+					stage += '<div class="stage">';
+					stage += '<div class="stage_header">';
+					stage += '<span>' + datas.schedule_name + '</span>';
+					stage += '</div>';
+					stage += '<div class="stage_bottom">';
+					stage += '<div class="service_content clearfix">';
+					stage += '<div class="service">';
+					stage += '<div class="service_left">服务内容：</div>';
+					stage += '<input type="text" value="' + datas.content + '" disabled="disabled" />';
+					stage += '</div>';
+					stage += '<div class="stage_sum">';
+					stage += '<div class="stage_sum_left">阶段总额：</div>';
+					stage += '<input type="text" value="' + datas.money + '" disabled="disabled"/>';
+					stage += '</div>';
+					stage += '<div class="pay">';
+					stage += '<div class="pay_left">已收款：</div>';
+					stage += '<input type="text" value="' + datas.receive + '" disabled="disabled" />';
+					stage += '</div>';
+					stage += '<div class="nopay">';
+					stage += '<div class="nopay_left">未收款：</div>';
+					stage += '<input type="text" value="' + datas.debt + '" disabled="disabled" />';
+					stage += '</div>';
+					stage += '</div>';
+					stage += '<div class="table">';
+					stage += '<table border="1" cellspacing="0">';
+					stage += '<thead>';
+					stage += '<tr>';
+					stage += '<td class="orderlist">序号</td>';
+					stage += '<td class="settime">时间</td>';
+					stage += '<td class="style">类型</td>';
+					stage += '<td class="sum">金额</td>';
+					stage += '</tr>';
+					stage += '</thead>';
+					stage += '<tbody>';
+					for(var j = 0; j < datas.receipt_log.length; j++) {
 						stage += '<tr>';
-						stage += '<td class="orderlist">序号</td>';
-						stage += '<td class="settime">时间</td>';
-						stage += '<td class="style">类型</td>';
-						stage += '<td class="sum">金额</td>';
+						stage += '<td>' + (j + 1) + '</td>';
+						stage += '<td>' + datas.receipt_log[j].receive_time + '</td>';
+						stage += '<td>' + datas.receipt_log[j].cause + '</td>';
+						stage += '<td>' + datas.receipt_log[j].receive + '</td>';
 						stage += '</tr>';
-						stage += '</thead>';
-						stage += '<tbody>';
-						for(var j = 0; j < datas.receipt_log.length; j++) {
-							stage += '<tr>';
-							stage += '<td>' + (j + 1) + '</td>';
-							stage += '<td>' + datas.receipt_log[j].receive_time + '</td>';
-							stage += '<td>' + datas.receipt_log[j].cause + '</td>';
-							stage += '<td>' + datas.receipt_log[j].receive + '</td>';
-							stage += '</tr>';
-						}
-						stage += '</tbody>';
-						stage += '</table>';
-						stage += '</div>';
-						stage += '<div class="process">';
-						stage += '<div class="process_head">';
-						stage += '<div class="head_left">过程记录</div>';
-						stage += '</div>';
-						stage += '<textarea name="" rows="" cols="" disabled="disabled">' + datas.process + '</textarea>';
-						stage += '</div>';
-						stage += '</div>';
-						stage += '</div>';					
+					}
+					stage += '</tbody>';
+					stage += '</table>';
+					stage += '</div>';
+					stage += '<div class="process">';
+					stage += '<div class="process_head">';
+					stage += '<div class="head_left">过程记录</div>';
+					stage += '</div>';
+					stage += '<textarea name="" rows="" cols="" disabled="disabled">' + datas.process + '</textarea>';
+					stage += '</div>';
+					stage += '</div>';
+					stage += '</div>';
 					$(".item_check .bigstage .stage").remove();
 					$(".item_check .bigstage").append(stage);
 				} else {
@@ -226,7 +229,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					$("#boxPock").show();
 					$(".item_expend").show();
 					$(".item_expend .project_name").val(data.data.project_name);
@@ -235,6 +238,7 @@ $(function() {
 					$(".item_expend .amount").val(data.data.amount);
 					$(".item_expend .username").val(data.data.username);
 					$(".item_expend .expense_time").val(data.data.expense_time);
+					$(".item_expend .expense_content").val(data.data.expense_content);
 				} else {
 
 				}
@@ -253,7 +257,7 @@ $(function() {
 	$(document).on("click", ".count_detail tbody td .check", function() {
 		var project_commission_id = $(this).parents("tr").attr("data-id");
 		var work_id = $(this).parents(".handle").attr("work_id");
-		console.log(work_id)
+		//		console.log(work_id)
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Finance/getProjectStaffCommission",
@@ -267,7 +271,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data)
+					//					console.log(data)
 					$("#boxPock").show();
 					$("#boxPock .count_edit").show();
 					$(".count_edit .project_name").val(data.data.info.start_time + "/" + data.data.info.end_time);

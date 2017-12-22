@@ -24,7 +24,7 @@ $(function() {
 	$(document).on("click","#boxPock .bianjiUserFu .Sbody a",function(){
 	//$("#boxPock .bianjiUserFu .Sbody a").on("click", function() {
 		//$(this).toggleClass("active")
-		console.log("7,后面是wly追加的")
+//		console.log("7,后面是wly追加的")
 		//wly追加的
 		var _this = $(this);
 		if (_this.attr("data-type") == "checked") {
@@ -47,7 +47,7 @@ $(function() {
 	/*权限*/
 	$("#boxPock .UserFuadd .Sbody a").on("click", function() {
 		//$(this).toggleClass("active")
-		console.log("7,后面是wly追加的")
+//		console.log("7,后面是wly追加的")
 		//wly追加的
 		var _this = $(this);
 		if (_this.attr("data-type") == "checked") {

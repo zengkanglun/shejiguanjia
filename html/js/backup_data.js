@@ -34,7 +34,7 @@ $(function() {
 			'<li>' +
 			'<span style="width:40%;">文件名</span>' +
 			'<span style="width:40%;">时间</span>' +
-			'<span style="width:20%;">操作</span>' +
+			'<span style="width:20%;padding-left:20px;">操作</span>' +
 
 			'</li>'
 		)
@@ -45,7 +45,6 @@ $(function() {
 				'<li>' +
 				'<span style="">' + o.basename + '</span>' +
 				'<span style="padding-left:20px;color:#aaa;">' + o.times + '</span>' +
-				'<span class="dele" data-times="' + o.time + '">删除</span>' +
 				'<span class="recover" data-times="' + o.time + '">恢复</span>' +
 				'</li>'
 			)
@@ -97,7 +96,7 @@ $(function() {
 			success: function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(data.msg);
+//					console.log(data.msg);
 					realTimeFiles(); 
 				} else {
 				}
@@ -126,7 +125,7 @@ $(function() {
 			success: function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(data.msg);
+//					console.log(data.msg);
 
 				} else {
 				}

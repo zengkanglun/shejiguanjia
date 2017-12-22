@@ -34,8 +34,8 @@ class FinanceController extends CommonController
 
         $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
 
-        $start_time = I('get.start_time', 0, 'intval');
-        $end_time = I('get.end_time', 0, 'intval');
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
         $type = I('get.type', 1, 'intval'); //类型：1-到款日期，2-立项日期
         $project_name = I('get.project_name', '', 'trim');  //项目名称
 
@@ -52,28 +52,29 @@ class FinanceController extends CommonController
             'project.name' => 'project_name',       //项目名称
             'project.money' => 'project_money',     //合同总额
 //            'project.status',                       //项目状态：0进行中 1是完结 2是中断
-            'schedule.name' => 'stage',             //项目阶段
+//            'schedule.name' => 'stage',             //项目阶段
+            'st.name' => 'stage',             //项目阶段
 //            'round(sum(schedule.receive), 2)' => 'receive',         //已收款
 //            'round(sum(schedule.money)-sum(schedule.receive), 2)' => 'debt',  //未收款
             'schedule.process',     //最新过程记录
-            'project.project_time'  //立项日期
+            'project.project_time',  //立项日期
+            'project.sche_id'
         ];
-
+        
+// && strtotime($start_time) < strtotime($end_time)
         if ( $start_time && $end_time && $start_time < $end_time ) {
             if ( $type == 1 ) {
                 //根据到款日期查询
 //                $map['receive_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
 
                 $res = M('receipt')->field('s_id')->where(['receive_time' => [['egt', $start_time], ['elt', $end_time], 'and']])->group('s_id')->select();
-
                 $count = 0;
                 $list = [];
                 if ( $res ) {
 
                     $s_id = array_column($res, 's_id');
-                    $obj = M('schedule')->field('project_id')->where(['id' => ['IN', $s_id]])->group('project_id'->select();
-
-                    if ( $obj ) {)
+                    $obj = M('schedule')->field('project_id')->where(['id' => ['IN', $s_id]])->group('project_id')->select();
+                    if ( $obj ) {
 
                         $project_id = array_column($obj, 'project_id');
                         $map['project.id'] = ['IN', $project_id];
@@ -86,8 +87,12 @@ class FinanceController extends CommonController
                         if ( $page <= 0 ) $page = 1;
                         if ( $page > $totalPage ) $page = $totalPage;
                         $pre = ($page - 1) * $num;
-
-                        $list = M('project')->alias('project')->join('left join s_schedule as schedule on schedule.id = project.sche_id')->field($field)
+                        if($pre < 0)
+                            $pre = 0;
+                        $list = M('project')->alias('project')
+                            ->join('left join s_schedule as schedule on schedule.id = project.sche_id')
+                            ->join('left join s_stage_types as st on st.id = project.stage')
+                            ->field($field)
                             ->where($map)->order('project.update_time desc')->limit($pre.','.$num)->select();
 
                     }
@@ -107,34 +112,55 @@ class FinanceController extends CommonController
                 if ( $page > $totalPage ) $page = $totalPage;
                 $pre = ($page - 1) * $num;
 
-                $list = M('project')->alias('project')->join('left join s_schedule as schedule on schedule.id = project.sche_id')->field($field)
+                $list = M('project')->alias('project')
+                    ->join('left join s_schedule as schedule on schedule.id = project.sche_id')
+                    ->join('left join s_stage_types as st on st.id = project.stage')
+                    ->field($field)
                     ->where($map)->order('project.update_time desc')->limit($pre.','.$num)->select();
             }
         } else {
-
             //总条数
             $count = M('project')->alias('project')->where($map)->count();
-
             //总页码
             $totalPage = ceil( $count / $num );
             if ( $page <= 0 ) $page = 1;
             if ( $page > $totalPage ) $page = $totalPage;
             $pre = ($page - 1) * $num;
 
-            $list = M('project')->alias('project')->join('left join s_schedule as schedule on schedule.id = project.sche_id')->field($field)
+            $list = M('project')->alias('project')
+                ->join('left join s_schedule as schedule on schedule.id = project.sche_id')
+                ->join('left join s_stage_types as st on st.id = project.stage')
+                ->field($field)
                 ->where($map)->order('project.update_time desc')->limit($pre.','.$num)->select();
 
         }
-
         if ( $list ) {
             foreach ( $list as $key => $value ) {
+                switch($value['sche_id'])
+                {
+                    case -2:
+                    $list[$key]['stage'] = '进行中';
+                    break;
+                    case -1:
+                    $list[$key]['stage'] = '未实施';
+                    break;
+                    case 0:
+                    $list[$key]['stage'] = '已完结';
+                    break;
+                    default:
+                    $list[$key]['stage'] = M('schedule')->where(['id'=>$value['sche_id']])->getField('name');
+                    break;
+                }
+                //收款记录
                 $obj = M('schedule')->field(['round(sum(receive), 2)' => 'receive', 'round(sum(money)-sum(receive), 2)' => 'debt'])->where(['project_id' => $value['project_id']])->find();
-                $list[$key]['receive'] = $obj['receive'];
-                $list[$key]['debt'] = $obj['debt'];
-                $list[$key]['project_time'] = date('Y-m-d H:i:s', $value['project_time']);
+                $list[$key]['receive'] = $obj['receive'] ? $obj['receive'] : 0;
+                $list[$key]['debt'] = $obj['debt'] ? $obj['debt'] : 0;
+                $list[$key]['project_time'] = date('Y-m-d', $value['project_time']) ? date('Y-m-d', $value['project_time']) : '暂无';
+                $list[$key]['process'] = $value['process'] ? $value['process'] : '';
+                $schedule_money = M('schedule')->where(['project_id'=>$value['project_id']])->getField('sum(money)');
+                $list[$key]['project_money'] = $value['project_moeny'] + $schedule_money;
             }
         }
-
         ajax_success('数据请求成功', compact('count', 'totalPage', 'list'));
 
     }
@@ -154,11 +180,11 @@ class FinanceController extends CommonController
         $res = [
             'project_id' => $project_id,
             'project_name' => $arr['name'],
-            'project_time' => date('Y-m-d H:i:s', $arr['project_time']),
+            'project_time' => date('Y-m-d', $arr['project_time']),
             'project_stage' => '',
+            'filename' => $arr['filename'],
             'project_money' => $arr['money'],
         ];
-
         //项目阶段
         $res['child'] = [];
         if ( $arr['child'] ) {
@@ -184,6 +210,7 @@ class FinanceController extends CommonController
             }
 
             $res['child'] = $obj;
+            $res['project_money'] = M('schedule')->where(['project_id'=>$project_id])->getField('sum(money)');
 
         }
 
@@ -246,22 +273,22 @@ class FinanceController extends CommonController
 
         }
 
-        //自动切换阶段
+        //自动切换阶段(项目阶段由主管手动切换)
         $total = $sum + $data['receive'];   //当前收款数据
         $scheduleMod->where(['id' => $schedule_id])->save(['receive' => $total]);
 
-        if ( $total >= $info['money'] ) {
-            $scheduleMod->where(['id' => $schedule_id])->save(['status' => 1]);
-            $last = $scheduleMod->where(['project_id' => $info['project_id'], 'status' => 0, 'id' => ['NEQ', $schedule_id]])->order('id asc')->find();
-            //把最新阶段更新到项目表
-            if ( $last ) {
-                M('project')->where(['id' => $info['project_id']])->save(['sche_id' => $last['id'], 'update_time' => time()]);
-            } else {
-                //TODO 项目完结
-                //状态 0进行中 1是完结 2是中断
-                M('project')->where(['id' => $info['project_id']])->save(['status' => 1, 'update_time' => time()]);
-            }
-        }
+//        if ( $total >= $info['money'] ) {
+//            $scheduleMod->where(['id' => $schedule_id])->save(['status' => 1]);
+//            $last = $scheduleMod->where(['project_id' => $info['project_id'], 'status' => 0, 'id' => ['NEQ', $schedule_id]])->order('id asc')->find();
+//            //把最新阶段更新到项目表
+//            if ( $last ) {
+//                M('project')->where(['id' => $info['project_id']])->save(['sche_id' => $last['id'], 'update_time' => time()]);
+//            } else {
+//                //TODO 项目完结
+//                //状态 0进行中 1是完结 2是中断
+//                M('project')->where(['id' => $info['project_id']])->save(['status' => 1, 'update_time' => time()]);
+//            }
+//        }
 
         ajax_success('操作成功');
 
@@ -303,15 +330,26 @@ class FinanceController extends CommonController
      */
     public function editProjectSchedule() {
 
-        $data = I('post.');
+        $data = $_POST;
 
-        if ( $data['money'] <= 0 ) ajax_error('合同金额不能为0');
+        //if ( $data['money'] <= 0 ) ajax_error('合同金额不能为0');
 
         $projectMod = M('project');
         $scheduleMod = M('schedule');
 
         $project = $projectMod->find($data['project_id']);
         if ( !$project ) ajax_error('项目信息不存在');
+
+
+        //如果有文件上传
+        if($_FILES['contract']['name'] != '' && $_FILES['contract']['size'] > 0){
+            $file = uploads('',array('jpg','gif','bmp','png','jpeg','xlsx','doc','docx','xls','txt'),'','./Uploads/contract/');
+
+            $arr['filename'] = $_FILES['contract']['name']; //合同原文件名
+            $arr['file'] = $file[0]; //文件路径
+//            $project->filename = $_FILES['contract']['name']; //合同原文件名
+//            $project->file = $file[0]; //文件路径
+        }
 
         try {
 
@@ -320,15 +358,30 @@ class FinanceController extends CommonController
             M()->startTrans();
 
             //保存项目合同总额
-            if ( !$projectMod->where(['id' => $data['project_id']])->save(['money' => $data['money']]) )
+            $arr['money'] = $data['money'];
+            if ( $projectMod->where(['id' => $data['project_id']])->save( $arr ) !== false ) {
+
+            } else {
                 $bool = false;
+            }
 
-            if ( count($data['child']) > 0 ) {
+            $arr = json_decode($_POST['child']);
 
-                foreach ( $data['child'] as $key => $value ) {
+            if ( count($arr) > 0 ) {
 
-                    if ( $scheduleMod->where(['project_id' => $data['project_id'], 'id' => $value['schedule_id']])->save(['name' => $value['name'], 'content' => $value['content'], 'money' => $value['money']]) !== false ) $bool = true;
+                foreach ( $arr as $key => $value ) {
+
+                    $temp = (array)json_decode( $value );
+
+                    $res = [
+                        'name' => $temp['name'],
+                        'content' => $temp['content'],
+                        'money' => $temp['money'],
+                    ];
+
+                    if ( $scheduleMod->where(['project_id' => $data['project_id'], 'id' => $temp['schedule_id']])->save( $res ) !== false ) $bool = true;
                     else $bool = false;
+
                 }
 
             }
@@ -359,8 +412,8 @@ class FinanceController extends CommonController
 
         $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
 
-        $start_time = I('get.start_time', 0, 'intval');
-        $end_time = I('get.end_time', 0, 'intval');
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
         $type = I('get.type', 1, 'intval'); //类型：1-报账日期，2-立项日期
         $project_name = I('get.project_name', '', 'trim');  //项目名称
 
@@ -431,10 +484,11 @@ class FinanceController extends CommonController
         if ( $list ) {
             foreach ( $list as $key => $value ) {
 
-                $list[$key]['total'] = $expenseMod->where(['project_id' => $value['project_id']])->sum('amount');
+                $amount = $expenseMod->where(['project_id' => $value['project_id']])->sum('amount');
+                $list[$key]['total'] = $amount ? $amount : 0.00;
                 $obj = $expenseMod->field(['expense_time'])->where(['project_id' => $value['project_id']])->order('expense_time desc')->find();
                 $list[$key]['expense_time'] = $obj['expense_time'] ? date('Y-m-d', $obj['expense_time']) : 0;
-                $list[$key]['project_time'] = date('Y-m-d', $value['project_time']);
+                $list[$key]['project_time'] = date('Y-m-d', $value['project_time']) ? date('Y-m-d', $value['project_time']) : '暂无';
 
             }
         }
@@ -456,6 +510,7 @@ class FinanceController extends CommonController
             ->field([
                 'project.id' => 'project_id',
                 'project.name' => 'project_name',
+                'project.sche_id',
                 "from_unixtime(project.project_time, '%Y-%m-%d')" => 'project_time',
                 'schedule.name' => 'stage'
             ])
@@ -465,7 +520,21 @@ class FinanceController extends CommonController
 
         $expenseMod = M('expense');
         $project_info['expense_amount'] = $expenseMod->where(['project_id' => $project_id])->sum('amount');     //支出总额
-
+        if(!$project_info['stage'])
+        {
+            switch($project_info['sche_id'])
+            {
+                case -2:
+                $project_info['stage'] = '进行中';
+                break;
+                case -1:
+                $project_info['stage'] = '未实施';
+                break;
+                case 0:
+                $project_info['stage'] = '已完结';
+                break;
+            }
+        }
         $list = $expenseMod->alias('expense')->join('left join s_user u on u.id = expense.user_id')
             ->join('left join s_overhead_type oh on oh.id = expense.overhead_type_id')
             ->field([
@@ -476,7 +545,7 @@ class FinanceController extends CommonController
                 "from_unixtime(expense.expense_time, '%Y-%m-%d')" => 'expense_time',
                 'expense.expense_content',
                 'expense.user_id',
-                'u.username',
+                'u.nickname' => 'username',
             ])->where(['expense.project_id' => $project_id])->select();
 
         $project_info['logs'] = $list;
@@ -557,17 +626,16 @@ class FinanceController extends CommonController
      */
     public function executiveList() {
 
-        $start_time = I('get.start_time', 0, 'intval');
-        $end_time = I('get.end_time', 0, 'intval');
-
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
         $page = I('get.page', 1, 'intval'); //分页
         $num = I('get.num', 10, 'intval');  //条数
 
         $map = [];
-        if ( $start_time && $end_time && $start_time < $end_time ) {
+        if ( $start_time && $end_time && ($start_time < $end_time) ) {
             $map['ex.executive_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+            // $map['ex.executive_time'] = ['between',[$start_time,$end_time]];
         }
-
         $executiveMod = M('executive');
 
         $count = $executiveMod->alias('ex')->where($map)->count();
@@ -581,15 +649,14 @@ class FinanceController extends CommonController
                 'ex.overhead_type_id',
                 'oh.name' => 'overhead_type_name',
                 'ex.executive_content',
-                "from_unixtime(ex.executive_time)" => 'executive_time',
+                "from_unixtime(ex.executive_time, '%Y-%m-%d')" => 'executive_time',
                 'ex.user_id',
-                'u.username',
+                'u.nickname' => 'username',
                 'ex.amount'
             ])
             ->join('left join s_overhead_type oh on oh.id = ex.overhead_type_id')
             ->join('left join s_user u on u.id = ex.user_id')
             ->where($map)->limit($pre.','.$num)->order('ex.executive_time desc')->select();
-
         ajax_success('获取成功', compact('count', 'totalPage', 'list'));
     }
 
@@ -668,8 +735,8 @@ class FinanceController extends CommonController
 
         $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
 
-        $start_time = I('get.start_time', 0, 'intval');
-        $end_time = I('get.end_time', 0, 'intval');
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
         $type = I('get.type', 1, 'intval'); //类型：1-计提周期，2-立项日期
         $project_name = I('get.project_name', '', 'trim');  //项目名称
 
@@ -684,12 +751,10 @@ class FinanceController extends CommonController
         $field = [
             'id' => 'project_id',           //项目ID
             'name' => 'project_name',       //项目名称
-            'project_time'                  //立项日期
+             "from_unixtime(project_time, '%Y-%m-%d')" => 'project_time',   //立项日期
         ];
-
         $projectMod = M('project');
         $projectCommission = M('project_commission');
-
         $count = 0;
         $list = [];
         if ( $start_time && $end_time && $start_time < $end_time ) {
@@ -722,7 +787,6 @@ class FinanceController extends CommonController
             }
 
         } else {
-
             $count = $projectMod->where($map)->count();
             $totalPage = ceil( $count / $num );
             if ( $page <= 0 ) $page = 1;
@@ -732,18 +796,20 @@ class FinanceController extends CommonController
             $list = $projectMod->field($field)->where($map)->limit($pre.','.$num)->order('project_time desc')->select();
 
         }
-
         if ( $list ) {
             foreach ( $list as $key => $value ) {
 
-                $total = $projectCommission->where(['project_id' => $value['id']])->sum('amount');
-                $list[$key]['total'] = $total ? $total : 0;        //计提总支出
-                $last_commission = $projectCommission->where(['project_id' => $value['id']])->order('end_time desc')->find();
-                $list[$key]['last_commission'] = $last_commission['start_time'] . '-' . $last_commission['end_time'];   //最新计提周期
+                $total = $projectCommission->where(['project_id' => $value['project_id']])->sum('amount');
+                $expense_total = M('expense')->where(['project_id'=>$value['project_id']])->getField('sum(amount)');
+                $list[$key]['total'] = ($total ? $total : 0) + ($expense_total ? $expense_total : 0);        //计提总支出
+                $last_commission = $projectCommission->where(['project_id' => $value['project_id']])->order('end_time desc')->find();
+                $last_time = $last_commission['start_time'] ? date('Y/m/d',$last_commission['start_time']) : '暂无';
+                $end_time  = $last_commission['end_time'] ? date('Y/m/d',$last_commission['end_time']) : '计提';
+                $list[$key]['last_commission'] = $last_time . '-' . $end_time;   //最新计提周期
+                // $list[$key]['project_time'] = 
 
             }
         }
-
         ajax_success('获取成功', compact('count', 'totalPage', 'list'));
     }
 
@@ -764,7 +830,7 @@ class FinanceController extends CommonController
                 'project.name' => 'project_name',   //项目名称
                 "FROM_UNIXTIME(project.project_time, '%Y-%m-%d')" => 'project_time',                     //立项时间
                 'schedule.name' => 'stage',         //项目阶段
-                'u.username' => 'director_name',    //项目主管
+                'u.nickname' => 'director_name',    //项目主管
             ])
             ->join('left join s_schedule schedule on schedule.id = project.sche_id')
             ->join('left join s_user u on u.id = project.director_id')
@@ -805,6 +871,7 @@ class FinanceController extends CommonController
             ])
             ->where(['project_id' => $project_id, 'project_child_id' => $project_child_id, 'is_finish' => 0])->find();
 
+        if ( !$current_project_commission ) $current_project_commission = '';
 
         //历史计提
         $history_project_commission = $projectCommissionMod
@@ -843,9 +910,10 @@ class FinanceController extends CommonController
                 'FROM_UNIXTIME(pc.end_time)' => 'end_time',
                 'pwc.work_id',
                 'w.name' => 'work_name',
-                'u.username',
+                'u.nickname' => 'username',
                 'pwc.commission_rate',
-                'pwc.status'
+                'pwc.status',
+                'pwc.is_submit',
             ])
             ->where(['pwc.project_commission_id' => $project_commission_id])
             ->select();
@@ -869,10 +937,10 @@ class FinanceController extends CommonController
             ->join('left join s_user u on u.id = pwc.user_id')
             ->join('left join s_work w on w.id = pwc.work_id')
             ->field([
-                'FROM_UNIXTIME(pc.start_time)' => 'start_time',
-                'FROM_UNIXTIME(pc.end_time)' => 'end_time',
+                'FROM_UNIXTIME(pc.start_time, \'%Y-%m-%d\')' => 'start_time',
+                'FROM_UNIXTIME(pc.end_time, \'%Y-%m-%d\')' => 'end_time',
                 'w.name' => 'work_name',
-                'u.username',
+                'u.nickname' => 'username',
                 'pwc.commission_rate',
             ])
             ->where(['pwc.project_commission_id' => $project_commission_id, 'pwc.work_id' => $work_id])
@@ -881,7 +949,7 @@ class FinanceController extends CommonController
         //员工列表
         $list = M('project_staff_commission')->alias('psc')->join('left join s_user u on u.id = psc.user_id')
             ->field([
-                'u.username',
+                'u.nickname' => 'username',
                 'psc.labor',
                 'psc.content',
                 'psc.commission_rate'
@@ -901,10 +969,16 @@ class FinanceController extends CommonController
 
         $project_commission_id = I('post.project_commission_id', 0, 'intval');
         $status = I('post.status', 0, 'intval');
-        if ( $project_commission_id <= 0 || $status <= 0 ) ajax_error('参数错误');
+        if ( $project_commission_id <= 0 ) ajax_error('参数错误');
 
+        $data = [
+            'status' => $status,
+        ];
+        if ( !$status ) {
+            $data['is_submit'] = 0;
+        }
         $projectCommissionMod = M('project_commission');
-        if ( $projectCommissionMod->where(['id' => $project_commission_id])->save(['status' => $status]) !== false ) {
+        if ( $projectCommissionMod->where(['id' => $project_commission_id])->save($data) !== false ) {
             ajax_success('操作成功');
         } else {
             ajax_error($projectCommissionMod->getError());
@@ -941,16 +1015,57 @@ class FinanceController extends CommonController
             'is_finish' => 1,
         ];
 
-        if ( !M('project_commission')->where(['id' => $project_commission_id])->save($data) ) $bool = false;
+        //项目主管提成信息保存
+        if ( M('project_commission')->where(['id' => $project_commission_id])->save($data) !== false ) {
 
+        } else {
+            $bool = false;
+        }
+
+        //计算每个工种计提比例与金额
         $projectWorkCommissionMod = M('project_work_commission');
+        $projectStaffCommissionMod = M('project_staff_commission');
+        $staffMod = M('staff');
         $list = $projectWorkCommissionMod->where(['project_commission_id' => $project_commission_id])->select();
         if ( $list ) {
 
+            foreach ( $list as $key => $value ) {
 
+                //当前工种总计提总额
+                $commission_money = round( ($group_money * $value['commission_rate']) / 100, 2 );
+                if ( $projectWorkCommissionMod->where(['id' => $value['id']])->save(['commission_money' => $commission_money]) !== false ) {
+
+                } else {
+                    $bool = false;
+                    break;
+                }
+
+                //当前工种下的成员列表
+                $staff_list = $projectStaffCommissionMod->where(['work_id' => $value['work_id'], 'project_commission_id' => $value['project_commission_id']])->select();
+                if ( $staff_list ) {
+                    foreach ( $staff_list as $k => $v ) {
+
+                        //查找分工与工作内容
+                        $staff_info = $staffMod->where(['work_id' => $v['work_id'], 'user_id' => $v['user_id'], 'project_child_id' => $v['project_child_id']])->find();
+                        $staff_commission_money = round( ($commission_money * $v['commission_rate']) / 100, 2 );
+                        $arr = [
+                            'commission_money' => $staff_commission_money ? $staff_commission_money : 0,
+                            'labor' => $staff_info['labor'] ? $staff_info['labor'] : '',
+                            'content' => $staff_info['content'] ? $staff_info['content'] : '',
+                        ];
+                        if ( $projectStaffCommissionMod->where(['id' => $v['id']])->save($arr) !== false ) {
+
+                        } else {
+                            $bool = false;
+                            break;
+                        }
+
+                     }
+                }
+
+            }
 
         }
-
 
         if ( $bool ) {
             M()->commit();
@@ -959,7 +1074,6 @@ class FinanceController extends CommonController
             M()->rollback();
             ajax_error('操作失败');
         }
-
 
     }
 
@@ -970,8 +1084,8 @@ class FinanceController extends CommonController
 
         $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
 
-        $start_time = I('get.start_time', 0, 'intval');
-        $end_time = I('get.end_time', 0, 'intval');
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
         $type = I('get.type', 1, 'intval'); //类型：1-到款日期，2-立项日期
         $project_name = I('get.project_name', '', 'trim');  //项目名称
 
@@ -1086,7 +1200,10 @@ class FinanceController extends CommonController
             $total_income = $total_income ? $total_income : 0;
             //查找项目支出
             $total_pay = M('expense')->where(['project_id' => ['in', $ids]])->sum('amount');
-            $total_pay = $total_pay ? $total_pay : 0;
+            //加上项目计提
+            $jiti_pay  = M('projectCommission')->where(['project_id'=>['in',$ids]])->sum('amount');
+            $jiti_pay  = $jiti_pay ? $jiti_pay  : 0;
+            $total_pay = ($total_pay ? $total_pay : 0) + $jiti_pay;
             //查找行政支出
             $total_executive = M('executive')->sum('amount');
             $total_executive = $total_executive ? $total_executive : 0;
@@ -1123,7 +1240,7 @@ class FinanceController extends CommonController
         $project_id = I('get.project_id', 0, 'intval');
         if ( $project_id <= 0 ) ajax_error('参数错误');
 
-        $type = I('get.type', 0, 'intval');
+        $type = I('get.type', 0, 'intval'); //当为1时显示首页统计分析
 
         //查找项目收款列表
         $schedule_list = M('schedule')->field([
@@ -1141,7 +1258,7 @@ class FinanceController extends CommonController
             'ot.name' => 'type_name',
             'e.amount',
             'e.expense_content',
-            'u.username'
+            'u.nickname' => 'username'
         ])->where(['project_id' => $project_id])->select();
 
         //查找子项目列表
@@ -1153,8 +1270,8 @@ class FinanceController extends CommonController
                 //首页统计分析
                 foreach ( $project_child_list as $key => $value ) {
                     //查出每个子项目的历史计提记录
-                    $commission_list = M('project_work_commission')->alias('pwc')
-                        ->join('left join s_project_commission pc on pc.id = pwc.project_commission_id')
+                    $commission_list = M('project_commission')->alias('pc')
+                        ->join('left join s_project_work_commission pwc on pwc.project_commission_id = pc.id')
                         ->join('left join s_user u on u.id = pwc.user_id')
                         ->join('left join s_work w on w.id = pwc.work_id')
                         ->field([
@@ -1163,19 +1280,18 @@ class FinanceController extends CommonController
                             "from_unixtime(pc.end_time, '%Y-%m-%d')" => 'end_time',
                             'pwc.work_id',
                             'w.name' => 'work_name',
-                            'u.username',
+                            'u.nickname' => 'username',
                             'pwc.commission_rate'
                         ])->where(['pc.project_child_id' => $value['project_child_id'], 'pc.is_finish' => 1])->select();
 
-
                     if ( $commission_list ) {
                         foreach ( $commission_list as $k => $v ) {
-                            $user_list = M('project_staff_commission')->alias('psc')
+                            $user_list = M('project_staff_commission')->distinct(true)->alias('psc')
                                 ->join('left join s_user u on u.id = psc.user_id')
                                 ->field([
-                                    'u.username',
+                                    'u.nickname' => 'username',
                                 ])
-                                ->where(['psc.project_commission_id' => $v['project_commission_id']])->select();
+                                ->where(['psc.project_commission_id' => $v['project_commission_id'], 'psc.work_id' => $v['work_id']])->select();
                             $commission_list[$k]['user_list'] = $user_list ? array_column($user_list, 'username') : [];
                         }
                     }
@@ -1201,7 +1317,6 @@ class FinanceController extends CommonController
             }
 
         }
-
         ajax_success('数据获取成功', compact('schedule_list', 'expense_list', 'project_child_list'));
 
     }
@@ -1225,7 +1340,7 @@ class FinanceController extends CommonController
                 "from_unixtime(expense.expense_time, '%Y-%m-%d')" => 'expense_time',
                 'expense.expense_content',
                 'expense.user_id',
-                'u.username',
+                'u.nickname' => 'username',
             ])->where(['expense.id' => $expense_id])->find();
         if ( !$res ) ajax_error('支出信息不存在');
 
@@ -1271,6 +1386,7 @@ class FinanceController extends CommonController
             'receive',     //已收款
             'money - receive' => 'debt',  //未收款
             'process',     //过程纪录
+            'project_id'
         ])->where(['id' => $schedule_id])->find();
         if ( !$info ) ajax_error('信息不存在');
 
@@ -1281,7 +1397,7 @@ class FinanceController extends CommonController
         $res = [
             'project_id' => $info['project_id'],
             'project_name' => $arr['name'],
-            'project_time' => date('Y-m-d H:i:s', $arr['project_time']),
+            'project_time' => date('Y-m-d', $arr['project_time']),
             'project_stage' => $arr['stage_name'],
             'project_money' => $arr['money'],
         ];
@@ -1296,5 +1412,505 @@ class FinanceController extends CommonController
 
     }
 
+    public function income_export()
+    {
+        $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
 
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
+        $type = I('get.type', 1, 'intval'); //类型：1-到款日期，2-立项日期
+        $project_name = I('get.project_name', '', 'trim');  //项目名称
+
+        $page = I('get.page', 1, 'intval'); //分页
+        $num = I('get.num', 10, 'intval');  //条数
+
+        //查询条件
+        $map['project.status'] = $status;   //项目状态
+        if ( $project_name ) $map['project.name'] = ['like', "%{$project_name}%"];
+
+        //查询字段
+        $field = [
+            'project.id' => 'project_id',           //项目ID
+            'project.name' => 'project_name',       //项目名称
+            'project.money' => 'project_money',     //合同总额
+//            'project.status',                       //项目状态：0进行中 1是完结 2是中断
+//            'schedule.name' => 'stage',             //项目阶段
+            'st.name' => 'stage',             //项目阶段
+//            'round(sum(schedule.receive), 2)' => 'receive',         //已收款
+//            'round(sum(schedule.money)-sum(schedule.receive), 2)' => 'debt',  //未收款
+            'schedule.process',     //最新过程记录
+            'project.project_time',  //立项日期
+            'project.sche_id'
+        ];
+        
+        if ( $start_time && $end_time && $start_time < $end_time ) {
+            if ( $type == 1 ) {
+                //根据到款日期查询
+//                $map['receive_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+
+                $res = M('receipt')->field('s_id')->where(['receive_time' => [['egt', $start_time], ['elt', $end_time], 'and']])->group('s_id')->select();
+                $count = 0;
+                $list = [];
+                if ( $res ) {
+
+                    $s_id = array_column($res, 's_id');
+                    $obj = M('schedule')->field('project_id')->where(['id' => ['IN', $s_id]])->group('project_id')->select();
+                    if ( $obj ) {
+
+                        $project_id = array_column($obj, 'project_id');
+                        $map['project.id'] = ['IN', $project_id];
+
+                        //总条数
+                        $count = M('project')->alias('project')->where($map)->count();
+
+                        //总页码
+                        $totalPage = ceil( $count / $num );
+                        if ( $page <= 0 ) $page = 1;
+                        if ( $page > $totalPage ) $page = $totalPage;
+                        $pre = ($page - 1) * $num;
+                        if($pre < 0)
+                            $pre = 0;
+                        $list = M('project')->alias('project')
+                            ->join('left join s_schedule as schedule on schedule.id = project.sche_id')
+                            ->join('left join s_stage_types as st on st.id = project.stage')
+                            ->field($field)
+                            ->where($map)->order('project.update_time desc')->select();
+
+                    }
+
+                }
+
+            } else {
+                //根据立项日期查询
+                $map['project.project_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+
+                //总条数
+                $count = M('project')->alias('project')->where($map)->count();
+
+                //总页码
+                $totalPage = ceil( $count / $num );
+                if ( $page <= 0 ) $page = 1;
+                if ( $page > $totalPage ) $page = $totalPage;
+                $pre = ($page - 1) * $num;
+
+                $list = M('project')->alias('project')
+                    ->join('left join s_schedule as schedule on schedule.id = project.sche_id')
+                    ->join('left join s_stage_types as st on st.id = project.stage')
+                    ->field($field)
+                    ->where($map)->order('project.update_time desc')->select();
+            }
+        } else {
+            //总条数
+            $count = M('project')->alias('project')->where($map)->count();
+            //总页码
+            $totalPage = ceil( $count / $num );
+            if ( $page <= 0 ) $page = 1;
+            if ( $page > $totalPage ) $page = $totalPage;
+            $pre = ($page - 1) * $num;
+
+            $list = M('project')->alias('project')
+                ->join('left join s_schedule as schedule on schedule.id = project.sche_id')
+                ->join('left join s_stage_types as st on st.id = project.stage')
+                ->field($field)
+                ->where($map)->order('project.update_time desc')->select();
+
+        }
+        if ( $list ) {
+            foreach ( $list as $key => $value ) {
+                switch($value['sche_id'])
+                {
+                    case -2:
+                    $list[$key]['stage'] = '进行中';
+                    break;
+                    case -1:
+                    $list[$key]['stage'] = '未实施';
+                    break;
+                    case 0:
+                    $list[$key]['stage'] = '已完结';
+                    break;
+                    default:
+                    $list[$key]['stage'] = M('schedule')->where(['id'=>$value['sche_id']])->getField('name');
+                    break;
+                }
+                //收款记录
+                $obj = M('schedule')->field(['round(sum(receive), 2)' => 'receive', 'round(sum(money)-sum(receive), 2)' => 'debt'])->where(['project_id' => $value['project_id']])->find();
+                $list[$key]['receive'] = $obj['receive'] ? $obj['receive'] : 0;
+                $list[$key]['debt'] = $obj['debt'] ? $obj['debt'] : 0;
+                $list[$key]['project_time'] = date('Y-m-d', $value['project_time']) ? date('Y-m-d', $value['project_time']) : '暂无';
+                $list[$key]['process'] = $value['process'] ? $value['process'] : '';
+                $schedule_money = M('schedule')->where(['project_id'=>$value['project_id']])->getField('sum(money)');
+                $list[$key]['project_money'] = $value['project_moeny'] + $schedule_money;
+                unset($list[$key]['sche_id']);
+                unset($list[$key]['project_id']);
+            }
+        }
+        array_unshift($list,['项目名称','合同总额','项目阶段','已收款','未收款','最新过程记录','立项时间']);
+        export($list,'项目收入'.date('Y-m-d',time()));
+    }
+
+
+    public function overhead_export()
+    {
+        $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
+
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
+        $type = I('get.type', 1, 'intval'); //类型：1-报账日期，2-立项日期
+        $project_name = I('get.project_name', '', 'trim');  //项目名称
+
+        $page = I('get.page', 1, 'intval'); //分页
+        $num = I('get.num', 10, 'intval');  //条数
+
+        //查询条件
+        $map['status'] = $status;   //项目状态
+        if ( $project_name ) $map['name'] = ['like', "%{$project_name}%"];
+
+        //查询字段
+        $field = [
+            'id' => 'project_id',           //项目ID
+            'name' => 'project_name',       //项目名称
+            'project_time'                  //立项日期
+        ];
+
+        $projectMod = M('project');
+        $expenseMod = M('expense');
+
+        $count = 0;
+        $list = [];
+        if ( $start_time && $end_time && $start_time < $end_time ) {
+
+            if ( $type == 1 ) {
+                //报账日期查询
+                $res = $expenseMod->field(['project_id'])->where(['expense_time' => [['egt', $start_time], ['elt', $end_time], 'and']])->group('project_id')->select();
+                if ( $res ) {
+
+                    $project_ids = array_column($res, 'project_id');
+
+                    $map['id'] = ['in', $project_ids];
+
+                    $count = $projectMod->where($map)->count();
+                    $totalPage = ceil( $count / $num );
+                    if ( $page <= 0 ) $page = 1;
+                    if ( $page > $totalPage ) $page = $totalPage;
+                    $pre = ( $page - 1 ) * $num;
+
+                    $list = $projectMod->field($field)->where($map)->order('project_time desc')->select();
+                }
+
+            } else {
+                //立项日期查询
+                $map['project_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+
+                $count = $projectMod->where($map)->count();
+                $totalPage = ceil( $count / $num );
+                if ( $page <= 0 ) $page = 1;
+                if ( $page > $totalPage ) $page = $totalPage;
+                $pre = ( $page - 1 ) * $num;
+
+                $list = $projectMod->field($field)->where($map)->order('project_time desc')->select();
+            }
+
+        } else {
+
+            $count = $projectMod->where($map)->count();
+            $totalPage = ceil( $count / $num );
+            if ( $page <= 0 ) $page = 1;
+            if ( $page > $totalPage ) $page = $totalPage;
+            $pre = ( $page - 1 ) * $num;
+
+            $list = $projectMod->field($field)->where($map)->order('project_time desc')->select();
+
+        }
+
+        if ( $list ) {
+            foreach ( $list as $key => $value ) {
+
+                $amount = $expenseMod->where(['project_id' => $value['project_id']])->sum('amount');
+                $list[$key]['total'] = $amount ? $amount : 0.00;
+                $obj = $expenseMod->field(['expense_time'])->where(['project_id' => $value['project_id']])->order('expense_time desc')->find();
+                $list[$key]['expense_time'] = $obj['expense_time'] ? date('Y-m-d', $obj['expense_time']) : 0;
+                $list[$key]['project_time'] = date('Y-m-d', $value['project_time']) ? date('Y-m-d', $value['project_time']) : '暂无';
+                unset($list[$key]['project_id']);
+            }
+        }
+        array_unshift($list,['项目名称','立项时间','支出数额','支出时间']);
+        export($list,'项目支出'.date('Y-m-d',time()));
+    }
+
+    public function jiti_export()
+    {
+        $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
+        
+                $start_time = strtotime(I('get.start_time'));
+                $end_time = strtotime(I('get.end_time'));
+                $type = I('get.type', 1, 'intval'); //类型：1-计提周期，2-立项日期
+                $project_name = I('get.project_name', '', 'trim');  //项目名称
+        
+                $page = I('get.page', 1, 'intval'); //分页
+                $num = I('get.num', 10, 'intval');  //条数
+        
+                //查询条件
+                $map['status'] = $status;   //项目状态
+                if ( $project_name ) $map['name'] = ['like', "%{$project_name}%"];
+        
+                //查询字段
+                $field = [
+                    'id' => 'project_id',           //项目ID
+                    'name' => 'project_name',       //项目名称
+                     "from_unixtime(project_time, '%Y-%m-%d')" => 'project_time',   //立项日期
+                ];
+                $projectMod = M('project');
+                $projectCommission = M('project_commission');
+                $count = 0;
+                $list = [];
+                if ( $start_time && $end_time && $start_time < $end_time ) {
+        
+                    if ( $type ==1 ) {
+                        //计提周期
+                        $res = $projectCommission->field(['project_id'])->where(['start_time' => ['egt', $start_time], 'end_time' => ['elt', $end_time]])->group('project_id')->select();
+                        if ( $res ) {
+                            $project_ids = array_column($res, 'project_id');
+                            $map['id'] = ['in', $project_ids];
+        
+                            $count = $projectMod->where($map)->count();
+                            $totalPage = ceil( $count / $num );
+                            if ( $page <= 0 ) $page = 1;
+                            if ( $page > $totalPage ) $page = $totalPage;
+                            $pre = ( $page - 1 ) * $num;
+        
+                            $list = $projectMod->field($field)->where($map)->order('project_time desc')->select();
+                        }
+                    } else {
+                        //立项时间
+                        $map['project_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+                        $count = $projectMod->where($map)->count();
+                        $totalPage = ceil( $count / $num );
+                        if ( $page <= 0 ) $page = 1;
+                        if ( $page > $totalPage ) $page = $totalPage;
+                        $pre = ( $page - 1 ) * $num;
+        
+                        $list = $projectMod->field($field)->where($map)->order('project_time desc')->select();
+                    }
+        
+                } else {
+                    $count = $projectMod->where($map)->count();
+                    $totalPage = ceil( $count / $num );
+                    if ( $page <= 0 ) $page = 1;
+                    if ( $page > $totalPage ) $page = $totalPage;
+                    $pre = ( $page - 1 ) * $num;
+        
+                    $list = $projectMod->field($field)->where($map)->order('project_time desc')->select();
+        
+                }
+                if ( $list ) {
+                    foreach ( $list as $key => $value ) {
+        
+                        $total = $projectCommission->where(['project_id' => $value['project_id']])->sum('amount');
+                        $expense_total = M('expense')->where(['project_id'=>$value['project_id']])->getField('sum(amount)');
+                        $list[$key]['total'] = ($total ? $total : 0) + ($expense_total ? $expense_total : 0);        //计提总支出
+                        $last_commission = $projectCommission->where(['project_id' => $value['project_id']])->order('end_time desc')->find();
+                        $last_time = $last_commission['start_time'] ? date('Y/m/d',$last_commission['start_time']) : '暂无';
+                        $end_time  = $last_commission['end_time'] ? date('Y/m/d',$last_commission['end_time']) : '计提';
+                        $list[$key]['last_commission'] = $last_time . '-' . $end_time;   //最新计提周期
+                        // $list[$key]['project_time'] = 
+                        unset($list[$key]['project_id']);
+                    }
+                }
+                array_unshift($list,['项目名称','立项时间','计提总额','上次计提']);
+                export($list,'项目计提'.date('Y-m-d',time()));
+    }
+    public function admin_overhead_export()
+    {
+        $start_time = strtotime(I('get.start_time'));
+        $end_time = strtotime(I('get.end_time'));
+        $page = I('get.page', 1, 'intval'); //分页
+        $num = I('get.num', 10, 'intval');  //条数
+
+        $map = [];
+        if ( $start_time && $end_time && ($start_time < $end_time) ) {
+            $map['ex.executive_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+            // $map['ex.executive_time'] = ['between',[$start_time,$end_time]];
+        }
+        $executiveMod = M('executive');
+
+        $count = $executiveMod->alias('ex')->where($map)->count();
+        $totalPage = ceil( $count / $num );
+        if ( $page <= 0 ) $page = 1;
+        if ( $page > $totalPage ) $page = $totalPage;
+        $pre = ($page - 1) * $num;
+
+        $list = $executiveMod->alias('ex')->field([
+                'ex.id' => 'executive_id',
+                'ex.overhead_type_id',
+                'oh.name' => 'overhead_type_name',
+                'ex.executive_content',
+                "from_unixtime(ex.executive_time, '%Y-%m-%d')" => 'executive_time',
+                'ex.user_id',
+                'u.nickname' => 'username',
+                'ex.amount'
+            ])
+            ->join('left join s_overhead_type oh on oh.id = ex.overhead_type_id')
+            ->join('left join s_user u on u.id = ex.user_id')
+            ->where($map)->order('ex.executive_time desc')->select();
+            foreach($list as $k=>$v)
+            {
+                unset($list[$k]['executive_id']);
+                unset($list[$k]['overhead_type_id']);
+                unset($list[$k]['user_id']);
+            }
+        array_unshift($list,['支出类型','内容','支出时间','相关用户','数额']);
+        export($list,'行政支出'.date('Y-m-d',time()));
+    }
+
+    public function total_export()
+    {
+        $status = I('get.status', 0, 'intval'); //状态 0进行中 1是完结 2是中断
+        
+                $start_time = strtotime(I('get.start_time'));
+                $end_time = strtotime(I('get.end_time'));
+                $type = I('get.type', 1, 'intval'); //类型：1-到款日期，2-立项日期
+                $project_name = I('get.project_name', '', 'trim');  //项目名称
+        
+                $page = I('get.page', 1, 'intval'); //分页
+                $num = I('get.num', 10, 'intval');  //条数
+        
+                //查询条件
+                $map['project.status'] = $status;   //项目状态
+                if ( $project_name ) $map['project.name'] = ['like', "%{$project_name}%"];
+        
+                //查询字段
+                $field = [
+                    'project.id' => 'project_id',           //项目ID
+                    'project.name' => 'project_name',       //项目名称
+                ];
+        
+                if ( $start_time && $end_time && $start_time < $end_time ) {
+                    if ( $type == 1 ) {
+                        //根据到款日期查询
+                        $res = M('receipt')->field('s_id')->where(['receive_time' => [['egt', $start_time], ['elt', $end_time], 'and']])->group('s_id')->select();
+        
+                        $count = 0;
+                        $list = [];
+                        if ( $res ) {
+        
+                            $s_id = array_column($res, 's_id');
+                            $obj = M('schedule')->field('project_id')->where(['id' => ['IN', $s_id]])->group('project_id')->select();
+        
+                            if ( $obj ) {
+        
+                                $project_id = array_column($obj, 'project_id');
+                                $map['project.id'] = ['IN', $project_id];
+        
+                                //总条数
+                                $count = M('project')->alias('project')->where($map)->count();
+        
+                                //总页码
+                                $totalPage = ceil( $count / $num );
+                                if ( $page <= 0 ) $page = 1;
+                                if ( $page > $totalPage ) $page = $totalPage;
+                                $pre = ($page - 1) * $num;
+        
+                                $list = M('project')->alias('project')->field($field)
+                                    ->where($map)->order('project.update_time desc')->select();
+        
+                            }
+        
+                        }
+        
+                    } else {
+                        //根据立项日期查询
+                        $map['project.project_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
+        
+                        //总条数
+                        $count = M('project')->alias('project')->where($map)->count();
+        
+                        //总页码
+                        $totalPage = ceil( $count / $num );
+                        if ( $page <= 0 ) $page = 1;
+                        if ( $page > $totalPage ) $page = $totalPage;
+                        $pre = ($page - 1) * $num;
+        
+                        $list = M('project')->alias('project')->field($field)
+                            ->where($map)->order('project.update_time desc')->select();
+                    }
+                } else {
+        
+                    //总条数
+                    $count = M('project')->alias('project')->where($map)->count();
+        
+                    //总页码
+                    $totalPage = ceil( $count / $num );
+                    if ( $page <= 0 ) $page = 1;
+                    if ( $page > $totalPage ) $page = $totalPage;
+                    $pre = ($page - 1) * $num;
+        
+                    $list = M('project')->alias('project')->field($field)
+                        ->where($map)->order('project.update_time desc')->select();
+        
+                }
+        
+                if ( $list ) {
+                    foreach ( $list as $key => $value ) {
+        
+                        //查找项目总收入
+                        $total_income = M('schedule')->where(['project_id' => $value['project_id']])->sum('receive');
+                        $total_income = $total_income ? $total_income : 0;
+                        $list[$key]['total_income'] =  $total_income;
+                        //查找项目支出
+                        $total_pay = M('expense')->where(['project_id' => $value['project_id']])->sum('amount');
+                        $total_pay = $total_pay ? $total_pay : 0;
+                        $list[$key]['total_pay'] = $total_pay;
+                        //查找项目计提
+                        $total_commission = M('project_commission')->where(['project_id' => $value['project_id'], 'is_finish' => 1])->sum('amount');
+                        $total_commission = $total_commission ? $total_commission : 0;
+                        $list[$key]['total_commission'] = $total_commission;
+                        //剩余
+                        $list[$key]['surplus'] = $total_income - ($total_pay+$total_commission);
+                        unset($list[$key]['project_id']);
+                    }
+                }
+        
+                $project_list = M('project')->where(['status' => ['neq', 2]])->select();
+                $total_project = count($project_list);
+        
+                if ( $total_project > 0 ) {
+        
+                    $ids = array_column($project_list, 'id');
+        
+                    //查找项目总收入
+                    $total_income = M('schedule')->where(['project_id' => ['in', $ids]])->sum('receive');
+                    $total_income = $total_income ? $total_income : 0;
+                    //查找项目支出
+                    $total_pay = M('expense')->where(['project_id' => ['in', $ids]])->sum('amount');
+                    //加上项目计提
+                    $jiti_pay  = M('projectCommission')->where(['project_id'=>['in',$ids]])->sum('amount');
+                    $jiti_pay  = $jiti_pay ? $jiti_pay  : 0;
+                    $total_pay = ($total_pay ? $total_pay : 0) + $jiti_pay;
+                    //查找行政支出
+                    $total_executive = M('executive')->sum('amount');
+                    $total_executive = $total_executive ? $total_executive : 0;
+        
+                    //剩余
+                    $surplus = $total_income - ($total_pay+$total_executive);
+        
+                    $rate = 0;
+                    if ( $total_income > 0 ) {
+        
+                        $rate = round(($surplus / $total_income) * 100 , 2);
+                    }
+        
+                }
+        
+                $info = [
+                    'total_project' => $total_project,
+                    'total_income' => $total_income ? $total_income : 0,
+                    'total_pay' => $total_pay ? $total_pay : 0,
+                    'total_executive' => $total_executive ? $total_executive : 0,
+                    'surplus' => $surplus ? $surplus : 0,
+                    'rate' => $rate ? $rate : 0,
+                ];
+        
+                array_unshift($list,['项目名称','总收入','总支出','计提总额','剩余']);
+                export($list,'经营统计'.date('Y-m-d',time()));
+    }
 }

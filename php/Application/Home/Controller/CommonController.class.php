@@ -28,16 +28,16 @@ class CommonController extends HomeBaseController
         // 具体权限列表
         $authority  = M('user')->where(['id'=>$this->user_id])->getField('authority');
         //echo CONTROLLER_NAME;exit;
-				if($is_super)
+				if(!$is_super && !in_array(strtolower(ACTION_NAME),['download','export_task','managers_export','users_export','export_task','income_export','overhead_export','jiti_export','admin_overhead_export','total_export','project_export_doing','performance_export']))
 				{
 					switch (strtolower(CONTROLLER_NAME))
 	        {
 	            // 后台 数据备份
 	            case 'admin':
 	            case 'database':
-	                if(!$is_super)
+	                if(!$is_super && strtolower(ACTION_NAME) != 'info')
 	                {
-	                    //ajax_error('无权访问模块');
+	                    ajax_error('无权访问模块');
 	                }
 	                break;
 	            // 管理->项目
@@ -48,22 +48,22 @@ class CommonController extends HomeBaseController
 	            case 'finance':
 	                if(!$administer)
 	                {
-	                    //ajax_error('无权访问模块');
+	                 //   ajax_error('无权访问模块');
 	                }
 	                if(!in_array(4,explode(',',$authority)))
 	                {
-	                    //ajax_error('无权访问模块');
+	                 //   ajax_error('无权访问模块');
 	                }
 	                break;
 	            // 管理->人员
 	            case 'manage':
 	                if(!$administer)
 	                {
-	                    //ajax_error('无权访问模块');
+	                    ajax_error('无权访问模块');
 	                }
 	                if(!in_array(5,explode(',',$authority)))
 	                {
-	                    //ajax_error('无权访问模块');
+	                    ajax_error('无权访问模块');
 	                }
 	                break;
 	           case 'task':
@@ -71,7 +71,7 @@ class CommonController extends HomeBaseController
 	           			{
 	           				if(!$is_super)
 	           				{
-	           					//ajax_error('无权查看');
+	           					ajax_error('无权查看');
 	           				}
 	           			}
 	                break;

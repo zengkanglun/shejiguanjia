@@ -1,4 +1,6 @@
 $(function() {
+	var token = localStorage.getItem("token");
+	var project_id = localStorage.getItem("project_id");
 	$(".detail_tab li").on("click", function() {
 		$(this).addClass("active").siblings().removeClass("active");
 		var index = $(this).index();
@@ -6,18 +8,32 @@ $(function() {
 		$(".content_detail .pro_tab").eq(index).show();
 		if(index == 0) {
 			process(project_id, 1);
+			$(".process_detail .page_right .number").text(1);
+			$(".process_detail .jump .jump_page").val("");
 		} else if(index == 1) {
+			$(".travel_detail .jump .jump_page").val("");
+			$(".travel_detail .page_right .number").text(1);
 			chutu(project_id, 1);
 		} else if(index == 2) {
+			$(".manage_detail .jump .jump_page").val("");
+			$(".manage_detail .page_right .number").text(1);
 			letter(project_id, 1);
 		} else if(index == 4) {
+			$(".picture_detail .jump .jump_page").val("");
+			$(".picture_detail .page_right .number").text(1);
 			guid(project_id, 1);
+		}else{
+			xiangmulist();
+			$(".item_detail .jump .jump_page").val("");
+			
 		}
 	})
 	//过程纪要增加的操作
 	$(".process_detail .detail_head").on("click", function() {
 		$("#boxPock").show();
 		$(".process_add").show();
+		$(".process_add").find("input").val("");
+		$(".process_add").find("textarea").val("");
 	})
 	$(".process_add_head i").on("click", function() {
 		$("#boxPock").hide();
@@ -67,7 +83,7 @@ $(function() {
 	//		$("#boxPock").show();
 	//		$("#boxPock .item_add").show();
 	//	})
-	$(".item_add .item_add_head i,.item_add .btn1,item_add .btn2").on("click", function() {
+	$(".item_add .item_add_head i,.item_add .btn1,.item_add .btn2").on("click", function() {
 		$("#boxPock").hide();
 		$("#boxPock .item_add").hide();
 	})
@@ -85,15 +101,14 @@ $(function() {
 		$(this).addClass("active").siblings().removeClass("active")
 	})
 
-	/*===*/
-	var token = localStorage.getItem("token");
-	var project_id = localStorage.getItem("project_id");
-	console.log(token, project_id);
+	/*===*/	
+	//	console.log(token, project_id);
 	/*============================================*/
 	var quser_id; /*过程管理userid*/
 	var pro_page = 1,
 		pro_pages;
 	$(document).on('click', '#pro_pre', function() {
+		pro_page = $(this).siblings(".number").text();
 		if(pro_page == 1) {
 			toast('已经是第一页了！');
 			return false;
@@ -102,6 +117,9 @@ $(function() {
 		process(project_id, pro_page);
 	});
 	$(document).on('click', '#pro_next', function() {
+		pro_page = $(this).siblings(".number").text();
+		pro_pages = $(this).siblings(".total_num").text();
+		console.log(pro_pages)
 		if(pro_page == pro_pages) {
 			toast('已经是最后一页了！');
 			return false;
@@ -109,6 +127,16 @@ $(function() {
 		pro_page++;
 		process(project_id, pro_page);
 	});
+	/*过程纪要跳页*/
+	$(document).on("click", ".process_detail .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			process(project_id, jump_num);
+		} else {
+			toast("请输入正常页码")
+		}
+	})
 	/*过程纪要列表*/
 	process(project_id, 1);
 
@@ -131,7 +159,7 @@ $(function() {
 					pro_pages = data.data.page;
 					var str = '';
 					for(var i = 0; i < data.data.process.length; i++) {
-						str += '<tr data-userid="' + data.data.process[i].user_id + '" data-id="' + data.data.process[i].id + '" data-time="' + data.data.process[i].time + '" data-name="' + data.data.process[i].name + '" data-nickname="' + data.data.process[i].nickname + '" data-content="' + data.data.process[i].content + '">';
+						str += '<tr data-type="' + data.data.process[i].type + '" data-userid="' + data.data.process[i].user_id + '" data-id="' + data.data.process[i].id + '" data-time="' + data.data.process[i].time + '" data-name="' + data.data.process[i].name + '" data-nickname="' + data.data.process[i].nickname + '" data-content="' + data.data.process[i].content + '">';
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.process[i].time + '</td>';
 						str += '	<td>' + data.data.process[i].name + '</td>';
@@ -170,7 +198,7 @@ $(function() {
 			data: {},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					str = '';
 					str += '<option>请选择</option>';
 					for(var i = 0; i < data.data.length; i++) {
@@ -189,7 +217,7 @@ $(function() {
 		var type = $('#process_type_list').val();
 		var content = $('#pro_add').val();
 		var time = $('#pro_add_one').val();
-		console.log(type, content, time);
+		//		console.log(type, content, time);
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/process/addprocess",
@@ -223,6 +251,7 @@ $(function() {
 		var pro_edit_name = $(this).parents('tr').attr('data-name'); /*列表类型*/
 		var pro_edit_time = $(this).parents('tr').attr('data-time'); /*列表时间*/
 		var pro_edit_content = $(this).parents('tr').attr('data-content'); /*列表内容*/
+		var type = $(this).parents('tr').attr('data-type'); /*列表内容*/
 
 		$("#boxPock").show();
 		$(".process_edit").show();
@@ -230,7 +259,12 @@ $(function() {
 		$('.process_edit #process_type_list1').val(pro_edit_name);
 		$('#pro_edit_one').val(pro_edit_time);
 		$('#pro_edit_con').val(pro_edit_content);
+		$('#pro_type1').attr("data-id", type);
 	});
+	$('#process_type_list1').on("change", function() {
+		var num = $(this).val();
+		$(this).siblings("input").attr("data-id", num)
+	})
 	$(document).on('click', '#btn_edit_pro', function() {
 		$.ajax({
 			type: "post",
@@ -241,7 +275,7 @@ $(function() {
 			},
 			data: {
 				id: pro_edit_id,
-				type: $('#process_type_list1').val(),
+				type: $('#pro_type1').attr("data-id"),
 				content: $('#pro_edit_con').val(),
 				time: $('#pro_edit_one').val(),
 			},
@@ -317,6 +351,8 @@ $(function() {
 	/*出图出差列表*/
 	//出图出差增加的操作
 	$(".travel_detail .travel_head").on("click", function() {
+		$(".travel_add input").val("");
+		$(".travel_add textarea").val("");
 		$("#boxPock").show();
 		$(".travel_add").show();
 	})
@@ -351,6 +387,7 @@ $(function() {
 	var ct_page = 1,
 		ct_pages;
 	$(document).on('click', '#ct_pre', function() {
+		ct_page = $(this).siblings(".number").text();
 		if(ct_page == 1) {
 			toast('已经是第一页了！');
 			return false;
@@ -359,6 +396,8 @@ $(function() {
 		chutu(project_id, ct_page);
 	});
 	$(document).on('click', '#ct_next', function() {
+		ct_page = $(this).siblings(".number").text();
+		ct_pages = $(this).siblings(".total_num").text();
 		if(ct_page == ct_pages) {
 			toast('已经是最后一页了！');
 			return false;
@@ -366,6 +405,16 @@ $(function() {
 		ct_page++;
 		chutu(project_id, ct_page);
 	});
+	/*出图出差跳页*/
+	$(document).on("click", ".travel_detail .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			chutu(project_id, jump_num);
+		} else {
+			toast("请输入正常页码")
+		}
+	})
 
 	function chutu(project_id, ct_page) {
 		$.ajax({
@@ -381,11 +430,11 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var str = '';
 					ct_pages = data.data.page;
 					for(var i = 0; i < data.data.Picture.length; i++) {
-						str += '<tr data-userid="' + data.data.Picture[i].user_id + '" data-id="' + data.data.Picture[i].id + '" data-num="' + data.data.Picture[i].num + '" data-name="' + data.data.Picture[i].name + '" data-nickname="' + data.data.Picture[i].nickname + '" data-content="' + data.data.Picture[i].content + '">';
+						str += '<tr data-type="' + data.data.Picture[i].type + '" data-userid="' + data.data.Picture[i].user_id + '" data-id="' + data.data.Picture[i].id + '" data-num="' + data.data.Picture[i].num + '" data-name="' + data.data.Picture[i].name + '" data-nickname="' + data.data.Picture[i].nickname + '" data-content="' + data.data.Picture[i].content + '">';
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.Picture[i].add_time + '</td>';
 						str += '	<td>' + data.data.Picture[i].name + '</td>';
@@ -425,7 +474,7 @@ $(function() {
 			data: {},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					str = '';
 					str += '<option>请选择</option>';
 					for(var i = 0; i < data.data.length; i++) {
@@ -488,6 +537,7 @@ $(function() {
 		var pic_edit_nickname = $(this).parents('tr').attr('data-nickname'); /*列表参与人*/
 		var pic_edit_num = $(this).parents('tr').attr('data-num'); /*列表数量*/
 		var pic_edit_content = $(this).parents('tr').attr('data-content'); /*列表内容*/
+		var type = $(this).parents('tr').attr('data-type'); /*类型*/
 		var hidden_id = $(this).attr("data-id");
 
 		$("#boxPock").show();
@@ -498,6 +548,7 @@ $(function() {
 		$('#pic_edit_content').val(pic_edit_content);
 		$('#pic_edit_num').val(pic_edit_num);
 		$('.travel_edit .hidden').val(hidden_id);
+		$('#chutu_type_name').attr("data-id", type);
 
 	});
 	$(document).on('click', '#btn_edit_chu', function() {
@@ -509,7 +560,7 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				type: $('#chutu_type_list').val(),
+				type: $('#chutu_type_name').attr("data-id"),
 				participate: $('.travel_edit .hidden').val(),
 				content: $('#pic_edit_content').val(),
 				num: $('#pic_edit_num').val(),
@@ -529,7 +580,10 @@ $(function() {
 			async: true
 		});
 	});
-
+	$('#chutu_type_list').on("change", function() {
+		var num = $(this).val();
+		$(this).siblings("input").attr("data-id", num)
+	})
 	/*查看-出图出差*/
 	$(document).on('click', '.travel_detail td .check', function() {
 		pic_edit_id = $(this).parents('tr').attr('data-id'); /*列表id*/
@@ -584,6 +638,7 @@ $(function() {
 	$(".manage_detail .manage_detail_head").on("click", function() {
 		$("#boxPock").show();
 		$(".manage_add").show();
+		clickFlag = true;
 	})
 	$(".manage_add_head i,.manage_add_bottom .btn2").on("click", function() {
 		$("#boxPock").hide();
@@ -607,6 +662,7 @@ $(function() {
 	var letter_page = 1,
 		letter_pages;
 	$(document).on('click', '#letter_pre', function() {
+		letter_page = $(this).siblings(".number").text();
 		if(letter_page == 1) {
 			toast('已经是第一页了！');
 			return false;
@@ -615,6 +671,8 @@ $(function() {
 		letter(project_id, letter_page);
 	});
 	$(document).on('click', '#letter_next', function() {
+		letter_page = $(this).siblings(".number").text();
+		letter_pages = $(this).siblings(".total_num").text();
 		if(letter_page == letter_pages) {
 			toast('已经是最后一页了！');
 			return false;
@@ -622,7 +680,16 @@ $(function() {
 		letter_page++;
 		letter(project_id, letter_page);
 	});
-//	letter(project_id, 1);
+	/*发函管理跳页*/
+	$(document).on("click", ".manage_detail .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			letter(project_id, jump_num);
+		} else {
+			toast("请输入正常页码")
+		}
+	})
 
 	function letter(project_id, letter_page) {
 		$.ajax({
@@ -638,11 +705,11 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var str = '';
 					letter_pages = data.data.page;
 					for(var i = 0; i < data.data.letter.length; i++) {
-						str += '<tr data-userid="' + data.data.letter[i].user_id + '" data-id="' + data.data.letter[i].id + '" data-time="' + data.data.letter[i].time + '" data-name="' + data.data.letter[i].name + '" data-nickname="' + data.data.letter[i].nickname + '" data-filename="' + data.data.letter[i].filename + '" data-content="' + data.data.letter[i].content + '">';
+						str += '<tr data-type="' + data.data.letter[i].type + '" data-userid="' + data.data.letter[i].user_id + '" data-id="' + data.data.letter[i].id + '" data-time="' + data.data.letter[i].time + '" data-name="' + data.data.letter[i].name + '" data-nickname="' + data.data.letter[i].nickname + '" data-filename="' + data.data.letter[i].filename + '" data-content="' + data.data.letter[i].content + '">';
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.letter[i].time + '</td>';
 						str += '	<td>' + data.data.letter[i].name + '</td>';
@@ -672,6 +739,7 @@ $(function() {
 	/*类型-发函管理*/
 	$(document).on('click', '.manage_detail_head,.manage_detail td .edit', function() {
 		$(".manage_add input").val("");
+		$(".manage_add textarea").val("");
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/common/LetterType",
@@ -682,7 +750,7 @@ $(function() {
 			data: {},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					str = '';
 					str += '<option value="-1">请选择</option>';
 					for(var i = 0; i < data.data.length; i++) {
@@ -696,35 +764,38 @@ $(function() {
 			async: true
 		});
 	});
-
+	var clickFlag;
 	/*增加-发函管理*/
 	$(document).on('click', '#btn_add_letter', function() {
 		var formData = new FormData($("#letter_form")[0]);
 		formData.append("project_id", project_id);
 		formData.append("data_type", 1);
-		$.ajax({
-			type: "post",
-			url: host_host_host + "/home/process/AddLetter",
-			dataType: 'json',
-			headers: {
-				accept: "usertoken:" + token,
-			},
-			data: formData,
-			processData: false,
-			contentType: false,
-			success: function(data) {
-				if(data.status == 1) {
-					toast(data.msg);
-					$("#boxPock").hide();
-					$(".manage_add").hide();
-					letter(project_id, 1);
-				} else {
-					toast(data.msg);
-				}
-			},
-			error: function(data) {},
-			async: true
-		});
+		if(clickFlag) {
+			clickFlag = false;
+			$.ajax({
+				type: "post",
+				url: host_host_host + "/home/process/AddLetter",
+				dataType: 'json',
+				headers: {
+					accept: "usertoken:" + token,
+				},
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					if(data.status == 1) {
+						toast(data.msg);
+						$("#boxPock").hide();
+						$(".manage_add").hide();
+						letter(project_id, 1);
+					} else {
+						toast(data.msg);
+					}
+				},
+				error: function(data) {},
+				async: true
+			})
+		}
 	});
 	/*编辑-发函管理*/
 	var man_edit_id; /*列表id*/
@@ -735,17 +806,25 @@ $(function() {
 		var man_edit_time = $(this).parents('tr').attr('data-time'); /*列表时间*/
 		var man_edit_filename = $(this).parents('tr').attr('data-filename'); /*列表文件名*/
 		var man_edit_content = $(this).parents('tr').attr('data-content'); /*列表内容*/
+		var data_type = $(this).parents('tr').attr('data-type'); /*列表内容*/
 
 		$("#boxPock").show();
 		$(".manage_edit").show();
 		$('.manage_edit #letter_edit_typename').val(man_edit_name);
 		$('#manage_two').val(man_edit_time);
 		$('#letter_edit_filename').text(man_edit_filename);
-		$('#letter_edit_content').val(man_edit_content);
+		$('#letter_edit_typename').attr("data-id", data_type);
+		$('#letter_edit_content').text(man_edit_content);
 	});
+	$('#letter_type_list').on("change", function() {
+		var num = $(this).val();
+		$(this).siblings("input").attr("data-id", num)
+	})
 	$(document).on('click', '#btn_edit_letter', function() {
 		var formData = new FormData($("#letter_edit")[0]);
+		var type = $('#letter_edit_typename').attr("data-id")
 		formData.append("id", man_edit_id);
+		formData.append("type", type);
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/process/EditLetter",
@@ -827,6 +906,8 @@ $(function() {
 	/*图纸归档列表*/
 	//图纸归档增加的操作
 	$(".picture_detail .picture_detail_head").on("click", function() {
+		clickFlag = true;
+		$(".picture_add textarea").val("")
 		$("#boxPock").show();
 		$(".picture_add").show();
 	})
@@ -854,6 +935,7 @@ $(function() {
 	var guid_page = 1,
 		guid_pages;
 	$(document).on('click', '#guid_pre', function() {
+		guid_page = $(this).siblings(".number").text();
 		if(guid_page == 1) {
 			toast('已经是第一页了！');
 			return false;
@@ -862,6 +944,8 @@ $(function() {
 		guid(project_id, guid_page);
 	});
 	$(document).on('click', '#guid_next', function() {
+		guid_page = $(this).siblings(".number").text();
+		guid_pages = $(this).siblings(".total_num").text();
 		if(guid_page == guid_pages) {
 			toast('已经是最后一页了！');
 			return false;
@@ -869,7 +953,16 @@ $(function() {
 		guid_page++;
 		guid(project_id, guid_page);
 	});
-//	guid(project_id, 1);
+	/*图纸归档跳页*/
+	$(document).on("click", ".picture_detail .paging .jump .go", function() {
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			guid(project_id, jump_num);
+		} else {
+			toast("请输入正常页码")
+		}
+	})
 
 	function guid(project_id, guid_page) {
 		$.ajax({
@@ -885,11 +978,11 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var str = '';
 					guid_pages = data.data.page;
 					for(var i = 0; i < data.data.letter.length; i++) {
-						str += '<tr data-userid="' + data.data.letter[i].user_id + '" data-id="' + data.data.letter[i].id + '" data-time="' + data.data.letter[i].time + '" data-name="' + data.data.letter[i].name + '" data-nickname="' + data.data.letter[i].nickname + '" data-filename="' + data.data.letter[i].filename + '" data-content="' + data.data.letter[i].content + '">';
+						str += '<tr data-type="' + data.data.letter[i].type + '" data-userid="' + data.data.letter[i].user_id + '" data-id="' + data.data.letter[i].id + '" data-time="' + data.data.letter[i].time + '" data-name="' + data.data.letter[i].name + '" data-nickname="' + data.data.letter[i].nickname + '" data-filename="' + data.data.letter[i].filename + '" data-content="' + data.data.letter[i].content + '">';
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.letter[i].time + '</td>';
 						str += '	<td>' + data.data.letter[i].name + '</td>';
@@ -929,7 +1022,7 @@ $(function() {
 			data: {},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					str = '';
 					str += '<option value="">请选择</option>';
 					for(var i = 0; i < data.data.length; i++) {
@@ -949,29 +1042,32 @@ $(function() {
 		var formData = new FormData($("#picture_form")[0]);
 		formData.append("project_id", project_id);
 		formData.append("data_type", "2");
-		$.ajax({
-			type: "post",
-			url: host_host_host + "/home/process/AddLetter",
-			dataType: 'json',
-			headers: {
-				accept: "usertoken:" + token,
-			},
-			data: formData,
-			processData: false,
-			contentType: false,
-			success: function(data) {
-				if(data.status == 1) {
-					toast(data.msg);
-					$("#boxPock").hide();
-					$(".picture_add").hide();
-					guid(project_id, 1);
-				} else {
-					toast(data.msg);
-				}
-			},
-			error: function(data) {},
-			async: true
-		});
+		if(clickFlag) {
+			clickFlag = false;
+			$.ajax({
+				type: "post",
+				url: host_host_host + "/home/process/AddLetter",
+				dataType: 'json',
+				headers: {
+					accept: "usertoken:" + token,
+				},
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					if(data.status == 1) {
+						toast(data.msg);
+						$("#boxPock").hide();
+						$(".picture_add").hide();
+						guid(project_id, 1);
+					} else {
+						toast(data.msg);
+					}
+				},
+				error: function(data) {},
+				async: true
+			});
+		}
 	});
 	/*编辑-图纸归档*/
 	var tu_edit_id; /*列表id*/
@@ -982,21 +1078,28 @@ $(function() {
 		var tu_edit_time = $(this).parents('tr').attr('data-time'); /*列表时间*/
 		var tu_edit_filename = $(this).parents('tr').attr('data-filename'); /*列表文件名*/
 		var tu_edit_content = $(this).parents('tr').attr('data-content'); /*列表内容*/
+		var type = $(this).parents('tr').attr('data-type'); /*类型*/
 
 		$('#tu_edit_id').val(tu_edit_id);
 
 		$("#boxPock").show();
 		$(".picture_edit").show();
-		$('.picture_detail #tu_edit_typename').val(tu_edit_name);
-		$('.picture_detail #archive_type_list').val(tu_edit_name);
+		$('.picture_edit #tu_edit_typename').val(tu_edit_name);
+		$('.picture_edit #archive_type_list').val(tu_edit_name);
 		$('#pic_add_two').val(tu_edit_time);
 		$('#tu_edit_filename').text(tu_edit_filename);
 		$('#tu_edit_content').val(tu_edit_content);
+		$('#tu_edit_typename').attr("data-id", type);
 
 	});
+	$('#archive_type_list').on("change", function() {
+		var num = $(this).val();
+		$(this).siblings("input").attr("data-id", num)
+	})
 	$(document).on('click', '#btn_edit_archive', function() {
 		var formData = new FormData($("#tu_edit")[0]);
 		formData.append("id", tu_edit_id);
+		formData.append("type", $('#tu_edit_typename').attr("data-id"));
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/process/EditLetter",
@@ -1029,7 +1132,7 @@ $(function() {
 		var tu_edit_time = $(this).parents('tr').attr('data-time');
 		var tu_edit_nickname = $(this).parents('tr').attr('data-nickname');
 		var tu_edit_content = $(this).parents('tr').attr('data-content');
-
+		tu_edit_id = $(this).parents('tr').attr('data-id'); /*列表id*/
 		$('#tu_look_type').val(tu_edit_name);
 		$('#tu_look_filename').text(tu_edit_filename);
 		$('#tu_look_name').val(tu_edit_nickname);
@@ -1078,22 +1181,34 @@ $(function() {
 	var xiamgm_page = 1,
 		xiamgm_pages;
 	$(document).on('click', '#xiangm_pre', function() {
+		xiamgm_page = $(this).siblings(".number").text();
 		if(xiamgm_page == 1) {
-			alert('已经是第一页了！');
+			toast('已经是第一页了！');
 			return false;
 		}
 		xiamgm_page--;
 		xiangmulist();
 	});
 	$(document).on('click', '#xiangm_next', function() {
+		xiamgm_page = $(this).siblings(".number").text();
+		xiamgm_pages = $(this).siblings(".total_num").text();
 		if(xiamgm_page == xiamgm_pages) {
-			alert('已经是最后一页了！');
+			toast('已经是最后一页了！');
 			return false;
 		}
 		xiamgm_page++;
 		xiangmulist();
 	});
-
+	/*项目分工跳页*/
+	$(document).on("click", ".item_detail .paging .jump .go", function() {
+		xiamgm_page = Number($(this).siblings(".jump_page").val());
+		if(xiamgm_page > 0) {
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(xiamgm_page)
+			xiangmulist();
+		} else {
+			toast("请输入正常页码")
+		}
+	})
 	$.ajax({
 		type: "post",
 		url: host_host_host + "/home/project/index",
@@ -1106,7 +1221,7 @@ $(function() {
 		},
 		success: function(data) {
 			if(data.status == 1) {
-				console.log(data);
+				//				console.log(data);
 				var xiangm_li = '';
 				for(var i = 0; i < data.data.child.length; i++) {
 					if(i == 0) {
@@ -1119,8 +1234,8 @@ $(function() {
 				xiangmid = $('#xiangm_li li').attr('data-id');
 				xiangmulist();
 			} else {
-				console.log(data);
-				alert(data.msg);
+				//				console.log(data);
+				toast(data.msg);
 			}
 		},
 		error: function(data) {},
@@ -1133,9 +1248,13 @@ $(function() {
 		$('#xiangm_li li').removeClass('active');
 		$(this).addClass('active');
 		xiangmid = $(this).attr('data-id');
-		console.log(xiangmid);
+		//		console.log(xiangmid);
 		xiangmulist();
 	});
+
+	fresh = function() {
+		xiangmulist();
+	};
 
 	function xiangmulist() {
 		$.ajax({
@@ -1151,7 +1270,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
+					//					console.log(data);
 					var xiangm = '';
 					xiamgm_pages = data.data.page;
 					for(var i = 0; i < data.data.user.length; i++) {
@@ -1165,7 +1284,6 @@ $(function() {
 						xiangm += '		<span class="check">查看</span>';
 						if(data.data.user_id == data.data.user[i].user_id) {
 							xiangm += '		<span class="edit">编辑</span>';
-							xiangm += '		<span class="del">删除</span>';
 						}
 						xiangm += '	</td>';
 						xiangm += '</tr>';
@@ -1175,8 +1293,8 @@ $(function() {
 					$('#xiangmnow_page').text(xiamgm_page);
 					$('#xiangmtotal_page').text(xiamgm_pages);
 				} else {
-					console.log(data);
-					alert(data.msg);
+					//					console.log(data);
+					toast(data.msg);
 				}
 			},
 			error: function(data) {},
@@ -1191,7 +1309,7 @@ $(function() {
 		xm_userid = $(this).parents('tr').attr('data-duserid'); /*表格用户id*/
 		xiangmu_edid = $(this).parents('tr').attr('data-id'); /*列表id*/
 		var xiangmu_eduserid = $(this).parents('tr').attr('data-userid'); /*用户id*/
-		console.log(xm_userid, xiangmu_edid, xiangmu_eduserid);
+		//		console.log(xm_userid, xiangmu_edid, xiangmu_eduserid);
 		if(xiangmu_eduserid == xm_userid) {
 			$.ajax({
 				type: "post",
@@ -1201,12 +1319,12 @@ $(function() {
 					accept: "usertoken:" + token,
 				},
 				data: {
-					id: xiangmu_eduserid,
+					id: xiangmu_edid,
 					chile_id: xiangmid,
 				},
 				success: function(data) {
 					if(data.status == 1) {
-						console.log(data);
+						//						console.log(data);
 						$("#boxPock").show();
 						$("#boxPock .item_add").show();
 						$('#xm_ed_nickname').val(data.data.staff.nickname);
@@ -1221,12 +1339,12 @@ $(function() {
 							lishi += '	<div class="stage_head">';
 							lishi += '		<span>阶段：</span><span>' + data.data.project_staff[i].start_time + '-' + data.data.project_staff[i].end_time + '</span>';
 							lishi += '	</div>';
-							lishi += '	<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled">data.data.project_staff[i].labor</textarea>';
+							lishi += '	<textarea name="" rows="" cols="" disabled="disabled">' + data.data.project_staff[i].labor + '</textarea>';
 							lishi += '</div>';
 						}
 						$('#xm_ed_lishi').html(lishi);
 					} else {
-						console.log(data);
+						//						console.log(data);
 					}
 				},
 				error: function(data) {},
@@ -1234,12 +1352,12 @@ $(function() {
 			});
 
 		} else {
-			alert('不可编辑');
+			toast('不可编辑');
 		}
 	});
 	$(document).on('click', '#xiangmu_btn', function() {
 		//		xiangmu_edid = $(this).parents('tr').attr('data-id'); /*列表id*/
-		console.log(xiangmu_edid);
+		//		console.log(xiangmu_edid);
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/project/EditLabor",
@@ -1253,11 +1371,12 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					console.log(data);
-					alert(data.msg);
-					window.location.reload();
+					//					console.log(data);
+					toast(data.msg);
+					//window.location.reload();
+					fresh();
 				} else {
-					console.log(data);
+					//					console.log(data);
 				}
 			},
 			error: function(data) {},
@@ -1272,8 +1391,8 @@ $(function() {
 		xm_userid = $(this).parents('tr').attr('data-duserid'); /*表格用户id*/
 		var xiangmu_loid = $(this).parents('tr').attr('data-id');
 		var xiangmu_louserid = $(this).parents('tr').attr('data-userid'); /*用户id*/
-
-		console.log(xm_userid, xiangmu_loid, xiangmu_louserid);
+		var child_id = $(".item_detail .item_ul li.active").attr("data-id");
+		//		console.log(xm_userid, xiangmu_loid, xiangmu_louserid);
 		$.ajax({
 			type: "post",
 			url: host_host_host + "/home/project/history",
@@ -1282,8 +1401,8 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				id: xiangmu_louserid,
-				chile_id: xiangmid,
+				id: xiangmu_loid,
+				chile_id: child_id,
 			},
 			success: function(data) {
 				if(data.status == 1) {
@@ -1300,12 +1419,12 @@ $(function() {
 						lishi += '	<div class="stage_head">';
 						lishi += '		<span>阶段：</span><span>' + data.data.project_staff[i].start_time + '-' + data.data.project_staff[i].end_time + '</span>';
 						lishi += '	</div>';
-						lishi += '	<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled">' + data.data.project_staff[i].content + '</textarea>';
+						lishi += '	<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled">' + data.data.project_staff[i].labor + '</textarea>';
 						lishi += '</div>';
 					}
 					$('#xm_lo_lishi').html(lishi);
 				} else {
-					console.log(data);
+					//					console.log(data);
 				}
 			},
 			error: function(data) {},
@@ -1332,12 +1451,12 @@ $(function() {
 				},
 				success: function(data) {
 					if(data.status == 1) {
-						console.log(data);
-						alert(data.msg);
+						//						console.log(data);
+						toast(data.msg);
 						window.location.reload();
 					} else {
-						console.log(data);
-						alert(data.msg);
+						//						console.log(data);
+						toast(data.msg);
 					}
 				},
 				error: function(data) {},
@@ -1345,7 +1464,7 @@ $(function() {
 			});
 
 		} else {
-			alert('不可编辑');
+			toast('不可编辑');
 		}
 	});
 	/*===*/
@@ -1419,7 +1538,7 @@ $(function() {
 	function choose() {
 		$(document).on("click", ".travel_add .choose", function() {
 			chooseNum = 1;
-			$("#boxPock").show();
+			$(".travel_add").hide();
 			$("#subitem_choose").show();
 			people = '';
 			var html = "";
@@ -1429,7 +1548,7 @@ $(function() {
 		})
 		$(document).on("click", ".travel_edit .choose", function() {
 			chooseNum = 2;
-			$("#boxPock").show();
+			$(".travel_edit").hide();
 			$("#subitem_choose").show();
 			people = '';
 			var html = "";
@@ -1438,9 +1557,14 @@ $(function() {
 			$(".item_right_ctn").append(html);
 		})
 		$(document).on("click", ".subitem_choose .subitem_choose_head i", function() {
-			$("#subitem_choose,#boxPock").hide();
+			$("#subitem_choose").hide();
 			$(".admin li").removeClass("active");
 			$(".item_right_ctn .work_style").remove();
+			if(chooseNum == 1) {
+				$(".travel_add").show();
+			} else {
+				$(".travel_edit").show();
+			}
 		})
 		//选人tab切换
 		$(document).on('click', '.subitem_choose_bottom .item_name li', function() {
@@ -1498,7 +1622,7 @@ $(function() {
 		})
 	}
 
-	/*下载*/	
+	/*下载*/
 	$(document).on("click", ".picture_detail .titleFile", function() {
 		var id = $(this).parents("tr").attr("data-id");
 		location.href = host_host_host + "/home/process/download/id/" + id;
@@ -1509,6 +1633,10 @@ $(function() {
 	})
 	$(document).on("click", "#letter_look_file,#letter_edit_filename", function() {
 		var id = man_edit_id;
+		location.href = host_host_host + "/home/process/download/id/" + id;
+	})
+	$(document).on("click", "#tu_edit_filename,#tu_look_filename", function() {
+		var id = tu_edit_id;
 		location.href = host_host_host + "/home/process/download/id/" + id;
 	})
 })

@@ -66,6 +66,7 @@ body {
   float: left;
   color: #FD813E;
   cursor: pointer;
+  display: none;
 }
 .subitems .item_content .cnt_detail .detail_head .head_left img {
   width: 22px;
@@ -166,9 +167,6 @@ body {
 .subitems .item_content .cnt_detail table tbody tr:nth-child(2n-1) {
   border-left: 1px solid #c8d2dc;
 }
-.subitems .item_content .cnt_detail .beixuan {
-  display: none;
-}
 .subitems .item_content .cnt_detail .alternative {
   height: 60px;
   line-height: 60px;
@@ -220,7 +218,11 @@ body {
 .subitems .item_content .third_floor {
   display: none;
 }
-.subitems .item_content .btn1 {
+.subitems .item_content .btn_foot {
+  width: 100%;
+  height: 160px;
+}
+.subitems .item_content .btn_foot .btn1 {
   width: 160px;
   height: 50px;
   text-align: center;
@@ -235,6 +237,25 @@ body {
   font-size: 16px;
   outline: none;
   box-shadow: 0px 0px 10px #FD813E;
+  float: left;
+  margin-left: 30%;
+}
+.subitems .item_content .btn_foot .btn2 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 50px auto;
+  background: #9DAAB8;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  float: right;
+  margin-right: 30%;
 }
 /*弹窗区域*/
 #boxPock {

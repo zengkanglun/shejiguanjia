@@ -10,12 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="css/backstage.css" />
 		<link rel="stylesheet" type="text/css" href="css/backstageLeft.css" />
 		<link rel="stylesheet" type="text/css" href="css/regular.css"></link>
-		
 		<link rel="stylesheet" type="text/css" href="css/delete_window.css" />
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -29,7 +27,7 @@
 					<div class="userinfo">
 						<div class="information">
 							<div class="info_image">
-								<img src="" alt="" class="photo"/>
+								<img src="" alt="" class="photo" />
 								<images src="img/info_image_Bg.png" alt="" />
 							</div>
 							<div class="info_name"></div>
@@ -39,10 +37,9 @@
 						<div class="title active">
 							<span></span>
 							<div class="manage">用户管理</div>
-							<i></i>
 						</div>
 						<ul class="ul">
-							<li class=" active">
+							<li class="active">
 								<a href="backstage_admin_list.html">用户列表</a>
 							</li>
 							<li>
@@ -54,12 +51,11 @@
 						</ul>
 					</div>
 					<div class="backstageListTwo">
-						<div class="title">
+						<div class="title ">
 							<span></span>
 							<div class="manage">系统管理</div>
-							<i></i>
 						</div>
-						<ul class="ul" style="display: none;">
+						<ul class="ul">
 							<li>
 								<a href="backstage_notice.html">任务通知</a>
 							</li>
@@ -90,13 +86,13 @@
 						<div><img src="img/info_image.png" /></div>
 					</div>
 					<div class="LastDataTime rightDiv">
-						<div>
-							上次登录时间：<i>2017-09-01</i><i>09:01:00</i>
+						<div class="last_time">
+							上次登录时间：<i></i>
 						</div>
 					</div>
 					<div class="LastDataTime rightDiv">
-						<div>
-							上次登录IP：<i>255.255.255.255</i>
+						<div class="last_ip">
+							上次登录IP：<i></i>
 						</div>
 					</div>
 				</div>
@@ -146,7 +142,7 @@
 								<th class="nine">操作</th>
 							</tr>
 							<tbody id="userMList">
-								 
+
 								<tr>
 									<td></td>
 									<td></td>
@@ -188,11 +184,20 @@
 									记录数：<span id="total">0</span>条
 								</div>
 								<div class="page_right">
-									<span>页数</span><i class="less" id = "prevm"><</i><span class="number">0</span><span>/</span><span class="total_num">0</span><i class="more" id = "afterm">></i>
+									<span>页数</span><i class="less" id="prevm"><</i><span class="number">0</span><span>/</span><span class="total_num">0</span><i class="more" id="afterm">></i>
+								</div>
+								<div class="jump">
+									<span>跳页至</span>
+									<input type="number" class="jump_page" />
+									<div class="go">GO</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="danw" style="margin-top: 20px;">
+					单位信息：
+					<span></span>
 				</div>
 			</div>
 		</div>
@@ -346,16 +351,16 @@
 								<div class="Sbody" id="autho_edit">
 									<p>普通权限：</p>
 									<div>
-										<span data-type = ""><a><img id="autho_1" src="img/backstage_checkbox_kong.png" alt="" /></a><i>新建项目</i></span>
-										<span data-type = ""><a><img id="autho_2" src="img/backstage_checkbox_kong.png" alt="" /></a><i>编辑相关项目</i></span>
-										<span data-type = ""><a><img id="autho_3" src="img/backstage_checkbox_kong.png" alt="" /></a><i>合同及项目收支</i><i>（仅限于项目主管所关联负责的项目）</i></span>
+										<span data-type=""><a><img id="autho_1" src="img/backstage_checkbox_kong.png" alt="" /></a><i>新建项目</i></span>
+										<span data-type=""><a><img id="autho_2" src="img/backstage_checkbox_kong.png" alt="" /></a><i>编辑相关项目</i></span>
+										<span data-type=""><a><img id="autho_3" src="img/backstage_checkbox_kong.png" alt="" /></a><i>合同及项目收支</i><i>（仅限于项目主管所关联负责的项目）</i></span>
 									</div>
 									<p class="gaoji">高级权限：</p>
 									<div>
-										<span data-type = ""><a><img id="autho_4" src="img/backstage_checkbox_kong.png" alt="" /></a><i>财务</i></span>
-										<span data-type = ""><a><img id="autho_5" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人员管理</i></span>
-										<span data-type = ""><a><img id="autho_6" src="img/backstage_checkbox_kong.png" alt="" /></a><i>全部项目可见</i></span>
-										<span data-type = ""><a><img id="autho_7" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人才绩效</i></span>
+										<span data-type=""><a><img id="autho_4" src="img/backstage_checkbox_kong.png" alt="" /></a><i>财务</i></span>
+										<span data-type=""><a><img id="autho_5" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人员管理</i></span>
+										<span data-type=""><a><img id="autho_6" src="img/backstage_checkbox_kong.png" alt="" /></a><i>全部项目可见</i></span>
+										<span data-type=""><a><img id="autho_7" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人才绩效</i></span>
 									</div>
 								</div>
 							</div>
@@ -507,16 +512,16 @@
 								<div class="Sbody" id="autho_view">
 									<p>普通权限：</p>
 									<div>
-										<span  data-type = ""><a><img id="autho_1" src="img/backstage_checkbox_kong.png" alt="" /></a><i>新建项目</i></span>
-										<span  data-type = ""><a><img id="autho_2" src="img/backstage_checkbox_kong.png" alt="" /></a><i>编辑相关项目</i></span>
-										<span  data-type = ""><a><img id="autho_3" src="img/backstage_checkbox_kong.png" alt="" /></a><i>合同及项目收支</i><i>（仅限于项目主管所关联负责的项目）</i></span>
+										<span data-type=""><a><img id="autho_1" src="img/backstage_checkbox_kong.png" alt="" /></a><i>新建项目</i></span>
+										<span data-type=""><a><img id="autho_2" src="img/backstage_checkbox_kong.png" alt="" /></a><i>编辑相关项目</i></span>
+										<span data-type=""><a><img id="autho_3" src="img/backstage_checkbox_kong.png" alt="" /></a><i>合同及项目收支</i><i>（仅限于项目主管所关联负责的项目）</i></span>
 									</div>
 									<p class="gaoji">高级权限：</p>
 									<div>
-										<span  data-type = ""><a><img id="autho_4" src="img/backstage_checkbox_kong.png" alt="" /></a><i>财务</i></span>
-										<span  data-type = ""><a><img id="autho_5" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人员管理</i></span>
-										<span  data-type = ""><a><img id="autho_6" src="img/backstage_checkbox_kong.png" alt="" /></a><i>全部项目可见</i></span>
-										<span  data-type = ""><a><img id="autho_7" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人才绩效</i></span>
+										<span data-type=""><a><img id="autho_4" src="img/backstage_checkbox_kong.png" alt="" /></a><i>财务</i></span>
+										<span data-type=""><a><img id="autho_5" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人员管理</i></span>
+										<span data-type=""><a><img id="autho_6" src="img/backstage_checkbox_kong.png" alt="" /></a><i>全部项目可见</i></span>
+										<span data-type=""><a><img id="autho_7" src="img/backstage_checkbox_kong.png" alt="" /></a><i>人才绩效</i></span>
 									</div>
 								</div>
 							</div>
@@ -581,26 +586,26 @@
 			</div>
 			<!--用户详情结束-->
 			<!--删除提示框-->
-				<div class="del">
-					<div class="del_head">
-						<span>温馨提示</span>
-						<i></i>
-					</div>
-					<div class="del_bottom">
-						<div class="sure">是否确认删除?</div>
-						<div class="foot">
-							<button class="btn1">是</button>
-							<button class="btn2">否</button>
-						</div>
+			<div class="del">
+				<div class="del_head">
+					<span>温馨提示</span>
+					<i></i>
+				</div>
+				<div class="del_bottom">
+					<div class="sure">是否确认删除?</div>
+					<div class="foot">
+						<button class="btn1">是</button>
+						<button class="btn2">否</button>
 					</div>
 				</div>
+			</div>
 			<!---->
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/backstageLeft.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/backstage_adminList.js" type="text/javascript" charset="utf-8"></script>
 		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/add_userNrAdm.js" type="text/javascript" charset="utf-8"></script>
-		 
 		<script type="text/javascript">
 			lay('#version').html('-v' + laydate.v);
 			laydate.render({
@@ -611,21 +616,19 @@
 			});
 		</script>
 		<script src="js/delete_window.js" type="text/javascript" charset="utf-8"></script>
-		
-			 
 		<style type="text/css">
-		#boxPock .edit_user .edit_user_head .edit_user_detail .newUsers .second .Sbody div span a img {
-		   
-		    display: block;/*none; 重定义修正不显示的问题*/
-		}
-		#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div span a img {
-			display: block;
-		}
-		#boxPock .UserFuadd .UserFuadd_head .UserFuadd_bottom .newUsers .second .Sbody div span a img {
-			display: block;
-		}	
-		
+			#boxPock .edit_user .edit_user_head .edit_user_detail .newUsers .second .Sbody div span a img {
+				display: block;
+				/*none; 重定义修正不显示的问题*/
+			}
 			
+			#boxPock .bianjiUserFu .bianjiUser .BJbody .newUsers .second .Sbody div span a img {
+				display: block;
+			}
+			
+			#boxPock .UserFuadd .UserFuadd_head .UserFuadd_bottom .newUsers .second .Sbody div span a img {
+				display: block;
+			}
 		</style>
 	</body>
 

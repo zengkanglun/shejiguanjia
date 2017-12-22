@@ -130,7 +130,7 @@ $(function () {
 	});
 	/*Debug输出表格所填项*/
 	editUser.find(".first .box .boxUl li input").on("input",function () {
-		console.log(editUserObj);
+//		console.log(editUserObj);
 	});
 	/*=====添加管理员权限=====*/
 	/*选择用户*/

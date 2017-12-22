@@ -14,7 +14,7 @@
 }
 #bodyRight #content .first a {
   display: block;
-  width: 156px;
+  width: 115px;
   height: 100%;
   line-height: inherit;
   border-radius: 5px 5px 0 0;
@@ -151,6 +151,34 @@
 #bodyRight #content .member_manage2 table thead .handle,
 #bodyRight #content .item_manage1 table thead .handle {
   width: 15%;
+}
+#bodyRight #content .member_manage2 table tbody,
+#bodyRight #content .item_manage1 table tbody {
+  height: 50px;
+}
+#bodyRight #content .member_manage2 table tbody tr,
+#bodyRight #content .item_manage1 table tbody tr {
+  height: 50px;
+  background: #ffffff;
+}
+#bodyRight #content .member_manage2 table tbody tr td,
+#bodyRight #content .item_manage1 table tbody tr td {
+  height: 50px;
+  text-align: center;
+  color: #333333;
+}
+#bodyRight #content .member_manage2 table tbody tr .handle,
+#bodyRight #content .item_manage1 table tbody tr .handle {
+  color: #333333;
+}
+#bodyRight #content .member_manage2 table tbody tr .handle span,
+#bodyRight #content .item_manage1 table tbody tr .handle span {
+  padding: 0px 2px;
+  cursor: pointer;
+}
+#bodyRight #content .member_manage2 table tbody tr:nth-child(2n),
+#bodyRight #content .item_manage1 table tbody tr:nth-child(2n) {
+  background: #e9ecf1;
 }
 #bodyRight #content .member_manage2 .item_box,
 #bodyRight #content .item_manage1 .item_box {
@@ -3847,7 +3875,7 @@
   line-height: 50px;
   line-height: 50px\9;
 }
-#boxPock .labour .labour_bottom .plan_cnt table tbody .e9ecf1 {
+#boxPock .labour .labour_bottom .plan_cnt table tbody tr:nth-child(2n) {
   background: #e9ecf1;
 }
 #boxPock .labour .cnt_footer {
@@ -4305,19 +4333,17 @@
 }
 #boxPock .worktype .worktype_bottom .add_content .bigfloor {
   width: 100%;
-  height: 70px;
   border-top: 1px solid #c8d2dc;
   border-bottom: 1px solid #c8d2dc;
-  overflow: hidden;
   background: #ffffff;
 }
 #boxPock .worktype .worktype_bottom .add_content .bigfloor .floor_ul {
   list-style: none;
-  height: 50px;
   padding-left: 30px;
   float: left;
   margin-top: 8px;
   box-sizing: border-box;
+  width: 70%;
 }
 #boxPock .worktype .worktype_bottom .add_content .bigfloor .floor_ul li {
   width: 90px;
@@ -4339,6 +4365,70 @@
 }
 #boxPock .worktype .worktype_bottom .add_content .bigfloor .floor_ul li.active {
   background: #FD813E;
+}
+#boxPock .worktype .worktype_bottom .add_content .bigfloor .item_choose1 {
+  width: 170px;
+  height: 36px;
+  line-height: 36px;
+  line-height: 36px\9;
+  float: right;
+  margin-right: 20px;
+  position: relative;
+  margin-top: 15px;
+}
+#boxPock .worktype .worktype_bottom .add_content .bigfloor .item_choose1 input {
+  width: 170px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  float: right;
+  border: 1px solid #c8d2dc;
+  background: #fafafa;
+}
+#boxPock .worktype .worktype_bottom .add_content .bigfloor .item_choose1 i {
+  width: 34px;
+  height: 34px;
+  display: block;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background: #fafafa;
+  border-left: 1px solid #c8d2dc;
+  cursor: pointer;
+}
+#boxPock .worktype .worktype_bottom .add_content .bigfloor .item_choose1 i img {
+  width: 13px;
+  height: 11px;
+  position: absolute;
+  top: 12px;
+  left: 11px;
+}
+#boxPock .worktype .worktype_bottom .add_content .bigfloor .item_choose1 .w_choose1 {
+  width: 100%;
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: #ffffff;
+  z-index: 10;
+  border: 1px solid dodgerblue;
+  display: none;
+}
+#boxPock .worktype .worktype_bottom .add_content .bigfloor .item_choose1 .w_choose1 li {
+  width: 100%;
+  height: 30px;
+  background: #ffffff;
+  line-height: 30px;
+  line-height: 30px\9;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 5px;
+  -moz-box-sizing: border-box;
+  cursor: pointer;
+}
+#boxPock .worktype .worktype_bottom .add_content .bigfloor .item_choose1 .w_choose1 li:hover {
+  background: #56B4F8;
 }
 #boxPock .worktype .worktype_bottom .add_content .list_detail {
   width: 100%;
@@ -4421,6 +4511,7 @@
   outline: none;
   float: right;
   text-align: right;
+  display: none;
 }
 #boxPock .worktype .worktype_bottom .add_content .list_detail .workbutton {
   width: 160px;
@@ -4437,6 +4528,7 @@
   outline: none;
   box-shadow: 0px 0px 0px #FD813E;
   float: right;
+  display: none;
 }
 #boxPock .worktype .worktype_bottom .add_content .cnt_footer {
   width: 100%;

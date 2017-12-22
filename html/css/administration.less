@@ -13,7 +13,7 @@
             z-index: 1;
             a {
                 display: block;
-                width: 156px;
+                width: 115px;
                 height: 100%;
                 line-height: inherit;
                 border-radius: 5px 5px 0 0;
@@ -144,6 +144,28 @@
                     }
                     .handle {
                         width: 15%;
+                    }
+                }
+                tbody {
+                    height: 50px;
+                    tr {
+                        height: 50px;
+                        background: #ffffff;
+                        td {
+                            height: 50px;
+                            text-align: center;
+                            color: #333333;
+                        }
+                        .handle {
+                            color: #333333;
+                            span {
+                                padding: 0px 2px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    tr:nth-child(2n) {
+                        background: #e9ecf1;
                     }
                 }
             }
@@ -1581,9 +1603,6 @@
                                     i.nocheck {
                                         color: #FD8631;
                                     }
-                                    //                                  span.urge{
-                                    //                                      margin-left: 5px;
-                                    //                                  }
                                 }
                                 .handle {
                                     i {
@@ -1965,7 +1984,7 @@
                     border: 1px solid #c8d2dc;
                     background: #fafafa;
                 }
-                i{
+                i {
                     width: 34px;
                     height: 34px;
                     display: block;
@@ -1975,7 +1994,7 @@
                     background: #fafafa;
                     border-left: 1px solid #c8d2dc;
                     cursor: pointer;
-                    img{
+                    img {
                         width: 13px;
                         height: 11px;
                         position: absolute;
@@ -1991,7 +2010,7 @@
                     background: #ffffff;
                     z-index: 10;
                     border: 1px solid dodgerblue;
-                    display:none;
+                    display: none;
                     li {
                         width: 100%;
                         height: 30px;
@@ -2006,7 +2025,7 @@
                         -moz-box-sizing: border-box;
                         cursor: pointer;
                     }
-                    li:hover{
+                    li:hover {
                         background: #56B4F8;
                     }
                 }
@@ -3818,7 +3837,7 @@
                                 }
                             }
                         }
-                        .e9ecf1 {
+                        tr:nth-child(2n) {
                             background: #e9ecf1;
                         }
                     }
@@ -4289,18 +4308,16 @@
                 }
                 .bigfloor {
                     width: 100%;
-                    height: 70px;
                     border-top: 1px solid #c8d2dc;
                     border-bottom: 1px solid #c8d2dc;
-                    overflow: hidden;
                     background: #ffffff;
                     .floor_ul {
                         list-style: none;
-                        height: 50px;
                         padding-left: 30px;
                         float: left;
                         margin-top: 8px;
                         box-sizing: border-box;
+                        width: 70%;
                         li {
                             width: 90px;
                             margin-top: 10px;
@@ -4321,6 +4338,70 @@
                         }
                         li.active {
                             background: #FD813E;
+                        }
+                    }
+                    .item_choose1 {
+                        width: 170px;
+                        height: 36px;
+                        line-height: 36px;
+                        line-height: 36px\9;
+                        float: right;
+                        margin-right: 20px;
+                        position: relative;
+                        margin-top: 15px;
+                        input {
+                            width: 170px;
+                            height: 36px;
+                            line-height: 34px;
+                            line-height: 34px\9;
+                            float: right;
+                            border: 1px solid #c8d2dc;
+                            background: #fafafa;
+                        }
+                        i {
+                            width: 34px;
+                            height: 34px;
+                            display: block;
+                            position: absolute;
+                            top: 1px;
+                            right: 1px;
+                            background: #fafafa;
+                            border-left: 1px solid #c8d2dc;
+                            cursor: pointer;
+                            img {
+                                width: 13px;
+                                height: 11px;
+                                position: absolute;
+                                top: 12px;
+                                left: 11px;
+                            }
+                        }
+                        .w_choose1 {
+                            width: 100%;
+                            position: absolute;
+                            top: 36px;
+                            left: 0;
+                            background: #ffffff;
+                            z-index: 10;
+                            border: 1px solid dodgerblue;
+                            display: none;
+                            li {
+                                width: 100%;
+                                height: 30px;
+                                background: #ffffff;
+                                line-height: 30px;
+                                line-height: 30px\9;
+                                text-align: center;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                padding: 0 5px;
+                                -moz-box-sizing: border-box;
+                                cursor: pointer;
+                            }
+                            li:hover {
+                                background: #56B4F8;
+                            }
                         }
                     }
                 }
@@ -4407,9 +4488,9 @@
                         outline: none;
                         float: right;
                         text-align: right;
+                        display: none;
                     }
-                    .workbutton,
-                    {
+                    .workbutton {
                         width: 160px;
                         height: 50px;
                         text-align: center;
@@ -4424,6 +4505,7 @@
                         outline: none;
                         box-shadow: 0px 0px 0px #FD813E;
                         float: right;
+                        display: none;
                     }
                 }
                 .cnt_footer {

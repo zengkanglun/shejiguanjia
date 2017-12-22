@@ -165,3 +165,11 @@ textarea {
 .paging .page .page_right i.more {
   margin-left: 5px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}

@@ -8,12 +8,9 @@
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/public.css" />
 		<link rel="stylesheet" type="text/css" href="css/user.css" />
-		<!--<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-		<!--<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/user.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/li_change.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -41,7 +38,10 @@
 					<div class="listBtn">
 						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -49,7 +49,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -226,42 +226,6 @@
 									</thead>
 									<tbody>
 										<!--<tr>
-											<td>过程管理</td>
-											<td>2017-08-20</td>
-											<td>筑工种建筑工种建筑工种建筑工种</td>
-											<td>建筑</td>
-											<td>张三李四</td>
-											<td>2017-8-29</td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
-										<tr class="e9ecf1">
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span class="edit">编辑</span><span class="check">查看</span><span class="del">删除</span></td>
-										</tr>
-										<tr>
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
-										<tr class="e9ecf1">
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
-										<tr>
 											<td>序号</td>
 											<td>创建时间</td>
 											<td>所属分栏</td>
@@ -280,11 +244,16 @@
 										<div class="page_right">
 											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
 										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go">GO</div>
+										</div>
 									</div>
 								</div>
 							</div>
 							<!--任务开始-->
-							<div class="task_detail recycle_detail">
+							<div class="task_detail recycle_detail u_task">
 								<table border="1" cellspacing="0">
 									<thead>
 										<td class="orderlist">序号</td>
@@ -304,42 +273,6 @@
 											<td>张三李四</td>
 											<td>2017-8-29</td>
 											<td class="handle"><span>查看</span></td>
-										</tr>
-										<tr class="e9ecf1">
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span class="edit">编辑</span><span class="check">查看</span><span class="del">删除</span></td>
-										</tr>
-										<tr>
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
-										<tr class="e9ecf1">
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
-										<tr>
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span>查看</span></td>
 										</tr>-->
 									</tbody>
 								</table>
@@ -350,6 +283,11 @@
 										</div>
 										<div class="page_right">
 											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go">GO</div>
 										</div>
 									</div>
 								</div>
@@ -377,33 +315,6 @@
 											<td>2017-8-29</td>
 											<td class="handle"><span>查看</span></td>
 										</tr>
-										<tr class="e9ecf1">
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span class="edit">编辑</span><span class="check">查看</span><span class="del">删除</span></td>
-										</tr>
-										<tr>
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
-										<tr class="e9ecf1">
-											<td>序号</td>
-											<td>创建时间</td>
-											<td>所属分栏</td>
-											<td>类型</td>
-											<td>标题内容</td>
-											<td>删除时间</td>
-											<td class="handle"><span>查看</span></td>
-										</tr>
 										<tr>
 											<td>序号</td>
 											<td>创建时间</td>
@@ -423,6 +334,11 @@
 										<div class="page_right">
 											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
 										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go">GO</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -432,6 +348,10 @@
 						<!--绩效记录开始-->
 						<div class="perf">
 							<div class="perf_header"><span class="record">绩效记录</span></div>
+							<ul class="perf_manage">
+								<li class="active">工种负责</li>
+								<li>项目主管</li>
+							</ul>
 							<div class="task_detail">
 								<table border="1" cellspacing="0">
 									<thead>
@@ -446,6 +366,15 @@
 									<tbody>
 
 									</tbody>
+									<tfoot>
+										<td>统计</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td class="count"></td>
+										<td></td>
+									</tfoot>
 								</table>
 								<div class="paging">
 									<div class="page">
@@ -455,13 +384,61 @@
 										<div class="page_right">
 											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
 										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go">GO</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--主管绩效-->
+							<div class="manage_detail">
+								<table border="1" cellspacing="0">
+									<thead>
+										<td class="orderlist">序号</td>
+										<td class="settime">时间区间</td>
+										<td class="job-style">项目名称</td>
+										<td class="job">工种负责</td>
+										<td class="title">分工情况</td>
+										<td class="del">提成</td>
+									</thead>
+									<tbody>
+
+									</tbody>
+									<tfoot>
+										<td>统计</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td class="count"></td>
+									</tfoot>
+								</table>
+								<div class="paging">
+									<div class="page">
+										<div class="page_left">
+											记录数：<span>0</span>条
+										</div>
+										<div class="page_right">
+											<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go">GO</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<!--绩效记录结束-->
 					</div>
-
+					<!--/*单位信息*/-->
+					<div class="danw" style="margin-top: 20px;">
+						单位信息：
+						<span></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -479,28 +456,53 @@
 						<div class="info_center">
 							<div class="info_detail account">
 								<div class="info_detail_left">姓名:</div>
-								<input type="text" name="" id="" value="输入姓名" class="info_detail_right" disabled="" />
+								<input type="text" name="" id="" value="输入姓名" class="info_detail_right user_name" disabled="" />
 							</div>
 							<div class="info_detail password">
 								<div class="info_detail_left">项目名称:</div>
-								<input type="text" name="" id="" value="输入名称" class="info_detail_right" disabled="" />
+								<input type="text" name="" id="" value="输入名称" class="info_detail_right project_name" disabled="" />
 							</div>
 							<div class="info_detail name">
 								<div class="info_detail_left">项目主管:</div>
-								<input type="text" name="" id="" value="输入姓名" class="info_detail_right" disabled="" />
-							</div>
-							<div class="info_detail sex">
-								<div class="info_detail_left">工种负责:</div>
-								<input type="text" name="" id="" value="建筑" class="info_detail_right" disabled="" />
+								<input type="text" name="" id="" value="输入姓名" class="info_detail_right supervisor_name" disabled="" />
 							</div>
 							<div class="info_detail birthday">
 								<div class="info_detail_left">计提总额:</div>
-								<input type="text" name="" id="" value="输入总额" class="info_detail_right" disabled="" />
+								<input type="text" name="" id="" value="输入总额" class="info_detail_right total_commission" disabled="" />
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="item_center">
+							<div class="item_head">
+								<span>时间阶段：</span>
+								<span>2016.07.01-2017.06.01</span>
+							</div>
+							<div class="item_bottom clearfix">
+								<div class="info_detail">
+									<div class="info_detail_left">工种参与:</div>
+									<input type="text" name="" id="" class="info_detail_right" disabled="" />
+								</div>
+								<div class="info_detail">
+									<div class="info_detail_left">分工情况:</div>
+									<input type="text" name="" id="" value="" class="info_detail_right" disabled="" />
+								</div>
+								<div class="info_detail">
+									<div class="info_detail_left">计提占比:</div>
+									<input type="text" name="" id="" value="" class="info_detail_right" disabled="" />
+								</div>
+								<div class="info_detail">
+									<div class="info_detail_left">计提数额:</div>
+									<input type="text" name="" id="" value="" class="info_detail_right" disabled="" />
+								</div>
+							</div>
+							<div class="work_content">
+								<div class="work_head">
+									工作记录
+								</div>
+								<textarea name="" rows="" cols="" placeholder="请输入" disabled="disabled"></textarea>
+							</div>
+
 							<div class="item_head">
 								<span>时间阶段：</span>
 								<span>2016.07.01-2017.06.01</span>
@@ -660,6 +662,37 @@
 					<button type="button" class="btn1">确&nbsp;&nbsp;定</button>
 				</div>
 				<!--编辑个人信息结束-->
+				<!--恢复提示框-->
+				<div class="del delMsg">
+					<div class="del_head">
+						<span>温馨提示</span>
+						<i></i>
+					</div>
+					<div class="del_bottom">
+						<div class="sure">是否确认恢复?</div>
+						<div class="foot">
+							<button class="btn1">是</button>
+							<button class="btn2">否</button>
+						</div>
+					</div>
+				</div>
+				<!---->
+
+				<!--删除提示框-->
+				<div class=" cleanMsg" id="cleanMsg">
+					<div class="clean_head">
+						<span>温馨提示</span>
+						<i></i>
+					</div>
+					<div class="clean_bottom">
+						<div class="sure">是否确认删除?</div>
+						<div class="foot">
+							<button class="btn1">是</button>
+							<button class="btn2">否</button>
+						</div>
+					</div>
+				</div>
+				<!---->
 			</div>
 
 		</div>

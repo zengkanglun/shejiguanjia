@@ -2,14 +2,12 @@ $(function() {
 	var token = localStorage.getItem("token");
 	//获取工种类型
 	var setWt = function(data) {
-		console.log(511)
 	}
 	var renderWorkType = function(data) {
 		$("#work_type_list").html("");
 		var item = $('<option onclick=\"setWt()\"  value="0">-</option>' );
 		$("#work_type_list").append(item);
 		for(var i in data) {
-			console.log(data[i])
 			var type = data[i];
 			var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 				'</option>'
@@ -39,30 +37,22 @@ $(function() {
 
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log("[worType::]" + JSON.stringify(data));
 				renderWorkType(data.data);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("[worType::]fail!" + JSON.stringify(data));
 			})
 			.always(function(data) {
-				console.log("always!");
-				console.log("[worType::]" + JSON.stringify(data));
 			})
 
 	}
 
 	////获取角色类型
 	var setWt = function(data) {
-		console.log(511)
+//		console.log(511)
 	}
 	var renderRoleType = function(data) {
 		$("#role_type_list").html();
 		for(var i in data) {
-			console.log("显示角色：" + data[i])
 			var type = data[i];
 			var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 				'</option>'
@@ -81,7 +71,6 @@ $(function() {
 	var renderPosiType = function(data) {
 		$("#new_position_list").html("");
 		for(var i in data) {
-			console.log("显示角色：" + data[i])
 			var type = data[i];
 			var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 				'</option>'
@@ -110,17 +99,12 @@ $(function() {
 
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log(JSON.stringify(data));
 				renderRoleType(data.data);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("fail!" + JSON.stringify(data));
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 
 	}
@@ -139,17 +123,12 @@ $(function() {
 
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log(JSON.stringify(data));
 				renderPosiType(data.data);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("fail!" + JSON.stringify(data));
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 
 	}
@@ -182,7 +161,6 @@ $(function() {
 
 		getWorType();
 		getRoleType();
-		console.log("[::]")
 		chooseUserF();
 
 	});
@@ -255,16 +233,15 @@ $(function() {
 			.done(function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1)
+//					console.log(1)
 				} else {
 				}
-				console.log(data);
 			})
 			.fail(function(jqXHR) {
-				console.log("fail!");
+//				console.log("fail!");
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 
 	}
@@ -280,7 +257,6 @@ $(function() {
 			var src = $("#autho_edit #autho_" + ls[i]).attr("src");
 			if(src == "img/backstage_checkbox_orange.png")
 				data.push(ls[i]);
-			console.log(data + "::5::");
 		}
 		var serial = data.join();
 
@@ -364,7 +340,7 @@ $(function() {
 				toast("失败");
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 
 	}
@@ -374,8 +350,6 @@ $(function() {
 		var newP = {};
 		newP.uid = "" + $("#user_type_list").val();
 		newP.role = "" + $("#role_type_list").val();
-		/////////
-
 		newP.username = "" + $("#new_username").val();
 		newP.password = "" + $("#new_password").val();
 		newP.nickname = "" + $("#new_nickname").val();
@@ -420,18 +394,18 @@ $(function() {
 			.done(function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1);
+//					console.log(1);
 					refresh();
 				} else {
 					
 				}
-				console.log(data);
+//				console.log(data);
 			})
 			.fail(function(data) {
-				console.log("fail!");
+//				console.log("fail!");
 			})
 			.always(function() {
-				console.log("always!");
+//				console.log("always!");
 			})
 	}
 
@@ -489,7 +463,6 @@ $(function() {
 			newP.work_type = "0";
 		newP.authority = "" + $("#new_authority .selected").data("va");
 
-		console.log(JSON.stringify(newP))
 
 
 		$.ajax({
@@ -501,13 +474,11 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1)
+//					console.log(1)
 				} else {
-					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
 			},
 			async: true
 		});
@@ -536,7 +507,6 @@ $(function() {
 			success: function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1);
 					refresh();
 				} else
 				{}
@@ -623,20 +593,17 @@ $(function() {
 			},
 			success: function(data, data_detal) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log("viewPData[user:::]" + JSON.stringify(data))
 
 					data_detail.b = data;
-					console.log(992 + JSON.stringify(data_detail))
 
 					funcLate(data.data); //渲染
 
 				} else
-					console.log(50 + JSON.stringify(data))
+				{
+					
+				}
 			},
 			error: function(data) {
-				console.log(0 + JSON.stringify(data))
 
 			}
 		})
@@ -659,15 +626,13 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log("[user:::]" + JSON.stringify(data))
 					renderP(data.data);
 				} else
-					console.log(50 + JSON.stringify(data))
+				{
+					
+				}
 			},
 			error: function(data) {
-				console.log(0 + JSON.stringify(data))
 			}
 		})
 	}
@@ -692,7 +657,6 @@ $(function() {
 		for(var i in ls) {
 			//autho_
 			$(e_id + " #autho_" + ls[i]).attr("src", "img/backstage_checkbox_orange.png");
-			console.log(ls[i] + "::5::" + $("#autho_edit #autho_" + ls[i]).attr("src"));
 		}
 	}
 
@@ -740,8 +704,6 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
 					viewPEdit(data.data);
 					getWorType();
 				} else
@@ -762,7 +724,6 @@ $(function() {
 	var renderChoose = function(data) {
 		$("#role_type_list").html();
 		for(var i in data) {
-			console.log(data[i])
 			var type = data[i];
 			var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.nickname +
 				'</option>'
@@ -775,14 +736,11 @@ $(function() {
 
 			var data_detail = {};
 			var lateR = function(data_detail) {
-
-				//alert("[::::data]"+JSON.stringify(data_detail));
 				renderUParem(data_detail, "#editU");
 			}
 
 			viewPData($(this).val(), lateR); //查看选的人的详情
 
-			//$(this).data("data-idd",)
 		});
 
 	}
@@ -804,9 +762,9 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log("[::]chooseUser" + JSON.stringify(data))
+//					console.log(1);
+//					console.log(data.msg);
+//					console.log("[::]chooseUser" + JSON.stringify(data))
 					/* "data": {
 					        "type": [
 					            {
@@ -841,10 +799,11 @@ $(function() {
 					    }*/
 					renderChoose(data.data.all); //
 				} else
-					console.log(50 + JSON.stringify(data))
+				{
+					
+				}
 			},
 			error: function(data) {
-				console.log(0 + JSON.stringify(data))
 			}
 		})
 
@@ -862,9 +821,15 @@ $(function() {
 	//普通用户管理
 	var rendPMList = function(data) {
 		$("#userMList").html("");
+		var classname = "";
 		for(var i in data) {
 			var user = data[i];
-			var item = $('<tr>' +
+			if(i%2)
+			  classname = "tableTrBackground";
+			 else
+			  classname = "";
+			  
+			var item = $('<tr class="'+classname+'">' +
 				'<td><span><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
 				'<td>' + user.username + '</td>' +
@@ -882,7 +847,7 @@ $(function() {
 				'<a>编辑</a>' +
 				'</div>' +
 				'<div data-num="3"  class="jour" data-id="' + user.id + '">' +
-				'<a href="backstage_user-log.html">日志</a>' +
+				'<a href="backstage_user-log.html?userid='+user.id+'">日志</a>' +
 				'</div>' +
 				'<div data-num="4"  class="delete" data-id="' + user.id + '">' +
 				'<a href="###">删除</a>' +
@@ -894,21 +859,19 @@ $(function() {
 
 		}
 		$("#userMList .detail").on("click", function() {
-			console.log("detail")
+//			console.log("detail")
 			viewP($(this).data("id"));
 		});
 		$("#userMList .edit").on("click", function() {
-			console.log("edit")
+//			console.log("edit")
 			editP($(this).data("id"));
 		});
 		$("#userMList .jour").on("click", function() {
-			console.log("jour")
+//			console.log("jour")
 		});
 		$(".delete").on("click", function() {
-			console.log("delete")
 			$("#boxPock").show();
 			$("#boxPock .del").show();
-			console.log($(this).data("id"));
 			$("#boxPock .del .btn1").data("id",$(this).data("id"));
 		});
 
@@ -933,7 +896,7 @@ $(function() {
 	
 	//总记录数
 	var total_num_nor = 0;
-	var getPList = function(key,page) {
+	var getPList = function(page,key) {
 
 	var bundle = {};
 	if(page)
@@ -951,10 +914,6 @@ $(function() {
 			data: bundle,
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-
-					console.log(data.msg);
-					console.log(data.data);
 					rendPMList(data.data.data);
 					$(".total_num").html(data.data.page);
 					$(".number").html((data.data.page<=1)?data.data.page:1);					
@@ -962,11 +921,10 @@ $(function() {
 					total_num_nor = parseInt(data.data.page);
 
 				} else {
-					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+//				console.log(0)
 			},
 			async: true
 		});
@@ -976,9 +934,10 @@ $(function() {
 	$("#query").on("click", function() {
 		var key = $("#query_key").val();
 		if(key != "")
-			key = "/" + key;
-		console.log(key)
-		getPList(key);
+			;//key = "/" + key;
+		g_pageCur = 1;
+		$(".number").html(g_pageCur);
+		getPageParam(g_pageCur,key);
 
 	})
 	//$(".member_manage2 .third td .check").on("click", function() {
@@ -987,7 +946,31 @@ $(function() {
 	//})
 
 	var getExport = function() {
-		//();
+		var token = localStorage.getItem("token");
+		location.href = host_host_host + "/Home/Admin/managers_export";
+		$.ajax({
+			type: "get",
+			url: host_host_host + "/index.php/Home/Admin/managers_export",
+			dataType: 'json',
+			headers: {
+				accept: "usertoken:" + token,
+			},
+			data: {
+				 
+			},
+			success: function(data) {
+				toast(data.msg);
+				if(data.status == 1) { //success
+				 
+					 
+				} else {
+					
+				}
+			},
+			error: function(data) {
+			},
+			async: true
+		});
 
 	}
 
@@ -998,8 +981,13 @@ $(function() {
 
 	})
 
-	var getPageParam = function(page) {
+	var getPageParam = function(page,key) {
 		//();
+		var bundle = {};
+		if(page)
+			bundle.p = page;
+		if(key)
+			bundle.name = key;
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/index.php/Home/Admin/manager_list",
@@ -1007,25 +995,19 @@ $(function() {
 			headers: {
 				accept: "usertoken:" + token,
 			},
-			data: {
-				p: page
-			},
+			data: bundle,
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
 					rendPMList(data.data.data);
 					$(".total_num").html(data.data.page);
 					$(".number").html((data.data.page<=1)?data.data.page:page);					
 					$("#total").html(data.data.count);
 					total_num_nor = parseInt(data.data.page);
 				} else {
-					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+//				console.log(0)
 			},
 			async: true
 		});
@@ -1039,7 +1021,7 @@ $(function() {
 		//getPrevPage();
 		if(g_pageCur < 1)
 			g_pageCur = 1;
-		getPageParam(g_pageCur);
+		getPageParam(g_pageCur,$("#query_key").val());
 		$(".number").html(g_pageCur);
 
 	})
@@ -1049,9 +1031,33 @@ $(function() {
 		//getNextPage();
 		if(g_pageCur > total_num_nor)
 			g_pageCur--;
-		getPageParam(g_pageCur);
+		getPageParam(g_pageCur,$("#query_key").val());
 
 		$(".number").html(g_pageCur);
 
 	})
+	
+		
+	$(".go").on("click", function() {
+			var key = $("#query_key").val();
+			var jump_num = Number($(this).siblings(".jump_page").val());
+			if(jump_num > 0) {
+				g_pageCur = jump_num;
+				$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+				getPageParam(g_pageCur,key);
+				$(".number").html(g_pageCur);
+			} else {
+				toast("请输入正常页码")
+			}
+			
+	 		 
+	
+	})
+	
+	
+	
+	
+	
+	
+	
 })

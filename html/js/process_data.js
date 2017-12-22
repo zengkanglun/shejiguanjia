@@ -34,7 +34,6 @@ var rendPro = function(data) {
 //获取process详情
 var viewPro = function(id) {
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'GET',
@@ -51,14 +50,10 @@ var viewPro = function(id) {
 				console.log(1);
 				rendPro(data.data);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log("[--]" + JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -75,7 +70,6 @@ var editproF = function(data) {
 	newP.time = "" + $("#edit_process_form #pro_edit_one").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -93,14 +87,10 @@ var editproF = function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -114,7 +104,6 @@ var deletePro = function(data) {
 var renderProList = function(data) {
 	$("#process_list").html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $(
 
@@ -155,7 +144,6 @@ var renderProList = function(data) {
 var renderWorkType = function(data) {
 	$("#work_type_list").html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 			'</option>'
@@ -178,7 +166,6 @@ var newproF = function() {
 	newP.project_id = 1; //""+$("#project_id").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -194,14 +181,10 @@ var newproF = function() {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -212,7 +195,6 @@ var newproF = function() {
 var renderProTypeParam = function(data, e_id) {
 	$(e_id).html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 			'</option>'
@@ -231,7 +213,6 @@ var renderProTypeParam = function(data, e_id) {
 var getproTypeF = function(e_id) {
 	newP = {};
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -249,14 +230,10 @@ var getproTypeF = function(e_id) {
 				//renderProType(data.data);
 				renderProTypeParam(data.data, e_id);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -286,7 +263,6 @@ var getProList = function() {
 	newP.p = "" + 1; //page
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -303,17 +279,12 @@ var getProList = function() {
 		.done(function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
-				console.log(JSON.stringify(data));
 				renderProList(data.data.process);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -332,7 +303,6 @@ getproTypeF(e_id); //获取过程类型列表
 var renderTuTypeParam = function(data, e_id) {
 	$(e_id).html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 			'</option>'
@@ -351,7 +321,6 @@ var renderTuTypeParam = function(data, e_id) {
 var getTuTypeF = function(e_id) {
 	newP = {};
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -369,14 +338,10 @@ var getTuTypeF = function(e_id) {
 				//renderProType(data.data);
 				renderTuTypeParam(data.data, e_id);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -393,7 +358,6 @@ $("#ad_img_chutu").on("click", function() {
 var renderTuList = function(data) {
 	$("#chutu_list").html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $(
 
@@ -439,7 +403,6 @@ var getTuList = function() {
 	newP.p = "" + 1; //page
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -454,17 +417,12 @@ var getTuList = function() {
 		.done(function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
-				console.log(JSON.stringify(data));
 				renderTuList(data.data.process);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -482,7 +440,6 @@ var newchuF = function() {
 	newP.num = "" + $("#add_chutu_form #num_list").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -498,14 +455,10 @@ var newchuF = function() {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -523,7 +476,6 @@ var editchuF = function(data) {
 	newP.num = "" + $("#edit_chutu_form #num_list").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -539,14 +491,10 @@ var editchuF = function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -575,7 +523,6 @@ getTuTypeF(e_id); //获取出图类型列表
 var renderLetterTypeParam = function(data, e_id) {
 	$(e_id).html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 			'</option>'
@@ -594,7 +541,6 @@ var renderLetterTypeParam = function(data, e_id) {
 var getLetterTypeF = function(e_id) {
 	newP = {};
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -612,14 +558,10 @@ var getLetterTypeF = function(e_id) {
 				//renderProType(data.data);
 				renderLetterTypeParam(data.data, e_id);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -636,7 +578,6 @@ $("#ad_img_letter").on("click", function() {
 var renderLetterList = function(data) {
 	$("#letter_list").html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $(
 
@@ -682,7 +623,6 @@ var getLetterList = function() {
 	newP.p = "" + 1; //page
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -697,17 +637,12 @@ var getLetterList = function() {
 		.done(function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
-				console.log(JSON.stringify(data));
 				renderLetterList(data.data.process);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -725,7 +660,6 @@ var newletterF = function() {
 	newP.time = "" + $("#add_letter_form #manage_one").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -741,14 +675,10 @@ var newletterF = function() {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -765,7 +695,6 @@ var editletterF = function(data) {
 	newP.contract = "" + $("#edit_letter_form #contract").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -781,14 +710,10 @@ var editletterF = function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -817,7 +742,6 @@ getLetterTypeF(e_id); //获取出图类型列表
 var renderArchiveTypeParam = function(data, e_id) {
 	$(e_id).html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 			'</option>'
@@ -836,7 +760,6 @@ var renderArchiveTypeParam = function(data, e_id) {
 var getArchiveTypeF = function(e_id) {
 	newP = {};
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -854,14 +777,10 @@ var getArchiveTypeF = function(e_id) {
 				//renderProType(data.data);
 				renderArchiveTypeParam(data.data, e_id);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -878,7 +797,6 @@ $("#ad_img_archive").on("click", function() {
 var renderArchiveList = function(data) {
 	$("#archive_list").html("");
 	for(var i in data) {
-		console.log(data[i])
 		var type = data[i];
 		var item = $(
 
@@ -924,7 +842,6 @@ var getArchiveList = function() {
 	newP.p = "" + 1; //page
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -939,17 +856,12 @@ var getArchiveList = function() {
 		.done(function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
-				console.log(JSON.stringify(data));
 				renderArchiveList(data.data.process);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -967,7 +879,6 @@ var newarchiveF = function() {
 	newP.time = "" + $("#add_archive_form #pic_add_one").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -983,14 +894,10 @@ var newarchiveF = function() {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -1007,7 +914,6 @@ var editarchiveF = function(data) {
 	newP.contract = "" + $("#edit_archive_form #contract").val();
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -1023,14 +929,10 @@ var editarchiveF = function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");
@@ -1065,7 +967,6 @@ var getLaborList = function() {
 	newP.p = "" + 1; //page
 
 	var token = localStorage.getItem("token");
-	console.log(JSON.stringify(newP))
 	$.ajax({
 
 			method: 'POST',
@@ -1080,17 +981,12 @@ var getLaborList = function() {
 		.done(function(data) {
 			if(data.status == 1) { //success
 				console.log(1)
-				console.log(JSON.stringify(data));
 				rendLaborList(data.data.process);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
-			console.log(data);
-			console.log(JSON.stringify(data));
 		})
 		.fail(function(data) {
 			console.log("fail!");
-			console.log(JSON.stringify(data));
 		})
 		.always(function() {
 			console.log("always!");

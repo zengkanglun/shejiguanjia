@@ -160,6 +160,9 @@ body {
 #bodyRight #content .center_content .basic_msg .msg_main table tbody tr .item_num {
   width: 309px;
 }
+#bodyRight #content .center_content .basic_msg .msg_main table tbody tr .progress {
+  background: #ffffff;
+}
 #bodyRight #content .center_content .basic_msg .msg_main table tbody .e9ecf1 {
   background: #e9ecf1;
 }

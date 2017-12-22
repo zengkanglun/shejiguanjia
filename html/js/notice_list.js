@@ -9,9 +9,23 @@ var renderN = function(data) {
 	$("#view_detail_notice #project_id").val(data.project_id);
 
 	//
-	$("#to_userwwb").html(data.user_id);
-	$("#replywwb").html(data.reply);
-	$("#addtimewwb").html(data.addtime);
+	 
+	
+	$(".cnt_reply.aa .reply_ul").html('');
+	
+	for(var o in data.reply)
+	{
+		var obj = data.reply[o];
+		var item = $('<li class="clearfix">' +
+			'<div class="cnt_detail">' +
+				'<span id="to_userwwb">'+obj.uid+':</span><span id="replywwb">'+obj.reply+'</span>' +
+			'</div>' +
+			'<div class="time" id="addtimewwb">'+obj.addtime+'</div>' +
+		 '</li>');
+		
+		$(".cnt_reply.aa .reply_ul").append(item);
+	}
+	 
 
 }
 
@@ -19,9 +33,7 @@ $("#view_detail_notice .download").on("click", function() {
 
 	var id = $(this).data("id");
 	var type = 2;
-	var op = host_host_host + "/index.php/Home/admin/download?id=" + id + "type=" + type;
-	window.open(op);
-	window.open(host_host_host + "/index.php/Home/admin/download?id=" + id + "type=" + type);
+	location.href = host_host_host + "/home/notice/download/id/" + id;
 	var token = localStorage.getItem("token");
 	$.ajax({
 		type: "GET",
@@ -36,17 +48,15 @@ $("#view_detail_notice .download").on("click", function() {
 		},
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
-				console.log(data.msg);
-				console.log("[download:::]" + JSON.stringify(data))
+//				console.log(1);
+//				console.log(data.msg);
 
 				//xiazai
 
 			} else
-				console.log(50 + JSON.stringify(data))
+			{}
 		},
 		error: function(data) {
-			console.log(0 + JSON.stringify(data))
 		}
 	})
 
@@ -55,9 +65,10 @@ $("#view_detail_notice .download").on("click", function() {
 $("#view_detail .download").on("click", function() {
 	var id = $(this).data("id");
 	var type = 1;
-	var op = host_host_host + "/index.php/Home/admin/download?id=" + id + "type=" + type;
-	window.open(op);
-	window.open(host_host_host + "/index.php/Home/admin/download?id=" + id + "type=" + type);
+	//var op = host_host_host + "/index.php/Home/admin/download?id=" + id + "&type=" + type;
+	//window.open(op);
+	//window.open(host_host_host + "/index.php/Home/admin/download?id=" + id + "&type=" + type);
+	location.href = host_host_host + "/home/task/download/id/" + id;
 	var token = localStorage.getItem("token");
 	$.ajax({
 		type: "GET",
@@ -72,17 +83,15 @@ $("#view_detail .download").on("click", function() {
 		},
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
-				console.log(data.msg);
-				console.log("[download:::]" + JSON.stringify(data))
+//				console.log(1);
+//				console.log(data.msg);
 
 				//xiazai
 
 			} else
-				console.log(50 + JSON.stringify(data))
+			{}
 		},
 		error: function(data) {
-			console.log(0 + JSON.stringify(data))
 		}
 	})
 
@@ -103,17 +112,14 @@ var viewN = function(uid) {
 		},
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
-				console.log(data.msg);
-				console.log("[user:::]" + JSON.stringify(data))
 				renderN(data.data);
 				//xiazai
 				$("#view_detail_notice .download").data("id", uid);
 			} else
-				console.log(50 + JSON.stringify(data))
+			{}
+
 		},
 		error: function(data) {
-			console.log(0 + JSON.stringify(data))
 		}
 	})
 }
@@ -129,9 +135,22 @@ var renderT = function(data) {
 	$("#view_detail #start_time").val(data.start_time);
 
 	//
-	$("#to_userww").html(data.user_id);
-	$("#replyww").html(data.reply);
-	$("#addtimeww").html(data.update_at);
+	 
+	
+	$(".cnt_reply.bb .reply_ul").html('');
+	
+	for(var o in data.reply)
+	{
+		var obj = data.reply[o];
+		var item = $('<li class="clearfix">' +
+			'<div class="cnt_detail">' +
+				'<span id="to_userww">'+obj.uid+':</span><span id="replyww">'+obj.reply+'</span>' +
+			'</div>' +
+			'<div class="time" id="addtimeww">'+obj.addtime+'</div>' +
+		 '</li>');
+		
+		$(".cnt_reply.bb  .reply_ul").append(item);
+	}
 
 }
 
@@ -151,17 +170,15 @@ var viewT = function(uid) {
 		},
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
-				console.log(data.msg);
-				console.log("[user:::]" + JSON.stringify(data))
+//				console.log(1);
+//				console.log(data.msg);
 				renderT(data.data);
 				//xiazai
 				$("#view_detail .download").data("id", uid);
 			} else
-				console.log(50 + JSON.stringify(data))
+			{}
 		},
 		error: function(data) {
-			console.log(0 + JSON.stringify(data))
 		}
 	})
 }
@@ -182,17 +199,15 @@ var deleteN = function(uid) {
 			id: uid
 		},
 		success: function(data) {
+			toast(data.msg);
 			if(data.status == 1) { //success
-				console.log(1);
-				toast(data.msg);
-				setTimeout(function() {
-					location.reload();
-				},1000)
+//				console.log(1);
+				
+				 
 			} else
-				console.log(50 + JSON.stringify(data))
+			{}
 		},
 		error: function(data) {
-			console.log(0 + JSON.stringify(data))
 		}
 	})
 }
@@ -200,9 +215,15 @@ var deleteN = function(uid) {
 //渲染通知
 var rendPNList = function(data) {
 	$("#notice_list").html("");
+	var classname = "";
 	for(var i in data) {
 		var log = data[i];
-		var item = $('<tr>' +
+		if(i%2)
+			  classname = "tableTrBackground";
+			 else
+			  classname = "";
+			  
+			var item = $('<tr class="'+classname+'">' +
 			'<td class="choose notice"><span  data-id="' + log.id + '"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>' +
 			'<td>' + (parseInt(i) + 1) + '</td>' +
 			'<td>' + log.type + '</td>' +
@@ -229,15 +250,12 @@ var rendPNList = function(data) {
 	}
 
 	$("#notice_list .detail").on("click", function() {
-		console.log("detail")
-		//viewN(8);
 		viewN($(this).data("id"));
 	});
 
 	$("#notice_list .delete").on("click", function() {
-		console.log("del")
 		deleteN($(this).data("id"));
-		//alert($(this).data("id"))
+		setTimeout(getPageParam(g_pageCur),300);
 	});
 }
 
@@ -257,15 +275,15 @@ var deleteT = function(uid) {
 			id: uid
 		},
 		success: function(data) {
+			toast(data.msg);
 			if(data.status == 1) { //success
-				console.log(1);
-				console.log(data.msg);
+//				console.log(1);
+//				console.log(data.msg);
 
 			} else
-				console.log(50 + JSON.stringify(data))
+			{}
 		},
 		error: function(data) {
-			console.log(0 + JSON.stringify(data))
 		}
 	})
 }
@@ -273,9 +291,15 @@ var deleteT = function(uid) {
 //渲染任务
 var rendPTList = function(data) {
 	$("#task_list").html("");
+	var  classname = "";
 	for(var i in data) {
 		var log = data[i];
-		var item = $('<tr>' +
+		if(i%2)
+			  classname = "tableTrBackground";
+			 else
+			  classname = "";
+			  
+			var item = $('<tr class="'+classname+'">' +
 			'<td class="choose task"><span  data-id="' + log.id + '"><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>' +
 			'<td>' + (parseInt(i) + 1) + '</td>' +
 			'<td>' + log.create_by + '</td>' +
@@ -300,14 +324,15 @@ var rendPTList = function(data) {
 
 	}
 	$("#task_list .detail").on("click", function() {
-		console.log("detail")
+//		console.log("detail")
 		//viewT(5);
 		viewT($(this).data("id"));
 	});
 
 	$("#task_list .del").on("click", function() {
-		console.log("del")
+//		console.log("del")
 		deleteT($(this).data("id"));
+		setTimeout(getPageParamT(g_pageCurT),300);
 		//alert($(this).data("id"))
 	});
 }
@@ -328,21 +353,21 @@ var getPList = function(key) {
 
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
+//				console.log(1);
 
-				console.log(data.msg);
-				console.log(data.data);
+//				console.log(data.msg);
+//				console.log(data.data);
 				rendPNList(data.data.data);
 
 				$(".total_num.a").html(data.data.page);
 				$("#total_a").html(data.data.count);
 				total_num_nor = parseInt(data.data.page);
 			} else {
-				console.log(data.msg + 5 + data.data)
+//				console.log(data.msg + 5 + data.data)
 			}
 		},
 		error: function(data) {
-			console.log(0)
+//			console.log(0)
 		},
 		async: true
 	});
@@ -364,20 +389,16 @@ var getPTList = function(key) {
 		},
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
-
-				console.log(data.msg);
-				console.log(data.data);
 				rendPTList(data.data.data);
 				$(".total_num.b").html(data.data.page);
 				$("#total_b").html(data.data.count);
 				total_num_nor_task = parseInt(data.data.page);
 			} else {
-				console.log(data.msg + 5 + data.data)
+				toast(data.msg);
 			}
 		},
 		error: function(data) {
-			console.log(0)
+//			console.log(0)
 		},
 		async: true
 	});
@@ -394,7 +415,9 @@ $("#query").on("click", function() {
 		key="/"+key;
 	console.log(key)*/
 	//getPList(key);
-	getPageParam(g_pageCur, undefined, undefined, key)
+	g_pageCur = 1;
+	$(".number.a").html(g_pageCur);
+	getPageParam(g_pageCur, $("#notice_three").val(), $("#notice_four").val(), key)
 
 })
 
@@ -405,26 +428,34 @@ $("#query_task").on("click", function() {
 		key="/"+key;
 	console.log(key)*/
 	//getPTList(key);
-	getPageParamT(g_pageCur, undefined, undefined, key)
+	g_pageCurT = 1;
+	$(".number.b").html(g_pageCurT);
+	getPageParamT(g_pageCurT, $("#notice_three").val(), $("#notice_four").val(), key)
 })
 
 //时间段搜索
 //通知 
 $("#search_time").on("click", function() {
+	g_pageCur = 1;
+	$(".number.a").html(g_pageCur);
 	var date_f = $("#notice_three").val();
 	var date_t = $("#notice_four").val();
-	getPageParam(g_pageCur, date_f, date_t);
+	getPageParam(g_pageCur, date_f, date_t,$("#query_key").val());
 })
 
 //task任务
 $("#search_time_task").on("click", function() {
+	g_pageCurT = 1;
+	$(".number.b").html(g_pageCurT);
 	var date_f = $("#notice_one").val();
 	var date_t = $("#notice_two").val();
-	getPageParamT(g_pageCurT, date_f, date_t);
+	getPageParamT(g_pageCurT, date_f, date_t,$("#query_key_task").val());
 
 })
 //翻页
 var getPageParam = function(page, frome, to, title) {
+	noticeQueu = [];
+     
 	//();
 	var bundle = {};
 	if(page)
@@ -446,16 +477,16 @@ var getPageParam = function(page, frome, to, title) {
 		data: bundle, //{p:page},
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
-				console.log(data.msg);
-				console.log(data.data);
+				$(".total_num.a").html(data.data.page);
+				$("#total_a").html(data.data.count);
+				total_num_nor = parseInt(data.data.page);
 				rendPNList(data.data.data);
 			} else {
-				console.log(data.msg + 5 + data.data)
+				toast(data.msg);
 			}
 		},
 		error: function(data) {
-			console.log(0)
+//			console.log(0)
 		},
 		async: true
 	});
@@ -469,8 +500,9 @@ $("#prev").on("click", function() {
 	//getPrevPage();
 	if(g_pageCur < 1)
 		g_pageCur = 1;
-	getPageParam(g_pageCur);
-
+	var date_f = $("#notice_three").val();
+	var date_t = $("#notice_four").val();
+	getPageParam(g_pageCur, date_f, date_t,$("#query_key").val());
 	$(".number.a").html(g_pageCur);
 })
 //下一页
@@ -479,12 +511,16 @@ $("#after").on("click", function() {
 	//getNextPage();
 	if(g_pageCur > total_num_nor)
 		g_pageCur--;
-	getPageParam(g_pageCur);
+	var date_f = $("#notice_three").val();
+	var date_t = $("#notice_four").val();
+	getPageParam(g_pageCur, date_f, date_t,$("#query_key").val());
 	$(".number.a").html(g_pageCur);
 })
 
 ////翻页
 var getPageParamT = function(page, frome, to, title) {
+	 
+    taskQueu = [];
 	//();
 	var bundle = {};
 	if(page)
@@ -506,16 +542,14 @@ var getPageParamT = function(page, frome, to, title) {
 		data: bundle, //{p:page},
 		success: function(data) {
 			if(data.status == 1) { //success
-				console.log(1);
-				console.log(data.msg);
-				console.log(data.data);
+				$(".total_num.b").html(data.data.page);
+				$("#total_b").html(data.data.count);
+				total_num_nor_task = parseInt(data.data.page);
 				rendPTList(data.data.data);
 			} else {
-				console.log(data.msg + 5 + data.data)
 			}
 		},
 		error: function(data) {
-			console.log(0)
 		},
 		async: true
 	});
@@ -529,7 +563,9 @@ $("#prevT").on("click", function() {
 	//getPrevPage();
 	if(g_pageCurT < 1)
 		g_pageCurT = 1;
-	getPageParamT(g_pageCurT);
+	var date_f = $("#notice_one").val();
+	var date_t = $("#notice_two").val();
+	getPageParamT(g_pageCurT, date_f, date_t,$("#query_key_task").val());
 	$(".number.b").html(g_pageCurT);
 
 })
@@ -539,7 +575,9 @@ $("#afterT").on("click", function() {
 	//getNextPage();
 	if(g_pageCur > total_num_nor_task)
 		g_pageCur--;
-	getPageParamT(g_pageCurT);
+	var date_f = $("#notice_one").val();
+	var date_t = $("#notice_two").val();
+	getPageParamT(g_pageCurT, date_f, date_t,$("#query_key_task").val());
 	$(".number.b").html(g_pageCurT);
 
 })
@@ -580,20 +618,62 @@ $(document).on("click", ".third table .choose.task span", function() {
 })
 
 $("#btn_noticeQueu").on("click", function() {
-	console.log(JSON.stringify(noticeQueu))
+//	console.log(JSON.stringify(noticeQueu))
 	for(var i in noticeQueu) {
 
-		console.log("noticeQueu" + [i] + "-" + noticeQueu[i]);
+//		console.log("noticeQueu" + [i] + "-" + noticeQueu[i]);
 		deleteN(noticeQueu[i]);
 	}
+	getPageParam(g_pageCur);//刷新
+	
 
 })
 //批量删
 $("#btn_taskQueu").on("click", function() {
-	console.log(JSON.stringify(taskQueu))
+//	console.log(JSON.stringify(taskQueu))
 	for(var i in taskQueu) {
-		console.log("taskQueu" + [i] + "-" + taskQueu[i]);
+//		console.log("taskQueu" + [i] + "-" + taskQueu[i]);
 		deleteT(taskQueu[i]);
 	}
+	 
+	getPageParamT(g_pageCurT);
 
 })
+
+
+
+		$(".go.n").on("click", function() {
+			var key = $("#query_key").val();
+			var jump_num = Number($(this).siblings(".jump_page").val());
+			if(jump_num > 0) {
+				
+				g_pageCur = jump_num;
+				$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+				getPageParam(g_pageCur, $("#notice_three").val(), $("#notice_four").val(), key);
+				$(".number.a").html(g_pageCur);
+			} else {
+				toast("请输入正常页码")
+			}
+			
+	 		 
+	
+	})
+		
+
+
+	$(".go.t").on("click", function() {
+			var key = $("#query_key_task").val();
+			var jump_num = Number($(this).siblings(".jump_page").val());
+			if(jump_num > 0) {
+				
+				g_pageCurT = jump_num;
+				$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+				getPageParamT(g_pageCurT, $("#notice_three").val(), $("#notice_four").val(), key);
+				$(".number.b").html(g_pageCurT);
+			} else {
+				toast("请输入正常页码")
+			}
+			
+	 		 
+	
+	})

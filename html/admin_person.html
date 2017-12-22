@@ -36,9 +36,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -46,7 +49,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -117,9 +120,6 @@
 			<div id="content">
 				<!--右侧内容区-->
 				<div class="first">
-					<a href="index.html">项目信息</a>
-					<a href="process.html">过程管理</a>
-					<a href="count">统计分析</a>
 					<a href="javascript:void(0)" class="firstActive">管理</a>
 					<!--<div>当前项目：中山市中创新科技产业园</div>-->
 					<div class="current_task">
@@ -199,7 +199,12 @@
 									记录数：<span>0</span>条
 								</div>
 								<div class="page_right">
-									<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">0</span><i class="more">></i>
+									<span>页数</span><i class="less">&lt;</i><span class="number">1</span><span>/</span><span class="total_num">0</span><i class="more">></i>
+								</div>
+								<div class="jump">
+									<span>跳页至</span>
+									<input type="number" class="jump_page" />
+									<div class="go">GO</div>
 								</div>
 							</div>
 						</div>
@@ -246,13 +251,23 @@
 									记录数：<span>0</span>条
 								</div>
 								<div class="page_right">
-									<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">0</span><i class="more">></i>
+									<span>页数</span><i class="less">&lt</i><span class="number">1</span><span>/</span><span class="total_num">0</span><i class="more">></i>
+								</div>
+								<div class="jump">
+									<span>跳页至</span>
+									<input type="number" class="jump_page" />
+									<div class="go">GO</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!--人员管理结束-->
+				<!--/*单位信息*/-->
+				<div class="danw">
+					单位信息：
+					<span></span>
+				</div>
 			</div>
 		</div>
 		<div id="boxPock">
@@ -411,7 +426,7 @@
 											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
 										<td class="one">建筑负责：</td>
 										<td>
-											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></span>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" />
 										</td>
 									</tr>
 									<tr class="BgColor">
@@ -527,7 +542,7 @@
 											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></td>
 										<td class="one">建筑负责：</td>
 										<td>
-											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" /></span>
+											<a>选人</a><input type="text" name="" id="" value="" placeholder="输入内容" />
 										</td>
 									</tr>
 									<tr class="BgColor">
@@ -2035,7 +2050,6 @@
 			});
 			laydate.render({
 				elem: '#edittwo',
-				user_one
 			});
 			laydate.render({
 				elem: '#user_one',

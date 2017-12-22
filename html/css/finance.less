@@ -16,7 +16,7 @@ body {
                     height: 54px;
                     margin-bottom: 0;
                     li {
-                        width: 156px;
+                        width: 115px;
                         height: 54px;
                         background: #ffffff;
                         margin-right: 1px;
@@ -2264,7 +2264,7 @@ body {
         display: none;
         background: rgba(77, 85, 93, 0.8);
         .item_edit_head {
-            width:970px;
+            width: 970px;
             height: 56px;
             background: #293541;
             text-align: center;
@@ -2285,7 +2285,7 @@ body {
                 background: none;
                 border-radius: 5px;
                 cursor: pointer;
-//              font-size: 14px;
+                //              font-size: 14px;
                 background: #FD813E;
             }
             i {
@@ -2384,18 +2384,19 @@ body {
                         float: left;
                     }
                     .load_right {
-                        width: 80px;
+                        width: 200px;
                         height: 32px;
                         line-height: 30px;
                         line-height: 30px\9;
-                        border: 1px solid #FD813E;
                         color: #FD813E;
                         text-align: center;
                         float: left;
                         margin-left: 10px;
                         font-size: 14px;
-                        border-radius: 5px;
                         cursor: pointer;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
                     }
                     input {
                         width: 170px;
@@ -2766,7 +2767,7 @@ body {
         display: none;
         background: rgba(77, 85, 93, 0.8);
         .item_editDetail_head {
-            width:970px;
+            width: 970px;
             height: 56px;
             background: #293541;
             text-align: center;
@@ -2804,7 +2805,7 @@ body {
             width: 970px;
             .item_top {
                 width: 100%;
-                height: 150px;
+                height: 200px;
                 background: #ffffff;
                 padding: 24px 39px 30px 49px;
                 box-sizing: border-box;
@@ -4289,7 +4290,7 @@ body {
         display: none;
         background: rgba(77, 85, 93, 0.8);
         .countDetail_head {
-            width: 100%;
+            width:970px;
             height: 56px;
             background: #293541;
             text-align: center;
@@ -4312,41 +4313,54 @@ body {
             width: 100%;
             .floor {
                 width: 100%;
-                height: 50px;
+                padding: 10px;
                 background: #ffffff;
                 border-bottom: 1px solid #C8D2DC;
                 .floor_ul {
                     list-style: none;
-                    height: 50px;
                     float: left;
+                    width: 70%;
                     li {
-                        width: 100px;
-                        height: 50px;
-                        box-sizing: border-box;
+                        display: block;
+                        width: 80px;
+                        height: 36px;
+                        line-height: 36px;
+                        line-height: 36px\9;
                         float: left;
-                        a {
-                            display: block;
-                            width: 100px;
-                            height: 50px;
-                            line-height: 50px;
-                            line-height: 50px\9;
-                            float: left;
-                            text-align: center;
-                        }
+                        text-align: center;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        color: #ffffff;
+                        border-radius: 5px;
+                        padding: 0 5px;
+                        cursor: pointer;
+                        margin-right: 5px;
+                        margin-bottom: 5px;
+                        background: #9daab8;
                     }
                     li.active {
-                        border-bottom: 4px solid #FD813E;
-                        a {
-                            color: #FD813E;
-                        }
+                        background: #FD813E;
                     }
                 }
                 .floor_right {
+                    width: 25%;
                     float: right;
                     height: 50px;
                     padding-right: 10px;
                     line-height: 50px;
                     line-height: 50px\9;
+                    span {
+                        width: 54%;
+                        display: block;
+                        height: 50px;
+                        text-overflow: ellipsis;
+                        white-space: normal;
+                        overflow: hidden;
+                        float: right;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                    }
                 }
             }
             .count_cnt {
@@ -4497,6 +4511,23 @@ body {
                         }
                     }
                 }
+                .jtbtn1 {
+                    width: 160px;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    line-height: 50px\9;
+                    border-radius: 5px;
+                    display: block;
+                    margin: 20px auto;
+                    background: #FD813E;
+                    margin-bottom: 20px;
+                    padding: 0;
+                    font-size: 16px;
+                    outline: none;
+                    box-shadow: 0px 0px 10px #FD813E;
+                    display: none;
+                }
                 .histroy_count {
                     width: 100%;
                     background: #FFFFFF;
@@ -4581,24 +4612,6 @@ body {
                     width: 100%;
                     height: 100px;
                     overflow: hidden;
-                    .btn1 {
-                        width: 160px;
-                        height: 50px;
-                        text-align: center;
-                        line-height: 50px;
-                        line-height: 50px\9;
-                        border-radius: 5px;
-                        display: block;
-                        margin: 50px auto;
-                        background: #FD813E;
-                        margin-bottom: 50px;
-                        padding: 0;
-                        font-size: 16px;
-                        outline: none;
-                        box-shadow: 0px 0px 10px #FD813E;
-                        float: left;
-                        margin-left: 250px;
-                    }
                     .btn2 {
                         width: 160px;
                         height: 50px;
@@ -4613,8 +4626,6 @@ body {
                         padding: 0;
                         font-size: 16px;
                         outline: none;
-                        float: right;
-                        margin-right: 250px;
                     }
                 }
             }
@@ -4662,24 +4673,6 @@ body {
             width: 100%;
             height: 100px;
             overflow: hidden;
-            .btn1 {
-                width: 160px;
-                height: 50px;
-                text-align: center;
-                line-height: 50px;
-                line-height: 50px\9;
-                border-radius: 5px;
-                display: block;
-                margin: 20px auto;
-                background: #FD813E;
-                margin-bottom: 50px;
-                padding: 0;
-                font-size: 16px;
-                outline: none;
-                box-shadow: 0px 0px 10px #FD813E;
-                float: left;
-                margin-left: 250px;
-            }
             .btn2 {
                 width: 160px;
                 height: 50px;
@@ -4694,8 +4687,6 @@ body {
                 padding: 0;
                 font-size: 16px;
                 outline: none;
-                float: right;
-                margin-right: 250px;
             }
         }
         .count_go_cnt {
@@ -4855,7 +4846,8 @@ body {
                                 text-align: center;
                                 color: #333333;
                             }
-                            .handle {
+                            .handle,
+                            .sub {
                                 span {
                                     padding: 0px 2px;
                                     cursor: pointer;
@@ -4920,6 +4912,127 @@ body {
             .btn2,
             .btn3 {
                 margin-left: 30px;
+            }
+        }
+    }
+    //方案详情结束
+    //方案详情
+    .item_plan1 {
+        width: 990px;
+        height: 600px;
+        background: #4d555d;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 10;
+        overflow-y: auto;
+        display: none;
+        background: rgba(77, 85, 93, 0.8);
+        .item_plan1_head {
+            width: 970px;
+            height: 56px;
+            background: #293541;
+            text-align: center;
+            line-height: 56px;
+            line-height: 56px\9;
+            color: #ffffff;
+            position: relative;
+            i {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                background: url(../img/icon_off.png) no-repeat;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .item_plan1_bottom {
+            width: 970px;
+            padding: 30px;
+            .plan_cnt {
+                background: #ffffff;
+                padding: 30px;
+                table {
+                    width: 100%;
+                    border: #c8d2dc;
+                    margin-bottom: 15px;
+                    thead {
+                        height: 50px;
+                        background: #9daab8;
+                        height: 50px;
+                        td {
+                            width: 117px;
+                            height: 50px;
+                            text-align: center;
+                            color: #667788;
+                            position: relative;
+                            i {
+                                position: absolute;
+                                width: 11px;
+                                height: 8px;
+                                background: url(../img/black_tri.png) no-repeat;
+                                top: 21px;
+                                right: 20px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    tbody {
+                        height: 50px;
+                        tr {
+                            height: 50px;
+                            background: #ffffff;
+                            td {
+                                height: 50px;
+                                text-align: center;
+                                color: #333333;
+                            }
+                            .handle,
+                            .sub {
+                                span {
+                                    padding: 0px 2px;
+                                    cursor: pointer;
+                                }
+                            }
+                            .item_name {
+                                a {
+                                    display: block;
+                                    width: 100%;
+                                    height: 50px;
+                                    line-height: 50px;
+                                    line-height: 50px\9;
+                                }
+                            }
+                        }
+                        tr:nth-child(2n) {
+                            background: #e9ecf1;
+                        }
+                    }
+                }
+            }
+        }
+        .cnt_footer {
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+            .btn2 {
+                width: 160px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                line-height: 50px\9;
+                border-radius: 5px;
+                display: block;
+                margin: 20px auto;
+                background: #9DAAB8;
+                margin-bottom: 50px;
+                padding: 0;
+                font-size: 16px;
+                outline: none;
             }
         }
     }
@@ -5150,7 +5263,7 @@ body {
             }
         }
         .count_floor_bottom {
-            width: 100%;
+            width: 970px;
             padding: 37px;
             box-sizing: border-box;
             .floor_top {
@@ -5199,6 +5312,7 @@ body {
                         position: relative;
                         margin-bottom: 20px;
                         font-size: 14px;
+                        width: 50%;
                         span {
                             float: left;
                             display: block;
@@ -5363,7 +5477,7 @@ body {
         display: none;
         background: rgba(77, 85, 93, 0.8);
         .item_check_head {
-            width: 100%;
+            width:970px;
             height: 56px;
             background: #293541;
             text-align: center;
@@ -6101,41 +6215,54 @@ body {
             width: 970px;
             .floor {
                 width: 100%;
-                height: 50px;
+                padding: 10px;
                 background: #ffffff;
                 border-bottom: 1px solid #C8D2DC;
                 .floor_ul {
                     list-style: none;
-                    height: 50px;
                     float: left;
+                    width: 70%;
                     li {
-                        width: 100px;
-                        height: 50px;
-                        box-sizing: border-box;
+                        display: block;
+                        width: 80px;
+                        height: 36px;
+                        line-height: 36px;
+                        line-height: 36px\9;
                         float: left;
-                        a {
-                            display: block;
-                            width: 100px;
-                            height: 50px;
-                            line-height: 50px;
-                            line-height: 50px\9;
-                            float: left;
-                            text-align: center;
-                        }
+                        text-align: center;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        color: #ffffff;
+                        border-radius: 5px;
+                        padding: 0 5px;
+                        cursor: pointer;
+                        margin-right: 5px;
+                        margin-bottom: 5px;
+                        background: #56B4F8;
                     }
                     li.active {
-                        border-bottom: 4px solid #FD813E;
-                        a {
-                            color: #FD813E;
-                        }
+                        background: #FD813E;
                     }
                 }
                 .floor_right {
+                    width: 25%;
                     float: right;
                     height: 50px;
                     padding-right: 10px;
                     line-height: 50px;
                     line-height: 50px\9;
+                    span {
+                        width: 54%;
+                        display: block;
+                        height: 50px;
+                        text-overflow: ellipsis;
+                        white-space: normal;
+                        overflow: hidden;
+                        float: right;
+                        line-height: 50px;
+                        line-height: 50px\9;
+                    }
                 }
             }
             .count_cnt {

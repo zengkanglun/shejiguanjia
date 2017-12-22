@@ -191,7 +191,7 @@ class UserController extends CommonController
         $data['page'] = ceil($count/5);
         $data['count'] = $count;
         $data['data'] = $model->where($where)->limit($page->firstRow.','.$page->listRows)->select();
-
+//dump($data['data']);
         foreach ($data['data'] as $k=>$v)
         {
             switch ($v['kind'])
@@ -253,7 +253,7 @@ class UserController extends CommonController
                             $data['data'][$k]['del_time'] = date('Y-m-d',$v['del_time']);
                             $pid = $model->where(['id'=>$v['pid']])->getField('pid');
                             $data['data'][$k]['content'] = M('task')->where(['id'=>$pid])->getField('title');
-                            $data['data'][$k]['type']    = M('task')->alias('a')->join('__TASK_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
+                            $data['data'][$k]['type_name']    = M('task')->alias('a')->join('__TASK_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
                             $data['data'][$k]['label'] = '历史任务';
                             break;
                         case 4:
@@ -280,7 +280,7 @@ class UserController extends CommonController
                             $data['data'][$k]['del_time'] = date('Y-m-d',$v['del_time']);
                             $pid = $model->where(['id'=>$v['pid']])->getField('pid');
                             $data['data'][$k]['content']  = M('notice')->where(['id'=>$pid])->getField('title');
-                            $data['data'][$k]['type']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
+                            $data['data'][$k]['type_name']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
                             $data['data'][$k]['label']    = '未读通知';
                             break;
                         case 2:
@@ -289,7 +289,7 @@ class UserController extends CommonController
                             $data['data'][$k]['del_time'] = date('Y-m-d',$v['del_time']);
                             $pid = $model->where(['id'=>$v['pid']])->getField('pid');
                             $data['data'][$k]['content']  = M('notice')->where(['id'=>$pid])->getField('title');
-                            $data['data'][$k]['type']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
+                            $data['data'][$k]['type_name']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
                             $data['data'][$k]['label']    = '已读通知';
                             break;
                         case 3:
@@ -298,7 +298,7 @@ class UserController extends CommonController
                             $data['data'][$k]['del_time'] = date('Y-m-d',$v['del_time']);
                             $pid = $model->where(['id'=>$v['pid']])->getField('pid');
                             $data['data'][$k]['content']  = M('notice')->where(['id'=>$pid])->getField('title');
-                            $data['data'][$k]['type']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
+                            $data['data'][$k]['type_name']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$pid])->getField('b.name');
                             $data['data'][$k]['label']    = '回复通知';
 
                             break;
@@ -307,14 +307,25 @@ class UserController extends CommonController
                             $data['data'][$k]['add_time'] = date('Y-m-d',$model->where(['id'=>$v['pid']])->getField('addtime'));
                             $data['data'][$k]['del_time'] = date('Y-m-d',$v['del_time']);
                             $data['data'][$k]['content']  = $model->where(['id'=>$v['pid']])->getField('title');
-                            $data['data'][$k]['type']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$v['pid']])->getField('b.name');
+                            $data['data'][$k]['type_name']     = M('notice')->alias('a')->join('__NOTICE_TYPE__ b on a.type=b.id')->where(['a.id'=>$v['pid']])->getField('b.name');
                             $data['data'][$k]['label']    = '创建通知';
                             break;
                     }
                     break;
             }
         }
-
+//dump($data['data']);exit;
+foreach($data['data'] as $k=>$v)
+{
+    if(!$v['type_name'])
+    {
+        $data['data'][$k]['type_name'] = '';
+    }
+    if(!$v['content'])
+    {
+        $data['data'][$k]['content'] = '';
+    }
+}
         ajax_success('获取成功',$data);
     }
 
@@ -323,14 +334,14 @@ class UserController extends CommonController
      */
     public function del_recycled()
     {
-        $id = I('get.id');
+        $id = I('get.id',0,'intval');
         $data = M('recycled')->where(['id'=>$id])->field(['pid','kind','type','user_id'])->find();
         if(!$data)
         {
             ajax_error('数据不存在');
         }
 
-        if(!$data['user_id'] != $this->user_id)
+        if($data['user_id'] != $this->user_id)
         {
             ajax_error('不属于你的回收站记录');
         }
@@ -412,6 +423,7 @@ class UserController extends CommonController
         }
         if($model->where(['id'=>$data['pid']])->delete())
         {
+            M('recycled')->where(['id'=>$id])->delete();
             ajax_success('删除成功');
         }
         ajax_error('删除失败');
@@ -429,7 +441,7 @@ class UserController extends CommonController
             ajax_error('数据不存在');
         }
 
-        if(!$data['user_id'] != $this->user_id)
+        if($data['user_id'] != $this->user_id)
         {
             ajax_error('不属于你的回收站记录');
         }
@@ -542,6 +554,7 @@ class UserController extends CommonController
         }
         if($model->where(['id'=>$data['pid']])->save(['status'=>$type]))
         {
+            M('recycled')->where(['id'=>$id])->delete();
             ajax_success('恢复成功');
         }
 
@@ -560,27 +573,59 @@ class UserController extends CommonController
         }
         $size  = 5;
         $model = D('ProjectStaffCommission');
+        //  作为普通成员时
         $count = $model->where(['user_id'=>$this->user_id])->count();
+        // 作为项目主管时
+        // $count_2 = $model->where(['supervisor_id'=>$this->user_id])->count();
         $page  = new Page($count,$size);
-
         $data  = $model->relation(true)->where(['user_id'=>$this->user_id])->field(['id','project_id','work_id','project_commission_id','labor','commission_money','add_time','update_time'])->limit($page->firstRow.','.$page->listRows)->select();
-
+        
         $new_data = [];
+        $new_data['total'] = $model->relation(true)->where(['user_id'=>$this->user_id])->getField('sum(commission_money)');
         $new_data['page'] = ceil($count/$size);
         $new_data['count'] = $count;
         foreach ($data as $k=>$v)
         {
+            // $director_money = M('projectCommission')->where(['supervisor_id'=>$this->user_id,'project_id'=>$v['project_id']])->getField('supervisor_money');
+        
             $new_data['data'][$k]['id'] = $v['id'];
             $new_data['data'][$k]['project'] = $v['project_name'];
             $new_data['data'][$k]['work_type'] = $v['work_type'];
             $new_data['data'][$k]['labor'] = $v['labor'];
-            $new_data['data'][$k]['commission_money'] = $v['commission_money'];
+            $new_data['data'][$k]['commission_money'] = $v['commission_money']+($director_money ? $director_money : 0);
             $new_data['data'][$k]['interval'] = date('Y/m/d',$v['interval']['start_time']).'-'.date('Y/m/d',$v['interval']['end_time']);
+            $new_data['data'][$k]['project_id'] = $v['project_id'];
         }
+        ajax_success('获取成功',$new_data);
+    }
 
-        $end = microtime(true);
+    /**
+     * 用户绩效 - 项目主管
+     */
+    public function performance_manage()
+    {
+        $size  = 5;
+        $model = D('projectCommission');
+        $count = $model->where(['supervisor_id'=>$this->user_id])->count();
+        $page  = new Page($count,$size);
+        // $data  = $model->relation(true)->where(['user_id'=>$this->user_id])->field(['id','project_id','work_id','project_commission_id','labor','commission_money','add_time','update_time'])->limit($page->firstRow.','.$page->listRows)->select();
+        $data  = $model->where(['supervisor_id'=>$this->user_id])->field(['id','project_id','supervisor_money','start_time','end_time'])->limit($page->firstRow.','.$page->listRows)->select();
+        $total = $model->where(['supervisor_id'=>$this->user_id])->getField('sum(supervisor_money)');
+        foreach ($data as $k=>$v)
+        {
+            $data[$k]['project'] = M('project')->where(['id'=>$v['project_id']])->getField('name');
+            $data[$k]['labor'] = '';
+            $data[$k]['work_type'] = '项目主管';
+            $data[$k]['commission_money'] = $v['supervisor_money'];
+            $data[$k]['interval'] = date('Y/m/d',$v['start_time']).'-'.date('Y/m/d',$v['end_time']);
 
-//        echo $end - $start;
+        }
+        $new_data = [];
+        $new_data['total'] = $total;
+        $new_data['count'] = $count;
+        $new_data['page'] = ceil($count/$size);
+        $new_data['data'] = $data;
+
         ajax_success('获取成功',$new_data);
     }
 
@@ -672,5 +717,20 @@ class UserController extends CommonController
     public function check_token()
     {
     	ajax_success('token正常');
+    }
+    public function search()
+    {
+        $name = I('post.name','');
+        if(!$name)
+        {
+            $data = M('user')->where(['is_del'=>0])->field(['id','nickname'])->select();
+            ajax_success('搜索成功',$data);
+        }
+
+        $where['nickname'] = ['LIKE',"%{$name}%"];
+
+        $data = M('user')->where($where)->field(['id','nickname'])->select();
+
+        ajax_success('获取成功',$data);
     }
 }

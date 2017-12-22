@@ -5,9 +5,12 @@ use Think\Controller;
 class HomeBaseController extends Controller
 {
     public $user_id;
+    public $is_super;
+    public $nickname;
 	public function _initialize()
 	{
-        if(strtolower(ACTION_NAME) != 'download')
+//        if(strtolower(ACTION_NAME) != 'download')
+        if(!in_array(strtolower(ACTION_NAME),['download','export_task','managers_export','users_export','export_task','income_export','overhead_export','jiti_export','admin_overhead_export','total_export','project_export_doing','performance_export']))
 		{
             // 获取token
             $token = $_SERVER['HTTP_ACCEPT'];
@@ -25,10 +28,11 @@ class HomeBaseController extends Controller
             {
                ajax_error('Token无效或已过期',[],5);
             }
-            $nickname = M('user')->where(['id'=>$user_data['user_id']])->getField('nickname');
+            $res = M('user')->where(['id'=>$user_data['user_id']])->find();
             // 记录当前登录用户ID
             $this->user_id = $user_data['user_id'];
-            $this->nickname = $nickname;
+            $this->is_super = $res['is_super'];
+            $this->nickname = $res['nickname'];
         }
 	}
 

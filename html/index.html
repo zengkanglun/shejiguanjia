@@ -41,17 +41,20 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html?name=1" class="list_1 list_a" onclick="tapBtn();">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
-						<a href="msg.html" class="list_2 list_a" >
+						<a href="msg.html" class="list_2 list_a">
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -99,7 +102,7 @@
 						<img src="img/icon-search-orange.png" alt="" />
 					</div>
 					<div class="search-inp">
-						<input type="text" class="p-search" name="text" id="text" value="" placeholder="请输入关键词搜索" />
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
 					</div>
 				</div>
 				<div class="right">
@@ -124,7 +127,7 @@
 				<div class="center_content">
 					<div class="content_header">
 						<ul class="user_tab clearfix">
-							<li class="active">
+							<li name="index" class="active">
 								<a href="index.html">项目信息</a>
 							</li>
 							<li>
@@ -154,15 +157,15 @@
 							<table border="1" cellspacing="0">
 								<tbody>
 									<tr class="e9ecf1">
-										<td class="item">项目编号：</td>
+										<td class="item"><i class="xinghao">*</i>项目编号：</td>
 										<td class="item_num number"></td>
-										<td class="item">项目名称：</td>
+										<td class="item"><i class="xinghao">*</i>项目名称：</td>
 										<td class="item_num name"></td>
 									</tr>
 									<tr>
 										<td class="item">立项时间：</td>
 										<td class="item_num project_time"></td>
-										<td class="item">所需区域：</td>
+										<td class="item">所属区域：</td>
 										<td class="item_num"><i class="province"></i>&nbsp;<i class="city"></i></td>
 									</tr>
 									<tr class="e9ecf1">
@@ -175,13 +178,13 @@
 										<td class="item">项目地址：</td>
 										<td class="item_num address"></td>
 										<td class="item">项目进度：</td>
-										<td class="item_num"></td>
+										<td class="item_num progress"></td>
 									</tr>
 									<tr class="e9ecf1">
 										<td class="item">合同附件：</td>
 										<td class="item_num"><span class="filename"></span></td>
 										<td class="item">收款情况：</td>
-										<td class="item_num"></td>
+										<td class="item_num receipt"></td>
 									</tr>
 								</tbody>
 							</table>
@@ -238,36 +241,36 @@
 								<table border="1" cellspacing="0">
 									<tbody>
 										<tr class="director_z">
-											<td class="item">项目主管：</td>
+											<td class="item"><i class="xinghao">*</i>项目主管：</td>
 											<td class="item_num"></td>
 										</tr>
 										<tr>
-											<td class="item">规格负责：</td>
+											<td class="item">规划工种：</td>
 											<td class="item_num"></td>
 										</tr>
 										<tr>
-											<td class="item">方案负责：</td>
+											<td class="item">方案工种：</td>
 											<td class="item_num"></td>
 										</tr>
 										<tr>
 
-											<td class="item">建筑负责：</td>
+											<td class="item">建筑工种：</td>
 											<td class="item_num"></td>
 										</tr>
 										<tr>
-											<td class="item">结构负责：</td>
+											<td class="item">结构工种：</td>
 											<td class="item_num"></td>
 										</tr>
 										<tr>
-											<td class="item">电气负责：</td>
+											<td class="item">电气工种：</td>
 											<td class="item_num"></td>
 										</tr>
 										<tr>
-											<td class="item">排水负责：</td>
+											<td class="item">排水工种：</td>
 											<td class="item_num"></td>
 										</tr>
 										<tr>
-											<td class="item">暖通负责：</td>
+											<td class="item">暖通工种：</td>
 											<td class="item_num"></td>
 										</tr>
 									</tbody>
@@ -275,8 +278,14 @@
 							</div>
 						</div>
 					</div>
+					<div class="danw">
+						单位信息：
+						<span></span>
+					</div>
 				</div>
+
 			</div>
+
 		</div>
 		<div id="boxPock">
 			<img class="boxPockBg" src="img/boxPockBg.png" />
@@ -409,27 +418,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="item">00001</td>
-										<td class="item_num">建筑</td>
-										<td class="item">李四</td>
-										<td class="item_num">14444445523478</td>
-										<td class="item_num">411236788</td>
-									</tr>
-									<tr class="e9ecf1">
-										<td class="item">00001</td>
-										<td class="item_num">建筑</td>
-										<td class="item">李四</td>
-										<td class="item_num">14444445523478</td>
-										<td class="item_num">411236788</td>
-									</tr>
-									<tr>
-										<td class="item"></td>
-										<td class="item_num"></td>
-										<td class="item"></td>
-										<td class="item_num"></td>
-										<td class="item_num"></td>
-									</tr>
+
 								</tbody>
 							</table>
 							<div class="design_footer">
@@ -446,20 +435,27 @@
 		<script type="text/javascript">
 			$(function() {
 				/*tap选项栏*/
-				
-				if (sessionStorage.getItem("tapList") != null) {
+
+				if(sessionStorage.getItem("tapList") != null) {
 					$("#content .center_content .content_header .user_tab li").remove();
 					tapChoose = sessionStorage.getItem("tapList");
 					tapChoose = tapChoose.split('class="active"').join('class');
-					
-					
-					sessionStorage.setItem("tapList",tapChoose);
+
+					sessionStorage.setItem("tapList", tapChoose);
 					$("#content .center_content .content_header .user_tab").append(tapChoose);
 					$("#content .center_content .content_header .user_tab li:eq(0)").addClass("active");
-				}else{
+				} else {
 					tapChoose = $("#content .center_content .content_header .user_tab").html();
-					sessionStorage.setItem("tapList",tapChoose);
+					sessionStorage.setItem("tapList", tapChoose);
 				}
+				$(document).on("click", "#content .center_content .content_header .user_tab li i", function() {
+					$(this).parent().remove();
+					tapChoose = $("#content .center_content .content_header .user_tab").html();
+					sessionStorage.setItem("tapList", tapChoose);
+					if($(this).parent().attr("class") == "active") {
+						location.href = "index.html";
+					}
+				})
 				/*==========*/
 				lay('#version').html('-v' + laydate.v);
 				laydate.render({

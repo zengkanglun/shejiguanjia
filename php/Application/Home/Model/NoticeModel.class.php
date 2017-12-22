@@ -9,7 +9,7 @@ class NoticeModel extends RelationModel
         ['type','require','缺少类型',1,'',1],
         ['project_id','require','缺少项目',1,'',1],
         ['title','require','缺少标题',1,'',1],
-        ['content','require','缺少内容',1,'',1],
+        //['content','require','缺少内容',1,'',1],
         ['receiver','require','缺少接收者',1,'',1]
     ];
 

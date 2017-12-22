@@ -103,6 +103,9 @@ body {
   line-height: 48px\9;
   color: #333333;
 }
+.item_msg .msg_bottom .basic_msg table tbody tr .item_num .project_time {
+  cursor: pointer;
+}
 .item_msg .msg_bottom .basic_msg table tbody tr .file span {
   display: block;
   float: left;

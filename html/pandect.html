@@ -10,7 +10,6 @@
 		<link rel="stylesheet" type="text/css" href="css/pandect.css" />
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/pandect.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -36,9 +35,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span  class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -46,7 +48,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i>3</i></span>
+									<span  class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -94,7 +96,7 @@
 						<img src="img/icon-search-orange.png" alt="" />
 					</div>
 					<div class="search-inp">
-						<input type="text" class="p-search" name="text" id="text" placeholder="请输入关键词搜索" />
+						<input type="text" name="text" id="text" value="" placeholder="请输入关键词搜索" />
 					</div>
 				</div>
 				<div class="right">
@@ -102,7 +104,7 @@
 						<div><img src="img/icon-tuichu-white.png" /></div>
 					</div>
 					<div class="info-image rightDiv">
-						<div><img src="img/info_image.png" /></div>
+						<div><img src="" /></div>
 					</div>
 					<div class="helpBtn rightDiv">
 						<div><img src="img/icon-bangzhu-white.png" /></div>
@@ -119,7 +121,7 @@
 				<div class="center_content">
 					<div class="content_header">
 						<ul class="user_tab clearfix">
-							<li>
+							<!--<li>
 								<a href="index.html">项目信息</a>
 							</li>
 							<li>
@@ -127,7 +129,7 @@
 							</li>
 							<li>
 								<a href="count.html">统计分析</a>
-							</li>
+							</li>-->
 							<li class="active">
 								<a href="pandect.html">总览</a>
 							</li>
@@ -143,10 +145,10 @@
 								<li class="active">
 									<a href="javascript:void(0)">项目信息</a>
 								</li>
-								<li>
+								<li class="Q_ygrw">
 									<a href="javascript:void(0)">员工任务</a>
 								</li>
-								<li>
+								<li class="Q_rcjx">
 									<a href="javascript:void(0)">人才绩效</a>
 								</li>
 							</ul>
@@ -157,11 +159,11 @@
 							<div class="item_time clearfix">
 								<div class="time_left">
 									<span>从</span>
-									<input type="text" id="one" value="2017-08-23" />
+									<input type="text" id="one" placeholder="请选择时间" />
 								</div>
 								<div class="time_right">
 									<span>至</span>
-									<input type="text" id="two" value="2017-08-23" />
+									<input type="text" id="two" placeholder="请选择时间" />
 								</div>
 								<div class="search c">搜索</div>
 							</div>
@@ -184,7 +186,26 @@
 										</tr>
 									</thead>
 									<tbody id="go_list_aa">
-
+										<!--<tr>
+											<td>100000</td>
+											<td>新通知</td>
+											<td>建筑</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="edit"><a href="#">编辑</a></span><span class="check"><a href="#">查看</a></span></td>
+										</tr>
+										<tr class="e9ecf1">
+											<td>100000</td>
+											<td>2017-08-20</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>建筑</td>
+											<td>张三李四</td>
+											<td>2017-8-29</td>
+											<td class="handle"><span class="edit"><a href="#">编辑</a></span><span class="check"><a href="#">查看</a></span></td>
+										</tr>-->
 									</tbody>
 								</table>
 								<div class="paging">
@@ -194,6 +215,11 @@
 										</div>
 										<div class="page_right">
 											<span>页数</span><i class="less pr_aa"><</i><span class="number cu_a">1</span><span>/</span><span class="total_num aa">1</span><i class="more af_aa">></i>
+										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go aa">GO</div>
 										</div>
 									</div>
 								</div>
@@ -249,6 +275,11 @@
 										<div class="page_right">
 											<span>页数</span><i class="less pr_bb"><</i><span class="number cu_b">1</span><span>/</span><span class="total_num bb">1</span><i class="more  af_bb">></i>
 										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go bb">GO</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -303,6 +334,11 @@
 										<div class="page_right">
 											<span>页数</span><i class="less pr_cc"><</i><span class="number cu_c">1</span><span>/</span><span class="total_num cc">1</span><i class="more af_cc">></i>
 										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go cc">GO</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -314,15 +350,15 @@
 							<div class="staff_time clearfix">
 								<div class="time_left">
 									<span>从</span>
-									<input type="text" placeholder="2017-09-07" id="three" />
+									<input type="text" placeholder="请选择时间" id="three" />
 								</div>
 								<div class="time_right">
 									<span>至</span>
-									<input type="text" placeholder="2017-09-07" id="four" />
+									<input type="text" placeholder="请选择时间" id="four" />
 								</div>
 								<div class="staff_search">
 									<a><img id="query_a" src="img/icon-search-orange.png" alt=""></a>
-									<input type="text" name="" id="query_key_a" value="" placeholder="姓名或者项目名" />
+									<input type="text" name="" id="query_key_a" value="" placeholder="姓名" />
 								</div>
 								<div class="search a">搜索</div>
 							</div>
@@ -365,6 +401,11 @@
 										<div class="page_right">
 											<span>页数</span><i class="less" id="prev_t"><</i><span class="number a">1</span><span>/</span><span class="total_num a">1</span><i class="more" id="after_t">></i>
 										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go a">GO</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -373,21 +414,22 @@
 						<!--人才绩效-->
 						<div class="perf_content clearfix">
 							<div class="perf_time clearfix">
-								<div class="time_left">
+								<!--<div class="time_left">
 									<span>从</span>
-									<input type="text" placeholder="2017-09-07" id="five" />
+									<input type="text" placeholder="请选择时间" id="five" />
 								</div>
 								<div class="time_right">
 									<span>至</span>
-									<input type="text" placeholder="2017-09-07" id="six" />
+									<input type="text" placeholder="请选择时间" id="six" />
 								</div>
-								<div class="search c">搜索</div>
-								<div class="sort">汇总排序</div>
+								<div class="search c">搜索</div>-->
+
 								<div class="staff_search">
 									<a><img id="query_b" src="img/icon-search-orange.png" alt=""></a>
 
 									<input type="text" name="" id="query_key_b" value="" placeholder="姓名或者项目名" />
 								</div>
+								<div class="sort" data-id="0">汇总排序</div>
 							</div>
 							<div class="list_detail">
 								<table border="1" cellspacing="0">
@@ -395,11 +437,8 @@
 										<tr>
 											<td class="orderlist">序号</td>
 											<td class="name">姓名</td>
-											<td class="build">参与项目</td>
-											<td class="newtask">分工情况</td>
+											<td class="build">项目数量</td>
 											<td class="task">提成总额</td>
-											<td class="plan_time">立项时间</td>
-											<td class="handle">操作</td>
 										</tr>
 									</thead>
 									<tbody id="go_list_men">
@@ -430,11 +469,21 @@
 										<div class="page_right">
 											<span>页数</span><i class="less pr_men"><</i><span class="number cu_men">1</span><span>/</span><span class="total_num men">1</span><i class="more af_men">></i>
 										</div>
+										<div class="jump">
+											<span>跳页至</span>
+											<input type="number" class="jump_page" />
+											<div class="go men">GO</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<!--人才绩效结束 -->
+					</div>
+					<!--/*单位信息*/-->
+					<div class="danw">
+						单位信息：
+						<span></span>
 					</div>
 				</div>
 			</div>
@@ -540,6 +589,8 @@
 			</div>
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/pandect.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/prandect_list.js" type="text/javascript" charset="utf-8"></script>
 		<script src="laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			//			lay('#version').html('-v' + laydate.v);
@@ -562,9 +613,11 @@
 				elem: '#six',
 			});
 		</script>
-
-		<!--<script src="js/prandect_list.js" type="text/javascript" charset="utf-8"></script>-->
-
+		<script type="text/javascript">
+			$(".tab_right").on("click", function() {
+				location.href = host_host_host + "/Home/Commission/performance_export";
+			})
+		</script>
 	</body>
 
 </html>

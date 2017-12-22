@@ -3,16 +3,15 @@ $(function() {
 	var token = localStorage.getItem("token");
 	//获取工种类型
 	var setWt = function(data) {
-		console.log(511)
+		//		console.log(511)
 	}
 
 	var renderWorkTypeParam = function(data, e_id) {
 		$(e_id).html("");
-		var item = $('<option onclick=\"setWt()\"  value="0">-</option>'
-			);
+		var item = $('<option onclick=\"setWt()\"  value="0">-</option>');
 		$(e_id).append(item);
 		for(var i in data) {
-			console.log(data[i])
+			//			console.log(data[i])
 			var type = data[i];
 			var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 				'</option>'
@@ -30,7 +29,7 @@ $(function() {
 	var renderWorkType = function(data) {
 		$("#work_type_list").html("");
 		for(var i in data) {
-			console.log(data[i])
+			//			console.log(data[i])
 			var type = data[i];
 			var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 				'</option>'
@@ -61,19 +60,19 @@ $(function() {
 				url: host_host_host + '/index.php/home/Public/work_types'
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log("[worType::]" + JSON.stringify(data));
+				//				console.log(data);
+				//				console.log("[worType::]" + JSON.stringify(data));
 				///renderWorkType(data.data);
 				renderWorkTypeParam(data.data, e_id);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("[worType::]fail!" + JSON.stringify(data));
+				//				console.log("fail!" + data.msg);
+				//				console.log("fail!" + data.data);
+				//				console.log("[worType::]fail!" + JSON.stringify(data));
 			})
 			.always(function(data) {
-				console.log("always!");
-				console.log("[worType::]" + JSON.stringify(data));
+				//				console.log("always!");
+				//				console.log("[worType::]" + JSON.stringify(data));
 			})
 
 	}
@@ -91,30 +90,30 @@ $(function() {
 				url: host_host_host + '/index.php/home/Public/work_types'
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log("[worType::]" + JSON.stringify(data));
+				//				console.log(data);
+				//				console.log("[worType::]" + JSON.stringify(data));
 				renderWorkType(data.data);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("[worType::]fail!" + JSON.stringify(data));
+				//				console.log("fail!" + data.msg);
+				//				console.log("fail!" + data.data);
+				//				console.log("[worType::]fail!" + JSON.stringify(data));
 			})
 			.always(function() {
-				console.log("always!");
-				console.log("[worType::]" + JSON.stringify(data));
+				//				console.log("always!");
+				//				console.log("[worType::]" + JSON.stringify(data));
 			})
 
 	}
 
 	////获取角色类型
 	var setWt = function(data) {
-		console.log(511)
+		//		console.log(511)
 	}
 	var renderRoleType = function(data) {
 		$("#role_type_list").html();
 		for(var i in data) {
-			console.log(data[i])
+			//			console.log(data[i])
 			var type = data[i];
 			var item = $('<option onclick=\"setWt()\" data-id=' + type.id + ' value="' + type.id + '">' + type.name +
 				'</option>'
@@ -145,46 +144,46 @@ $(function() {
 				url: host_host_host + '/index.php/home/Public/role_types',
 			})
 			.done(function(data) {
-				console.log(data);
-				console.log(JSON.stringify(data));
+				//				console.log(data);
+				//				console.log(JSON.stringify(data));
 				renderWorkType(data.data);
 			})
 			.fail(function(data) {
-				console.log("fail!" + data.msg);
-				console.log("fail!" + data.data);
-				console.log("fail!" + JSON.stringify(data));
+				//				console.log("fail!" + data.msg);
+				//				console.log("fail!" + data.data);
+				//				console.log("fail!" + JSON.stringify(data));
 			})
 			.always(function() {
-				console.log("always!");
+				//				console.log("always!");
 			})
 
 	}
 
 	$("#btn_addU").on("click", function() {
 		$("#add_nor .new_username").val("");
-		  $("#add_nor .new_password").val("");
-		  $("#add_nor .new_nickname").val("");
-		  $(" #backfour").val();
-		  $("#add_nor .new_sex").val("-");
-		 
-		 $(" #backthree").val();
-		  $("#add_nor .new_school").val("");
-		  $("#add_nor .new_edu").val("");
+		$("#add_nor .new_password").val("");
+		$("#add_nor .new_nickname").val("");
+		$(" #backfour").val();
+		$("#add_nor .new_sex").val("-");
 
-		 $("#add_nor .edu_list").val("");
-		
-		  $("#add_nor .new_position").val("");
-		  $("#add_nor .new_mobile").val("");
-		 $("#add_nor .new_qq").val("");
+		$(" #backthree").val();
+		$("#add_nor .new_school").val("");
+		$("#add_nor .new_edu").val("");
 
-		 $("#work_type_list").val("");
-		console.log(5)
+		$("#add_nor .edu_list").val("");
+
+		$("#add_nor .new_position").val("");
+		$("#add_nor .new_mobile").val("");
+		$("#add_nor .new_qq").val("");
+
+		$("#work_type_list").val("");
+		//		console.log(5)
 		getWorTypeParam("#work_type_list");
 		//getRoleType();
 	}); //弹窗新增用户 获取列表
 
 	$("#add_manage").on("click", function() {
-		console.log(5)
+		//		console.log(5)
 		getWorType();
 		getRoleType();
 		getPosiType();
@@ -194,7 +193,6 @@ $(function() {
 	//添加用户(nor层)
 
 	var newpF = function() {
-
 
 		var newP = {};
 		newP.username = "" + $("#add_nor .new_username").val();
@@ -213,13 +211,12 @@ $(function() {
 		newP.edu = "" + $("#add_nor .new_edu").val();
 
 		newP.edu = $("#add_nor .edu_list").val();
-		
+
 		newP.position = "" + $("#add_nor .new_position").val();
 		newP.mobile = "" + $("#add_nor .new_mobile").val();
 		newP.qq = "" + $("#add_nor .new_qq").val();
 
 		newP.work_type = "" + $("#work_type_list").val();
-
 
 		var e_id = "#autho_add";
 		newP.authority = renderAuthoInverParam(e_id) //"1";
@@ -236,18 +233,16 @@ $(function() {
 			.done(function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1);
+					//					console.log(1);
 					refresh();
-				} else {
-				}
+				} else {}
 				console.log(data);
 			})
 			.fail(function(data) {
 				toast("失败");
-				console.log("fail!");
+				//				console.log("fail!");
 			})
-			.always(function(data) {
-			})
+			.always(function(data) {})
 
 	}
 
@@ -261,7 +256,7 @@ $(function() {
 			var src = $(e_id + " #autho_" + ls[i]).attr("src");
 			if(src == "img/backstage_checkbox_orange.png")
 				data.push(ls[i]);
-			console.log(data + "::5::");
+			//			console.log(data + "::5::");
 
 		}
 		var serial = data.join();
@@ -269,11 +264,11 @@ $(function() {
 		return serial;
 	}
 
-	var edus_g = ["小学","初中","中专","高中","大专","本科 ","硕士","博士","其他"];
+	var edus_g = ["小学", "初中", "中专", "高中", "大专", "本科 ", "硕士", "博士", "其他"];
 	//修改更新用户
 	var updateU = function() {
 		var newP = {};
-		newP.id = "" + $("#newpEdit").data("id");//
+		newP.id = "" + $("#newpEdit").data("id"); //
 		newP.username = "" + $("#new_username").val();
 		//newP.password = ""+$("#new_password").val();
 		newP.nickname = "" + $("#new_nickname").val();
@@ -288,17 +283,17 @@ $(function() {
 		newP.worktime = "" + $("#backtwo").val();
 		newP.school = "" + $("#new_school").val();
 		newP.edu = "" + $("#new_edu").val();
-		
-		if($("#new_edu_list").val() == "8")//如果未修改)
-			newP.edu = "" + edus_g.indexOf(newP.edu);//将本科对应到5
+
+		if($("#new_edu_list").val() == "8") //如果未修改)
+			newP.edu = "" + edus_g.indexOf(newP.edu); //将本科对应到5
 		else
-			newP.edu = "" + $("#new_edu_list").val();//3
+			newP.edu = "" + $("#new_edu_list").val(); //3
 		newP.position = "" + $("#new_position").val();
 		newP.mobile = "" + $("#new_mobile").val();
 		newP.qq = "" + $("#new_qq").val();
 		newP.work_type = "" + $("#new_work_type_list").val();
 		if(newP.work_type == "0")
-		newP.work_type = $("#newpEdit").data("workid");
+			newP.work_type = $("#newpEdit").data("workid");
 		newP.authority = "" + $("#normal_pri .selected").data("au");
 		newP.authority = "1";
 		var e_id = "#autho_edit";
@@ -317,17 +312,16 @@ $(function() {
 			.done(function(data) {
 				toast(data.msg)
 				if(data.status == 1) { //success
-					console.log(1);
+					//					console.log(1);
 					refresh();
-				} else {
-				}
-				console.log(data);
+				} else {}
+				//				console.log(data);
 			})
 			.fail(function(data) {
-				console.log("fail!" );
+				//				console.log("fail!" );
 			})
 			.always(function() {
-				console.log("always!");
+				//				console.log("always!");
 			})
 
 	}
@@ -351,21 +345,20 @@ $(function() {
 			})
 			.done(function(data) {
 				if(data.status == 1) { //success
-					console.log(1)
-				} else {
-				}
+					//					console.log(1)
+				} else {}
 				console.log(data);
 			})
 			.fail(function(data) {
-				console.log("fail!");
+				//				console.log("fail!");
 			})
 			.always(function() {
-				console.log("always!");
+				//				console.log("always!");
 			})
 	}
 
 	var newpFunc = function() {
-		console.log(123321);
+		//		console.log(123321);
 		newpF();
 	}
 	$("#newp").on("click", newpFunc); //新增普通user
@@ -422,7 +415,7 @@ $(function() {
 			newP.work_type = "0";
 		newP.authority = "" + $("#new_authority .selected").data("va");
 
-		console.log(JSON.stringify(newP))
+		//		console.log(JSON.stringify(newP))
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/index.php/home/admin/user_info",
@@ -432,13 +425,13 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1)
+					//					console.log(1)
 				} else {
 					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+				//				console.log(0)
 			},
 			async: true
 		});
@@ -448,10 +441,10 @@ $(function() {
 
 		viewUser();
 	})
-	
+
 	//刷新页面 userN
 	var refresh = function() {
-		
+
 		getPageParam(g_pageCur);
 		getPageParamD(g_pageCurD);
 	}
@@ -472,17 +465,16 @@ $(function() {
 			success: function(data) {
 				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					refresh(); 
-				} else
-					{
-					 
-					console.log(50 + JSON.stringify(data))
+					//					console.log(1);
+					//					console.log(data.msg);
+					refresh();
+				} else {
+
+					//					console.log(50 + JSON.stringify(data))
 				}
 			},
 			error: function(data) {
-				console.log(0 + JSON.stringify(data));
+				//				console.log(0 + JSON.stringify(data));
 				toast("离职失败！");
 			}
 		})
@@ -504,14 +496,13 @@ $(function() {
 			success: function(data) {
 				toast(data.msg)
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
+					//					console.log(1);
+					//					console.log(data.msg);
 					refresh();
-				} else
-					console.log(50 + JSON.stringify(data))
+				} else {}
 			},
 			error: function(data) {
-				console.log(0 + JSON.stringify(data))
+				//				console.log(0 + JSON.stringify(data))
 			}
 		})
 	}
@@ -560,15 +551,13 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log("[user:::]" + JSON.stringify(data))
+					//					console.log(1);
+					//					console.log(data.msg);
+					//					console.log("[user:::]" + JSON.stringify(data))
 					renderP(data.data);
-				} else
-				{}
+				} else {}
 			},
-			error: function(data) {
-			}
+			error: function(data) {}
 		})
 	}
 
@@ -595,7 +584,7 @@ $(function() {
 		$(" #new_work_type").val(data.work_type_name);
 		$(" #new_qq").val(data.qq);
 
-		$("#newpEdit").data("workid", data.work_type+"");
+		$("#newpEdit").data("workid", data.work_type + "");
 		var e_id = "#autho_edit";
 		//"authority":"1,2,3,4,5,6,7"
 		renderAuthoParam(data.authority, e_id);
@@ -603,9 +592,7 @@ $(function() {
 	//修改user详细
 	var editP = function(uid) {
 
-//		var host_host_host = 'http://shejiguanjia.session.pub';
 		var token = localStorage.getItem("token");
-		//http://shejiguanjia.session.pub/index.php/Home/Admin/user_info
 		$.ajax({
 			type: "GET",
 			headers: {
@@ -617,22 +604,18 @@ $(function() {
 				id: uid
 			},
 			success: function(data) {
+				toast(data.msg);
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
 					viewPEdit(data.data);
-				} else
-					console.log(50 + JSON.stringify(data))
+				} else {}
 			},
-			error: function(data) {
-				console.log(0 + JSON.stringify(data))
-			}
+			error: function(data) {}
 		})
 
 		//按钮切为编辑
 		$("#newpm").hide();
-		$("#newpEdit").data("id", uid+"");
-		 
+		$("#newpEdit").data("id", uid + "");
+
 		$("#newpmEdit").show();
 
 	}
@@ -645,9 +628,15 @@ $(function() {
 	//普通用户管理
 	var rendPNList = function(data) {
 		$("#userNList").html("");
+		var classname = "";
 		for(var i in data) {
 			var user = data[i];
-			var item = $('<tr>' +
+			if(i % 2)
+				classname = "e9ecf1";
+			else
+				classname = "";
+
+			var item = $('<tr class="' + classname + '">' +
 				'<td class="choose"><i><img src="img/backstage_checkbox_orange.png" alt="" /></i></td>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
 				'<td>' + user.nickname + '</td>' +
@@ -659,7 +648,7 @@ $(function() {
 				'<td class="handle">' +
 				'<span class="detail"  data-id="' + user.id + '">详情</span>' +
 				'<span class="edit"  data-id="' + user.id + '">编辑</span>' +
-				'<span class="check jour"  data-id="' + user.id + '"><a href="backstage_user-log.html">日志</a></span>' +
+				'<span class="check jour"  data-id="' + user.id + '"><a href="backstage_user-log.html?userid=' + user.id + '">日志</a></span>' +
 				'<span class="del delete"  data-id="' + user.id + '">离职</span>' +
 				'</td>' +
 				'</tr>');
@@ -667,44 +656,42 @@ $(function() {
 
 		}
 		$("#userNList .detail").on("click", function() {
-			console.log("detail")
+			//			console.log("detail")
 			viewP($(this).data("id"));
 		});
 		$("#userNList .edit").on("click", function() {
-			console.log("edit")
+			//			console.log("edit")
 			editP($(this).data("id"));
 			getWorTypeParam("#new_work_type_list"); //渲染工种
 
 		});
 		$("#userNList .jour").on("click", function() {
-			console.log("jour")
+			//			console.log("jour")
 		});
 		$("#userNList .delete").on("click", function() {
-			console.log("delete")
+			//			console.log("delete")
 			$("#boxPock").show();
 			$("#boxPock .del").show();
-			console.log($(this).data("id"));
-			$("#boxPock .del .btn1").data("id",$(this).data("id"));
+			//			console.log($(this).data("id"));
+			$("#boxPock .del .btn1").data("id", $(this).data("id"));
 		});
-		
-		
 
 	}
 
-    //点击确认后，deleteP执行
+	//点击确认后，deleteP执行
 	$(document).on("click", "#boxPock .del .btn1 ", function() {
 		$("#boxPock").hide();
 		$("#boxPock .del").hide();
 		deleteP($(this).data("id"));
 	})
-	
-	  //点击确认后，deletePCover执行
+
+	//点击确认后，deletePCover执行
 	$(document).on("click", "#boxPock .cover .btn1 ", function() {
 		$("#boxPock").hide();
 		$("#boxPock .cover").hide();
 		deletePCover($(this).data("id"));
 	})
-	
+
 	//根据权限列表值，显示
 	//"authority":"1,2,3"
 	var renderAuthoParam = function(data, e_id) {
@@ -712,7 +699,7 @@ $(function() {
 		for(var i in ls) {
 			//autho_
 			$(e_id + " #autho_" + ls[i]).attr("src", "img/backstage_checkbox_orange.png");
-			console.log(ls[i] + "::5::" + $("#autho_edit #autho_" + ls[i]).attr("src"));
+			//			console.log(ls[i] + "::5::" + $("#autho_edit #autho_" + ls[i]).attr("src"));
 			//
 			$(e_id + " #autho_" + ls[i]).parent("a").attr("data-type", "checked");
 			//alert($(e_id+" #autho_"+ls[i]).parent("a").attr("data-type"))
@@ -722,21 +709,28 @@ $(function() {
 	//普通用户管理 e_id:：渲染元素id
 	var rendPNListParam = function(data, e_id) {
 		$(e_id).html("");
+		var classname = "";
 		for(var i in data) {
 			var user = data[i];
-			var item = $('<tr>' +
+			if(i % 2)
+				classname = "e9ecf1";
+			else
+				classname = "";
+
+			var item = $('<tr class="' + classname + '">' +
+
 				'<td class="choose"><i><img src="img/backstage_checkbox_orange.png" alt="" /></i></td>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
 				'<td>' + user.nickname + '</td>' +
 				'<td>' + user.work_type + '</td>' +
-				'<td>' + user.worktime + '</td>' +								
+				'<td>' + user.worktime + '</td>' +
 				'<td>' + user.username + '</td>' +
 				'<td class=" "> ' + user.mobile + ' </td>' +
 				'<td>' + user.qq + '</td>' +
 				'<td class="handle">' +
 				'<span class="detail"  data-id="' + user.id + '">详情</span>' +
 				'<span class="edit"  data-id="' + user.id + '">编辑</span>' +
-				'<span class="check jour"  data-id="' + user.id + '">日志</span>' +
+				'<span class="check jour"  data-id="' + user.id + '"><a href="backstage_user-log.html?userid=' + user.id + '">日志</a></span>' +
 				'<span class="del  cover"  data-id="' + user.id + '">复职</span>' +
 
 				'</td>' +
@@ -745,28 +739,28 @@ $(function() {
 
 		}
 		$(e_id + " .detail").on("click", function() {
-			console.log("detail")
+			//			console.log("detail")
 			viewP($(this).data("id"));
 		});
 		$(e_id + " .edit").on("click", function() {
-			console.log("edit")
+			//			console.log("edit")
 			getWorTypeParam("#new_work_type_list"); //渲染工种
 			editP($(this).data("id"));
 		});
 		$(e_id + " .jour").on("click", function() {
-			console.log("jour")
+			//			console.log("jour")
 		});
 		$(e_id + " .delete").on("click", function() {
-			console.log("delete")
+			//			console.log("delete")
 			deleteP($(this).data("id"));
-			console.log($(this).data("id"))
+			//			console.log($(this).data("id"))
 		});
 		$(e_id + " .cover").on("click", function() {
 			$("#boxPock").show();
 			$("#boxPock .cover").show();
-			console.log($(this).data("id"));
-			$("#boxPock .cover .btn1").data("id",$(this).data("id"));
-			console.log("jour")
+			//			console.log($(this).data("id"));
+			$("#boxPock .cover .btn1").data("id", $(this).data("id"));
+			//			console.log("jour")
 		});
 
 	}
@@ -774,11 +768,8 @@ $(function() {
 	var total_num_nor = 0; //普通用户总数
 	var total_num_norD = 0; //普通shan用户总数
 	//获取nor用户
-	var getPList = function(key,page) {
+	var getPList = function(key, page) {
 
-		//var	host_host_host	= 'http://shejiguanjia.session.pub/index.php/home/admin/';	
-
-		//http://shejiguanjia.session.pub/index.php/Home/Admin/user_info
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/index.php/Home/Admin/user_list",
@@ -787,26 +778,21 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				p: 1,
+				p: g_pageCur,
 				name: key
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
 					rendPNList(data.data.data);
 					$(".total_num.a").html(data.data.page);
-					$(".number.a").html((data.data.page<=1)?data.data.page:page);
+					$(".number.a").html((data.data.page <= 1) ? data.data.page : page);
 					$("#total_a").html(data.data.count);
 					total_num_nor = parseInt(data.data.page);
 				} else {
-					console.log(data.msg + 5 + data.data)
+					toast(data.msg);
 				}
 			},
-			error: function(data) {
-				console.log(0)
-			},
+			error: function(data) {},
 			async: true
 		});
 
@@ -814,16 +800,22 @@ $(function() {
 
 	$("#query").on("click", function() {
 		var key = $("#query_key").val();
-		if(key != "")
-			key = "/" + key;
-		console.log(key)
+		//if(key != "")
+		//	key = "/" + key;
+		//g_pageCur = 1;
 		getPList(key);
 
+		g_pageCur = 1;
+		g_pageCurD = 1;
+		$(".number.a").html(g_pageCur);
+		$(".number.b").html(g_pageCurD);
+		getPageParam(g_pageCur, key);
+
+		getPageParamD(g_pageCurD, key);
 	})
 
 	//获取nor中已删除用户
 	var getPCcList = function() {
-		 
 
 		$.ajax({
 			type: "get",
@@ -834,20 +826,20 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log(data.data);
+					//					console.log(1);
+					//					console.log(data.msg);
+					//					console.log(data.data);
 					$("#total_b").html(data.data.count);
 					$(".total_num.b").html(data.data.page);
-					$(".number.b").html((data.data.page<=1)?data.data.page:1);
+					$(".number.b").html((data.data.page <= 1) ? data.data.page : 1);
 					total_num_norD = parseInt(data.data.page);
 					rendPNListParam(data.data.data, "#tb_deleted_u");
 				} else {
-					console.log(data.msg + 5 + data.data)
+					toast(data.msg);
 				}
 			},
 			error: function(data) {
-				console.log(0)
+				//				console.log(0)
 			},
 			async: true
 		});
@@ -859,19 +851,40 @@ $(function() {
 	getPCcList();
 	//})
 
-	var getExport = function() {
-		//();
-
-	}
+	//	var getExport = function() {
+	//		
+	//
+	//	}
 
 	//导出表格
+	
 	$("#btn-export").on("click", function() {
-
-		getExport();
+		location.href = host_host_host + "/home/admin/users_export";
+//		var token = localStorage.getItem("token");
+//		$.ajax({
+//			type: "get",
+//			url: host_host_host + "/index.php/Home/Admin/users_export",
+//			dataType: 'json',
+//			headers: {
+//				accept: "usertoken:" + token,
+//			},
+//			data: {},
+//			success: function(data) {
+//				if(data.status == 1) {
+//					location.href = host_host_host + "/Home/Admin/users_export";
+//				} else {
+//
+//				}
+//			},
+//			error: function(data) {
+//
+//			},
+//			async: true
+//		});
 
 	})
 
-	var getPageParam = function(page) {
+	var getPageParam = function(page, key) {
 		//();
 		$.ajax({
 			type: "get",
@@ -881,24 +894,25 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				p: page
+				p: page,
+				name: key
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log("nextPage:::" + data.data);
+					//					console.log(1);
+					//					console.log(data.msg);
+					//					console.log("nextPage:::" + data.data);
 					rendPNList(data.data.data);
-					$(".number.a").html((data.data.page<=1)?data.data.page:page);
+					$(".number.a").html((data.data.page <= 1) ? data.data.page : page);
 					total_num_nor = parseInt(data.data.page);
 					$(".total_num.a").html(data.data.page);
 					$("#total_a").html(data.data.count);
 				} else {
-					console.log(data.msg + 5 + data.data)
+					//					console.log(data.msg + 5 + data.data)
 				}
 			},
 			error: function(data) {
-				console.log(0)
+				//				console.log(0)
 			},
 			async: true
 		});
@@ -912,7 +926,7 @@ $(function() {
 		//getPrevPage();
 		if(g_pageCur < 1)
 			g_pageCur = 1;
-		getPageParam(g_pageCur);
+		getPageParam(g_pageCur, $("#query_key").val());
 		$(".number.a").html(g_pageCur);
 	})
 	//下一页
@@ -921,13 +935,13 @@ $(function() {
 		//getNextPage();
 		if(g_pageCur > total_num_nor)
 			g_pageCur--;
-		getPageParam(g_pageCur);
+		getPageParam(g_pageCur, $("#query_key").val());
 
 		$(".number.a").html(g_pageCur);
 	})
 
 	//已删除用户列表
-	var getPageParamD = function(page) {
+	var getPageParamD = function(page, key) {
 		//();
 		$.ajax({
 			type: "get",
@@ -937,24 +951,25 @@ $(function() {
 				accept: "usertoken:" + token,
 			},
 			data: {
-				p: page
+				p: page,
+				name: key
 			},
 			success: function(data) {
 				if(data.status == 1) { //success
-					console.log(1);
-					console.log(data.msg);
-					console.log("nextPage:::" + data.data);
+					//					console.log(1);
+					//					console.log(data.msg);
+					//					console.log("nextPage:::" + data.data);
 					$("#total_b").html(data.data.count);
 					$(".total_num.b").html(data.data.page);
-					$(".number.b").html((data.data.page<=1)?data.data.page:page);
+					$(".number.b").html((data.data.page <= 1) ? data.data.page : page);
 					total_num_norD = parseInt(data.data.page);
-					rendPNListParam(data.data.data,"#tb_deleted_u");
+					rendPNListParam(data.data.data, "#tb_deleted_u");
 				} else {
-					console.log(data.msg + 5 + data.data)
+					toast(data.msg);
 				}
 			},
 			error: function(data) {
-				console.log(0)
+				//				console.log(0)
 			},
 			async: true
 		});
@@ -969,7 +984,7 @@ $(function() {
 		if(g_pageCurD < 1)
 			g_pageCurD = 1;
 
-		getPageParamD(g_pageCurD);
+		getPageParamD(g_pageCurD, $("#query_key").val());
 
 		$(".number.b").html(g_pageCurD);
 
@@ -981,13 +996,40 @@ $(function() {
 		if(g_pageCurD > total_num_norD)
 			g_pageCurD--;
 
-		getPageParamD(g_pageCurD);
+		getPageParamD(g_pageCurD, $("#query_key").val());
 
 		$(".number.b").html(g_pageCurD);
 
 	})
+
+	$(".go.a").on("click", function() {
+		var key = $("#query_key").val();
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+			g_pageCur = jump_num;
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			getPageParam(g_pageCur, key);
+			$(".number.a").html(g_pageCur);
+		} else {
+			toast("请输入正常页码")
+		}
+
+	})
+
+	$(".go.b").on("click", function() {
+		var key = $("#query_key").val();
+		var jump_num = Number($(this).siblings(".jump_page").val());
+		if(jump_num > 0) {
+
+			g_pageCurD = jump_num;
+			$(this).parents(".jump").siblings(".page_right").find(".number").text(jump_num)
+			getPageParamD(g_pageCurD, key);
+
+			$(".number.b").html(g_pageCurD);
+		} else {
+			toast("请输入正常页码")
+		}
+
+	})
+
 })
-
-
-
- 

@@ -1,12 +1,12 @@
 //获取工种类型
 var setWt = function(data){
-	console.log(511)
+//	console.log(511)
 }
 var renderWorkType  =  function(data){
 	$("#work_type_list").html( );
 	for(var i in data)
 	{
-		console.log(data[i])
+//		console.log(data[i])
 		var type = data[i];
 		var item = $('<option onclick=\"setWt()\" data-id='+type.id+' value="'+type.id+'">'+type.name+
 		'</option>'
@@ -45,17 +45,17 @@ var getWorType =  function(){
 		 
 	})
 	.done(function(data){
-		 console.log(data);
-		  console.log(JSON.stringify(data));
+//		 console.log(data);
+//		  console.log(JSON.stringify(data));
 		  renderWorkType(data.data);
 	})
 	.fail(function(data){
-		 console.log("fail!"+data.msg);
-		  console.log("fail!"+data.data);
-		   console.log("fail!"+JSON.stringify(data));
+//		 console.log("fail!"+data.msg);
+//		  console.log("fail!"+data.data);
+//		   console.log("fail!"+JSON.stringify(data));
 	})
 	.always(function(){
-		 console.log("always!");
+//		 console.log("always!");
 	})
 	
 	
@@ -112,9 +112,9 @@ var newpF =  function(){
 	
 	newP.authority = ""+$("#new_authority .selected").data("va");
 	
-	 console.log(JSON.stringify(newP))
+//	 console.log(JSON.stringify(newP))
 	 token = localStorage.getItem("token");
-	 alert(token)
+//	 alert(token)
 	var	host_host_host	= host_host_host+'/index.php/home/admin/';		
 	$.ajax({
 		headers: {
@@ -131,16 +131,16 @@ var newpF =  function(){
 		data: newP//
 	})
 	.done(function(data){
-		 console.log(data);
-		  console.log(JSON.stringify(data));
+//		 console.log(data);
+//		  console.log(JSON.stringify(data));
 	})
 	.fail(function(data){
-		 console.log("fail!"+data.msg);
-		  console.log("fail!"+data.data);
-		   console.log("fail!"+JSON.stringify(data));
+//		 console.log("fail!"+data.msg);
+//		  console.log("fail!"+data.data);
+//		   console.log("fail!"+JSON.stringify(data));
 	})
 	.always(function(){
-		 console.log("always!");
+//		 console.log("always!");
 	})
 	
 	/*
@@ -222,7 +222,7 @@ var viewUser =  function(){
 	 
 	newP.authority = ""+$("#new_authority .selected").data("va");
 	
-	 console.log(JSON.stringify(newP))
+//	 console.log(JSON.stringify(newP))
 	 
 	var	host_host_host	= host_host_host+'/index.php/home/admin/';	
 	 
@@ -234,13 +234,13 @@ var viewUser =  function(){
 		
 		success: function(data) {
 		if(data.status == 1) {//success
-			console.log(1)
+//			console.log(1)
 		} else {
-			console.log(data.msg+5+data.data)				
+//			console.log(data.msg+5+data.data)				
 		}
 		},
 		error: function(data) {
-			console.log(0)
+//			console.log(0)
 		},
 		async: true
 	});
@@ -269,16 +269,16 @@ var getUser = function(uid){
 		data:{id:uid},
 		success: function(data) {
 		if(data.status == 1) {//success
-			console.log(1);
-			console.log(data.msg);
-			console.log(data.data);
+//			console.log(1);
+//			console.log(data.msg);
+//			console.log(data.data);
 			rendP(data.data);
 		} else {
-			console.log(data.msg+5+data.data)				
+//			console.log(data.msg+5+data.data)				
 		}
 		},
 		error: function(data) {
-			console.log(0)
+//			console.log(0)
 		},
 		async: true
 	});
@@ -288,10 +288,10 @@ var getUser = function(uid){
 //普通用户管理
 var rendPList = function(data) {
 	//$("#userList").html("");
-	console.log(JSON.stringify(data))
+//	console.log(JSON.stringify(data))
 	for(var i in data)
 	{
-		console.log(data[i])
+//		console.log(data[i])
 		var user = data[i];
 		var item = $('<tr>'+
 			'<td>'+user.id+'</td>'+
@@ -333,16 +333,16 @@ var	host_host_host	= host_host_host+'/index.php/home/admin/';
 		
 		success: function(data) {
 		if(data.status == 1) {//success
-			console.log(1);
-			console.log(data.msg);
-			console.log(data.data);
-			rendPList(data.data.data);
+//			console.log(1);
+//			console.log(data.msg);
+//			console.log(data.data);
+//			rendPList(data.data.data);
 		} else {
-			console.log(data.msg+5+data.data.data)				
+//			console.log(data.msg+5+data.data.data)				
 		}
 		},
 		error: function(data) {
-			console.log(0)
+//			console.log(0)
 		},
 		async: true
 	});

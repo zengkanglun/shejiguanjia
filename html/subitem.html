@@ -15,7 +15,7 @@
 	</head>
 
 	<body>
-				<div id="bodyLeft">
+		<div id="bodyLeft">
 			<!--左侧边栏-->
 			<div class="logoDiv">
 				LOGO
@@ -37,9 +37,12 @@
 						</div>
 					</div>
 					<div class="listBtn">
-						<a href="task.html" class="list_1 list_a">
+						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -47,7 +50,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -130,10 +133,10 @@
 							<div class="cnt_detail first_floor">
 								<div class="item_name">新建子项目</div>
 								<div class="detail_head clearfix">
-									<div class="head_left define">
+									<!--<div class="head_left define">
 										<img src="img/icon_add.png" alt="" />
 										<span>自定义</span>
-									</div>
+									</div>-->
 									<div class="head_right">
 										<div class="list">
 											<div class="small_item">子项目名称:</div>
@@ -147,62 +150,62 @@
 											<td class="item"><i>*</i>项目主管：</td>
 											<td class="item_num">
 												<!--<span>选人</span>-->
-												<input type="text"  class="show director" data-id="0" disabled="disabled"/>
+												<input type="text" class="show director" data-id="0" disabled="disabled" />
 											</td>
 										</tr>
 										<tr class="work">
-											<td class="item" data-id="1">规划负责：</td>
+											<td class="item" data-id="1">规划工种：</td>
 											<td class="item_num">
 												<span>选人</span>
-												<input type="text" class="show" data-id="0" disabled="disabled"/>
+												<input type="text" class="show" data-id="0" disabled="disabled" />
 												<input type="hidden" class="hidden" value="0" />
 											</td>
 										</tr>
 										<tr class="work">
-											<td class="item" data-id="2">方案负责：</td>
+											<td class="item" data-id="2">方案工种：</td>
 											<td class="item_num">
 												<span>选人</span>
-												<input type="text" class="show" data-id="0" disabled="disabled"/>
+												<input type="text" class="show" data-id="0" disabled="disabled" />
 												<input type="hidden" class="hidden" value="0" />
 											</td>
 										</tr>
 										<tr class="work">
-											<td class="item" data-id="3">建筑负责：</td>
+											<td class="item" data-id="3">建筑工种：</td>
 											<td class="item_num">
 												<span>选人</span>
-												<input type="text" class="show" data-id="0" disabled="disabled"/>
+												<input type="text" class="show" data-id="0" disabled="disabled" />
 												<input type="hidden" class="hidden" value="0" />
 											</td>
 										</tr>
 										<tr class="work">
-											<td class="item" data-id="4">结构负责：</td>
+											<td class="item" data-id="4">结构工种：</td>
 											<td class="item_num">
 												<span>选人</span>
-												<input type="text" class="show" data-id="0" disabled="disabled"/>
+												<input type="text" class="show" data-id="0" disabled="disabled" />
 												<input type="hidden" class="hidden" value="0" />
 											</td>
 										</tr>
 										<tr class="work">
-											<td class="item" data-id="5">电气负责：</td>
+											<td class="item" data-id="5">电气工种：</td>
 											<td class="item_num">
 												<span>选人</span>
-												<input type="text" class="show" data-id="0" disabled="disabled"/>
+												<input type="text" class="show" data-id="0" disabled="disabled" />
 												<input type="hidden" class="hidden" value="0" />
 											</td>
 										</tr>
 										<tr class="work">
-											<td class="item" data-id="6">给排水负责：</td>
+											<td class="item" data-id="6">给排水工种：</td>
 											<td class="item_num">
 												<span>选人</span>
-												<input type="text" class="show" data-id="0" disabled="disabled"/>
+												<input type="text" class="show" data-id="0" disabled="disabled" />
 												<input type="hidden" class="hidden" value="0" />
 											</td>
 										</tr>
 										<tr class="work">
-											<td class="item" data-id="7">暖通负责：</td>
+											<td class="item" data-id="7">暖通工种：</td>
 											<td class="item_num">
 												<span>选人</span>
-												<input type="text" class="show" data-id="0" disabled="disabled"/>
+												<input type="text" class="show" data-id="0" disabled="disabled" />
 												<input type="hidden" class="hidden" value="0" />
 											</td>
 										</tr>
@@ -217,8 +220,16 @@
 							</div>
 
 						</div>
-						<button type="button" class="btn1" id="sub_btn">提&nbsp;&nbsp;&nbsp;交</button>
+						<div class="btn_foot">
+							<button type="button" class="btn1" id="sub_btn">提&nbsp;&nbsp;&nbsp;交</button>
+							<button type="button" class="btn2" id="goback">返&nbsp;&nbsp;&nbsp;回</button>
+						</div>
 					</div>
+				</div>
+				<!--/*单位信息*/-->
+				<div class="danw">
+					单位信息：
+					<span></span>
 				</div>
 			</div>
 		</div>

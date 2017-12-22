@@ -11,7 +11,6 @@
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/task.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/li_change.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -39,7 +38,10 @@
 					<div class="listBtn">
 						<a href="task.html?name=1" class="list_1 list_a">
 							<div class="a_box">
-								<div><img src="img/icon-rengwu-white.png" alt="" /></div>
+								<div>
+									<img src="img/icon-rengwu-white.png" alt="" />
+									<span class="l_task"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+								</div>
 								<i>任务</i>
 							</div>
 						</a>
@@ -47,7 +49,7 @@
 							<div class="a_box">
 								<div>
 									<img src="img/icon-tongzhi-white.png" alt="" />
-									<span><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
+									<span class="l_msg"><img src="img/icon-tonghzi-number-orange.png" alt="" /><i></i></span>
 								</div>
 								<i>通知</i>
 							</div>
@@ -199,6 +201,11 @@
 									<div class="page_right">
 										<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -247,6 +254,11 @@
 									</div>
 									<div class="page_right">
 										<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
 									</div>
 								</div>
 							</div>
@@ -299,6 +311,11 @@
 									</div>
 									<div class="page_right">
 										<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
+									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
 									</div>
 								</div>
 							</div>
@@ -353,10 +370,20 @@
 									<div class="page_right">
 										<span>页数</span><i class="less"><</i><span class="number">1</span><span>/</span><span class="total_num">1</span><i class="more">></i>
 									</div>
+									<div class="jump">
+										<span>跳页至</span>
+										<input type="number" class="jump_page" />
+										<div class="go">GO</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<!--创建任务结束-->
+					</div>
+					<!--/*单位信息*/-->
+					<div class="danw">
+						单位信息：
+						<span></span>
 					</div>
 				</div>
 			</div>
@@ -392,7 +419,7 @@
 									</div>
 									<div class="left clearfix group">
 										<span>接受群体：</span>
-										<input type="text" placeholder="" class="show" disabled="disabled"/>
+										<input type="text" placeholder="" class="show" disabled="disabled" />
 										<input type="hidden" placeholder="" class="hidden" id="task_whoname" name="to_user" />
 										<span class="choose" id="sub_choose">选人</span>
 									</div>
@@ -433,23 +460,23 @@
 							<div class="cnt_header">
 								<div class="left clearfix">
 									<span>相关项目：</span>
-									<input type="text" value="相关项目" disabled="disabled" id="do_what" />
+									<input type="text" disabled="disabled" id="do_what" />
 								</div>
 								<div class="right clearfix">
 									<span>类型：</span>
-									<input type="text" value="分派" disabled="disabled" id="do_type" />
+									<input type="text" disabled="disabled" id="do_type" />
 								</div>
 								<div class="left clearfix group">
 									<span>接受群体：</span>
-									<input type="text" value="李四" disabled="disabled" id="do_who" />
+									<input type="text" disabled="disabled" id="do_who" />
 								</div>
 								<div class="right clearfix">
 									<span>计划开始时间：</span>
-									<input type="text" value="选择时间" disabled="disabled" id="do_start" />
+									<input type="text" disabled="disabled" id="do_start" />
 								</div>
 								<div class="left clearfix">
 									<span>标题：</span>
-									<input type="text" value="输入标题" disabled="disabled" id="do_title" />
+									<input type="text" disabled="disabled" id="do_title" />
 								</div>
 								<div class="right clearfix file">
 									<span>下载附件：</span>
@@ -459,7 +486,7 @@
 							</div>
 							<div class="cnt_bottom">
 								<div class="cnt_bottom_header">任务内容</div>
-								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled" id="do_content"></textarea>
+								<textarea name="" rows="" cols="" disabled="disabled" id="do_content"></textarea>
 							</div>
 							<div class="color"></div>
 							<div class="cnt_reply">
@@ -484,23 +511,23 @@
 							<div class="cnt_header">
 								<div class="left clearfix">
 									<span>相关项目：</span>
-									<input type="text" placeholder="" disabled="disabled" id="nd_what" />
+									<input type="text" disabled="disabled" id="nd_what" />
 								</div>
 								<div class="right clearfix">
 									<span>类型：</span>
-									<input type="text" placeholder="" disabled="disabled" id="nd_type" />
+									<input type="text" disabled="disabled" id="nd_type" />
 								</div>
 								<div class="left clearfix group">
 									<span>接受群体：</span>
-									<input type="text" placeholder="李四" disabled="disabled" id="nd_who" />
+									<input type="text" disabled="disabled" id="nd_who" />
 								</div>
 								<div class="right clearfix">
 									<span>计划开始时间：</span>
-									<input type="text" placeholder="" disabled="disabled" id="nd_start" />
+									<input type="text" disabled="disabled" id="nd_start" />
 								</div>
 								<div class="left clearfix">
 									<span>标题：</span>
-									<input type="text" placeholder="" disabled="disabled" id="nd_title" />
+									<input type="text" disabled="disabled" id="nd_title" />
 								</div>
 								<div class="right clearfix file">
 									<span>下载附件：</span>
@@ -510,12 +537,12 @@
 							</div>
 							<div class="cnt_bottom">
 								<div class="cnt_bottom_header">任务内容</div>
-								<textarea name="" rows="" cols="" placeholder="" disabled="disabled" id="nd_content"></textarea>
+								<textarea name="" rows="" cols="" disabled="disabled" id="nd_content"></textarea>
 							</div>
 							<div class="color"></div>
 							<div class="cnt_reply">
 								<div class="cnt_bottom_header">回复内容</div>
-								<textarea name="" rows="" cols="" placeholder="" id="nd_repr"></textarea>
+								<textarea name="" rows="" cols="" id="nd_repr"></textarea>
 							</div>
 							<div class="cnt_footer">
 								<button type="button" class="btn1">接受任务</button>
@@ -537,23 +564,23 @@
 							<div class="cnt_header">
 								<div class="left clearfix">
 									<span>相关项目：</span>
-									<input type="text" placeholder="相关项目" disabled="disabled" id="his_what" />
+									<input type="text" disabled="disabled" id="his_what" />
 								</div>
 								<div class="right clearfix">
 									<span>类型：</span>
-									<input type="text" placeholder="分派" disabled="disabled" id="his_type" />
+									<input type="text" p disabled="disabled" id="his_type" />
 								</div>
 								<div class="left clearfix group">
 									<span>接受群体：</span>
-									<input type="text" placeholder="李四" disabled="disabled" id="his_who" />
+									<input type="text" disabled="disabled" id="his_who" />
 								</div>
 								<div class="right clearfix">
 									<span>计划开始时间：</span>
-									<input type="text" placeholder="选择时间" disabled="disabled" id="his_start" />
+									<input type="text" disabled="disabled" id="his_start" />
 								</div>
 								<div class="left clearfix">
 									<span>标题：</span>
-									<input type="text" placeholder="输入标题" disabled="disabled" id="his_title" />
+									<input type="text" disabled="disabled" id="his_title" />
 								</div>
 								<div class="right clearfix file">
 									<span>下载附件：</span>
@@ -563,12 +590,12 @@
 							</div>
 							<div class="cnt_bottom">
 								<div class="cnt_bottom_header">任务内容</div>
-								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled" id="his_content"></textarea>
+								<textarea name="" rows="" cols="" disabled="disabled" id="his_content"></textarea>
 							</div>
 							<div class="color"></div>
 							<div class="cnt_reply">
 								<div class="cnt_bottom_header">回复内容</div>
-								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled" id="his_ref"></textarea>
+								<textarea name="" rows="" cols="" disabled="disabled" id="his_ref"></textarea>
 							</div>
 							<div class="cnt_footer">
 								<button type="button" class="btn1">确&nbsp;&nbsp;&nbsp;定</button>
@@ -589,23 +616,23 @@
 							<div class="cnt_header">
 								<div class="left clearfix">
 									<span>相关项目：</span>
-									<input type="text" placeholder="相关项目" disabled="disabled" id="ow_what" />
+									<input type="text" disabled="disabled" id="ow_what" />
 								</div>
 								<div class="right clearfix">
 									<span>类型：</span>
-									<input type="text" placeholder="分派" disabled="disabled" id="ow_type" />
+									<input type="text" disabled="disabled" id="ow_type" />
 								</div>
 								<div class="left clearfix group">
 									<span>接受群体：</span>
-									<input type="text" placeholder="李四" disabled="disabled" id="ow_who" />
+									<input type="text" disabled="disabled" id="ow_who" />
 								</div>
 								<div class="right clearfix">
 									<span>计划开始时间：</span>
-									<input type="text" placeholder="选择时间" disabled="disabled" id="ow_start" />
+									<input type="text" disabled="disabled" id="ow_start" />
 								</div>
 								<div class="left clearfix">
 									<span>标题：</span>
-									<input type="text" placeholder="输入标题" disabled="disabled" id="ow_title" />
+									<input type="text" disabled="disabled" id="ow_title" />
 								</div>
 								<div class="right clearfix file">
 									<span>下载附件：</span>
@@ -615,18 +642,12 @@
 							</div>
 							<div class="cnt_bottom">
 								<div class="cnt_bottom_header">任务内容</div>
-								<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled" id="ow_content"></textarea>
+								<textarea name="" rows="" cols="" disabled="disabled" id="ow_content"></textarea>
 							</div>
 							<div class="color"></div>
 							<div class="cnt_reply">
 								<div class="cnt_bottom_header"><span>状态</span></div>
 								<div class="reply_ul clearfix">
-									<li class="clearfix">
-										<div class="cnt_detail">
-											<span id="ow_ren"></span>：<span id="ow_zht"></span>
-										</div>
-										<div class="time" id="ow_shij"></div>
-									</li>
 									<!--<li class="clearfix">
 										<div class="cnt_detail">
 											<span>李四：</span><span>已读已读已读已读已读已读已读</span>
