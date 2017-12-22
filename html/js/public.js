@@ -34,7 +34,7 @@ function toast(n) {
 	}, 2000);
 
 }
-/*login点击回到首页*/
+/*logo点击回到首页*/
 $(document).on("click",".logoDiv",function(){
 	location.href="index.html"
 })
@@ -466,5 +466,3 @@ $.ajax({
 	async: true
 });
 
-// 加载左侧菜单
-$('#bodyLeft').load('leftMenu.html')
