@@ -1,4 +1,4 @@
-var host_host_host = "http://sheji.antiphon.cc/php";
+var host_host_host = "http://localhost/php";
 var tapChoose = null;
 var token = localStorage.getItem("token");
 var windowWidthR, resizeWidth;
@@ -35,7 +35,7 @@ function toast(n) {
 	}, 2000);
 
 }
-/*login点击回到首页*/
+/*logo点击回到首页*/
 $(document).on("click", ".logoDiv", function() {
 	location.href = "index.html"
 })

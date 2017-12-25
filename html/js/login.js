@@ -1,5 +1,5 @@
 $(function() {
-	var host_host_host = "http://sheji.antiphon.cc/php";
+	var host_host_host = "http://localhost/php";
 	var d = new Date();
 	var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
 	var str1 = "星期" + "日一二三四五六".charAt(new Date().getDay());
@@ -82,7 +82,7 @@ $(function() {
 		} else {
 			$.ajax({
 				type: "post",
-				url: host_host_host + "/index.php/home/public/login",
+				url: host_host_host + "/home/public/login",
 				dataType: 'json',
 				data: {
 					username: account,
@@ -100,7 +100,7 @@ $(function() {
 						sessionStorage.setItem("uid", data.data.uid);
 						sessionStorage.setItem("last_time", data.data.last_time);
 						sessionStorage.setItem("last_ip", data.data.last_ip);
-						location.href = "index.html";
+						//location.href = "index.html";
 					} else {
 						alert("账号或者密码错误");
 					}

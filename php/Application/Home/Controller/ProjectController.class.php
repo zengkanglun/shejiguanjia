@@ -339,6 +339,8 @@ class ProjectController extends CommonController
                     ];
                     //查询子项目工种负责人
                     $data['work'] = D('ProjectChildWorkType')->relation(true)->where('project_child_id = '.$post['id'])->field('user_id,work_id')->select();
+                    //获取全部默认工种
+                    $data['allWork'] = M('work')->where(array('type'=>0))->field('id,name')->select();
                     //获取自定义工种
                     foreach($data['work'] as $vo){
                         $id[] = $vo['work_id'];
@@ -416,19 +418,23 @@ class ProjectController extends CommonController
             $user = $post['user'];
             foreach($post['work_id'] as $key=>$vo){
                 //查询是否有数据
-                $where['work_id'] = $vo;
-                $where['project_child_id'] = $post['child_id'];
-                $is_data = M('project_child_work_type')->where($where)->find();
+                $whe['work_id'] = $vo;
+                $whe['project_child_id'] = $post['child_id'];
+                $is_data = M('project_child_work_type')->where($whe)->find();
+                //if($where['work_id'] == 2)
+                    //ajax_success($is_data);
+                    //ajax_success($post['child_id']);
+
                 //有就修改没有就添加
                 if($is_data){
-                    M('project_child_work_type')->where($where)->save([
+                    M('project_child_work_type')->where($whe)->save([
                         'user_id' => $user[$key], //工种负责人ID
                         'update_time' => time(),
                     ]);
 
                     //修复修改负责人时员工表更新条件不明确导致的全部人员都为负责人
                     $where['user_id'] = $is_data['user_id'];
-                    M('staff')->where($where)->save([
+                    M('staff')->where($whe)->save([
                         'user_id'   => $user[$key],
                         'update_time'   => time()
                     ]);

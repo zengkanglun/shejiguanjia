@@ -151,7 +151,35 @@ $(function() {
 					str += '		<input type="text" value="' + datas.director.nickname + '" class="show director" data-id="' + datas.director.user_id + '" disabled="disabled">';
 					str += '	</td>';
 					str += '</tr>';
-					for(var i = 0; i < datas.work.length; i++) {
+
+                    for(var i = 0; i < datas.allWork.length; i++) {
+                        str += '<tr class="work">';
+                        str += '	<td class="item" data-id="' + datas.allWork[i].id + '">' + datas.allWork[i].name + '：</td>';
+                        str += '	<td class="item_num">';
+                        str += '		<span>选人</span>';
+                        str += '		<input type="text" value="暂无" class="show" data-id="" disabled="disabled" />';
+                        str += '		<input type="hidden" class="hidden" value="0" />';
+                        str += '	</td>';
+                        str += '</tr>';
+                    }
+                    $('.big_content tbody').append(str);
+
+                    for(var i = 0; i < datas.work.length; i++) {
+                    	str = '';
+                        for(var a = 1; a < $('.cnt_detail tbody tr').length;a++){
+                            if($('.cnt_detail tbody tr').eq(a).find('.item').attr('data-id') == datas.work[i].work_id){
+                                str += '	<td class="item_num">';
+                                str += '		<span>选人</span>';
+                                str += '		<input type="text" value="' + datas.work[i].nickname + '" class="show" data-id="' + datas.work[i].user_id + '" disabled="disabled" />';
+                                str += '		<input type="hidden" class="hidden" value="0" />';
+                                str += '	</td>';
+                            	$('.cnt_detail tbody tr').eq(a).find('.item').next().html(str);
+                            }
+                        }
+                    }
+
+
+					/*for(var i = 0; i < datas.work.length; i++) {
 						str += '<tr class="work">';
 						str += '	<td class="item" data-id="' + datas.work[i].work_id + '">' + datas.work[i].name + '：</td>';
 						str += '	<td class="item_num">';
@@ -161,7 +189,7 @@ $(function() {
 						str += '	</td>';
 						str += '</tr>';
 					}
-					$('.big_content tbody').append(str);
+					$('.big_content tbody').append(str);*/
 					var list = '';
 					$(".beixuan .design").html('');
 					for(var j = 0; j < datas.cust_work.length; j++) {
@@ -194,8 +222,8 @@ $(function() {
 			id.push($('.cnt_detail tbody tr').eq(i).find('.item').attr('data-id'));
 			user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
 		}
-		//		console.log(id);
-		//		console.log(user);
+				console.log(id);
+				console.log(user);
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')

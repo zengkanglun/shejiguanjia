@@ -346,7 +346,7 @@ class FinanceController extends CommonController
             $file = uploads('',array('jpg','gif','bmp','png','jpeg','xlsx','doc','docx','xls','txt'),'','./Uploads/contract/');
 
             $arr['filename'] = $_FILES['contract']['name']; //合同原文件名
-            $arr['file'] = $file[0]; //文件路径
+            $arr['file'] = '/php'.$file[0]; //文件路径
 //            $project->filename = $_FILES['contract']['name']; //合同原文件名
 //            $project->file = $file[0]; //文件路径
         }
@@ -800,8 +800,8 @@ class FinanceController extends CommonController
             foreach ( $list as $key => $value ) {
 
                 $total = $projectCommission->where(['project_id' => $value['project_id']])->sum('amount');
-                $expense_total = M('expense')->where(['project_id'=>$value['project_id']])->getField('sum(amount)');
-                $list[$key]['total'] = ($total ? $total : 0) + ($expense_total ? $expense_total : 0);        //计提总支出
+                //$expense_total = M('expense')->where(['project_id'=>$value['project_id']])->getField('sum(amount)');
+                $list[$key]['total'] = ($total ? $total : 0) ;//+ ($expense_total ? $expense_total : 0);        //计提总支出
                 $last_commission = $projectCommission->where(['project_id' => $value['project_id']])->order('end_time desc')->find();
                 $last_time = $last_commission['start_time'] ? date('Y/m/d',$last_commission['start_time']) : '暂无';
                 $end_time  = $last_commission['end_time'] ? date('Y/m/d',$last_commission['end_time']) : '计提';
