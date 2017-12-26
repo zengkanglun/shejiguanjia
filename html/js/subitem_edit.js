@@ -229,6 +229,7 @@ $(function() {
 		}
 				console.log(id);
 				console.log(user);
+				console.log($('.cnt_detail tbody tr').eq(0).find('.item').attr('data-id'));
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')
@@ -241,8 +242,8 @@ $(function() {
 				user: user,
 				child_id: child_id,
 				child_name:childName,
-				project_id: 1,
-				director_id: $('.cnt_detail tbody tr').eq(0).find('.item').attr('data-id')
+				project_id: localStorage.getItem('project_id'),
+				director_id: $('.cnt_detail tbody tr').eq(0).find('.director').attr('data-id')
 
 			},
 			success: function(data) {
