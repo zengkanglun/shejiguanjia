@@ -459,6 +459,8 @@ class ProjectController extends CommonController
                     }
                 }
             }
+            $res = M('project_child')->save(array('id'=>$post['child_id'],'name'=>$post['child_name']));
+
             //添加日志记录
             $project_name = M('project')->where(['id'=>$post['project_id']])->getField('name');
             $this->log($this->nickname.'编辑了项目'.$project_name,1);
