@@ -436,7 +436,7 @@ class ProjectController extends CommonController
                     ]);
 
                     //修复修改负责人时员工表更新条件不明确导致的全部人员都为负责人
-                    $where['user_id'] = $is_data['user_id'];
+                    $whe['user_id'] = $is_data['user_id'];
                     M('staff')->where($whe)->save([
                         'user_id'   => $user[$key],
                         'update_time'   => time()
