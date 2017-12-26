@@ -40,21 +40,18 @@ $(function() {
 	//添加用户(nor层)
 
 	var newpF = function() {
-
-
 		var newP = {};
 		newP.username = "" + $("#add_nor #new_username").val();
 		newP.password = "" + $("#add_nor #new_password").val();
 		newP.nickname = "" + $("#add_nor #new_nickname").val();
 		newP.birthday = "" + $("#add_nor #testone").val();
-		newP.sex = "" + $("#add_nor #new_sex").val();
-		if(newP.sex == "男")
-			newP.sex = "1";
-		else if(newP.sex == "女")
-			newP.sex = "2";
-		else
-			newP.sex = "0";
-		//newP.sex = "" + $("#add_nor #new_sex_list").val();
+		newP.sex = "" + $("#add_nor #new_sex_list option:selected").val();
+		// if(newP.sex == "男")
+		// 	newP.sex = "1";
+		// else if(newP.sex == "女")
+		// 	newP.sex = "2";
+		// else
+		// 	newP.sex = "0";
 		newP.worktime = "" + $("#add_nor #testtwo").val();
 		newP.school = "" + $("#add_nor #new_school").val();
 		newP.edu = "" + $("#add_nor #new_edu").val();
@@ -69,6 +66,7 @@ $(function() {
 		var e_id = "#autho_add";
 		newP.authority = renderAuthoInverParam(e_id) //"1";
 		token = localStorage.getItem("token");
+		console.log(newP);
 		$.ajax({
 
 				method: 'POST',

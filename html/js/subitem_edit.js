@@ -19,7 +19,7 @@ $(function() {
 		},
 		success: function(data) {
 			if(data.status == 1) {
-				//				console.log(data);
+				// console.log(data);
 				var datas = data.data;
 				var str = '';
 				for(var i = 0; i < datas.child.length; i++) {
@@ -33,7 +33,8 @@ $(function() {
 				}
 				nmain(datas.child[0].id);
 				$('.floor_cnt_ul ').html(str);
-				$(".big_content .list_name .floor").val(data.data.child[0].name)
+				$(".big_content .list_name .floor").val(data.data.child[0].name);
+                $(".big_content .list_name .floor").attr('id',data.data.child[0].id);
 			} else {
 				toast(data.msg);
 			}
@@ -140,7 +141,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					//					console.log(data);
+					// console.log(data);
 					var datas = data.data;
 					var str = '';
 					$('.big_content tbody').html('');
@@ -218,12 +219,19 @@ $(function() {
 	$(document).on('click', '.count_edit_footer .btn1', function() {
 		var id = [];
 		var user = [];
+		var childName = $(".big_content .list_name .floor").val();
+
+		// console.log(child_id);
+
 		for(var i = 1; i < $('.cnt_detail tbody tr').length; i++) {
-			id.push($('.cnt_detail tbody tr').eq(i).find('.item').attr('data-id'));
-			user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
+			if($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id') != 0){
+                id.push($('.cnt_detail tbody tr').eq(i).find('.item').attr('data-id'));
+                user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
+			}
 		}
-				console.log(id);
-				console.log(user);
+		// console.log(id);
+		// console.log(user);
+		// console.log($('.cnt_detail tbody tr').eq(0).find('.item').attr('data-id'));
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')
@@ -235,8 +243,9 @@ $(function() {
 				work_id: id,
 				user: user,
 				child_id: child_id,
-				project_id: 1,
-				director_id: $('.cnt_detail tbody tr').eq(0).find('.item').attr('data-id')
+				child_name:childName,
+				project_id: localStorage.getItem('project_id'),
+				director_id: $('.cnt_detail tbody tr').eq(0).find('.director').attr('data-id')
 
 			},
 			success: function(data) {

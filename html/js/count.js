@@ -274,7 +274,7 @@ $(function() {
 					//					console.log(data)
 					$("#boxPock").show();
 					$("#boxPock .count_edit").show();
-					$(".count_edit .project_name").val(data.data.info.start_time + "/" + data.data.info.end_time);
+					$(".count_edit .start_time").val(data.data.info.start_time + "/" + data.data.info.end_time);
 					$(".count_edit .work_name").val(data.data.info.work_name);
 					$(".count_edit .username").val(data.data.info.username);
 					$(".count_edit .commission_rate").val(data.data.info.commission_rate);

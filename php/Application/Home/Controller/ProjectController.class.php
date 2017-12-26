@@ -411,7 +411,10 @@ class ProjectController extends CommonController
                 $is_super = M('user')->where(['id'=>$this->user_id])->getField('is_super');
                 //如果是超级管理员操作就修改
                 if($is_super == 1){
-                    $director = M('project')->where(['id'=>$post['project_id']])->save(['director_id'=>$post['director_id'],'update_time'=>time()]);
+                    $beta['id'] = $post['project_id'];
+                    $beta['director_id'] = $post['director_id'];
+                    $beta['update_time'] = time();
+                    $director = M('project')->save($beta);
                 }
             }
 
@@ -433,7 +436,7 @@ class ProjectController extends CommonController
                     ]);
 
                     //修复修改负责人时员工表更新条件不明确导致的全部人员都为负责人
-                    $where['user_id'] = $is_data['user_id'];
+                    $whe['user_id'] = $is_data['user_id'];
                     M('staff')->where($whe)->save([
                         'user_id'   => $user[$key],
                         'update_time'   => time()
@@ -459,6 +462,8 @@ class ProjectController extends CommonController
                     }
                 }
             }
+            $res = M('project_child')->save(array('id'=>$post['child_id'],'name'=>$post['child_name']));
+
             //添加日志记录
             $project_name = M('project')->where(['id'=>$post['project_id']])->getField('name');
             $this->log($this->nickname.'编辑了项目'.$project_name,1);
