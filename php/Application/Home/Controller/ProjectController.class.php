@@ -855,8 +855,8 @@ class ProjectController extends CommonController
                 foreach($project['get_on'] as $k=>$v)
                 {
                     $pid = M('project')->where(['id'=>$v['id']])->getField('director_id');
-                    $build_name = M('build_type')->where(array('id'=>$v['build_type']))->field('name')->find();
-                    $project['get_on'][$k]['build_name'] = $build_name[0];
+                    $build_name = M('build_type')->where(array('id'=>$v['building_type']))->getField('name');
+                    $project['get_on'][$k]['build_name'] = $build_name;
                     if(M('user')->where(['id'=>$this->user_id])->getField('is_super'))
                     {
                         $project['get_on'][$k]['edit'] = 1;
@@ -877,8 +877,8 @@ class ProjectController extends CommonController
                 foreach($project['end'] as $k=>$v)
                 {
                     $pid = M('project')->where(['id'=>$v['id']])->getField('director_id');
-                    $build_name = M('build_type')->where(array('id'=>$v['build_type']))->field('name')->find();
-                    $project['end'][$k]['build_name'] = $build_name[0];
+                    $build_name = M('build_type')->where(array('id'=>$v['building_type']))->getField('name');
+                    $project['end'][$k]['build_name'] = $build_name;
                     if(M('user')->where(['id'=>$this->user_id])->getField('is_super'))
                     {
                         $project['end'][$k]['edit'] = 1;
@@ -900,8 +900,8 @@ class ProjectController extends CommonController
                 foreach($project['Interrupted'] as $k=>$v)
                 {
                     $pid = M('project')->where(['id'=>$v['id']])->getField('director_id');
-                    $build_name = M('build_type')->where(array('id'=>$v['build_type']))->field('name')->find();
-                    $project['Interrupted'][$k]['build_name'] = $build_name[0];
+                    $build_name = M('build_type')->where(array('id'=>$v['building_type']))->getField('name');
+                    $project['Interrupted'][$k]['build_name'] = $build_name;
 
                     if(M('user')->where(['id'=>$this->user_id])->getField('is_super'))
                     {
