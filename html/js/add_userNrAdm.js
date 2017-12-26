@@ -832,10 +832,10 @@ $(function() {
 			var item = $('<tr class="'+classname+'">' +
 				'<td><span><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
-				'<td>' + user.username + '</td>' +
+				'<td>' + user.nickname + '</td>' +
 				'<td>' + user.worktime + '</td>' +
 				'<td>' + user.work_type + '</td>' +
-				'<td>' + user.nickname + '</td>' +
+				'<td>' + user.username + '</td>' +
 				'<td>' + user.role + '</td>' +
 				'<td class="handle"> ' + user.mobile + ' </td>' +
 				'<td>' +
