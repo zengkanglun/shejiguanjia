@@ -224,12 +224,14 @@ $(function() {
 		// console.log(child_id);
 
 		for(var i = 1; i < $('.cnt_detail tbody tr').length; i++) {
-			id.push($('.cnt_detail tbody tr').eq(i).find('.item').attr('data-id'));
-			user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
+			if($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id') != 0){
+                id.push($('.cnt_detail tbody tr').eq(i).find('.item').attr('data-id'));
+                user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
+			}
 		}
-				console.log(id);
-				console.log(user);
-				console.log($('.cnt_detail tbody tr').eq(0).find('.item').attr('data-id'));
+		// console.log(id);
+		// console.log(user);
+		// console.log($('.cnt_detail tbody tr').eq(0).find('.item').attr('data-id'));
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')
