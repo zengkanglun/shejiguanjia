@@ -207,13 +207,13 @@ class AdminController extends CommonController
             {
                 ajax_error('数据为空');
             }
-            foreach ($post as $k=>$v)
+            /*foreach ($post as $k=>$v)
             {
                 if($v!=0 && !$v)
                 {
                     unset($post[$k]);
                 }
-            }
+            }*/
 
             if($post = $model->create($post))
             {
