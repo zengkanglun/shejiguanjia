@@ -42,6 +42,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
+					console.log(data);
 					$(".basic_msg tbody .number").val(data.data.number);
 					$(".basic_msg tbody .name").val(data.data.name);
 					$(".basic_msg tbody .project_time").val(data.data.project_time);
@@ -90,7 +91,7 @@ $(function() {
 					//根据1显示 ‘子项目录入’
 					var toshow = data.data.is_director;//toshow = 0;alert(toshow)
 					
-					if(toshow)
+					if(toshow == 1)
 					$(".project_data .item_type").show();
 					else
 					$(".project_data .item_type").hide();
@@ -260,6 +261,7 @@ $(function() {
 	});
 	/*子项目录入*/
 	$(document).on("click", ".project_data .item_type.fix", function() {
+
 		location.href = "subitem.html"
 	})
 	$(document).on('click', '.btn2.nor', function() {
