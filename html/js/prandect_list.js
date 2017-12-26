@@ -199,7 +199,7 @@ $(function() {
 			var item = $('<tr>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
 				'<td>' + tsk.name + '</td>' +
-				'<td>' + tsk.building_type + '</td>' +
+				'<td>' + tsk.build_name + '</td>' +
 				'<td>' + tsk.province + '</td>' +
 				'<td>' + tsk.build + '</td>' +
 				'<td>' + tsk.nickname + '</td>' +

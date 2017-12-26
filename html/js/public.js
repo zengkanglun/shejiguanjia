@@ -1,4 +1,4 @@
-var host_host_host = "http://localhost/php";
+var host_host_host = "http://localhost/shejiguanjia/php";
 var tapChoose = null;
 var token = localStorage.getItem("token");
 var windowWidthR, resizeWidth;
