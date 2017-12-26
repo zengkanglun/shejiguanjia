@@ -411,7 +411,10 @@ class ProjectController extends CommonController
                 $is_super = M('user')->where(['id'=>$this->user_id])->getField('is_super');
                 //如果是超级管理员操作就修改
                 if($is_super == 1){
-                    $director = M('project')->where(['id'=>$post['project_id']])->save(['director_id'=>$post['director_id'],'update_time'=>time()]);
+                    $beta['id'] = $post['project_id'];
+                    $beta['director_id'] = $post['director_id'];
+                    $beta['update_time'] = time();
+                    $director = M('project')->save($beta);
                 }
             }
 
