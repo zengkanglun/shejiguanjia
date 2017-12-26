@@ -346,7 +346,7 @@ class FinanceController extends CommonController
             $file = uploads('',array('jpg','gif','bmp','png','jpeg','xlsx','doc','docx','xls','txt'),'','./Uploads/contract/');
 
             $arr['filename'] = $_FILES['contract']['name']; //合同原文件名
-            $arr['file'] = '/php'.$file[0]; //文件路径
+            $arr['file'] = '/shejiguanjia/php'.$file[0]; //文件路径
 //            $project->filename = $_FILES['contract']['name']; //合同原文件名
 //            $project->file = $file[0]; //文件路径
         }

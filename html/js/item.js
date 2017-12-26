@@ -4,8 +4,8 @@ $(function() {
 	$(document).on("click", ".basic_msg tbody .filename", function() {
 		 
 		var url = $(this).data("url");
-		console.log(url);
-		//location.href = url;
+		//console.log(url);
+		location.href = url;
 	})
 	
 	//项目信息编辑

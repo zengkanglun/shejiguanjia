@@ -855,7 +855,8 @@ class ProjectController extends CommonController
                 foreach($project['get_on'] as $k=>$v)
                 {
                     $pid = M('project')->where(['id'=>$v['id']])->getField('director_id');
-                    
+                    $build_name = M('build_type')->where(array('id'=>$v['build_type']))->field('name')->find();
+                    $project['get_on'][$k]['build_name'] = $build_name[0];
                     if(M('user')->where(['id'=>$this->user_id])->getField('is_super'))
                     {
                         $project['get_on'][$k]['edit'] = 1;
@@ -876,7 +877,8 @@ class ProjectController extends CommonController
                 foreach($project['end'] as $k=>$v)
                 {
                     $pid = M('project')->where(['id'=>$v['id']])->getField('director_id');
-                    
+                    $build_name = M('build_type')->where(array('id'=>$v['build_type']))->field('name')->find();
+                    $project['end'][$k]['build_name'] = $build_name[0];
                     if(M('user')->where(['id'=>$this->user_id])->getField('is_super'))
                     {
                         $project['end'][$k]['edit'] = 1;
@@ -894,10 +896,12 @@ class ProjectController extends CommonController
                 
                 //中断的项目
                 $project['Interrupted'] = D('project')->relation(['BuildType','user'])->where($where)->where("status = 2")->field('id,name,building_type,province,city,build,director_id,project_time,status')->order('add_time desc')->page($post['p3'],10)->select();
+
                 foreach($project['Interrupted'] as $k=>$v)
                 {
                     $pid = M('project')->where(['id'=>$v['id']])->getField('director_id');
-                   
+                    $build_name = M('build_type')->where(array('id'=>$v['build_type']))->field('name')->find();
+                    $project['Interrupted'][$k]['build_name'] = $build_name[0];
 
                     if(M('user')->where(['id'=>$this->user_id])->getField('is_super'))
                     {
