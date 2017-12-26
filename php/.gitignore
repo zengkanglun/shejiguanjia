@@ -3,4 +3,4 @@
 Application/Runtime/
 /Application/Runtime/*
 *.bak
-Application/Common/Conf/db.php
+#Application/Common/Conf/db.php
