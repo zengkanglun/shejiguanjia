@@ -398,7 +398,6 @@ class AdminController extends CommonController
         $type = I('get.type',0);
         $name = I('get.name','');
         $model = D('ActionLog');
-
         if($name)
         {
             $ids = M('user')->where(['nickname'=>['like',"%{$name}%"]])->getField('group_concat(id)');
