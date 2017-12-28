@@ -114,7 +114,7 @@ var infoGetF =  function(){
 		
 	})
 	.done(function(data){
-		toast(data.msg);
+		//toast(data.msg);
 		if(data.status == 1) {//success
 //			console.log(1);
 			$("#name").val(data.data[0].name);

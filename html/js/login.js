@@ -100,7 +100,7 @@ $(function() {
 						sessionStorage.setItem("uid", data.data.uid);
 						sessionStorage.setItem("last_time", data.data.last_time);
 						sessionStorage.setItem("last_ip", data.data.last_ip);
-						//location.href = "index.html";
+						location.href = "index.html";
 					} else {
 						alert("账号或者密码错误");
 					}

@@ -521,7 +521,7 @@ $(function() {
 		newP.authority = arrUser.join(",");
 		$.ajax({
 			type: "post",
-			url: host_host_host + "/index.php/home/manage/create",
+			url: host_host_host + "/home/manage/create",
 			dataType: 'json',
 			headers: {
 				accept: "usertoken:" + token,

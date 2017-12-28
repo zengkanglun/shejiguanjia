@@ -214,7 +214,7 @@ $(function() {
 				headers: {
 					accept: "usertoken:" + token
 				},
-				url: host_host_host+'/index.php/home/admin/' + addtyN,
+				url: host_host_host+'/home/admin/' + addtyN,
 				data: newP, //{},
 			})
 			.done(function(data) {

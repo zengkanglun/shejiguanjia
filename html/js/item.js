@@ -55,6 +55,8 @@ $(function() {
 			success: function(data) {
 				if(data.status == 1) {
 					item_table = "";
+					console.log(data);
+					console.log(project_id);
 					$(".msg_head .edit").attr("data-id", data.data.id);
 					$(".basic_msg tbody .number").text(data.data.number);
 					$(".basic_msg tbody .name").text(data.data.name);
@@ -68,7 +70,7 @@ $(function() {
 					$(".basic_msg tbody .filename").data("url",data.data.file);
 					//$(".basic_msg tbody .filename").html("<a href=\""+data.data.file+"\">"+data.data.filename+"</a>");		
 					$(".basic_msg tbody .money").text(data.data.money);							
-					$(".basic_msg tbody .receipt").text(data.data.sched_name + ' 已收款 ' + data.data.receipt);
+					$(".basic_msg tbody .receipt").text(data.data.receipt);
 					var projectName = data.data.name;
 					if(!projectName) {
 						projectName = "";

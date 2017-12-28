@@ -698,7 +698,7 @@ class ProjectController extends CommonController
                 $temp_schedule = $schedule['name'];
             }
             $project['sched_name'] = $temp_schedule;
-            $project['receipt'] = abs($schedule['receive'])?$schedule['receive']:0;
+            $project['receipt'] = ' 已收款 '.abs($schedule['receive'])?$schedule['receive']:0;
 
             //查询子项目
             $project['child'] = D('ProjectChild')->relation(true)->where("project_id = $id")->field('id,name,project_id')->select();

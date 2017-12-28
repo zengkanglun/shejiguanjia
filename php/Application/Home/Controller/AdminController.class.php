@@ -603,7 +603,7 @@ class AdminController extends CommonController
     {
         $data = M('info')->field(['name','mobile','address','zipcode','email'])->select();
 
-        ajax_success('获取成功',$data);
+        ajax_success('',$data);
 
     }
 
@@ -615,10 +615,17 @@ class AdminController extends CommonController
         if(IS_POST)
         {
             $post = I('post.');
-            if(M('info')->where(1)->save($post))
+            if(M('info')->select()){
+                if(M('info')->where("id=1")->save($post))
+                {
+                    $this->log("超级管理员更新了系统信息",8);
+                    ajax_success('更新成功');
+                }
+            }else
             {
-                $this->log("超级管理员更新了系统信息",8);
-                ajax_success('更新成功');
+                (M('info')->add($post));
+                $this->log("超级管理员添加了系统信息",8);
+                ajax_success('添加成功');
             }
         }
 
@@ -1000,9 +1007,7 @@ class AdminController extends CommonController
         {
             $post = I('post.');
 
-            $id = $post['id'];
-            unset($post['id']);
-            if(M('stageType')->where(['id'=>$id])->save($post))
+            if(M('stageTypes')->save($post))
             {
                 ajax_success('编辑成功');
             }
