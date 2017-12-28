@@ -207,13 +207,13 @@ class AdminController extends CommonController
             {
                 ajax_error('数据为空');
             }
-            foreach ($post as $k=>$v)
+            /*foreach ($post as $k=>$v)
             {
                 if($v!=0 && !$v)
                 {
                     unset($post[$k]);
                 }
-            }
+            }*/
 
             if($post = $model->create($post))
             {
@@ -398,7 +398,6 @@ class AdminController extends CommonController
         $type = I('get.type',0);
         $name = I('get.name','');
         $model = D('ActionLog');
-
         if($name)
         {
             $ids = M('user')->where(['nickname'=>['like',"%{$name}%"]])->getField('group_concat(id)');
@@ -1006,7 +1005,6 @@ class AdminController extends CommonController
         if(IS_POST)
         {
             $post = I('post.');
-
             if(M('stageTypes')->save($post))
             {
                 ajax_success('编辑成功');
@@ -1047,7 +1045,7 @@ class AdminController extends CommonController
 
             $id = $post['id'];
             unset($post['id']);
-            if(M('processType')->where(['id'=>$id])->save($post))
+            if(M('processType')->save($post))
             {
                 ajax_success('编辑成功');
             }

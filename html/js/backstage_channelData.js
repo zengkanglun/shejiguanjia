@@ -204,7 +204,7 @@ $(function() {
 		newP.id = "" + $("#boxPock #edit_add").data("id");
 		newP.name = "" + $("#shortE").val();
 
-//		console.log(JSON.stringify(newP))
+		//console.log(JSON.stringify(newP))
 		token = localStorage.getItem("token");
 		$.ajax({
 
@@ -285,6 +285,7 @@ $(function() {
 			addtyN = "edit_project_type";
 		if(addtyN == "edit_admin_overhead_type")
 			addtyN = "edit_admin_type";
+		//console.log(addtyN);
 		editpFParam(addtyN);
 	});
 

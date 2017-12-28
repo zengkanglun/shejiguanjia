@@ -74,7 +74,6 @@ $(function() {
 	var total_num_nor = 0; //总页数
 	//翻页
 	var getPageParam = function(page, type, key) {
-		//();
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/index.php/Home/Admin/logs",
