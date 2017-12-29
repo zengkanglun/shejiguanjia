@@ -406,62 +406,74 @@ class ProjectController extends CommonController
         $post = I('post.');
 
         if(IS_POST){
+            //修改项目主管
             if($post['director_id'] && $post['project_id']){
-                //修改项目主管
-                $is_super = M('user')->where(['id'=>$this->user_id])->getField('is_super');
                 //如果是超级管理员操作就修改
-                if($is_super == 1){
+                if($this->is_super == 1){
                     $beta['id'] = $post['project_id'];
                     $beta['director_id'] = $post['director_id'];
                     $beta['update_time'] = time();
-                    $director = M('project')->save($beta);
+                    M('project')->save($beta);
                 }
             }
 
+            //修改工种负责人
             $user = $post['user'];
             foreach($post['work_id'] as $key=>$vo){
                 //查询是否有数据
                 $whe['work_id'] = $vo;
                 $whe['project_child_id'] = $post['child_id'];
-                $is_data = M('project_child_work_type')->where($whe)->find();
-                //if($where['work_id'] == 2)
-                    //ajax_success($is_data);
-                    //ajax_success($post['child_id']);
-
-                //有就修改没有就添加
+                $is_data = M('project_child_work_type')->where($whe)->field('id,user_id')->find();
                 if($is_data){
-                    M('project_child_work_type')->where($whe)->save([
-                        'user_id' => $user[$key], //工种负责人ID
-                        'update_time' => time(),
-                    ]);
+                    $whe['id'] = $is_data['id'];
+                    $whe['user_id'] = $user[$key];
+                    $whe['update_time'] = time();
+                    //三组id
+                    $nWhe['project_child_id']=$post['child_id'];
+                    $nWhe['work_id']=$vo;
+                    $nWhe['user_id']=$is_data['user_id'];
+                    M('staff')->where($nWhe)->save(['status'=>1]);
+                    $nWhe['user_id']=$whe['user_id'];
 
-                    //修复修改负责人时员工表更新条件不明确导致的全部人员都为负责人
-                    $whe['user_id'] = $is_data['user_id'];
-                    M('staff')->where($whe)->save([
-                        'user_id'   => $user[$key],
-                        'update_time'   => time()
-                    ]);
-                }else{
+                    if(!M('staff')->where($nWhe)->getField('id')){
+                        M('staff')->add([
+                            'work_id' => $vo,
+                            'user_id' => $user[$key],
+                            'project_child_id' => $whe['project_child_id'],
+                            'status'=>2,
+                            'labor'=>'',
+                            'add_time' => time(),
+                            'update_time' => time()
+                        ]);
+                    }else{
+                        M('staff')->where($nWhe)->save(['status'=>2]);
+                    }
+
+                    M('project_child_work_type')->save($whe);
+                    unset($nWhe);
+                }else {
                     M('project_child_work_type')->add([
                         'work_id' => $vo,
                         'user_id' => $user[$key],
                         'project_child_id' => $post['child_id'],
                         'add_time' => time(),
                         'update_time' => time(),
-                        ]);
-                    if($user[$key])
-                    {
+                    ]);
+                    if(!M('staff')->where(array('user_id'=>$user[$key]))->getField('id')){
                         M('staff')->add([
-                            'work_id'   => $vo,
-                            'user_id'   => $user[$key],
-                            'labor'     => '',
-                            'project_child_id'  => $post['child_id'],
-                            'add_time'  => time(),
-                            'update_time'   => time()
+                            'work_id' => $vo,
+                            'user_id' => $user[$key],
+                            'project_child_id' => $post['child_id'],
+                            'status'=>2,
+                            'labor'=>'',
+                            'add_time' => time(),
+                            'update_time' => time()
                         ]);
                     }
                 }
+                unset($whe);
             }
+            //更改子项目名称
             $res = M('project_child')->save(array('id'=>$post['child_id'],'name'=>$post['child_name']));
 
             //添加日志记录
@@ -1119,10 +1131,10 @@ class ProjectController extends CommonController
 
         $data['user_id']            = $uid;
         $where['project_child_id']  = $id;
-        $where['status']            = 0;
+        $where['status']            = [NEQ,1];
         $where['work_id']           = $work;
 
-        $data['user']               = D('staff')->relation(true)->where($where)->field(['id','user_id','work_id','labor','content'])->select();
+        $data['user']               = D('staff')->relation(true)->where($where)->field(['id','user_id','work_id','labor','content','status'])->select();
         $count                      = D('staff')->relation(true)->where($where)->count();
 //        $data['count']              = $count;
 //        $data['page']               = ceil($count/10) ? ceil($count/10) : 1;

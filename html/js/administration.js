@@ -550,16 +550,25 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					//					console.log(data)
+					// console.log(data)
 					var item_table = "";
 					for(var i = 0; i < data.data.user.length; i++) {
 						item_table += '<tr user-id="' + data.data.user[i].user_id + '" item-id="' + data.data.user[i].id + '">';
 						item_table += '<td>' + (i + 1) + '</td>';
-						item_table += '<td>' + data.data.user[i].nickname + '</td>';
-						item_table += '<td>' + data.data.user[i].work.name + '</td>';
+                        item_table += '<td>' + data.data.user[i].nickname + '</td>';
+						if(data.data.user[i].status == 2){
+                            item_table += '<td>' + data.data.user[i].work.name + '负责人</td>';
+						}else {
+                            item_table += '<td>' + data.data.user[i].work.name + '</td>';
+						}
 						item_table += '<td>' + data.data.user[i].labor + '</td>';
 						item_table += '<td>' + data.data.user[i].content + '</td>';
-						item_table += '<td class="handle"><span class="edit">编辑</span><span class="del">删除</span></td>';
+                        if(data.data.user[i].status == 2){
+                            item_table += '<td class="handle"><span class="edit">编辑</span></td>';
+
+                        }else {
+                            item_table += '<td class="handle"><span class="edit">编辑</span><span class="del">删除</span></td>';
+                        }
 						item_table += '</tr>';
 					}
 					$(".item_table tbody tr").remove();
@@ -615,6 +624,7 @@ $(function() {
 		$("#boxPock .userAdminSeven").show();
 		$("#boxPock .addMember").hide();
 	})
+
 	$(document).on("click", ".addMember .btn1", function() {
 		var memberID = $(".addMember .show").attr("data-id");
 		var labor = $(".addMember .title").val();
