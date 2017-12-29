@@ -17,6 +17,13 @@ class StaffModel extends RelationModel{
             //'as_fields'         =>  'nickname,mobile,qq,work_type',
             'mapping_fields'    =>  'name'
         ),
+        /*'staff'=>array(
+            'mapping_type'      =>  self::BELONGS_TO,
+            'class_name'        =>  'staff',
+            'foreign_key'       =>  'id',
+            //'as_fields'         =>  'nickname,mobile,qq,work_type',
+            'mapping_fields'    =>  'status'
+        ),*/
         // 'work'=>array(
         //     'mapping_type'      =>  self::MANY_TO_MANY,
         //     'class_name'        =>  'work',
