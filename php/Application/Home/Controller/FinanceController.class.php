@@ -58,7 +58,7 @@ class FinanceController extends CommonController
 //            'round(sum(schedule.money)-sum(schedule.receive), 2)' => 'debt',  //未收款
             'schedule.process',     //最新过程记录
             'project.project_time',  //立项日期
-            'project.sche_id'
+            'project.sche_id',
         ];
         
 // && strtotime($start_time) < strtotime($end_time)
@@ -153,13 +153,15 @@ class FinanceController extends CommonController
                     break;
                 }
                 //收款记录
-                $obj = M('schedule')->field(['round(sum(receive), 2)' => 'receive', 'round(sum(money)-sum(receive), 2)' => 'debt'])->where(['project_id' => $value['project_id']])->find();
+                $obj = M('schedule')->field(['id','round(sum(receive), 2)' => 'receive', 'round(sum(money)-sum(receive), 2)' => 'debt'])->where(['project_id' => $value['project_id']])->find();
                 $list[$key]['receive'] = $obj['receive'] ? $obj['receive'] : 0;
                 $list[$key]['debt'] = $obj['debt'] ? $obj['debt'] : 0;
                 $list[$key]['project_time'] = date('Y-m-d', $value['project_time']) ? date('Y-m-d', $value['project_time']) : '暂无';
                 $list[$key]['process'] = $value['process'] ? $value['process'] : '';
                 $schedule_money = M('schedule')->where(['project_id'=>$value['project_id']])->getField('sum(money)');
                 $list[$key]['project_money'] = $value['project_moeny'] + $schedule_money;
+                $cause = M('receipt')->where(array('s_id'=>$obj['id']))->field('cause')->order('add_time desc')->find();
+                $list[$key]['cause']=$cause['cause']?$cause['cause']:'没有记录';
             }
         }
         ajax_success('数据请求成功', compact('count', 'totalPage', 'list'));

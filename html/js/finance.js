@@ -921,7 +921,7 @@ $(function() {
 							str += '	<td>' + datas.list[i].stage + '</td>';
 							str += '	<td>' + datas.list[i].receive + '</td>';
 							str += '	<td>' + datas.list[i].debt + '</td>';
-							str += '	<td>' + datas.list[i].process + '</td>';
+							str += '	<td>' + datas.list[i].cause + '</td>';
 							str += '	<td>' + datas.list[i].project_time + '</td>';
 							str += '	<td class="handle"><span class="check" data-id="' + datas.list[i].project_id + '">查看</span></td>';
 							str += '</tr>';
@@ -944,7 +944,7 @@ $(function() {
 							str += '	<td>' + datas.list[i].stage + '</td>';
 							str += '	<td>' + datas.list[i].receive + '</td>';
 							str += '	<td>' + datas.list[i].debt + '</td>';
-							str += '	<td>' + datas.list[i].process + '</td>';
+							str += '	<td>' + datas.list[i].cause + '</td>';
 							str += '	<td>' + datas.list[i].project_time + '</td>';
 							str += '	<td class="handle"><span class="check" data-id="' + datas.list[i].project_id + '">查看</span></td>';
 							str += '</tr>';
