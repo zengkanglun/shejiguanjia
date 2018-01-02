@@ -651,6 +651,7 @@ $(function() {
 						msgID(itemListid, workType_id)
 						$("#boxPock .userAdminSeven").show();
 						$("#boxPock .addMember").hide();
+						toast(data.msg);
 					} else {
 						toast(data.msg)
 					}

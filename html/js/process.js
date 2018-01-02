@@ -1276,8 +1276,17 @@ $(function() {
 					for(var i = 0; i < data.data.user.length; i++) {
 						xiangm += '<tr data-id="' + data.data.user[i].id + '" data-userid="' + data.data.user[i].user_id + '" data-duserid="' + data.data.user_id + '">';
 						xiangm += '	<td>' + (i + 1) + '</td>';
-						xiangm += '	<td>' + data.data.user[i].nickname + '</td>';
-						xiangm += '	<td>' + data.data.user[i].work.name + '</td>';
+						if(data.data.user[i].status == 1){
+                            xiangm += '	<td><p style="color:red;">' + data.data.user[i].nickname + '</p></td>';
+						}else{
+                            xiangm += '	<td>' + data.data.user[i].nickname + '</td>';
+						}
+
+						if (data.data.user[i].status == 2){
+                            xiangm += '	<td>' + data.data.user[i].work.name + '负责人</td>';
+						}else{
+                            xiangm += '	<td>' + data.data.user[i].work.name + '</td>';
+						}
 						xiangm += '	<td>' + data.data.user[i].labor + '</td>';
 						xiangm += '	<td>' + data.data.user[i].content + '</td>';
 						xiangm += '	<td class="handle">';

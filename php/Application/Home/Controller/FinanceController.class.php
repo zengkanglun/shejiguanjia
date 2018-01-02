@@ -134,6 +134,7 @@ class FinanceController extends CommonController
                 ->where($map)->order('project.update_time desc')->limit($pre.','.$num)->select();
 
         }
+//        ajax_success('1',$list);
         if ( $list ) {
             foreach ( $list as $key => $value ) {
                 switch($value['sche_id'])

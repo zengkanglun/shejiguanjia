@@ -500,8 +500,8 @@ class ProjectController extends CommonController
             //查询子项目员工
             $data['user_id'] = $this->user_id;
             $where['project_child_id'] = $post['chile_id'];
-            $where['status'] = 0;
-            $data['user'] = D('Staff')->relation(true)->where($where)->field('id,user_id,work_id,labor,content')->page($post['p'],10)->select();
+//            $where['status'] = 0;
+            $data['user'] = D('Staff')->relation(true)->where($where)->field('id,user_id,work_id,labor,content,status')->page($post['p'],10)->order('work_id')->select();
             $count = D('Staff')->relation(true)->where($where)->count();
             $data['count'] = $count;
             $data['page'] = ceil($count/10)?ceil($count/10):1;
@@ -713,7 +713,7 @@ class ProjectController extends CommonController
             }
             $project['sched_name'] = $temp_schedule;
             $project['receipt'] = abs($schedule['receive'])?$schedule['receive']:0;
-
+            $project['receipt'] = '已收款 '.$project['receipt'].' 元';
             //查询子项目
             $project['child'] = D('ProjectChild')->relation(true)->where("project_id = $id")->field('id,name,project_id')->select();
 

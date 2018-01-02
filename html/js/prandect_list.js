@@ -198,7 +198,7 @@ $(function() {
 
 			var item = $('<tr>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
-				'<td>' + tsk.name + '</td>' +
+				'<td style="cursor:pointer ;" class="check" data-id=" '+ tsk.id + '">' + tsk.name + '</td>' +
 				'<td>' + tsk.build_name + '</td>' +
 				'<td>' + tsk.province + '</td>' +
 				'<td>' + tsk.build + '</td>' +
@@ -210,7 +210,7 @@ $(function() {
 				et +
 				'</td>' +
 				'</tr>');
-			$(e_id).append(item);
+			$(e_id).append(item)
 
 		}
 	}
