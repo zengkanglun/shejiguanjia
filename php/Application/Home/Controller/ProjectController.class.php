@@ -436,8 +436,8 @@ class ProjectController extends CommonController
                     ]);
 
                     //修复修改负责人时员工表更新条件不明确导致的全部人员都为负责人
-                    $whe['user_id'] = $is_data['user_id'];
-                    M('staff')->where($whe)->save([
+                    $whe11['user_id'] = $is_data['user_id'];
+                    M('staff')->where($whe11)->save([
                         'user_id'   => $user[$key],
                         'update_time'   => time()
                     ]);
@@ -703,7 +703,8 @@ class ProjectController extends CommonController
                 $temp_schedule = $schedule['name'];
             }
             $project['sched_name'] = $temp_schedule;
-            $project['receipt'] = ' 已收款 '.abs($schedule['receive'])?$schedule['receive']:0;
+            $project['receipt'] = abs($schedule['receive'])?$schedule['receive']:0;
+            $project['receipt'] = ' 已收款 '.$project['receipt'];
 
             //查询子项目
             $project['child'] = D('ProjectChild')->relation(true)->where("project_id = $id")->field('id,name,project_id')->select();
