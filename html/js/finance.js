@@ -906,6 +906,7 @@ $(function() {
 			data: datas,
 			success: function(data) {
 				if(data.status == 1) {
+					console.log(data.list);
 					if(ing == 1) {
 						var datas = data.data;
 						pp.parents('.item_income').find('.now_detail .paging .page_left span').html(datas.count);

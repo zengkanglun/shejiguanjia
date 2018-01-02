@@ -216,12 +216,12 @@ $(function() {
 		});
 
 	}
+
+	// 修改子项目工种负责人
 	$(document).on('click', '.count_edit_footer .btn1', function() {
 		var id = [];
 		var user = [];
 		var childName = $(".big_content .list_name .floor").val();
-
-		// console.log(child_id);
 
 		for(var i = 1; i < $('.cnt_detail tbody tr').length; i++) {
 			if($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id') != 0){
@@ -229,9 +229,8 @@ $(function() {
                 user.push($('.cnt_detail tbody tr').eq(i).find('.show').attr('data-id'));
 			}
 		}
-		// console.log(id);
-		// console.log(user);
-		// console.log($('.cnt_detail tbody tr').eq(0).find('.item').attr('data-id'));
+		console.log(id);
+		console.log(user);
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')
