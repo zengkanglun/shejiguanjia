@@ -1362,7 +1362,7 @@ $(function() {
 					$(".worktype .project_time").val(data.data.project_info.project_time);
 					$(".worktype .stage").val(data.data.project_info.stage);
 					$(".worktype .username").val(data.data.project_info.username);
-					$(".worktype .rate").val(data.data.project_info.rate);
+
 					$(".worktype_bottom .floor").text(data.data.project_child_info[0].project_child_name);
 					var item_ul = "";
 					var goItem = "";
@@ -1458,6 +1458,7 @@ $(function() {
 						goItem += '<td class="rate"><input type="text" placeholder="请输入比例" value="' + datas[i].commission_rate + '"/></td>';
 						goItem += '<td class="handle"><i class="check">已审核</i><i class="nocheck">未审核</i><i class="check_fail">审核失败</i></td>';
 						goItem += '</tr>';
+                        $(".worktype .rate").val(data.data.project_info.rate);
 					}
 					$(".worktype .nowCount tbody tr").remove();
 					$(".worktype .nowCount tbody").append(goItem);

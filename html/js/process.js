@@ -1412,10 +1412,11 @@ $(function() {
 			data: {
 				id: xiangmu_loid,
 				chile_id: child_id,
+				user_id: xiangmu_louserid,
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					//					console.log(data);
+					console.log(data.data.project_staff);
 					$('#xm_lo_nickname').val(data.data.staff.nickname);
 					$('#xm_lo_workname').val(data.data.staff.work.name);
 					$('#xm_lo_director').val(data.data.staff.director);
@@ -1426,12 +1427,13 @@ $(function() {
 						var lishi = '';
 						lishi += '<div class="first_stage">';
 						lishi += '	<div class="stage_head">';
-						lishi += '		<span>阶段：</span><span>' + data.data.project_staff[i].start_time + '-' + data.data.project_staff[i].end_time + '</span>';
+						lishi += '		<span>历史阶段：</span><span>' + data.data.project_staff[i].start_time + '--' + data.data.project_staff[i].end_time + '</span>';
 						lishi += '	</div>';
-						lishi += '	<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled">' + data.data.project_staff[i].labor + '</textarea>';
+						lishi += '	<textarea name="" rows="" cols="" placeholder="" disabled="disabled">' + data.data.project_staff[i].content + '</textarea>';
 						lishi += '</div>';
+                        $('#xm_lo_lishi').append(lishi);
 					}
-					$('#xm_lo_lishi').html(lishi);
+
 				} else {
 					//					console.log(data);
 				}

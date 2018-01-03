@@ -252,7 +252,7 @@ $(function() {
 				if(data.status == 1) {
 					if(ing == 1) {
 						var datas = data.data;
-						console.log(page5);
+						//console.log(page5);
 						pp.parents('.item_count').find('.now_count .paging .page_left span').html(datas.count);
 						pp.parents('.item_count').find('.now_count .paging .page_right .number').html(page5);
 						pp.parents('.item_count').find('.now_count .paging .page_right .total_num').html(datas.totalPage);
@@ -387,7 +387,7 @@ $(function() {
 						lis += '<td>' + datas[i].amount + '</td>';
 						lis += '<td>项目主管：<i class="xmzg">' + datas[i].supervisor_rate + '</i>&nbsp;项目组：<i class="xmz">' + datas[i].group_rate + '</i></td>';
 						lis += '<td><span class="check">查看</span></td>';
-						lis += '<td class="handle"><span class="edit">查看</span></td>';
+						lis += '<td class="handle"><span class="edit">编辑</span></td>';
 						lis += '</tr>';
 					}
 					$(".countDetail .histroy_count tbody tr").remove();
@@ -432,6 +432,9 @@ $(function() {
 		var money = $(this).parents("tr").find("td").eq(2).text();
 		var xmzg = $(this).parents("tr").find("td .xmzg").text();
 		var xmz = $(this).parents("tr").find("td .xmz").text();
+        var project_commission_id = $(this).parents("tr").attr("data-id");
+        //console.log(project_commission_id);
+		$(".count_edit").attr("data-id",project_commission_id);
 		$(".count_edit .time").val(time);
 		$(".count_edit .money").val(money);
 		$(".count_edit .xmzg").val(xmzg);
@@ -443,6 +446,47 @@ $(function() {
 		$("#boxPock .countDetail").show();
 		$("#boxPock .count_edit").hide();
 	})
+	/*修改项目组计提比例*/
+	$(document).on("click", ".count_edit .count_edit_head i, .count_edit .btn1", function () {
+        var project_commission_id = $(".count_edit").attr("data-id");
+        var amount = $(".count_edit .money").val();
+		var supervisor_rate = $(".count_edit .xmzg").val();
+		var group_rate = $(".count_edit .xmz").val();
+		var num = Number(supervisor_rate) + Number(group_rate);
+		//console.log(project_commission_id);
+        if(!amount) {
+            toast("请先填写金额！")
+        } else if(num == 100) {
+            $.ajax({
+                type: "post",
+                url: host_host_host + "/Home/Finance/submitProjectCommission",
+                dataType: 'json',
+                headers: {
+                    accept: "usertoken:" + token,
+                },
+                data: {
+                    project_commission_id: project_commission_id,
+                    amount: amount,
+                    supervisor_rate: supervisor_rate,
+                    group_rate: group_rate,
+                },
+                success: function(data) {
+                    if(data.status == 1) {
+                        toast(data.msg)
+                        window.location.href='f_jiti.html'
+                    } else {
+                        toast(data.msg)
+                    }
+                },
+                error: function(data) {
+
+                },
+                async: true
+            });
+        } else {
+            toast("比例分配不正确！")
+        }
+    })
 	/*countDetail历史计提项目组查看*/
 	var planNum;
 	$(document).on("click", ".countDetail table tbody .check", function() {

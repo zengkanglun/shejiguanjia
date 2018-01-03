@@ -562,7 +562,7 @@ class CommissionController extends CommonController
             }
         }
 
-        $project_info['rate'] = 0;
+        //$project_info['rate'] = 10;
 
 //        $projectChildMod = M('project_child');
 //        $projectChildWorkTypeMod = M('project_child_work_type');
@@ -630,6 +630,7 @@ class CommissionController extends CommonController
             'status' => 0,
             'current_list' => [],
         ];
+        //ajax_success($res);
         if ( $res ) {
             $first = $res[0];
             $obj = M('project_work_commission')->where(['project_commission_id' => $first['project_commission_id'], 'work_id' => $work_id])->find();
@@ -642,6 +643,7 @@ class CommissionController extends CommonController
             $project_info['rate'] = $obj['commission_rate'];
         }
 
+        //ajax_success($project_info);
         //查找历史计提
         $history_staff_commission = [];
         $project_last_commission = M('project_commission')->where(['project_child_id' => $project_child_id, 'is_finish' => 1])->order('end_time desc')->find();

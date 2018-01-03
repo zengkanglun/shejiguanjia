@@ -523,7 +523,7 @@ class ProjectController extends CommonController
             if(!$post['chile_id']){ ajax_error('缺少子项目信息'); }
 
             //查询当前分工情况
-            $data['staff'] = D('Staff')->relation(true)->where(['user_id'=>$post['id'],'project_child_id'=>$post['chile_id']])->find();
+            //$data['staff'] = D('Staff')->relation(true)->where(['user_id'=>$post['id'],'project_child_id'=>$post['chile_id']])->find();
             // dump($data['staff']);
             $data['staff'] = D('staff')->relation(true)->where(['id'=>$post['id'],'project_child_id'=>$post['chile_id']])->find();
             // dump($data['staff']);
@@ -533,7 +533,8 @@ class ProjectController extends CommonController
             $principal = M('project')->where("id = $project_id")->getField('director_id');
             $data['staff']['director'] = M('user')->where("id = $principal")->getField('nickname');
 
-            $data['project_staff'] = M('project_staff_commission')->where(['project_child_id'=>$post['chile_id'],'user_id'=>$post['id']])->field('labor,project_commission_id,content')->select();
+            $data['project_staff'] = M('project_staff_commission')->where(['project_child_id'=>$post['chile_id'],'user_id'=>$post['user_id']])->field('labor,project_commission_id,content')->select();
+            //ajax_success($data['project_staff']);
             foreach($data['project_staff'] as $key=>$vo){
                 $time = M('project_commission')->where("id = ".$vo['project_commission_id'])->field('start_time,end_time')->find();
                 $data['project_staff'][$key]['start_time'] = date('Y.m.d',$time['start_time']);

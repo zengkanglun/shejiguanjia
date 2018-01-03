@@ -4619,6 +4619,24 @@ body {
   height: 100px;
   overflow: hidden;
 }
+#boxPock .count_edit .cnt_footer .btn1 {
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  line-height: 50px\9;
+  border-radius: 5px;
+  display: block;
+  margin: 50px auto;
+  background: #FD813E;
+  margin-bottom: 50px;
+  padding: 0;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 0px 10px #FD813E;
+  float: left;
+  margin-left: 250px;
+}
 #boxPock .count_edit .cnt_footer .btn2 {
   width: 160px;
   height: 50px;
@@ -4627,12 +4645,14 @@ body {
   line-height: 50px\9;
   border-radius: 5px;
   display: block;
-  margin: 20px auto;
+  margin: 50px auto;
   background: #9DAAB8;
   margin-bottom: 50px;
   padding: 0;
   font-size: 16px;
   outline: none;
+  float: right;
+  margin-right: 250px;
 }
 #boxPock .count_edit .count_go_cnt {
   background: #ffffff;
