@@ -215,16 +215,18 @@ class AdminController extends CommonController
                 }
             }*/
 
-            if($post = $model->create($post))
+            if($data = $model->create($post))
             {
-                if($model->add($post))
+                if($model->add($data))
                 {
-                    $this->log("超级管理员新建了用户{$post['nickname']}",8);
+                    $this->log("超级管理员新建了用户{$data['nickname']}",8);
                     ajax_success('创建成功');
+                }else{
+                    ajax_error('创建失败');
                 }
             }
 
-            ajax_error('创建失败');
+            ajax_error('用户已存在');
         }
     }
 

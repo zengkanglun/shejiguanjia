@@ -1913,6 +1913,7 @@ $(function() {
                         toast('删除成功');
                         $('#ingRate tbody tr').remove();
                         $('.commissionDel').hide();
+                        $('.commissionModify').html('修改');
                         $('.commissionModify').hide();
                         $('.nowbutton').hide();
                     },

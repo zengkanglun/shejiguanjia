@@ -167,9 +167,6 @@ class CommissionController extends CommonController
         $project_work_list = M('project_child_work_type')->where(['project_child_id' => $data['project_child_id']])->select();
         if ( !$project_work_list ) ajax_error('该子项目没有分配工种');
 
-        //查找员工列表
-        $project_staff_list = M('staff')->where(['project_child_id' => $data['project_child_id']])->select();
-        if ( !$project_staff_list ) ajax_error('该子项目没有分配员工');
 
         $time = time();
         //事务处理
@@ -192,6 +189,7 @@ class CommissionController extends CommonController
 
         //保存工种计提信息
         $allSql = [];
+        $w_id = [];
         foreach ( $data['commission'] as $key => $value ) {
 
             foreach ($project_work_list as $k => $v) {
@@ -208,6 +206,7 @@ class CommissionController extends CommonController
                         'add_time' => $time,
                         'update_time' => $time,
                     ];
+                    $w_id[] = $value['work_id'];
                 }
             }
 
@@ -216,6 +215,10 @@ class CommissionController extends CommonController
         if ( !M('project_work_commission')->addAll($allSql) ) $flag = false;
 
         //保存员工计提信息
+        //查找员工列表
+        $project_staff_list = M('staff')->where(['project_child_id' => $data['project_child_id'],'work_id'=>array('IN',$w_id)])->select();
+        if ( !$project_staff_list ) ajax_error('该子项目没有分配员工');
+
         $staffSql = [];
         foreach ( $project_staff_list as $kk => $vv ) {
             $staffSql[] = [
