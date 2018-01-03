@@ -243,6 +243,38 @@ class CommissionController extends CommonController
 
     }
 
+    /*修改工种计提比例*/
+    public function updateProjectCommission(){
+        if(!IS_POST)  ajax_error('请求错误');
+        $data = I('post.');
+        if ( $data['project_child_id'] <= 0 ) ajax_error('参数错误');
+        $update_time = time();
+        if ( count($data['commission']) <= 0 ) ajax_error('数据有误');
+        M()->startTrans();
+        $res = 0;
+        foreach ( $data['commission'] as $key ) {
+            $id = M('project_work_commission')->where(array(
+                'project_id' => $data['project_id'],
+                'project_child_id' => $data['project_child_id'],
+                'project_commission_id' => $data['project_commission_id'],
+                'work_id' => $key['work_id']))
+                ->getField('id');
+            $res = M('project_work_commission')->where(array('id'=>$id))->save([
+                'commission_rate' => $key['rate'],
+                'update_time' => $update_time,
+            ]);
+            $res += 1;
+        }
+        if($res) {
+            M()->commit();
+            ajax_success('操作成功');
+        }else{
+            M()->rollback();
+            ajax_error('操作失败');
+        }
+    }
+
+
     /**
      * 获取工种方案分配详情(工作情况查看)
      */
@@ -605,9 +637,13 @@ class CommissionController extends CommonController
 //        $project_work_info = M('project_child_work_type')->where(['project_child_id' => $project_child_id])->find();
 //        if ( !$project_work_info ) ajax_error('没操作权限002');
 
+
+
         //查找当前正在进行中的计提
-        $projectStaffCommissionMod = M('project_staff_commission')->alias('psc');
-        $res = $projectStaffCommissionMod->field([
+        $pwcRes = M('project_work_commission')->field('work_id')->where(array('project_id'=>$project_id,'project_child_id'=>$project_child_id,'work_id'=>$work_id,'commission_rate'=>array('gt',0)))->select();
+        if($pwcRes){
+            $projectStaffCommissionMod = M('project_staff_commission')->alias('psc');
+            $res = $projectStaffCommissionMod->field([
                 'psc.id' => 'project_staff_commission_id',
                 'psc.project_child_id',
                 'psc.user_id',
@@ -618,29 +654,37 @@ class CommissionController extends CommonController
                 "from_unixtime(pc.end_time, '%Y-%m-%d')" => 'end_time',            //计提结束时间
                 'psc.project_commission_id',
             ])
-            ->join('left join s_project_commission pc on pc.id = psc.project_commission_id')
-            ->join('left join s_user u on u.id = psc.user_id')
-            ->where(['pc.is_finish' => 0, 'psc.work_id' => $work_id, 'psc.project_child_id' => $project_child_id])
-            ->select();
+                ->join('left join s_project_commission pc on pc.id = psc.project_commission_id')
+                ->join('left join s_user u on u.id = psc.user_id')
+                ->where(['pc.is_finish' => 0, 'psc.work_id' => $work_id, 'psc.project_child_id' => $project_child_id])
+                ->select();
 
-        //初始化数据
-        $current_staff_commission = [
-            'project_work_commission_id' => 0,
-            'is_submit' => 0,
-            'status' => 0,
-            'current_list' => [],
-        ];
-        if ( $res ) {
-            $first = $res[0];
-            $obj = M('project_work_commission')->where(['project_commission_id' => $first['project_commission_id'], 'work_id' => $work_id])->find();
+            //初始化数据
             $current_staff_commission = [
-                'project_work_commission_id' => $obj['id'],
-                'is_submit' => $obj['is_submit'],
-                'status' => $obj['status'],
-                'current_list' => $res,
+                'project_work_commission_id' => 0,
+                'is_submit' => 0,
+                'status' => 0,
+                'current_list' => [],
             ];
-            $project_info['rate'] = $obj['commission_rate'];
+            if ( $res ) {
+                $first = $res[0];
+                $obj = M('project_work_commission')->where(['project_commission_id' => $first['project_commission_id'], 'work_id' => $work_id])->find();
+                $current_staff_commission = [
+                    'project_work_commission_id' => $obj['id'],
+                    'is_submit' => $obj['is_submit'],
+                    'status' => $obj['status'],
+                    'current_list' => $res,
+                ];
+                $project_info['rate'] = $obj['commission_rate'];
+            }else{
+
+            }
+        }else{
+            $current_staff_commission = [];
         }
+
+
+
 
         //查找历史计提
         $history_staff_commission = [];
@@ -687,7 +731,7 @@ class CommissionController extends CommonController
         M()->startTrans();
         $bool = true;
 
-        if ( !M('project_work_commission')->where(['id' => $project_work_commission_id])->save(['is_submit' => 1]) ) $bool = false;
+        if ( !M('project_work_commission')->where(['id' => $project_work_commission_id])->save(['is_submit' => 1,'status' => 0]) ) $bool = false;
 
         $projectStaffCommissionMod = M('project_staff_commission');
         foreach ( $data['commission'] as $key => $value ) {
