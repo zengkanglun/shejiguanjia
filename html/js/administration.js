@@ -25,6 +25,7 @@ $(function() {
 	//成员管理五
 	$(document).on("click", ".userAdminFive .bigfloor .floor_ul li", function() {
 		$(this).addClass("active").siblings().removeClass("active");
+        $('.commissionModify').html('修改');
 		var txt = $(this).text();
 		$(".userAdminFive .cnt_header .right .floor").text(txt);
 	})
@@ -834,6 +835,7 @@ $(function() {
 					$("#boxPock").show();
 					$("#boxPock .userAdminFive").show();
 					$(".userAdminFive .project_name").val(data.data.project_info.project_name);
+                    $(".userAdminFive .project_name").attr('project_id',data.data.project_info.project_id);
 					$(".userAdminFive .project_time").val(data.data.project_info.project_time);
 					$(".userAdminFive .stage").val(data.data.project_info.stage);
 					$(".userAdminFive .floor").text(data.data.project_child_info[0].project_child_name);
@@ -897,23 +899,34 @@ $(function() {
 					var goItem = "";
 					var datas = data.data.current_commission_list.list;
 					for(var i = 0; i < datas.length; i++) {
+						$('.userAdminFive .add_content .floor_ul .active').attr('project-commission-id',datas[i].project_commission_id);
 						goItem += '<tr data-id="' + datas[i].project_commission_id + '">';
 						goItem += '<td>' + (i + 1) + '</td>';
 						goItem += '<td>' + datas[i].start_time + '/' + datas[i].end_time + '</td>';
 						goItem += '<td class="work" data-id="' + datas[i].work_id + '">' + datas[i].work_name + '</td>';
 						goItem += '<td>' + datas[i].username + '</td>';
-						goItem += '<td>' + datas[i].commission_rate + '</td>';
+						goItem += '<td class="ingRate"><input readonly="readonly" type="number" value="' + datas[i].commission_rate + '" /></td>';
 						goItem += '<td class="plan" data-id="' + datas[i].is_submit + '"><i class="add"></i><span class="detail">详情</span><span class="urge">催促</span></td>';
-						goItem += '<td class="handle" data-id="' + datas[i].status + '"><i class="check">已审核</i><i class="nocheck">未审核</i><span class="back">退回</span><i class="defate">审核失败</i></td>';
+						goItem += '<td class="handle" data-id="' + datas[i].status + '"><i class="check">已审核</i><i class="nocheck">待审核</i><span class="back">退回</span><i class="defate">审核不通过</i></td>';
 						goItem += '</tr>';
 					}
 					$(".userAdminFive .nowCount tbody tr").remove();
 					$(".userAdminFive .nowCount tbody").append(goItem);
+
 					if(data.data.current_commission_list.is_submit == 0) {
 						$(".nowCount .nowbutton").show();
 					} else {
 						$(".nowCount .nowbutton").hide();
 					}
+                    if(datas.length > 0){
+                        $(".nowCount .nowbutton").show();
+                        $(".commissionModify").show();
+                        $(".commissionDel").show();
+                    }else{
+                        $(".nowCount .nowbutton").hide();
+                        $(".commissionModify").hide();
+                        $(".commissionDel").hide();
+                    }
 					$(".userAdminFive tbody td.plan").each(function() {
 						if($(this).attr("data-id") == 0) {
 							$(this).find(".add").text("未提交");
@@ -935,6 +948,7 @@ $(function() {
 							$(this).find(".back").hide();
 						}
 					})
+
 					/*历史项目*/
 					var pastItem = "";
 					for(var i = 0; i < data.data.history_commission_list.length; i++) {
@@ -992,9 +1006,11 @@ $(function() {
 				work_id: $(this).find(".work").attr("data-id"),
 				rate: $(this).find(".rate input").val()
 			}
-			commission.push(obj)
+			if(obj.rate>0){
+                commission.push(obj);
+			}
 		})
-		//		console.log(rateNum);
+		// console.log(commission);
 		if(!rateNum) {
 			toast("请填写计提比例")
 		} else if(rateNum > 100) {
@@ -1443,8 +1459,23 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
+					$(".worktype .rate").val(data.data.project_info.rate);
 					/*进行中的项目*/
 					//					console.log(data)
+					$(".worktype .nowCount tbody tr").remove();
+                    if(data.data.current_staff_commission.length == 0){
+                        $(".worktype .nowCount .plansure").hide();
+                        $(".worktype .nowCount .workbutton").hide();
+                    }else{
+                        var is_submit = data.data.current_staff_commission.is_submit;
+                        if(is_submit == 0) {
+                            $(".worktype .plansure").hide();
+                            $(".worktype .workbutton").show();
+                        } else {
+                            $(".worktype .plansure").show();
+                            $(".worktype .workbutton").hide();
+                        }
+                    }
 					var goItem = "";
 					var datas = data.data.current_staff_commission.current_list;
 					//					console.log(datas)
@@ -1456,11 +1487,11 @@ $(function() {
 						goItem += '<td>' + datas[i].labor + '</td>';
 						goItem += '<td><span class="detail">详情</span></td>';
 						goItem += '<td class="rate"><input type="text" placeholder="请输入比例" value="' + datas[i].commission_rate + '"/></td>';
-						goItem += '<td class="handle"><i class="check">已审核</i><i class="nocheck">未审核</i><i class="check_fail">审核失败</i></td>';
+						goItem += '<td class="handle"><i class="check">已审核</i><i class="nocheck">待审核</i><i class="check_fail">审核不通过</i></td>';
 						goItem += '</tr>';
                         $(".worktype .rate").val(data.data.project_info.rate);
 					}
-					$(".worktype .nowCount tbody tr").remove();
+
 					$(".worktype .nowCount tbody").append(goItem);
 					$(".worktype tbody tr .handle").each(function() {
 						var num = data.data.current_staff_commission.status;
@@ -1478,14 +1509,9 @@ $(function() {
 							$(this).find(".check_fail").show();
 						}
 					})
-					var is_submit = data.data.current_staff_commission.is_submit;
-					if(is_submit == 0) {
-						$(".worktype .plansure").hide();
-						$(".worktype .workbutton").show();
-					} else {
-						$(".worktype .plansure").show();
-						$(".worktype .workbutton").hide();
-					}
+
+
+
 					/*历史项目*/
 					var pastItem1 = "";
 					var hisDatas = data.data.history_staff_commission;
@@ -1792,4 +1818,110 @@ $(function() {
 		$("#boxPock .worktype").hide();
 	})
 
+	/*修改进行中的计提*/
+	$('.commissionModify').on('click',function(){
+        if($('.userAdminFive .add_content #ingRate tbody tr').length < 1){
+        	toast('没有计提数据');
+		}else{
+            if($('.commissionModify').html() == '修改'){
+                $('.userAdminFive .newCount table tbody tr').each(function(){
+                    $('.ingRate input').removeAttr('readonly');
+                });
+                toast('请修改计提比例');
+                $('.commissionModify').html('完成');
+            }else{
+                if($('.commissionModify').html() == '完成'){
+                    newRate = [];
+                    newRateNum = 0;
+                    var obj;
+                    commission = [];
+                    p_c_id = $('.userAdminFive .add_content .floor_ul .active').attr('data-id');
+                    p_commission_id = $('.userAdminFive .add_content .floor_ul .active').attr('project-commission-id');
+                    $('.userAdminFive .add_content #ingRate tbody tr').each(function(){
+                        obj = {
+                            work_id: $(this).find('.work').attr('data-id'),
+                            rate: $(this).find('.ingRate input').val()
+                        };
+                        $work_id = $(this).find('.work').attr('data-id');
+                        newRate.push($(this).find('.ingRate input').val());
+                        commission.push(obj);
+                    });
+                    for(var i = 0; i < newRate.length; i++){
+                        newRateNum += Number(newRate[i]);
+                    }
+                    newRateNum.toFixed(2);
+                    if(!newRateNum){
+                        toast('请填写计提比例');
+                    }else if(newRateNum > 100){
+                        toast("计提总比例超出百分百")
+                    }else if(newRateNum < 100){
+                        var num = (100 - newRateNum).toFixed(2);
+                        toast("还有" + num + "百分比未分配");
+                    }else{
+                        $.ajax({
+                            type: "post",
+                            url: host_host_host + "/Home/Commission/updateProjectCommission",
+                            dataType: 'json',
+                            headers: {
+                                accept: "usertoken:" + token,
+                            },
+                            data: {
+                                project_id: $(".userAdminFive .project_name").attr('project_id'),
+                                project_child_id: p_c_id,
+                                project_commission_id: p_commission_id,
+                                commission: commission
+                            },
+                            success: function(data) {
+                                toast('修改成功');
+                            },
+                            error: function(data) {
+                            },
+                            async: true
+                        });
+                        $('.userAdminFive .newCount table tbody tr').each(function(){
+                            $('#ingRate input').attr('readonly','readonly');
+                        });
+                        $('.commissionModify').html('修改');
+                    }
+
+                }
+            }
+		}
+
+
+
+	})
+	/*删除进行中的计提*/
+	$('.commissionDel').on('click',function(){
+        if($('.userAdminFive .add_content #ingRate tbody tr').length < 1){
+        	toast('没有计提数据');
+		}else{
+            if(confirm('确认删除？删除后不能恢复！')){
+                $.ajax({
+                    type: "post",
+                    url: host_host_host + "/Home/Commission/delProjectCommission",
+                    dataType: 'json',
+                    headers: {
+                        accept: "usertoken:" + token,
+                    },
+                    data: {
+                        project_id: $(".userAdminFive .project_name").attr('project_id'),
+                        project_child_id: $('.userAdminFive .add_content .floor_ul .active').attr('data-id'),
+                        project_commission_id: $('.userAdminFive .add_content .floor_ul .active').attr('project-commission-id'),
+                    },
+                    success: function(data) {
+                        toast('删除成功');
+                        $('#ingRate tbody tr').remove();
+                        $('.commissionDel').hide();
+                        $('.commissionModify').hide();
+                        $('.nowbutton').hide();
+                    },
+                    error: function(data) {
+                        toast('删除失败');
+                    },
+                    async: true
+                });
+            }
+		}
+	})
 })

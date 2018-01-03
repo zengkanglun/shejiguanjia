@@ -789,11 +789,26 @@ class ProjectController extends CommonController
                     // 添加
                     if($staff->validate($rules)->create()){
                         //获取工种ID
-                        $work_type = $work_type;
+
                         $staff->add_time = time();
                         $staff->update_time = time();
                         $staff->work_id = $work_type;
                         if($staff->add()){
+                            $project_id = M('project_child')->where(array('id'=>$post['project_child_id']))->getField('project_id');
+                            $pc_id = M('project_commission')->where(array('project_id'=>$project_id,'project_child_id'=>$post['project_child_id'],'is_finish'=>array('eq',0)))->getField('id');
+                            if($pc_id){
+                                $addPsc = M('project_staff_commission')->add([
+                                    'project_id'=>$project_id,
+                                    'project_child_id'=>$post['project_child_id'],
+                                    'project_commission_id'=>$pc_id,
+                                    'work_id'=>$work_type,
+                                    'user_id'=>$post['user_id'],
+                                    'labor'=>$post['labor'],
+                                    'content'=>'',
+                                    'add_time'=>time(),
+                                    'update_time'=>time()
+                                ]);
+                            }
                             ajax_success('添加成功');
                         }else{
                             ajax_error('添加失败');
@@ -801,6 +816,9 @@ class ProjectController extends CommonController
                     }else{
                         ajax_error($staff->getError());
                     }
+
+                    //计提进行中，新增员工，添加到员工计提表project_staff_commission
+
                 }
 
             }else{

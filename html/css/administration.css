@@ -6341,3 +6341,16 @@
   font-size: 16px;
   outline: none;
 }
+.commissionModify, .commissionDel{
+  float: right;
+  width: 57px;
+  height:26px;
+  padding:1px 5px 1px 12px;
+  margin-right: 5px;
+  font-size: 16px;
+  line-height: 26px;
+  background: #FD813E;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
