@@ -247,6 +247,8 @@ class CommissionController extends CommonController
     public function updateProjectCommission(){
         if(!IS_POST)  ajax_error('请求错误');
         $data = I('post.');
+        if ( $data['project_id'] <= 0 ) ajax_error('参数错误');
+        if ( $data['project_commission_id'] <= 0 ) ajax_error('参数错误');
         if ( $data['project_child_id'] <= 0 ) ajax_error('参数错误');
         $update_time = time();
         if ( count($data['commission']) <= 0 ) ajax_error('数据有误');
@@ -274,6 +276,24 @@ class CommissionController extends CommonController
         }
     }
 
+    /*删除工种计提*/
+    public function delProjectCommission(){
+        if(!IS_POST)  ajax_error('请求错误');
+        $data = I('post.');
+        if ( $data['project_id'] <= 0 ) ajax_error('参数错误');
+        if ( $data['project_commission_id'] <= 0 ) ajax_error('参数错误');
+        if ( $data['project_child_id'] <= 0 ) ajax_error('参数错误');
+        M()->startTrans();
+        $pc = M('project_commission')->where(['id'=>$data['project_commission_id']])->setField(['is_finish'=>2,'update_time'=>time()]);
+        $pwc = M('project_work_commission')->where(['project_commission_id'=>$data['project_commission_id']])->delete();
+        if($pc+$pwc){
+            M()->commit();
+            ajax_success('操作成功');
+        }else{
+            M()->rollback();
+            ajax_error('操作失败');
+        }
+    }
 
     /**
      * 获取工种方案分配详情(工作情况查看)
