@@ -216,7 +216,7 @@ $(function() {
 		newP.authority = "" + $("#normal_pri .selected").data("au");
 		newP.authority = "1";
 		token = localStorage.getItem("token");
-
+		console.log(newP);
 		$.ajax({
 
 				method: ' POST',

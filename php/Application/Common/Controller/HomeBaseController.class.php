@@ -7,6 +7,7 @@ class HomeBaseController extends Controller
     public $user_id;
     public $is_super;
     public $nickname;
+    public $authority;
 	public function _initialize()
 	{
 //        if(strtolower(ACTION_NAME) != 'download')
@@ -33,6 +34,7 @@ class HomeBaseController extends Controller
             $this->user_id = $user_data['user_id'];
             $this->is_super = $res['is_super'];
             $this->nickname = $res['nickname'];
+            $this->authority = $res['authority'];
         }
 	}
 
