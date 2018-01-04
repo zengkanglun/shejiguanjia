@@ -614,53 +614,11 @@ class CommissionController extends CommonController
             }
         }
 
-        //$project_info['rate'] = 10;
-
-//        $projectChildMod = M('project_child');
-//        $projectChildWorkTypeMod = M('project_child_work_type');
-//
-//        //查找项目子项目列表
-//        $project_child_list = $projectChildMod->where(['project_id' => $project_id])->order('id asc')->select();
-//        if ( count($project_child_list) <= 0 ) ajax_error('该项目还未创建子项目');
-//
-//        if ( $project_child_id ) {
-//            //有带子项目参数
-////            $project_child_info = $projectChildWorkTypeMod->where(['project_child_id' => $project_child_id, 'user_id' => $this->user_id])->find();
-//            $project_child_info = $projectChildWorkTypeMod->where(['project_child_id' => $project_child_id])->find();
-//            if ( !$project_child_info ) ajax_error('子项目信息不存在或没操作权限');
-//            //管理员有操作权限 ？！
-////            if ( $project_child_info['user_id'] != $this->user_id ) ajax_error('没操作权限001');
-//
-//        } else {
-//
-//            //获取工种用户当前第一个子项目
-//            $project_for_user = $projectChildWorkTypeMod->alias('pcwt')
-//                ->join('left join s_project_child pc on pc.id = pcwt.project_child_id')
-//                ->field(['pcwt.*'])
-////                ->where(['pcwt.user_id' => $this->user_id, 'pc.project_id' => $project_id])->order('pcwt.id asc')->find();
-//                ->where(['pc.project_id' => $project_id])->order('pcwt.id asc')->find();
-//            if ( !$project_for_user ) ajax_error('没有可操作的数据');
-//
-//            $project_child_id = $project_for_user['project_child_id'];
-//
-//        }
-//
-//        //子项目数组
-//        foreach ( $project_child_list as $key => &$value ) {
-//            unset($value['add_time'], $value['update_time']);
-//            if ( $value['id'] == $project_child_id ) $project_child_list[$key]['current'] = true;
-//            else $project_child_list[$key]['current'] = false;
-//        }
-
-        //根据登录用户和子项目ID查出 工种ID
-//        $project_work_info = M('project_child_work_type')->where(['user_id' => $this->user_id, 'project_child_id' => $project_child_id])->find();
-//        $project_work_info = M('project_child_work_type')->where(['project_child_id' => $project_child_id])->find();
-//        if ( !$project_work_info ) ajax_error('没操作权限002');
-
 
 
         //查找当前正在进行中的计提
         $pwcRes = M('project_work_commission')->field('work_id')->where(array('project_id'=>$project_id,'project_child_id'=>$project_child_id,'work_id'=>$work_id,'commission_rate'=>array('gt',0)))->select();
+
         if($pwcRes){
             $projectStaffCommissionMod = M('project_staff_commission')->alias('psc');
             $res = $projectStaffCommissionMod->field([
@@ -701,7 +659,7 @@ class CommissionController extends CommonController
         }else{
             $current_staff_commission = [];
         }
-        
+
         //查找历史计提
         $history_staff_commission = [];
         $project_last_commission = M('project_commission')->where(['project_child_id' => $project_child_id, 'is_finish' => 1])->order('end_time desc')->find();
