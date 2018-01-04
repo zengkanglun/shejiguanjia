@@ -494,7 +494,6 @@ $(function() {
 				}
 			},
 			error: function(data) {
-
 			},
 			async: true
 		});
