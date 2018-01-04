@@ -340,7 +340,7 @@ class ProjectController extends CommonController
                     //查询子项目工种负责人
                     $data['work'] = D('ProjectChildWorkType')->relation(true)->where('project_child_id = '.$post['id'])->field('user_id,work_id')->select();
                     //获取全部默认工种
-                    $data['allWork'] = M('work')->where(array('type'=>0))->field('id,name')->select();
+                    $data['allWork'] = M('work')->field('id,name')->where(['type'=>0])->select();
                     //获取自定义工种
                     foreach($data['work'] as $vo){
                         $id[] = $vo['work_id'];
@@ -692,7 +692,16 @@ class ProjectController extends CommonController
             $project['building_id'] = $building['id'];
             $project['stage'] = $stage['name'];
             $project['stage_id'] = $stage['id'];
-            $project['file'] = 'http://' . $_SERVER['SERVER_NAME'] . $project['file'];
+
+            $pos = strpos($this->authority,'4');
+            if($pos || $project['is_director']){
+                $project['file'] = $project['file']!=''?'http://' . $_SERVER['SERVER_NAME'] . $project['file']:'';
+            }else{
+                $project['filename'] = '无权查看';
+                $project['file'] = '';
+            }
+
+
             //查询项目进度和收款情况
             $schedule = M('schedule')->where("id = ".$project['sche_id'])->find();
             if(!$schedule)

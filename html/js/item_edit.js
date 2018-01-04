@@ -2,9 +2,10 @@ $(function() {
 	
 	/*下载附件合同*/
 	$(document).on("click", ".basic_msg tbody .filename", function() {
-		 
-		var url = $(this).data("url");		
-		location.href = url;
+        if($(".basic_msg tbody .filename").text() != '暂无附件'){
+            var url = $(this).data("url");
+            location.href = url;
+		}
 	})
 	
 	$(".list select").on("change", function() {
@@ -54,8 +55,13 @@ $(function() {
 					$(".basic_msg tbody .stage").val(data.data.stage);
 					$(".basic_msg tbody .stage").attr("id", data.data.stage_id);
 					$(".basic_msg tbody .address").val(data.data.address);
-					$(".basic_msg tbody .filename").text(data.data.filename);
-					$(".basic_msg tbody .filename").data("url",data.data.file);
+
+					if(data.data.file == ''){
+                        $(".basic_msg tbody .filename").text('暂无附件');
+					}else{
+                        $(".basic_msg tbody .filename").text(data.data.filename);
+                        $(".basic_msg tbody .filename").data("url",data.data.file);
+					}
 					$(".basic_msg tbody .money").text(data.data.money);
 					$(".basic_msg tbody .progress").val(data.data.sched_name); //进度名称
 					$(".basic_msg tbody .progress").attr("id", data.data.sche_id); //进度名称

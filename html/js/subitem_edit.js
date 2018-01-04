@@ -154,9 +154,9 @@ $(function() {
 					str += '</tr>';
 
                     for(var i = 0; i < datas.allWork.length; i++) {
-                        str += '<tr class="work">';
+                        str += '<tr class="work" data-id="' + datas.allWork[i].id + '">';
                         str += '	<td class="item" data-id="' + datas.allWork[i].id + '">' + datas.allWork[i].name + '：</td>';
-                        str += '	<td class="item_num">';
+                        str += '	<td class="item_num" data-id="' + datas.allWork[i].id + '">';
                         str += '		<span>选人</span>';
                         str += '		<input type="text" value="暂无" class="show" data-id="" disabled="disabled" />';
                         str += '		<input type="hidden" class="hidden" value="0" />';
@@ -193,6 +193,12 @@ $(function() {
 					$('.big_content tbody').append(str);*/
 					var list = '';
 					$(".beixuan .design").html('');
+					for(var i = 0;i < datas.allWork.length; i++){
+                        list += '<li class="active" data-id="' + datas.allWork[i].id + '">';
+                        list += '<i><img src="img/backstage_checkbox_orange.png" alt="" /></i>';
+                        list += '<span>' + datas.allWork[i].name + '</span>';
+                        list += '</li>';
+					}
 					for(var j = 0; j < datas.cust_work.length; j++) {
 						list += '<li data-id="' + datas.cust_work[j].id + '">';
 						list += '<i><img src="img/backstage_checkbox_orange.png" alt="" /></i>';
@@ -266,11 +272,34 @@ $(function() {
 
 	/*备选工种添加*/
 	$(document).on("click", ".cnt_detail .beixuan .design li i", function() {
+        var display = $(this).find("img").css("display");
+        var data_id = $(this).parents("li").attr("data-id");
+        // $(this).parents("li").toggleClass("active");
+        if(display == "block") {
+        	var flag = 0;
+        	$(this).parents(".cnt_detail").find("table tbody tr").each(function() {
+            var id = $(this).attr("data-id");
+
+            if(id == data_id) {
+                if($(this).find('.item_num input').attr('data-id') != ''){
+                    toast('该工种已有负责人!');
+                    // $(this).parents("li").removeClass("active");
+                }else{
+                    $(this).remove();
+					flag = 1;
+                }
+            }
+        	});
+        	if(flag) $(this).parents("li").toggleClass("active");
+        }else{
+            // $(this).parents("li").addClass("active");
+            $(this).parents("li").toggleClass("active");
+            var spanTxt = $(this).siblings("span").text();
+            var tbody = '<tr data-id="' + data_id + '"><td class="item" data-id="' + data_id + '">' + spanTxt + '</td><td class="item_num"><span>选人</span><input type="text" class="show" value="暂无" data-id="0" disabled="disabled"/></td></tr>';
+            $(this).parents(".cnt_detail").find("table tbody").append(tbody);
+		}
+/*
 		$(this).parents("li").toggleClass("active");
-		var data_id = $(this).parents("li").attr("data-id");
-		var spanTxt = $(this).siblings("span").text();
-		var display = $(this).find("img").css("display");
-		var tbody = '<tr data-id="' + data_id + '"><td class="item" data-id="' + data_id + '">' + spanTxt + '</td><td class="item_num"><span>选人</span><input type="text" class="show" data-id="0" disabled="disabled"/></td></tr>';
 
 		if(display == "block") {
 			$(this).parents(".cnt_detail").find("table tbody").append(tbody);
@@ -278,10 +307,16 @@ $(function() {
 			$(this).parents(".cnt_detail").find("table tbody tr").each(function() {
 				var id = $(this).attr("data-id");
 				if(id == data_id) {
-					$(this).remove();
+					if($(this).find('.item_num input').attr('data-id')){
+						toast('该工种已有负责人!');
+                        $(this).parents("li").toggleClass("active");
+					}else{
+                        $(this).remove();
+					}
+
 				}
 			})
-		}
+		}*/
 	})
 
 	/*选人添加人员*/
@@ -407,12 +442,15 @@ $(function() {
 			if($(".item_right_ctn ul li").length > 0) {
 				var dataId = $(".item_right_ctn ul li span").attr("data-id");
 			} else {
-				var dataId = 0;
+				var dataId = '';
 			}
 			$(".admin li").removeClass("active");
 			$(".item_right_ctn .work_style").remove();
-			people.siblings(".show").val(listxt);
-			people.siblings(".show").attr("data-id", dataId);
+
+			if(dataId != ''){
+                people.siblings(".show").attr("data-id", dataId);
+                people.siblings(".show").val(listxt != ''?listxt:'暂无');
+			}
 		})
 	}
 
@@ -461,4 +499,10 @@ $(function() {
 			async: true
 		});
 	})
+
+	/*跳转到新建子项目*/
+	$('.newChild').on("click",function(){
+        location.href = "subitem.html";
+	});
+
 })
