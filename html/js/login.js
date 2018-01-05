@@ -34,15 +34,8 @@ $(function() {
 
 				},
 				success: function(data) {
-					if(data.status == 1) {
-						toast(data.msg);
-						localStorage.clear();
-						sessionStorage.clear();					
-					} else {
-						toast(data.msg);
-						localStorage.clear();
-						sessionStorage.clear();
-					}
+					localStorage.clear();
+					sessionStorage.clear();
 				},
 				error: function(data) {
 

@@ -70,7 +70,11 @@ function ajaxLogin() {
 			if(data.status == 1) {
 
 			} else {
-				location.href = "login.html"
+				toast('登录已失效，请重新登录');
+				setInterval(function(){
+                    location.href = "login.html"
+				},2000);
+
 			}
 		},
 		error: function(data) {
@@ -96,7 +100,12 @@ $.ajax({
 		if(data.status == 1) {
 			$("body .lock").remove();
 		} else {
-			lock();
+			if(data.status == 5){
+				toast('登录已失效，请重新登录');
+				setInterval(function () {
+					window.location.href = "login.html";
+                },2000);
+			}else	lock();
 		}
 	},
 	error: function(data) {
