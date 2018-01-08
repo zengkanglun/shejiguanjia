@@ -298,7 +298,7 @@ class NoticeController extends CommonController
 
         if($_FILES['file']['name'])
         {
-            $res = uploads('notice/',['jpg','gif','png','rar','zip','doc','xls','txt'],$this->max_upload_size);
+            $res = uploads('notice/',['jpg','gif','png','rar','zip','doc','docx','xls','txt'],$this->max_upload_size);
 
             if(!is_array($res))
             {

@@ -121,7 +121,11 @@ class ProjectController extends CommonController
                     $project->file = $file[0]; //文件路径
                 }
 
-                $project->project_time = strtotime($post['project_time']); //将立项时间转化为时间戳
+                if (strtotime($post['project_time']) != 0){
+                    $project->project_time = strtotime($post['project_time']); //将立项时间转化为时间戳
+                }else{
+                    $project->project_time = time(); //将立项时间转化为时间戳
+                }
                 $project->user_id = $this->user_id;
                 $project->add_time = time();
                 $project->update_time = time();
@@ -495,7 +499,7 @@ class ProjectController extends CommonController
     {
         if(IS_POST){
             $post = I('post.');
-            if(!$post['chile_id']){ ajax_error('缺少项目信息'); }
+            if(!$post['chile_id']){ ajax_error('缺少子项目信息'); }
 
             //查询子项目员工
             $data['user_id'] = $this->user_id;
@@ -631,7 +635,12 @@ class ProjectController extends CommonController
                 //查询项目工种主管
 //                $child = D('ProjectChildWorkType')->where($where)->field('id,user_id,work_id')->select();
                 //查询所有参加了项目的员工
-                $staff = D('Staff')->relation(true)->where($where)->field('id,user_id,work_id,status')->order('work_id')->select();
+                if($child_id){
+                    $staff = D('Staff')->relation(true)->where($where)->field('id,user_id,work_id,status')->order('work_id')->select();
+                    $data['staff'] = $staff;
+                }else{
+                    $data['staff'] = '';
+                }
                 //ajax_success('成功',$staff);
                 //$child = array_merge($child,$staff);
                 //$child = $staff;
@@ -657,7 +666,7 @@ class ProjectController extends CommonController
 //                //ajax_success('1',$sta);
 //                if ( $sta ) sort($sta);
 
-                $data['staff'] = $staff;
+
 //dump($data);exit;
                 ajax_success('成功', $data);
             } else {

@@ -191,7 +191,6 @@ class TaskController extends CommonController
                     'title',
                     'IFNULL(file_name,"") as file_name',
                     'content',
-                    'reply',
                     'update_at',
                     'to_user'
                 ]

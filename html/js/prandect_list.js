@@ -191,7 +191,7 @@ $(function() {
 		for(var i in data) {
 			var tsk = data[i];
 			var et = "";
-			if(tsk.edit == 0)
+			if(tsk.edit == 0 && tsk.status != 0)
 				et = '<span class="check"  data-id="' + tsk.id + '">查看</span>';
 			else
 				et = '<span class="edit"  data-id="' + tsk.id + '">编辑</span><span class="check"  data-id="' + tsk.id + '">查看</span>';

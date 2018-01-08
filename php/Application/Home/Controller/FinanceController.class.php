@@ -517,9 +517,10 @@ class FinanceController extends CommonController
                 "from_unixtime(project.project_time, '%Y-%m-%d')" => 'project_time',
                 'schedule.name' => 'stage'
             ])
-            ->join('left join s_schedule schedule on schedule.project_id = project.sche_id')
+            ->join('left join s_schedule schedule on schedule.id = project.sche_id')
             ->where(['project.id' => $project_id])->find();
         if ( !$project_info ) ajax_error('项目信息不存在');
+
 
         $expenseMod = M('expense');
         $project_info['expense_amount'] = $expenseMod->where(['project_id' => $project_id])->sum('amount');     //支出总额
@@ -1253,7 +1254,11 @@ class FinanceController extends CommonController
             'round(money-receive, 2)' => 'debat',
             'process'
         ])->where(['project_id' => $project_id])->select();
+        foreach ($schedule_list as $k=>$v){
+            $schedule_list[$k]['process'] = M('receipt')->where(['s_id'=>$schedule_list[$k]['schedule_id']])->order('id desc')->getfield('cause');
+        }
 
+        //ajax_success($schedule_list);
         //查找项目支出列表
         $expense_list = M('expense')->alias('e')->join('left join s_user u on u.id = e.user_id')->join('left join s_overhead_type ot on ot.id = overhead_type_id')->field([
             'e.id' => 'expense_id',

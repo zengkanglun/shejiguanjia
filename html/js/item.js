@@ -55,8 +55,6 @@ $(function() {
 			success: function(data) {
 				if(data.status == 1) {
 					item_table = "";
-					console.log(data);
-					console.log(project_id);
 					$(".msg_head .edit").attr("data-id", data.data.id);
 					$(".basic_msg tbody .number").text(data.data.number);
 					$(".basic_msg tbody .name").text(data.data.name);
@@ -149,7 +147,6 @@ $(function() {
 				project_id: id,
 			},
 			success: function(data) {
-				console.log(data.data.staff[0].work.name)
 				var director = "";
 				if(data.status == 1) {
 					director += '<tr>';

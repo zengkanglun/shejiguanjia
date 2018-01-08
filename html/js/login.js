@@ -71,7 +71,7 @@ $(function() {
 						sessionStorage.setItem("last_ip", data.data.last_ip);
 						location.href = "index.html";
 					} else {
-						alert("账号或者密码错误");
+                        alert(data.msg);
 					}
 				},
 				error: function(data) {
@@ -102,7 +102,7 @@ $(function() {
 						sessionStorage.setItem("last_ip", data.data.last_ip);
 						location.href = "index.html";
 					} else {
-						alert("账号或者密码错误");
+						alert(data.msg);
 					}
 				},
 				error: function(data) {

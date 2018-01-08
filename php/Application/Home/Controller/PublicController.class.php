@@ -32,10 +32,15 @@ class PublicController extends Controller
                 ajax_error('用户不存在');
             }
 
+            if($data['is_del'] == 1){
+                ajax_error('用户为离职状态，请联系管理员！');
+            }
+
             if($data['password'] != md5($post['password']))
             {
-                ajax_error('用户不存在');
+                ajax_error('密码错误');
             }
+
 
             $model = M('userToken');
 

@@ -836,7 +836,6 @@ class AdminController extends CommonController
         if(IS_POST)
         {
             $post = I('post.');
-
             if(M('chuchaiType')->add($post))
             {
                 $this->log("超级管理员添加了出图出差类型",8);
