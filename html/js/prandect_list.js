@@ -458,6 +458,7 @@ $(function() {
 	//人才绩效 e_id:：渲染元素id
 	var rendPmenListParam = function(data, e_id, type) {
 		$(e_id).html("");
+		console.log(data);
 		for(var i in data) {
 			var tsk = data[i];
 			var item = $('<tr>' +
@@ -509,6 +510,7 @@ $(function() {
 			dataType: 'json',
 			data: bundle,
 			success: function(data) {
+				console.log(data);
 				if(data.status == 1) { //success
 					//					console.log(1);
 					//					console.log(data.msg);

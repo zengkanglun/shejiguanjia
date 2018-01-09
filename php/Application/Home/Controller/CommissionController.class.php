@@ -736,39 +736,59 @@ class CommissionController extends CommonController
     public function performanceDetail() {
 
         $user_id = I('get.user_id', 0, 'intval');
-        $project_id = I('get.project_id', 0, 'intval');
-        if ( $user_id <= 0 || $project_id <= 0 ) ajax_error('参数错误');
+        //$project_id = I('get.project_id', 0, 'intval');
+        if ( $user_id <= 0 ) ajax_error($user_id);
+        //ajax_success($user_id);
+        //工种成员计提
+        $comlist = M('project_staff_commission')->where(['user_id'=>$user_id])->select();
+        //ajax_success($comlist);
+        $list = [];  //计提详情数组
+        $pid = []; //项目ID数组
+        $project_info['jiti_count'] = 0;  //计提次数
+        $project_info['total_commission'] = 0;  //计提总额
+        //项目主管的计提
+        $derectorlist = M('project_commission')->where(['supervisor_id'=>$user_id])
+            ->field(['project_id',
+                'supervisor_id' => 'user_id',
+                'supervisor_rate' => 'commission_rate',
+                'supervisor_money' => 'commission_money',
+                'id' => 'project_commission_id',
+            ])->select();
+        $comlist = array_merge($derectorlist,$comlist);
+        //var_export($comlist);
+        //ajax_success($comlist);
 
-        $project_info = M('project')->alias('project')->join('left join s_user u on u.id = project.director_id')
-            ->field([
-                'project.name' => 'project_name',
-                'u.nickname' => 'supervisor_name',
-            ])
-            ->where(['project.id' => $project_id])->find();
+        foreach ($comlist as $k=>$v){
+            if($comlist[$k]['commission_money'] > 0){
+                $list[$k] =  $comlist[$k];
+                //查找项目名称
+                $list[$k]['project_name'] = M('project')->where(['id' => $comlist[$k]['project_id'] ])->getField('name');
+                //查找参与工种信息
+                if (isset($list[$k]['work_id'])){
+                    $list[$k]['work_name'] = M('work')->where(['id'=>$comlist[$k]['work_id'] ])->getField('name');
+                }else{
+                    $list[$k]['work_name'] = '项目主管';
+                    $list[$k]['content'] = '';
+                }
+                //格式化时间
+                $timelist = M('project_commission')->where(['id'=>$comlist[$k]['project_commission_id']])->field('start_time,end_time')->find();
+                $list[$k]['start_time'] = date("Y.n.d", $timelist['start_time']);
+                $list[$k]['end_time'] = date("Y.n.d", $timelist['end_time']);
+                //获取项目id
+                $pid[$k] = $comlist[$k]['project_id'];
+                //计提次数
+                $project_info['jiti_count'] ++;
+                //计提总额
+                $project_info['total_commission'] += $comlist[$k]['commission_money'];
+            }
+        }
 
-        if ( !$project_info ) ajax_error('项目信息不存在');
+        //参与项目数
+        $project_info['p_count'] = count( array_unique($pid) );
 
-        $list = M('project_staff_commission')->alias('psc')
-            ->join('left join s_project_commission pc on pc.id = psc.project_commission_id')
-            ->join('left join s_work w on w.id = psc.work_id')
-            ->field([
-                'w.name' => 'work_name',
-                'psc.labor',
-                'psc.content',
-                'psc.commission_rate',
-                'psc.commission_money',
-                "FROM_UNIXTIME(pc.start_time, '%Y-%m-%d')" => 'start_time',
-                "FROM_UNIXTIME(pc.end_time, '%Y-%m-%d')" => 'end_time',
-            ])->where(['psc.project_id' => $project_id, 'psc.user_id' => $user_id, 'pc.is_finish' => 1])->select();
-
+        //用户姓名
         $user_info = M('user')->where(['id' => $user_id])->find();
         $project_info['user_name'] = $user_info['nickname'];        //姓名
-
-        if ( count($list) > 0 ) {
-            $project_info['total_commission'] = array_sum(array_column($list, 'commission_money'));
-        } else {
-            $project_info['total_commission'] = 0;
-        }
 
         ajax_success('数据获取成功', compact('project_info', 'list'));
     }
