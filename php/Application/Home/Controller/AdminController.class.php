@@ -40,8 +40,12 @@ class AdminController extends CommonController
             ->limit($page->firstRow.','.$page->listRows)->select();
         foreach ($data['data'] as $k=>$v)
         {
-            $data['data'][$k]['work_type'] = M('work')->where(['id'=>$v['work_type']])->getField('name');
-            $data['data'][$k]['edu']       = getEdu($v['edu']);
+            if($res = M('work')->where(['id'=>$v['work_type']])->getField('name')){
+                $data['data'][$k]['work_type'] = $res;
+            }else{
+                $data['data'][$k]['work_type'] = '暂未分配';
+            }
+            $data['data'][$k]['edu'] = getEdu($v['edu']);
         }
         $data['count'] = $count;
         $data['page']  = ceil($count/$size);
@@ -207,14 +211,9 @@ class AdminController extends CommonController
             {
                 ajax_error('数据为空');
             }
-            /*foreach ($post as $k=>$v)
-            {
-                if($v!=0 && !$v)
-                {
-                    unset($post[$k]);
-                }
-            }*/
-
+            if($model -> where(['nickname'=>$post['nickname']])->getField('id'))
+                ajax_error('用户姓名已存在');
+            if($post['worktime'] == '') $post['worktime'] = date('Y-m-d',time());
             if($data = $model->create($post))
             {
                 if($model->add($data))
@@ -225,8 +224,6 @@ class AdminController extends CommonController
                     ajax_error('创建失败');
                 }
             }
-
-            ajax_error('用户已存在');
         }
     }
 

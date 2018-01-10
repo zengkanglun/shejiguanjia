@@ -507,7 +507,7 @@ $.ajax({
 	data: {},
 	success: function(data) {
 		if(data.status == 1) {
-			$(".danw span").text(data.data[0].address)
+			$(".danw span").text(data.data[0].name)
 		} else {
 
 		}
