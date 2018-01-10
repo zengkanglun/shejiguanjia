@@ -76,7 +76,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					//					console.log(data);
+					console.log(data);
 					var str = "";
 					var datas = data.data.list;
 					for(var i = 0; i < datas.length; i++) {

@@ -40,55 +40,66 @@ $(function() {
 	//添加用户(nor层)
 
 	var newpF = function() {
-		var newP = {};
-		newP.username = "" + $("#add_nor #new_username").val();
-		newP.password = "" + $("#add_nor #new_password").val();
-		newP.nickname = "" + $("#add_nor #new_nickname").val();
-		newP.birthday = "" + $("#add_nor #testone").val();
-		newP.sex = "" + $("#add_nor #new_sex_list option:selected").val();
-		// if(newP.sex == "男")
-		// 	newP.sex = "1";
-		// else if(newP.sex == "女")
-		// 	newP.sex = "2";
-		// else
-		// 	newP.sex = "0";
-		newP.worktime = "" + $("#add_nor #testtwo").val();
-		newP.school = "" + $("#add_nor #new_school").val();
-		newP.edu = "" + $("#add_nor #new_edu").val();
+        var newP = {};
+        newP.username = "" + $("#add_nor #new_username").val();
+        newP.password = "" + $("#add_nor #new_password").val();
+        newP.nickname = "" + $("#add_nor #new_nickname").val();
+        newP.birthday = "" + $("#add_nor #testone").val();
+        newP.sex = "" + $("#add_nor #new_sex_list option:selected").val();
+        newP.worktime = "" + $("#add_nor #testtwo").val();
+        newP.school = "" + $("#add_nor #new_school").val();
+        newP.edu = "" + $("#add_nor #new_edu").val();
+        newP.edu = $("#add_nor #edu_list").val();
+        newP.position = "" + $("#add_nor #new_position_list").val();
+        newP.mobile = "" + $("#add_nor #new_mobile").val();
+        if(newP.mobile == 1){
+            newP.mobile ='';
+		}
+        newP.qq = "" + $("#add_nor #new_qq").val();
 
-		newP.edu = $("#add_nor #edu_list").val();
-		newP.position = "" + $("#add_nor #new_position_list").val();
-		newP.mobile = "" + $("#add_nor #new_mobile").val();
-		newP.qq = "" + $("#add_nor #new_qq").val();
+        newP.work_type = "" + $("#add_nor #work_type_list").val();
 
-		newP.work_type = "" + $("#add_nor #work_type_list").val();
+        var e_id = "#autho_add";
+        newP.authority = renderAuthoInverParam(e_id) //"1";
+        token = localStorage.getItem("token");
+        console.log(newP);
+        if (newP.username == '') {
+            toast('账号不能为空');
+        } else {
+            if (newP.password == '') {
+                toast('密码不能为空');
+            } else {
+                if (newP.nickname == '') {
+                    toast('姓名不能为空');
+                } else {
+                    $.ajax({
 
-		var e_id = "#autho_add";
-		newP.authority = renderAuthoInverParam(e_id) //"1";
-		token = localStorage.getItem("token");
-		console.log(newP);
-		$.ajax({
+                        method: 'POST',
+                        dataType: 'json',
 
-				method: 'POST',
-				dataType: 'json',
+                        headers: {
+                            accept: "usertoken:" + token
+                        },
+                        url: host_host_host + '/index.php/home/admin/create',
+                        data: newP,
+                    })
+                        .done(function (data) {
+                            toast(data.msg);
+                            if (data.status == 1) { //success
+								location.href = "backstage_general.html";
+                            } else {
+                            }
+                        })
+                        .fail(function (data) {
+                            toast(data.msg);
+                        })
+                        .always(function (data) {
+                        })
+                }
+            }
+        }
 
-				headers: {
-					accept: "usertoken:" + token
-				},
-				url: host_host_host + '/index.php/home/admin/create',
-				data: newP, //{},
-			})
-			.done(function(data) {
-				toast(data.msg);
-				if(data.status == 1) { //success
-				} else {
-				}
-			})
-			.fail(function(data) {
-				toast(data.msg);
-			})
-			.always(function(data) {
-			})
+
 
 	}
 

@@ -829,7 +829,7 @@ $(function() {
 			 else
 			  classname = "";
 			  
-			var item = $('<tr class="'+classname+'">' +
+			var item = '<tr class="'+classname+'">' +
 				'<td><span><img src="img/backstage_checkbox_orange.png" alt="" /></span></td>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
 				'<td>' + user.nickname + '</td>' +
@@ -854,7 +854,7 @@ $(function() {
 				'</div>' +
 				'</div>' +
 				'</td>' +
-				'</tr>');
+				'</tr>';
 			$("#userMList").append(item);
 
 		}
