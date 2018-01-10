@@ -293,6 +293,7 @@ class ProjectController extends CommonController
                                     'user_id'   => $vo['user_id'],
                                     'labor'     => '',
                                     'project_child_id'  => $add,
+                                    'status' => 2,
                                     'add_time'  => time(),
                                     'update_time'   => time()
                                 ]);
