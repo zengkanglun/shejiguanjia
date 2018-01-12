@@ -88,7 +88,7 @@ class ProjectController extends CommonController
                 }
             }
             $post = I('post.');
-
+            //ajax_success($post);
             //自动验证
             $rules = [
                 ['number', 'require', '项目编号不能为空'],
@@ -111,7 +111,7 @@ class ProjectController extends CommonController
 
             $project = M('project');
             $data = $project->validate($rules)->create();
-            
+            //ajax_success($data);
             if($data){
                 //如果有文件上传
                 if($_FILES['contract']['name'] != '' && $_FILES['contract']['size'] > 0){
@@ -167,6 +167,7 @@ class ProjectController extends CommonController
     {   
         if(IS_POST){
             $post = I('post.');
+            //ajax_success($post);
             //自动验证
             $rules = [
                 ['ject_id', 'number', '项目信息不能为空'],
@@ -195,10 +196,11 @@ class ProjectController extends CommonController
             $_POST['sche_id'] = $post['sche_id'];
             // $project->project_time = strtotime($post['project_time']);
             $_POST['project_time'] = strtotime($post['project_time']);
-            $_POST['city'] = strtotime($post['city']);
-            $_POST['province'] = strtotime($post['province']);
+            $_POST['city'] = $post['city'];
+            $_POST['province'] = $post['province'];
             // $project->address = $post['address'];
             $data = $project->validate($rules)->create();
+            //ajax_success($data);
             // $data['sched_id'] = $post['sched_id'];
             //查询项目信息
             $project_name = M('project')->where("id = ".$post['ject_id'])->getField('name');
@@ -292,6 +294,7 @@ class ProjectController extends CommonController
                                     'work_id'   => $vo['work_id'],
                                     'user_id'   => $vo['user_id'],
                                     'labor'     => '',
+                                    'status'    => 2,
                                     'project_child_id'  => $add,
                                     'add_time'  => time(),
                                     'update_time'   => time()
