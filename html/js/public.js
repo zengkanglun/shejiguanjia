@@ -165,6 +165,47 @@ $(document).on("click", ".lock button", function() {
 		async: true
 	});
 })
+
+/*搜索框搜索项目*/
+$("#text").keyup(function () {
+	var res = $("#text").val();
+	searchProject(res);
+
+})
+
+function searchProject(name) {
+	var name = name;
+
+    $(".search_project").remove();
+    $.ajax({
+        type: "post",
+        dataType: 'json',
+        headers: {
+            accept: "usertoken:" + token,
+        },
+        url: host_host_host + "/index.php/Home/Project/SearchProject",
+        data: {
+            name: name
+        },
+        success: function (data) {
+
+            if(data.status == 1){
+                var html = '<div class="search_project">';
+            	html += '<ul>';
+            	//console.log(data.data.length);
+            	for(var i=0; i<data.data.length; i++){
+            		html += '<li> <a href="index.html?project_id='+ data.data[i].id +'">' + data.data[i].name +' </a></li>';
+				}
+				html += '</ul>';
+				html += '</div>';
+				$("#header .left ").append(html);
+                //console.log(html);
+            }else{
+            	toast(data.msg);
+			}
+        }
+    })
+}
 /*页面添加*/
 pageadd();
 

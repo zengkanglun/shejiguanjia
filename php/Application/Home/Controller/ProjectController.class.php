@@ -71,6 +71,22 @@ class ProjectController extends CommonController
         
 	}
 
+	//搜索框搜索项目
+    public function SearchProject()
+    {
+        if (IS_POST){
+            $name = trim(I('post.name'));
+            if($name){
+                $where['name'] = array('like',"%$name%");
+                $data = M('project')->where($where)->field('id,name')->limit(5)->select();
+                if (!$data){
+                    ajax_error('没有相关项目');
+                }
+                ajax_success('',$data);
+            }
+        }
+    }
+
     /**
      * [AddProject 添加项目]
      * @Author   HTL
