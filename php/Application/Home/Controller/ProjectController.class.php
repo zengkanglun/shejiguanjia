@@ -278,12 +278,12 @@ class ProjectController extends CommonController
                         foreach($val['work'] as $vo){
                             if($vo['user_id'])
                             {
-                            M('project_child_work_type')->add([
-                                'work_id' => $vo['work_id'], //工种ID
-                                'user_id' => $vo['user_id'], //工种负责人ID
-                                'project_child_id' => $add, //子项目ID
-                                'update_time' => time(),
-                                'add_time' => time(),
+                                M('project_child_work_type')->add([
+                                    'work_id' => $vo['work_id'], //工种ID
+                                    'user_id' => $vo['user_id'], //工种负责人ID
+                                    'project_child_id' => $add, //子项目ID
+                                    'update_time' => time(),
+                                    'add_time' => time(),
                                 ]);
                             // 需要添加该负责人到staff表
                             // add at 2017年11月1日15:05:28
@@ -316,7 +316,7 @@ class ProjectController extends CommonController
             //查询项目主管
             $data['nickname'] = M('user')->where("id = ".$data['director_id'])->getField('nickname');
             //获取自定义工种列表
-            $data['work'] = M('work')->where("type = 1")->field('id,name')->select();
+            $data['work'] = M('work')->where()->field('id,name')->select();
 
             ajax_success('成功',$data);
         }
