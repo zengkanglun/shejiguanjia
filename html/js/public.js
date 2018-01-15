@@ -194,7 +194,7 @@ function searchProject(name) {
             	html += '<ul>';
             	//console.log(data.data.length);
             	for(var i=0; i<data.data.length; i++){
-            		html += '<li> <a href="index.html?project_id='+ data.data[i].id +'">' + data.data[i].name +' </a></li>';
+            		html += '<a href="index.html?project_id='+ data.data[i].id +'"><li> ' + data.data[i].name +'</li></a>';
 				}
 				html += '</ul>';
 				html += '</div>';
