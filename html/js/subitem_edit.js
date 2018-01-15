@@ -169,12 +169,8 @@ $(function() {
                     	str = '';
                         for(var a = 1; a < $('.cnt_detail tbody tr').length;a++){
                             if($('.cnt_detail tbody tr').eq(a).find('.item').attr('data-id') == datas.work[i].work_id){
-                                str += '	<td class="item_num">';
-                                str += '		<span>选人</span>';
-                                str += '		<input type="text" value="' + datas.work[i].nickname + '" class="show" data-id="' + datas.work[i].user_id + '" disabled="disabled" />';
-                                str += '		<input type="hidden" class="hidden" value="0" />';
-                                str += '	</td>';
-                            	$('.cnt_detail tbody tr').eq(a).find('.item').next().html(str);
+                                $('.cnt_detail tbody tr').eq(a).find('.show').val(datas.work[i].nickname);
+                                $('.cnt_detail tbody tr').eq(a).find('.show').attr('data-id',datas.work[i].user_id);
                             }
                         }
                     }
@@ -295,7 +291,7 @@ $(function() {
             // $(this).parents("li").addClass("active");
             $(this).parents("li").toggleClass("active");
             var spanTxt = $(this).siblings("span").text();
-            var tbody = '<tr data-id="' + data_id + '"><td class="item" data-id="' + data_id + '">' + spanTxt + '</td><td class="item_num"><span>选人</span><input type="text" class="show" value="暂无" data-id="0" disabled="disabled"/></td></tr>';
+            var tbody = '<tr data-id="' + data_id + '"><td class="item" data-id="' + data_id + '">' + spanTxt + '</td><td class="item_num"><span>选人</span><input type="text" class="show" value="暂无" data-id="" disabled="disabled"/></td></tr>';
             $(this).parents(".cnt_detail").find("table tbody").append(tbody);
 		}
 /*

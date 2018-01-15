@@ -352,6 +352,9 @@ class ProjectController extends CommonController
                     }
                     if(!empty($id))
                     {
+                        //获取已有工种负责人的备选工种
+                        $new_id = M('work')->field('id,name')->where(['id'=>['gt',7]])->select();
+                        $data['allWork'] = array_merge($data['allWork'],$new_id);
                         $where['id'] = array('NOT IN',$id);
                     }
                     $where['type'] = 1;
