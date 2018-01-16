@@ -112,6 +112,8 @@ $(function() {
 					}
 					sessionStorage.setItem("itemName", data.data.name);
 					localStorage.setItem("project_id", data.data.id);
+                    localStorage.setItem("haveChild", data.data.haveChild);
+                    sessionStorage.setItem("is_director", data.data.is_director);
 					/*子项目负责人添加*/
 				} else {
 

@@ -22,28 +22,21 @@
 	laborNum = localStorage.getItem("labor_num");
 	
 	$(document).on("click", ".project_data .item_type.operate", function() {
-		console.log("admin:"+admin)
-		
-		if(admin) //如果是超级管理员
+		if(sessionStorage.getItem('is_super') == 1) //如果是超级管理员
 		{
-			
-			//localStorage.setItem("project_id", project_id);
-			//localStorage.setItem("workDuty", workDuty);
-			location.href = "subitem_edit.html";
+			//判断是否有子项目
+			if(localStorage.getItem('haveChild') == 1){
+                location.href = "subitem_edit.html";
+			}else{
+                toast('还没有录入子项目');
+            }
 		}else
 		{
-			 
-			//laborNum = 1;
-			$("#boxPock").show();
-			$("#boxPock .userAdminSeven").show();
-			userItemID = $(this).attr("data-id");
-			
-			userItemID = ject_id; // jene 12-18
-			//storage
-			//console.log(userItemID)
-			item_msg(userItemID);
-				
-			
+			if(localStorage.getItem('haveChild') && sessionStorage.getItem('is_director')){
+                location.href = "subitem_edit.html";
+			}else{
+                toast('没有录入子项目');
+            }
 		}
 	})
 

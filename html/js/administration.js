@@ -280,11 +280,17 @@ $(function() {
 	})
 	/*系统管理员成员管理的工种部分*/
 	$(document).on("click", ".item_manage1 .third .member_system .work", function() {
-		laborNum = 1;
-		$("#boxPock").show();
-		$("#boxPock .userAdminSeven").show();
-		userItemID = $(this).parents(".item_table").attr("data-id");
-		item_msg(userItemID);
+
+		if(localStorage.getItem('haveChild') ==1){
+			laborNum = 1;
+            $("#boxPock").show();
+            $("#boxPock .userAdminSeven").show();
+            userItemID = $(this).parents(".item_table").attr("data-id");
+            item_msg(userItemID);
+		}else{
+			toast('没有子项目');
+		}
+
 	})
 	$(document).on("click", ".item_manage1 .forth .member_system .work", function() {
 		laborNum = 2;
@@ -1756,9 +1762,12 @@ $(function() {
 		var workDuty = $(this).parents("li").attr("data-id");
 		localStorage.setItem("project_id", project_id);
 		localStorage.setItem("workDuty", workDuty);
-		//		console.log(project_id, workDuty)
-		console.log(workDuty)
-		location.href = "subitem_edit.html";
+		if(localStorage.getItem('haveChild') == 1){
+            location.href = "subitem_edit.html";
+		}else{
+			toast('没有子项目');
+		}
+
 	})
 	/*项目主管和系统管理员成员管理已完成的操作*/
 	$(document).on("click", ".item_manage1 .forth .member_system .manage,.item_manage1 .forth .member_manage .operate", function() {
@@ -1766,7 +1775,11 @@ $(function() {
 		var workDuty = $(this).parents("li").attr("data-id");
 		localStorage.setItem("project_id", project_id);
 		localStorage.setItem("workDuty", workDuty);
-		location.href = "subitem_check.html";
+        if(localStorage.getItem('haveChild') == 1){
+            location.href = "subitem_edit.html";
+        }else{
+            toast('没有子项目');
+        }
 	})
 
 	/*项目主管和系统管理员de项目信息操作*/
