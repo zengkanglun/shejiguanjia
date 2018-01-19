@@ -409,6 +409,7 @@ $(function() {
 			success: function(data) {
 				if(data.status == 1) {
 					//						console.log(data);
+					if(data.data){
 					var datas = data.data;
 					var str = '';
 					var ppName = $('.perf');
@@ -427,6 +428,7 @@ $(function() {
 					ppName.find('.task_detail .paging .page_left span').html(datas.count);
 					ppName.find('.task_detail tfoot .count').html(datas.total);
 					ppName.find('.task_detail .paging .page_right .total_num').html(datas.page);
+                    }
 				} else {
 
 				}

@@ -51,17 +51,27 @@ $(function() {
 		var txtName = $("#query_key_b").val();
 		if(num == 0) {
 			$(this).attr("data-id", 1)
-		} else {
-			$(this).attr("data-id", 0)
+			perf(1,1);
+		} else{
+			$(this).attr("data-id", 2)
+			perf(1,2);
 		}
-		if(sortNum == 1) {
-			perf(1, num,txtName)
+		if (num == 2){
+			$(this).attr("data-id", 1)
+			perf(1,1);
 		}
+
 	})
 	/*人才绩效*/
 	perf(1)
 
-	function perf(p, amount, name) {
+	function perf(p, amount, name,from,to) {
+		if(from){
+			var start = from;
+		}
+		if (to){
+			var end = to;
+		}
 		$.ajax({
 			type: "get",
 			url: host_host_host + "/Home/Commission/performanceListV2",
@@ -69,7 +79,9 @@ $(function() {
 			data: {
 				p: p,
 				amount: amount,
-				name: name
+				name: name,
+				start: start,
+				end: end
 			},
 			headers: {
 				accept: "usertoken:" + token,

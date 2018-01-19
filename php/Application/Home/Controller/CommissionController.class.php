@@ -861,6 +861,25 @@ class CommissionController extends CommonController
 
     }
 
+    //二维数组排序算法
+
+    /**
+     * @param $array 排序的数组
+     * @param $field 排序的字段
+     * @param $sort 升序还是降序 SORT_DESC 降序；SORT_ASC 升序
+     * @return mixed
+     */
+    public function arraySequence($array, $field, $sort)
+    {
+        $arrSort = array();
+        foreach ($array as $uniqid => $row) {
+            foreach ($row as $key => $value) {
+                $arrSort[$key][$uniqid] = $value;
+            }
+        }
+        array_multisort($arrSort[$field], constant($sort), $array);
+        return $array;
+    }
     /**
      * 总览->人才绩效列表(新)
      */
@@ -868,9 +887,11 @@ class CommissionController extends CommonController
 //        $start_time = I('get.start_time', 0, 'intval');
 //        $end_time = I('get.end_time', 0, 'intval');
         $name = I('get.name', '', 'trim');  //用户名
-
+        $sort_field = I('get.amount');
         $page = I('get.page', 1, 'intval'); //分页
         $num = 10;
+        $start = I('get.start');
+        $end = I('get.end');
         $num = I('get.num', 10, 'intval');  //条数
 
         $map = [];
@@ -883,29 +904,57 @@ class CommissionController extends CommonController
                 $map['id'] = ['in', array_column($res, 'id')];
             }
         }
-        $count = M('user')->where($map)->count();
-        $page = new Page($count,5);
+
+        $count = M('user')->where($map)->count();//用户数量
+        $page = new Page($count,10);
 
         $data = M('user')->where($map)->limit($page->firstRow.','.$page->listRows)->field(['id'=>'user_id','nickname'])->select();
 
         foreach ($data as $k=>$v)
         {
+            //作为项目主管参与项目id
             $projects = M('project')->where(['director_id'=>$v['user_id']])->getField('group_concat(id)');
-            $projects_staff = M('staff')->where(['user_id'=>$v['user_id']])->getField('group_concat(user_id)');
+            //
+            $projects_staff = M('project_staff_commission')->where(['user_id'=>$v['user_id']])->getField('group_concat(project_id)');
+            if ($projects){
+                if($projects_staff){
+                    $projects = array_unique(explode(',',($projects.','.$projects_staff)));
+                    $projects_id = count($projects);
+                }else{
+                    $projects = array_unique(explode(',',$projects));
+                    $projects_id = count($projects);
+                }
+            }elseif ($projects_staff){
+                $projects = array_unique(explode(',',$projects_staff));
+                $projects_id = count($projects);
+            }else{
+                $projects = '';
+                $projects_id = 0;
+            }
 
-            $projects = array_unique(explode(',',($projects_id.','.$projects_staff)));
-            $projects_id = count($projects);
-            $data[$k]['project_num'] = $projects_id;
+            $data[$k]['project_num'] = $projects_id; //参与项目数
+            //按照时间搜索
+            if($start && $end){
+                $where[]
+            }
             // 主管提成
             $profits_manage = M('projectCommission')->where(['supervisor_id'=>$v['user_id']])->getField('sum(supervisor_money)');
             // 员工提成
             $profits_staff = M('projectStaffCommission')->where(['user_id'=>$v['user_id']])->getField('sum(commission_money)');
             $data[$k]['amount'] = $profits_manage + $profits_staff;
         }
+
+        //汇总排序
+        if ($sort_field == 1){
+            $data = $this->arraySequence($data,'amount','SORT_DESC');
+        }elseif($sort_field == 2){
+            $data = $this->arraySequence($data,'amount','SORT_ASC');
+        }
+
         $new_data = [];
         $new_data['list'] = $data;
         $new_data['count'] = $count;
-        $new_data['totalPage'] = ceil($count/5);
+        $new_data['totalPage'] = ceil($count/10);
 
         ajax_success('success',$new_data);
         if ( $name ) {

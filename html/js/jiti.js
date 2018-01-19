@@ -60,10 +60,7 @@ $(function() {
 		searchFun2(data5, 1, pp2);
 		searchFun2(data6, 2, pp2);
 	})
-	/*确认改变页面*/
-	$(document).on("click", ".countDetail .jtbtn1", function() {
 
-	})
 	/*立项切换*/
 	$(document).on('change', '.jiti_s', function() {
 		type2 = pp2.find('.timeover select').val();

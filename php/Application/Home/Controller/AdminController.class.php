@@ -414,15 +414,15 @@ class AdminController extends CommonController
         }
 
         $count = $model->where($where)->count();
-        $page  = new Page($count,5);
+        $page  = new Page($count,10);
         $data['count'] = $count;
-        $data['page']  = ceil($count/5);
+        $data['page']  = ceil($count/10);
         $data['data']  = $model
             ->relation(true)
             ->where($where)
             ->limit($page->firstRow.','.$page->listRows)
             ->field(['id','user_id','log_info','log_ip','add_time','log_type'])
-            ->select();
+            ->order('id desc')->select();
 
         foreach ($data['data'] as $k=>$v)
         {

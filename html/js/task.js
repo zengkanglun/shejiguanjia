@@ -396,7 +396,7 @@ $(function() {
 						str += '	<td class="n_name" data-name="' + data.data.data[i].user_id + '">' + data.data.data[i].user_id + '</td>';
 						str += '	<td class="n_time" data-time="' + data.data.data[i].add_time + '">' + data.data.data[i].add_time + '</td>';
 						str += '	<td class="n_type" data-type="' + data.data.data[i].type + '">' + data.data.data[i].type + '</td>';
-						str += '	<td class="title" data-id="' + data.data.data[i].pid + '" > ' + data.data.data[i].title + '</td>';
+						str += '	<td  data-id="' + data.data.data[i].pid + '" ><span class="title"> ' + data.data.data[i].title + '</span></td>';
 						str += '	<td class="n_start" data-start="' + data.data.data[i].start_time + '">' + data.data.data[i].start_time + '</td>';
 						str += '	<td class="handle"><span class="add">接受</span><span class="check">拒受</span></td>';
 						str += '</tr>';
@@ -468,7 +468,7 @@ $(function() {
 						str += '	<td>' + data.data.data[i].user_id + '</td>';
 						str += '	<td>' + data.data.data[i].add_time + '</td>';
 						str += '	<td>' + data.data.data[i].type + '</td>';
-						str += '	<td class="title" data-id="' + data.data.data[i].pid + '">' + data.data.data[i].title + '</td>';
+						str += '	<td  data-id="' + data.data.data[i].pid + '"><span class="title">' + data.data.data[i].title + '</span></td>';
 						str += '	<td>' + data.data.data[i].receive_time + '</td>';
 						str += '	<td class="handle"><span class="sure">确认完成</span></td>';
 						str += '</tr>';
@@ -539,7 +539,7 @@ $(function() {
 						str += '	<td>' + data.data.data[i].user_id + '</td>';
 						str += '	<td>' + data.data.data[i].add_time + '</td>';
 						str += '	<td>' + data.data.data[i].type + '</td>';
-						str += '	<td class="title" data-id="' + data.data.data[i].pid + '">' + data.data.data[i].title + '</td>';
+						str += '	<td  data-id="' + data.data.data[i].pid + '"><span class="title">' + data.data.data[i].title + '</span></td>';
 						str += '	<td>' + data.data.data[i].finish_time + '</td>';
 						str += '	<td class="handle"><span class="back">回退</span><span class="del">删除</span></td>';
 						str += '</tr>';
@@ -610,7 +610,7 @@ $(function() {
 						str += '	<td>' + data.data.data[i].add_time + '</td>';
 						str += '	<td>' + data.data.data[i].type + '</td>';
 						str += '	<td>' + data.data.data[i].receiver + '</td>';
-						str += '	<td class="title">' + data.data.data[i].title + '</td>';
+						str += '	<td ><span class="title">' + data.data.data[i].title + '</span></td>';
 						str += '	<td>' + data.data.data[i].status + '</td>';
 						str += '	<td class="handle"><span class="del">删除</span></td>';
 						str += '</tr>';

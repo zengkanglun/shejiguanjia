@@ -2290,6 +2290,21 @@ body {
   cursor: pointer;
   background: #FD813E;
 }
+#boxPock .expend_detail .expend_detail_head .bianji {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  width: 60px;
+  height: 36px;
+  line-height: 34px;
+  line-height: 34px\9;
+  color: #ffffff;
+  text-align: center;
+  background: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #FD813E;
+}
 #boxPock .item_edit .item_edit_head i {
   position: absolute;
   width: 16px;

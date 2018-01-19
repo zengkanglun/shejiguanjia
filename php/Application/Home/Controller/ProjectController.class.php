@@ -725,7 +725,7 @@ class ProjectController extends CommonController
             if($pos || $project['is_director']){
                 $project['file'] = $project['file']!=''?'http://' . $_SERVER['SERVER_NAME'] . $project['file']:'';
             }else{
-                $project['filename'] = '无权查看';
+                $project['filename'] = '权限查看';
                 $project['file'] = '';
             }
 
@@ -750,8 +750,12 @@ class ProjectController extends CommonController
                 $temp_schedule = $schedule['name'];
             }
             $project['sched_name'] = $temp_schedule;
-            $project['receipt'] = abs($schedule['receive'])?$schedule['receive']:0;
-            $project['receipt'] = '已收款 '.$project['receipt'].' 元';
+            if($pos || $project['is_director']){
+                $project['receipt'] = abs($schedule['receive'])?$schedule['receive']:0;
+                $project['receipt'] = '已收款 '.$project['receipt'].' 元';
+            }else{
+                $project['receipt'] = '权限查看';
+            }
             //查询子项目
             $project['child'] = D('ProjectChild')->relation(true)->where("project_id = $id")->field('id,name,project_id')->select();
 
