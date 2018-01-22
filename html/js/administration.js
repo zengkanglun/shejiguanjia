@@ -280,18 +280,39 @@ $(function() {
 	})
 	/*系统管理员成员管理的工种部分*/
 	$(document).on("click", ".item_manage1 .third .member_system .work", function() {
+        /*验证是否有子项目*/
+        $.ajax({
+            type: "post",
+            url: host_host_host + "/home/project/checkChild",
+            dataType: 'json',
+            headers: {
+                accept: "usertoken:" + token,
+            },
+            data: {
+                project_id:$(this).parents(".item_table").attr("data-id"),
+            },
+            success: function(data) {
+                if(data.data.haveChild == 1){
 
-		if(localStorage.getItem('haveChild') ==1){
-			laborNum = 1;
+                }else{
+                    toast('还没有创建子项目');
+                }
+            },
+        })
+		if(localStorage.getItem('haveChild')==1){
+            laborNum = 1;
             $("#boxPock").show();
             $("#boxPock .userAdminSeven").show();
             userItemID = $(this).parents(".item_table").attr("data-id");
             item_msg(userItemID);
-		}else{
-			toast('没有子项目');
 		}
 
+
+
 	})
+    function getStaff(){
+
+    }
 	$(document).on("click", ".item_manage1 .forth .member_system .work", function() {
 		laborNum = 2;
 		$("#boxPock").show();

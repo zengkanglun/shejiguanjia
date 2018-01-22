@@ -1080,7 +1080,7 @@ class ProjectController extends CommonController
             }
         }
     }
-    /*点击编辑，项目组管理验证用户身份 - 弃用*/
+    /*点击编辑，项目组管理验证用户身份*/
     public function checkUser(){
         if(IS_POST) {
             $post = I('post.');
@@ -1091,7 +1091,7 @@ class ProjectController extends CommonController
             ajax_success('success', $data);
         }
     }
-    /*判断是否有子项目 - 弃用*/
+    /*判断是否有子项目*/
     public function checkChild(){
         if(IS_POST){
             $project_id = I('project_id');
