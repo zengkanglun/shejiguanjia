@@ -136,6 +136,15 @@ $(document).on("click", ".userinfo .rows .one", function() {
 		async: true
 	});
 })
+$(document).on("mouseover",".userinfo .rows .one",function () {
+	$(this).attr("title",'锁屏');
+})
+$(document).on("mouseover",".userinfo .rows .two",function () {
+    $(this).attr("title",'修改密码');
+})
+$(document).on("mouseover",".userinfo .rows .three",function () {
+    $(this).attr("title",'更换头像');
+})
 /*解锁*/
 $(document).on("click", ".lock button", function() {
 	var password = $(".lock .password input").val();
@@ -261,7 +270,9 @@ function pageadd() {
 	$("#bodyRight .last_time i").html(last_time);
 	$("#bodyRight .last_ip i").html(last_ip);
 }
-
+$(document).on("mouseover",".helpBtn img",function () {
+	$(this).attr("title",'使用指南');
+})
 /*退出登录*/
 $(document).on("click", ".closeBtn", function() {
 	var token = localStorage.getItem("token");

@@ -736,18 +736,38 @@ class CommissionController extends CommonController
     public function performanceDetail() {
 
         $user_id = I('get.user_id', 0, 'intval');
-        //$project_id = I('get.project_id', 0, 'intval');
+        $start_time = I('get.start_time');
+        $end_time = I('get.end_time');
+
+        if($start_time && $end_time){
+            $where_com['start_time'] = array('EGT',strtotime($start_time));
+            $where_com['end_time'] = array('ELT',strtotime($end_time));
+            $pcid = M('project_commission')->where($where_com)->getField('group_concat(id)');
+            $pcid = explode(',',$pcid);
+        }
+
+
         if ( $user_id <= 0 ) ajax_error($user_id);
-        //ajax_success($user_id);
+
         //工种成员计提
-        $comlist = M('project_staff_commission')->where(['user_id'=>$user_id])->select();
+        $comlist = [];
+        if ($pcid){
+            for ($i=0; $i<count($pcid);$i++){
+                $where['project_commission_id'] = $pcid[$i];
+                $where['user_id'] = $user_id;
+                $psc = M('project_staff_commission')->where($where)->select();
+                $comlist = array_merge($comlist,$psc);
+            }
+        }else
+            $comlist = M('project_staff_commission')->where(['user_id'=>$user_id])->select();
         //ajax_success($comlist);
         $list = [];  //计提详情数组
         $pid = []; //项目ID数组
         $project_info['jiti_count'] = 0;  //计提次数
         $project_info['total_commission'] = 0;  //计提总额
         //项目主管的计提
-        $derectorlist = M('project_commission')->where(['supervisor_id'=>$user_id])
+        $where_com['supervisor_id'] = $user_id;
+        $derectorlist = M('project_commission')->where($where_com)
             ->field(['project_id',
                 'supervisor_id' => 'user_id',
                 'supervisor_rate' => 'commission_rate',
@@ -756,7 +776,7 @@ class CommissionController extends CommonController
             ])->select();
         $comlist = array_merge($derectorlist,$comlist);
         //var_export($comlist);
-        //ajax_success($comlist);
+        //ajax_success('ww',$derectorlist);
 
         foreach ($comlist as $k=>$v){
             if($comlist[$k]['commission_money'] > 0){
@@ -793,76 +813,7 @@ class CommissionController extends CommonController
         ajax_success('数据获取成功', compact('project_info', 'list'));
     }
 
-    /**
-     * 总览->人才绩效列表
-     */
-    public function performanceList() {
-
-        $start_time = I('get.start_time', 0, 'intval');
-        $end_time = I('get.end_time', 0, 'intval');
-        $name = I('get.name', '', 'trim');  //项目名称.用户名
-
-        $page = I('get.page', 1, 'intval'); //分页
-        $num = I('get.num', 10, 'intval');  //条数
-
-        $map = [];
-        if ( $start_time && $end_time && $start_time < $end_time ) {
-            $map['p.project_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
-        }
-        if ( $name ) {
-            $map['p.project_name|u.nickname'] = $name;
-        }
-
-        $field = [
-            'DISTINCT(psc.user_id)' => 'user_id',
-            'psc.project_id',
-//            'psc.user_id',
-            'u.nickname' => 'username',
-            'p.name' => 'project_name',
-            'psc.labor',
-//            'sum(commission_money)' => 'amount',
-            "from_unixtime(project_time, '%Y-%m-%d')" => 'project_time',
-        ];
-
-        $res = M('project_staff_commission')->alias('psc')->join('left join s_project p on p.id = psc.project_id')
-            ->join('left join s_user u on u.id = psc.user_id')
-            ->field($field)
-            ->where($map)
-            ->select();
-
-        $count = 0;
-        if ( $res ) {
-            $count = count($res);
-        }
-
-        //总页码
-        $totalPage = ceil( $count / $num );
-        if ( $page <= 0 ) $page = 1;
-        if ( $page > $totalPage ) $page = $totalPage;
-        $pre = ($page - 1) * $num;
-
-
-        $list = M('project_staff_commission')->alias('psc')->join('left join s_project p on p.id = psc.project_id')
-            ->join('left join s_user u on u.id = psc.user_id')
-            ->field($field)
-            ->where($map)
-            ->limit($pre.','.$num)
-//            ->order('psc.update_time desc')
-            ->select();
-
-        if ( $list ) {
-            foreach ( $list as $key => &$value ) {
-                $amount = M('project_staff_commission')->where(['project_id' => $value['project_id'], 'user_id' => $value['user_id']])->sum('commission_money');
-                $value['amount'] = $amount ? $amount : 0;
-            }
-        }
-
-        ajax_success('数据获取成功', compact('count', 'totalPage', 'list'));
-
-    }
-
     //二维数组排序算法
-
     /**
      * @param $array 排序的数组
      * @param $field 排序的字段
@@ -880,6 +831,7 @@ class CommissionController extends CommonController
         array_multisort($arrSort[$field], constant($sort), $array);
         return $array;
     }
+
     /**
      * 总览->人才绩效列表(新)
      */
@@ -890,14 +842,14 @@ class CommissionController extends CommonController
         $sort_field = I('get.amount');
         $page = I('get.page', 1, 'intval'); //分页
         $num = 10;
-        $start = I('get.start');
-        $end = I('get.end');
         $num = I('get.num', 10, 'intval');  //条数
+        $start = I('get.start');  //时间区间搜索
+        $end = I('get.end');
 
         $map = [];
-//        if ( $start_time && $end_time && $start_time < $end_time ) {
-//            $map['p.project_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
-//        }
+        if ( $start && $end && $start < $end ) {
+          $map['p.project_time'] = [['egt', strtotime($start)], ['elt', strtotime($end)], 'and'];
+        }
         if ( $name ) {
             $res = M('user')->where(['nickname' => ['like', "%{$name}%"]])->select();
             if ( $res ) {
@@ -905,42 +857,83 @@ class CommissionController extends CommonController
             }
         }
 
-        $count = M('user')->where($map)->count();//用户数量
+        $count = M('user')->count();//用户数量
         $page = new Page($count,10);
 
-        $data = M('user')->where($map)->limit($page->firstRow.','.$page->listRows)->field(['id'=>'user_id','nickname'])->select();
+        $data = M('user')->limit($page->firstRow.','.$page->listRows)->field(['id'=>'user_id','nickname'])->select();
+
+        //按照时间搜索
+        if($start && $end){
+            $where_project['project_time'] = array('BETWEEN',array(strtotime($start),strtotime($end)));
+            $time_project = M('project')->where($where_project)->getField('group_concat(id)');
+            //时间区间的项目
+            if($time_project)
+                $time_project = explode(',',$time_project);
+            else $time_project[0] = -1;
+            //时间区间的计提
+            $where_com['start_time'] = array('EGT',strtotime($start));
+            $where_com['end_time'] = array('ELT',strtotime($end));
+            $pcid = M('project_commission')->where($where_com)->getField('group_concat(id)');
+            $pcid = explode(',',$pcid);
+        }
 
         foreach ($data as $k=>$v)
         {
             //作为项目主管参与项目id
-            $projects = M('project')->where(['director_id'=>$v['user_id']])->getField('group_concat(id)');
-            //
-            $projects_staff = M('project_staff_commission')->where(['user_id'=>$v['user_id']])->getField('group_concat(project_id)');
+            $projects = M('project')->where($where_project)->where(['director_id'=>$v['user_id']])->getField('group_concat(id)');
+
+            //作为员工参与的项目
+            $projects_staff = M('staff')->alias('s')->join('left join s_project_child p on p.id = s.project_child_id')
+                ->where(['s.user_id'=>$v['user_id']])
+                ->getField('group_concat(project_id)');
+
+            if($projects_staff)
+                $projects_staff = explode(',',$projects_staff);
+
+            if($start && $end){
+                if ($time_project)
+                    $projects_staff = array_intersect($time_project,$projects_staff); //取两数组交集
+                else $projects_staff ='';
+            }
+
             if ($projects){
+                $projects = explode(',',$projects);
                 if($projects_staff){
-                    $projects = array_unique(explode(',',($projects.','.$projects_staff)));
+                    $projects = array_merge($projects,$projects_staff); //合并
+                    $projects = array_unique($projects);  //去重
                     $projects_id = count($projects);
                 }else{
-                    $projects = array_unique(explode(',',$projects));
                     $projects_id = count($projects);
                 }
             }elseif ($projects_staff){
-                $projects = array_unique(explode(',',$projects_staff));
+                $projects = $projects_staff;
+                $projects = array_unique($projects);
                 $projects_id = count($projects);
             }else{
                 $projects = '';
                 $projects_id = 0;
             }
 
+
             $data[$k]['project_num'] = $projects_id; //参与项目数
-            //按照时间搜索
-            if($start && $end){
-                $where[]
-            }
+
             // 主管提成
-            $profits_manage = M('projectCommission')->where(['supervisor_id'=>$v['user_id']])->getField('sum(supervisor_money)');
+            $profits_manage = M('projectCommission')->where($where_com)->where(['supervisor_id'=>$v['user_id']])->getField('sum(supervisor_money)');
             // 员工提成
-            $profits_staff = M('projectStaffCommission')->where(['user_id'=>$v['user_id']])->getField('sum(commission_money)');
+            $profits_staff = 0;
+            if($start && $end){
+                for ($i = 0;$i<count($pcid);$i++){
+                    $where['project_commission_id'] = $pcid[$i];
+                    $where['user_id'] = $v['user_id'];
+                    if($staff_money = M('project_staff_commission')->where($where)->getField('sum(commission_money)'))
+                        $profits_staff += $staff_money;
+                }
+
+            }else{
+                $profits_staff = M('project_staff_commission')->where(['user_id'=>$v['user_id']])->getField('sum(commission_money)');
+            }
+
+            //ajax_success('11',$profits_staff);
             $data[$k]['amount'] = $profits_manage + $profits_staff;
         }
 
@@ -957,60 +950,6 @@ class CommissionController extends CommonController
         $new_data['totalPage'] = ceil($count/10);
 
         ajax_success('success',$new_data);
-        if ( $name ) {
-            $res = M('user')->where(['nickname' => ['like', "%{$name}%"]])->select();
-            if ( $res ) {
-                $map['u.user_id'] = ['in', array_column($res, 'id')];
-            }
-        }
-        $field = [
-            'count(DISTINCT(project_id))' => 'project_num',
-//            'psc.project_id',
-            'psc.user_id',
-            'u.nickname',
-//            'p.name' => 'project_name',
-//            'psc.labor',
-            'sum(commission_money)' => 'amount',
-//            "from_unixtime(project_time, '%Y-%m-%d')" => 'project_time',
-        ];
-
-        $obj = M('project_staff_commission')->alias('psc')
-            ->join('right join s_user u on u.id = psc.user_id')
-            ->field($field)
-            ->where($map)
-            ->group('psc.user_id')
-            ->select();
-
-        
-
-
-        $count = count( $obj );
-        //总页码
-        $totalPage = ceil( $count / $num );
-        if ( $page <= 0 ) $page = 1;
-        if ( $page > $totalPage ) $page = $totalPage;
-        $pre = ($page - 1) * $num;
-        $pre < 0 ? $pre = 0 : $pre = $pre;
-
-        $list = M('project_staff_commission')->alias('psc')
-            ->join('left join s_user u on u.id = psc.user_id')
-            ->field($field)
-            ->where($map)
-            ->limit($pre.','.$num)
-            ->group('psc.user_id')
-            ->select();
-//
-       if ( $list ) {
-           foreach ( $list as $key => &$value ) {
-            //    $amount = M('project_staff_commission')->where(['project_id' => $value['project_id'], 'user_id' => $value['user_id']])->sum('commission_money');
-                $amount_supervisor = M('projectCommission')->where(['supervisor_id'=>$value['user_id']])->getField('sum(supervisor_money)');
-                // $value['amount'] = $amount ? $amount : 0;
-                $list[$key]['amount'] = $value['amount'] + ($amount_supervisor ? $amount_supervisor : 0.00);
-           }
-       }
-
-        ajax_success('数据获取成功', compact('count', 'totalPage', 'list'));
-
     }
 
     public function performance_export()

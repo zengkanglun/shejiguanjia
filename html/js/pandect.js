@@ -26,7 +26,9 @@ $(function() {
 		$("#boxPock").show();
 		$(".perf_detail").show();
         var user_id = $(this).attr("data-uid");
-        perfDetail(user_id);
+        var from = $("#five").val();
+        var to = $("#six").val();
+        perfDetail(user_id,from,to);
 	})
 	//绩效弹窗关闭
 	$("#boxPock .perf_detail i").on("click", function() {
@@ -49,19 +51,28 @@ $(function() {
 		sortNum = 1;
 		var num = $(this).attr("data-id");
 		var txtName = $("#query_key_b").val();
+		var from = $("#five").val();
+		var to = $("#six").val();
 		if(num == 0) {
 			$(this).attr("data-id", 1)
-			perf(1,1);
+			perf(1,1,name = '',from,to);
 		} else{
 			$(this).attr("data-id", 2)
-			perf(1,2);
+			perf(1,2,name = '',from,to);
 		}
 		if (num == 2){
 			$(this).attr("data-id", 1)
-			perf(1,1);
+			perf(1,1,name = '',from,to);
 		}
 
 	})
+
+    /*人才绩效时间区间搜索*/
+    $(".search.jixiao").on("click",function () {
+        var from = $("#five").val();
+        var to = $("#six").val();
+        perf(1,amount = '',name = '',from,to)
+    })
 	/*人才绩效*/
 	perf(1)
 
@@ -116,7 +127,7 @@ $(function() {
 	}
 
 	/*绩效详情*/
-     function perfDetail(user_id) {
+     function perfDetail(user_id,from,to) {
 		var user_id = user_id;
         var token = localStorage.getItem("token");
         $.ajax({
@@ -127,7 +138,9 @@ $(function() {
             url: host_host_host + "/index.php/Home/Commission/performanceDetail",
             dataType: 'json',
 			data:{
-            	user_id :user_id
+            	user_id :user_id,
+				start_time : from,
+				end_time : to
             },
             success: function(data) {
                 if(data.status == 1) { //success
