@@ -40,8 +40,12 @@ class AdminController extends CommonController
             ->limit($page->firstRow.','.$page->listRows)->select();
         foreach ($data['data'] as $k=>$v)
         {
-            $data['data'][$k]['work_type'] = M('work')->where(['id'=>$v['work_type']])->getField('name');
-            $data['data'][$k]['edu']       = getEdu($v['edu']);
+            if($res = M('work')->where(['id'=>$v['work_type']])->getField('name')){
+                $data['data'][$k]['work_type'] = $res;
+            }else{
+                $data['data'][$k]['work_type'] = '暂未分配';
+            }
+            $data['data'][$k]['edu'] = getEdu($v['edu']);
         }
         $data['count'] = $count;
         $data['page']  = ceil($count/$size);
@@ -207,24 +211,19 @@ class AdminController extends CommonController
             {
                 ajax_error('数据为空');
             }
-            /*foreach ($post as $k=>$v)
+            if($model -> where(['nickname'=>$post['nickname']])->getField('id'))
+                ajax_error('用户姓名已存在');
+            if($post['worktime'] == '') $post['worktime'] = date('Y-m-d',time());
+            if($data = $model->create($post))
             {
-                if($v!=0 && !$v)
+                if($model->add($data))
                 {
-                    unset($post[$k]);
-                }
-            }*/
-
-            if($post = $model->create($post))
-            {
-                if($model->add($post))
-                {
-                    $this->log("超级管理员新建了用户{$post['nickname']}",8);
+                    $this->log("超级管理员新建了用户{$data['nickname']}",8);
                     ajax_success('创建成功');
+                }else{
+                    ajax_error('创建失败');
                 }
             }
-
-            ajax_error('创建失败');
         }
     }
 
@@ -415,15 +414,15 @@ class AdminController extends CommonController
         }
 
         $count = $model->where($where)->count();
-        $page  = new Page($count,5);
+        $page  = new Page($count,10);
         $data['count'] = $count;
-        $data['page']  = ceil($count/5);
+        $data['page']  = ceil($count/10);
         $data['data']  = $model
             ->relation(true)
             ->where($where)
             ->limit($page->firstRow.','.$page->listRows)
             ->field(['id','user_id','log_info','log_ip','add_time','log_type'])
-            ->select();
+            ->order('id desc')->select();
 
         foreach ($data['data'] as $k=>$v)
         {
@@ -602,7 +601,7 @@ class AdminController extends CommonController
     {
         $data = M('info')->field(['name','mobile','address','zipcode','email'])->select();
 
-        ajax_success('获取成功',$data);
+        ajax_success('',$data);
 
     }
 
@@ -614,10 +613,17 @@ class AdminController extends CommonController
         if(IS_POST)
         {
             $post = I('post.');
-            if(M('info')->where(1)->save($post))
+            if(M('info')->select()){
+                if(M('info')->where("id=1")->save($post))
+                {
+                    $this->log("超级管理员更新了系统信息",8);
+                    ajax_success('更新成功');
+                }
+            }else
             {
-                $this->log("超级管理员更新了系统信息",8);
-                ajax_success('更新成功');
+                (M('info')->add($post));
+                $this->log("超级管理员添加了系统信息",8);
+                ajax_success('添加成功');
             }
         }
 
@@ -827,7 +833,6 @@ class AdminController extends CommonController
         if(IS_POST)
         {
             $post = I('post.');
-
             if(M('chuchaiType')->add($post))
             {
                 $this->log("超级管理员添加了出图出差类型",8);

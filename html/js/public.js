@@ -70,7 +70,11 @@ function ajaxLogin() {
 			if(data.status == 1) {
 
 			} else {
-				location.href = "login.html"
+				toast('登录已失效，请重新登录');
+				setInterval(function(){
+                    location.href = "login.html"
+				},2000);
+
 			}
 		},
 		error: function(data) {
@@ -96,7 +100,12 @@ $.ajax({
 		if(data.status == 1) {
 			$("body .lock").remove();
 		} else {
-			lock();
+			if(data.status == 5){
+				toast('登录已失效，请重新登录');
+				setInterval(function () {
+					window.location.href = "login.html";
+                },2000);
+			}else	lock();
 		}
 	},
 	error: function(data) {
@@ -127,6 +136,15 @@ $(document).on("click", ".userinfo .rows .one", function() {
 		async: true
 	});
 })
+$(document).on("mouseover",".userinfo .rows .one",function () {
+	$(this).attr("title",'锁屏');
+})
+$(document).on("mouseover",".userinfo .rows .two",function () {
+    $(this).attr("title",'修改密码');
+})
+$(document).on("mouseover",".userinfo .rows .three",function () {
+    $(this).attr("title",'更换头像');
+})
 /*解锁*/
 $(document).on("click", ".lock button", function() {
 	var password = $(".lock .password input").val();
@@ -156,6 +174,47 @@ $(document).on("click", ".lock button", function() {
 		async: true
 	});
 })
+
+/*搜索框搜索项目*/
+$("#text").keyup(function () {
+	var res = $("#text").val();
+	searchProject(res);
+
+})
+
+function searchProject(name) {
+	var name = name;
+
+    $(".search_project").remove();
+    $.ajax({
+        type: "post",
+        dataType: 'json',
+        headers: {
+            accept: "usertoken:" + token,
+        },
+        url: host_host_host + "/index.php/Home/Project/SearchProject",
+        data: {
+            name: name
+        },
+        success: function (data) {
+
+            if(data.status == 1){
+                var html = '<div class="search_project">';
+            	html += '<ul>';
+            	//console.log(data.data.length);
+            	for(var i=0; i<data.data.length; i++){
+            		html += '<a href="index.html?project_id='+ data.data[i].id +'"><li> ' + data.data[i].name +'</li></a>';
+				}
+				html += '</ul>';
+				html += '</div>';
+				$("#header .left ").append(html);
+                //console.log(html);
+            }else{
+            	toast(data.msg);
+			}
+        }
+    })
+}
 /*页面添加*/
 pageadd();
 
@@ -211,7 +270,9 @@ function pageadd() {
 	$("#bodyRight .last_time i").html(last_time);
 	$("#bodyRight .last_ip i").html(last_ip);
 }
-
+$(document).on("mouseover",".helpBtn img",function () {
+	$(this).attr("title",'使用指南');
+})
 /*退出登录*/
 $(document).on("click", ".closeBtn", function() {
 	var token = localStorage.getItem("token");
@@ -498,7 +559,7 @@ $.ajax({
 	data: {},
 	success: function(data) {
 		if(data.status == 1) {
-			$(".danw span").text(data.data[0].address)
+			$(".danw span").text(data.data[0].name)
 		} else {
 
 		}

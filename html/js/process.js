@@ -1276,8 +1276,17 @@ $(function() {
 					for(var i = 0; i < data.data.user.length; i++) {
 						xiangm += '<tr data-id="' + data.data.user[i].id + '" data-userid="' + data.data.user[i].user_id + '" data-duserid="' + data.data.user_id + '">';
 						xiangm += '	<td>' + (i + 1) + '</td>';
-						xiangm += '	<td>' + data.data.user[i].nickname + '</td>';
-						xiangm += '	<td>' + data.data.user[i].work.name + '</td>';
+						if(data.data.user[i].status == 1){
+                            xiangm += '	<td><p style="color:red;">' + data.data.user[i].nickname + '</p></td>';
+						}else{
+                            xiangm += '	<td>' + data.data.user[i].nickname + '</td>';
+						}
+
+						if (data.data.user[i].status == 2){
+                            xiangm += '	<td>' + data.data.user[i].work.name + '负责人</td>';
+						}else{
+                            xiangm += '	<td>' + data.data.user[i].work.name + '</td>';
+						}
 						xiangm += '	<td>' + data.data.user[i].labor + '</td>';
 						xiangm += '	<td>' + data.data.user[i].content + '</td>';
 						xiangm += '	<td class="handle">';
@@ -1403,10 +1412,11 @@ $(function() {
 			data: {
 				id: xiangmu_loid,
 				chile_id: child_id,
+				user_id: xiangmu_louserid,
 			},
 			success: function(data) {
 				if(data.status == 1) {
-					//					console.log(data);
+					console.log(data.data.project_staff);
 					$('#xm_lo_nickname').val(data.data.staff.nickname);
 					$('#xm_lo_workname').val(data.data.staff.work.name);
 					$('#xm_lo_director').val(data.data.staff.director);
@@ -1417,12 +1427,13 @@ $(function() {
 						var lishi = '';
 						lishi += '<div class="first_stage">';
 						lishi += '	<div class="stage_head">';
-						lishi += '		<span>阶段：</span><span>' + data.data.project_staff[i].start_time + '-' + data.data.project_staff[i].end_time + '</span>';
+						lishi += '		<span>历史阶段：</span><span>' + data.data.project_staff[i].start_time + '--' + data.data.project_staff[i].end_time + '</span>';
 						lishi += '	</div>';
-						lishi += '	<textarea name="" rows="" cols="" placeholder="请输入内容" disabled="disabled">' + data.data.project_staff[i].labor + '</textarea>';
+						lishi += '	<textarea name="" rows="" cols="" placeholder="" disabled="disabled">' + data.data.project_staff[i].content + '</textarea>';
 						lishi += '</div>';
+                        $('#xm_lo_lishi').append(lishi);
 					}
-					$('#xm_lo_lishi').html(lishi);
+
 				} else {
 					//					console.log(data);
 				}

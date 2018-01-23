@@ -32,10 +32,15 @@ class PublicController extends Controller
                 ajax_error('用户不存在');
             }
 
+            if($data['is_del'] == 1){
+                ajax_error('用户为离职状态，请联系管理员！');
+            }
+
             if($data['password'] != md5($post['password']))
             {
-                ajax_error('用户不存在');
+                ajax_error('密码错误');
             }
+
 
             $model = M('userToken');
 
@@ -162,17 +167,5 @@ class PublicController extends Controller
         $data = M('project')->field(['id','name'])->select();
         ajax_success('获取成功',$data);
     }
-    
-//    public function test()
-//    {
-//    	$data = array(
-//	    array('用户名', '性别', '出生年月', '加入日期','歌曲'), //title
-//	    array('测试名字1',   '男',   '1993-09-10',   '2010-10-10',	'七里香'),//datas
-//	    array('测试名字2',   '女',   '1993-09-10',   '2010-10-10',	'七里香'),
-//	    array('测试名字3',   '女',   '1993-09-10',   '2010-10-10',	'七里香'),
-//	    array('测试名字4',   '男',   '1993-09-10',   '2010-10-10',	'七里香'),
-//	   );
-//
-//    	export($data,'用户');
-//		}
+
 }

@@ -14,6 +14,6 @@ return array(
      'DB_HOST'   => 'localhost',
      'DB_NAME'   => 'shejiguanjia', // local 数据库名
      'DB_USER'   => 'root', // 用户名
-     'DB_PWD'    => 'qq10068',
+     'DB_PWD'    => '',
 
 );

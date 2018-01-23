@@ -105,6 +105,7 @@ $(function() {
 		var time = Date.parse(new Date(pp1.find('#pay_add_one').val())) / 1000;
 		var price = pp1.find('#pay_add_two').val();
 		var cont = pp1.find('#pay_add_cont').val();
+		var uid = sessionStorage.getItem("uid");
 		$.ajax({
 			headers: {
 				accept: 'usertoken:' + localStorage.getItem('token')
@@ -116,7 +117,8 @@ $(function() {
 				schedule_id: shoukuanJDId,
 				receive: price,
 				cause: cont,
-				receive_time: time
+				receive_time: time,
+				uid: uid
 			},
 			success: function(data) {
 				if(data.status == 1) {
@@ -184,6 +186,7 @@ $(function() {
 				receive: ppp.find('.header_right input').val(),
 				cause: ppp.find('.cnt_bottom textarea').val(),
 				receive_time: Date.parse(new Date(ppp.find('.header_left  input').val())) / 1000,
+				uid: sessionStorage.getItem("uid"),
 			},
 			success: function(data) {
 				if(data.status == 1) {
@@ -635,8 +638,10 @@ $(function() {
 		console.log(obj);
 		var arr = JSON.stringify(child);
 		var id = xiangmuskid;
+		var uid = sessionStorage.getItem("uid");
 		var form = new FormData($("#jTform")[0]);
 		form.append("project_id", id);
+		form.append("uid",uid);
 		form.append("child", arr);
 		$.ajax({
 			type: "post",
@@ -906,6 +911,7 @@ $(function() {
 			data: datas,
 			success: function(data) {
 				if(data.status == 1) {
+					console.log(data.list);
 					if(ing == 1) {
 						var datas = data.data;
 						pp.parents('.item_income').find('.now_detail .paging .page_left span').html(datas.count);
@@ -920,7 +926,7 @@ $(function() {
 							str += '	<td>' + datas.list[i].stage + '</td>';
 							str += '	<td>' + datas.list[i].receive + '</td>';
 							str += '	<td>' + datas.list[i].debt + '</td>';
-							str += '	<td>' + datas.list[i].process + '</td>';
+							str += '	<td>' + datas.list[i].cause + '</td>';
 							str += '	<td>' + datas.list[i].project_time + '</td>';
 							str += '	<td class="handle"><span class="check" data-id="' + datas.list[i].project_id + '">查看</span></td>';
 							str += '</tr>';
@@ -943,7 +949,7 @@ $(function() {
 							str += '	<td>' + datas.list[i].stage + '</td>';
 							str += '	<td>' + datas.list[i].receive + '</td>';
 							str += '	<td>' + datas.list[i].debt + '</td>';
-							str += '	<td>' + datas.list[i].process + '</td>';
+							str += '	<td>' + datas.list[i].cause + '</td>';
 							str += '	<td>' + datas.list[i].project_time + '</td>';
 							str += '	<td class="handle"><span class="check" data-id="' + datas.list[i].project_id + '">查看</span></td>';
 							str += '</tr>';

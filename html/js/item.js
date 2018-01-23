@@ -2,10 +2,10 @@ $(function() {
 	
 	/*下载附件合同*/
 	$(document).on("click", ".basic_msg tbody .filename", function() {
-		 
-		var url = $(this).data("url");
-		//console.log(url);
-		location.href = url;
+		if($(this).html() != '无权查看'){
+            var url = $(this).data("url");
+            location.href = url;
+		}
 	})
 	
 	//项目信息编辑
@@ -67,8 +67,8 @@ $(function() {
 					$(".basic_msg tbody .filename").text(data.data.filename);
 					$(".basic_msg tbody .filename").data("url",data.data.file);
 					//$(".basic_msg tbody .filename").html("<a href=\""+data.data.file+"\">"+data.data.filename+"</a>");		
-					$(".basic_msg tbody .money").text(data.data.money);							
-					$(".basic_msg tbody .receipt").text(data.data.sched_name + ' 已收款 ' + data.data.receipt);
+					// $(".basic_msg tbody .money").text(data.data.money);
+					$(".basic_msg tbody .receipt").text(data.data.receipt);
 					var projectName = data.data.name;
 					if(!projectName) {
 						projectName = "";
@@ -112,6 +112,8 @@ $(function() {
 					}
 					sessionStorage.setItem("itemName", data.data.name);
 					localStorage.setItem("project_id", data.data.id);
+                    localStorage.setItem("haveChild", data.data.haveChild);
+                    sessionStorage.setItem("is_director", data.data.is_director);
 					/*子项目负责人添加*/
 				} else {
 
@@ -147,7 +149,6 @@ $(function() {
 				project_id: id,
 			},
 			success: function(data) {
-				console.log(data.data.staff[0].work.name)
 				var director = "";
 				if(data.status == 1) {
 					director += '<tr>';
@@ -160,8 +161,16 @@ $(function() {
 					for(var i = 0; i < data.data.staff.length; i++) {
 						director += '<tr>';
 						director += '<td class="item">' + (i + 2) + '</td>';
-						director += '<td class="item_num">' + data.data.staff[i].work.name + '</td>';
-						director += '<td class="item">' + data.data.staff[i].nickname + '</td>';
+						if(data.data.staff[i].status == 2){
+                            director += '<td class="item_num">' + data.data.staff[i].work.name + '负责人</td>';
+						}else{
+                            director += '<td class="item_num">' + data.data.staff[i].work.name + '</td>';
+						}
+                        if(data.data.staff[i].status == 1){
+                            director += '<td class="item"><p style="color: red">' + data.data.staff[i].nickname + '</p></td>';
+                        }else{
+                            director += '<td class="item">' + data.data.staff[i].nickname + '</td>';
+                        }
 						director += '<td class="item_num">' + data.data.staff[i].mobile + '</td>';
 						director += '<td class="item_num">' + data.data.staff[i].qq + '</td>';
 						director += '</tr>';

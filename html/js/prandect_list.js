@@ -191,14 +191,14 @@ $(function() {
 		for(var i in data) {
 			var tsk = data[i];
 			var et = "";
-			if(tsk.edit == 0)
+			if(tsk.edit == 0 && tsk.status != 0)
 				et = '<span class="check"  data-id="' + tsk.id + '">查看</span>';
 			else
 				et = '<span class="edit"  data-id="' + tsk.id + '">编辑</span><span class="check"  data-id="' + tsk.id + '">查看</span>';
 
 			var item = $('<tr>' +
 				'<td>' + (parseInt(i) + 1) + '</td>' +
-				'<td>' + tsk.name + '</td>' +
+				'<td style="cursor:pointer ;" class="check" data-id=" '+ tsk.id + '">' + tsk.name + '</td>' +
 				'<td>' + tsk.build_name + '</td>' +
 				'<td>' + tsk.province + '</td>' +
 				'<td>' + tsk.build + '</td>' +
@@ -210,7 +210,7 @@ $(function() {
 				et +
 				'</td>' +
 				'</tr>');
-			$(e_id).append(item);
+			$(e_id).append(item)
 
 		}
 	}
@@ -458,6 +458,7 @@ $(function() {
 	//人才绩效 e_id:：渲染元素id
 	var rendPmenListParam = function(data, e_id, type) {
 		$(e_id).html("");
+		console.log(data);
 		for(var i in data) {
 			var tsk = data[i];
 			var item = $('<tr>' +
@@ -509,6 +510,7 @@ $(function() {
 			dataType: 'json',
 			data: bundle,
 			success: function(data) {
+				console.log(data);
 				if(data.status == 1) { //success
 					//					console.log(1);
 					//					console.log(data.msg);

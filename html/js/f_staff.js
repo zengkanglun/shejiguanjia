@@ -10,6 +10,7 @@ $(function() {
 		var i = $(this).attr('data-id');
 		console.log(xingzhenginfo.list[i]);
 		var ppName = $('.expend_detail');
+		ppName.find('.bianji').attr("data-id",i);
 		ppName.find('.logging_head .n1 input').val(xingzhenginfo.list[i].username);
 		ppName.find('.logging_head .n2 input').val(xingzhenginfo.list[i].executive_time);
 		ppName.find('.logging_head .n3 input').val(xingzhenginfo.list[i].overhead_type_name);
@@ -22,6 +23,55 @@ $(function() {
 		$("#boxPock").hide();
 		$("#boxPock .expend_detail").hide();
 	})
+	//行政支出编辑
+	$(document).on("click",".expend_detail_head .bianji",function () {
+		$(".expend_detail").hide();
+		$(".expend_edit").show();
+		var i = $(this).attr('data-id');
+        $(".expend_edit .right input").val(xingzhenginfo.list[i].amount);
+        $(".expend_edit .left input").val(xingzhenginfo.list[i].overhead_type_name);
+        //$(".expend_edit .left select").attr("value",xingzhenginfo.list[i].overhead_type_id);
+        $(".expend_edit textarea").val(xingzhenginfo.list[i].executive_content);
+        $(".expend_edit .user .c_man").val(xingzhenginfo.list[i].username)
+        $(".expend_edit .user .c_man").attr("data-id", xingzhenginfo.list[i].user_id);
+        $(".expend_edit #expendone").val(xingzhenginfo.list[i].executive_time);
+        $(".expend_edit .btn1").attr("id",xingzhenginfo.list[i].executive_id);
+        var ppp = $("#boxPock .expend_edit");
+        $.ajax({
+            type: "post",
+            url: host_host_host + "/Home/Finance/getExecutiveType",
+            dataType: 'json',
+            headers: {
+                accept: "usertoken:" + token,
+            },
+            data: {},
+            success: function(data) {
+                if(data.status == 1) {
+                    console.log(data);
+                    var datas = data.data;
+                    var str = '';
+                    //str += '<option>请选择</option>';
+                    for(var a = 0; a < datas.length; a++) {
+                    	if (datas[a].id == xingzhenginfo.list[i].overhead_type_id){
+                            str += '<option value="' + datas[a].id + '" selected="selected">' + datas[a].name + '</option>';
+                        }else {
+                            str += '<option value="' + datas[a].id + '">' + datas[a].name + '</option>';
+						}
+
+                    }
+                    ppp.find('.logging_head .type select').html(str);
+                    ppp.find('.cnt_footer .expend_edit .btn1').click(function() {})
+                } else {
+                    toast(data.msg);
+                }
+            },
+            error: function(data) {
+
+            },
+            async: true
+        });
+    })
+
 	//行政支出新增
 	$(document).on("click", ".staff_content .staff_add", function() {
 		$(".expend_edit input").val("");
@@ -81,7 +131,8 @@ $(function() {
 					user_id: ppp.find('.logging_head .user input').attr('data-id'),
 					amount: ppp.find('.logging_head .group input').val(),
 					executive_time: Date.parse(new Date(ppp.find('.logging_head .time input').val())) / 1000,
-					executive_content: ppp.find('.logging_bottom textarea').val()
+					executive_content: ppp.find('.logging_bottom textarea').val(),
+					executive_id: ppp.find('.btn1').attr('id')
 				},
 				success: function(data) {
 					if(data.status == 1) {

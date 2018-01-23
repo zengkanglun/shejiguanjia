@@ -281,6 +281,7 @@ $(function() {
 		//$("#boxPock").show();
 		//$("#boxPock .edit").show();
 		var addtyN = $("#boxPock #edit_add").data("type")
+
 		if(addtyN == "edit_project_overhead_type")
 			addtyN = "edit_project_type";
 		if(addtyN == "edit_admin_overhead_type")

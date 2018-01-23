@@ -34,15 +34,8 @@ $(function() {
 
 				},
 				success: function(data) {
-					if(data.status == 1) {
-						toast(data.msg);
-						localStorage.clear();
-						sessionStorage.clear();					
-					} else {
-						toast(data.msg);
-						localStorage.clear();
-						sessionStorage.clear();
-					}
+					localStorage.clear();
+					sessionStorage.clear();
 				},
 				error: function(data) {
 
@@ -71,7 +64,7 @@ $(function() {
 						sessionStorage.setItem("last_ip", data.data.last_ip);
 						location.href = "index.html";
 					} else {
-						alert("账号或者密码错误");
+                        alert(data.msg);
 					}
 				},
 				error: function(data) {
@@ -100,9 +93,9 @@ $(function() {
 						sessionStorage.setItem("uid", data.data.uid);
 						sessionStorage.setItem("last_time", data.data.last_time);
 						sessionStorage.setItem("last_ip", data.data.last_ip);
-						//location.href = "index.html";
+						location.href = "index.html";
 					} else {
-						alert("账号或者密码错误");
+						alert(data.msg);
 					}
 				},
 				error: function(data) {

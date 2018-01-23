@@ -23,9 +23,9 @@ class TaskController extends CommonController
             $user_id = $this->user_id;
         }
         $count = M('taskReceive')->where(['uid'=>$user_id,'status'=>1])->count();
-        $page  = new Page($count,5);
+        $page  = new Page($count,10);
         $data['count'] = $count;
-        $data['page']  = ceil($count/5);
+        $data['page']  = ceil($count/10);
         $data['data'] = M('taskReceive')
             ->alias('a')
             ->where(['a.uid'=>$user_id,'a.status'=>1])
@@ -65,9 +65,9 @@ class TaskController extends CommonController
             $user_id = $this->user_id;
         }
         $count = M('taskReceive')->where(['uid'=>$user_id,'status'=>2])->count();
-        $page  = new Page($count,5);
+        $page  = new Page($count,10);
         $data['count'] = $count;
-        $data['page']  = ceil($count/5);
+        $data['page']  = ceil($count/10);
         $data['data'] = M('taskReceive')
             ->alias('a')
             ->where(['a.uid'=>$user_id,'a.status'=>2])
@@ -108,9 +108,9 @@ class TaskController extends CommonController
             $user_id = $this->user_id;
         }
         $count = M('taskReceive')->where(['uid'=>$user_id,'status'=>['in','3,5']])->count();
-        $page  = new Page($count,5);
+        $page  = new Page($count,10);
         $data['count'] = $count;
-        $data['page']  = ceil($count/5);
+        $data['page']  = ceil($count/10);
         $data['data'] = M('taskReceive')
             ->alias('a')
             ->where(['a.uid'=>$user_id,'a.status'=>['in','3,5']])
@@ -151,9 +151,9 @@ class TaskController extends CommonController
             $user_id = $this->user_id;
         }
         $count = M('task')->where(['user_id'=>$user_id,'status'=>1])->count();
-        $page  = new Page($count,5);
+        $page  = new Page($count,10);
         $data['count'] = $count;
-        $data['page']  = ceil($count/5);
+        $data['page']  = ceil($count/10);
         // 使用指定的关联模型
         $data['data'] = D('task')
             ->relation(['type','receiver'])
@@ -191,7 +191,6 @@ class TaskController extends CommonController
                     'title',
                     'IFNULL(file_name,"") as file_name',
                     'content',
-                    'reply',
                     'update_at',
                     'to_user'
                 ]
@@ -477,10 +476,10 @@ class TaskController extends CommonController
             $where['add_time'] = [['egt', $start_time], ['elt', $end_time], 'and'];
         }
         $count = $model->where($where)->count();
-        $page  = new Page($count,5);
+        $page  = new Page($count,10);
 
         $data['count'] = $count;
-        $data['page']  = ceil($count/5);
+        $data['page']  = ceil($count/10);
         $data['data']  = $model->where($where)->limit($page->firstRow.','.$page->listRows)->field(['id','nickname'])->select();
 
         foreach ($data['data'] as $k => $v) {

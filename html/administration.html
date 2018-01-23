@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/public.css" />
 		<link rel="stylesheet" type="text/css" href="css/administration.css" />
-		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<script src="js/administration.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
@@ -307,8 +307,11 @@
 							<div class="list_detail nowCount">
 								<div class="go_list">
 									计提进行中
+									<span class="commissionDel">删除</span>
+									<span class="commissionModify">修改</span>
 								</div>
-								<table border="1" cellspacing="0">
+
+								<table border="1" cellspacing="0" id="ingRate">
 									<thead>
 										<tr>
 											<td class="orderlist">序号</td>
@@ -1196,6 +1199,7 @@
 					</div>
 				</div>
 				<!--项目分工结束-->
+
 				<!--删除提示框-->
 				<div class="delremind">
 					<div class="del_head">
@@ -1211,6 +1215,7 @@
 					</div>
 				</div>
 				<!---->
+
 				<!--选择工种-->
 				<div class="chooseWork">
 					<div class="chooseWork_head">

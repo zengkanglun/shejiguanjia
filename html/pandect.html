@@ -8,7 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/public.css" />
 		<link rel="stylesheet" type="text/css" href="css/pandect.css" />
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
@@ -414,7 +415,7 @@
 						<!--人才绩效-->
 						<div class="perf_content clearfix">
 							<div class="perf_time clearfix">
-								<!--<div class="time_left">
+								<div class="time_left">
 									<span>从</span>
 									<input type="text" placeholder="请选择时间" id="five" />
 								</div>
@@ -422,7 +423,7 @@
 									<span>至</span>
 									<input type="text" placeholder="请选择时间" id="six" />
 								</div>
-								<div class="search c">搜索</div>-->
+								<div class="search jixiao">搜索</div>
 
 								<div class="staff_search">
 									<a><img id="query_b" src="img/icon-search-orange.png" alt=""></a>
@@ -439,27 +440,11 @@
 											<td class="name">姓名</td>
 											<td class="build">项目数量</td>
 											<td class="task">提成总额</td>
+											<td class="handle">操作</td>
 										</tr>
 									</thead>
 									<tbody id="go_list_men">
-										<!--<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td class="handle"><span class="check"></span></td>
-										</tr>
-										<tr class="e9ecf1">
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td class="handle"><span class="check"></span></td>
-										</tr>-->
+
 								</table>
 								<div class="paging">
 									<div class="page">
@@ -505,22 +490,19 @@
 									<span>姓名：</span>
 									<input type="text" placeholder="输入内容" disabled="disabled" />
 								</div>
-								<div class="right clearfix n2">
-									<span>项目名称：</span>
+								<div class="left clearfix n2">
+									<span>计提项目：</span>
 									<input type="text" placeholder="输入内容" disabled="disabled" />
 								</div>
 								<div class="left clearfix n3">
-									<span>项目主管：</span>
+									<span>计提次数：</span>
 									<input type="text" placeholder="输入内容" disabled="disabled" />
-								</div>
-								<div class="right clearfix group n4">
-									<span>工种负责：</span>
-									<input type="text" placeholder="建筑" disabled="disabled" />
 								</div>
 								<div class="left clearfix n5">
 									<span>计提总额：</span>
 									<input type="text" placeholder="输入内容" disabled="disabled" />
 								</div>
+
 							</div>
 							<div class="color"></div>
 							<div class="job_logging" id="scors_list">

@@ -58,7 +58,7 @@ class FinanceController extends CommonController
 //            'round(sum(schedule.money)-sum(schedule.receive), 2)' => 'debt',  //未收款
             'schedule.process',     //最新过程记录
             'project.project_time',  //立项日期
-            'project.sche_id'
+            'project.sche_id',
         ];
         
 // && strtotime($start_time) < strtotime($end_time)
@@ -134,6 +134,7 @@ class FinanceController extends CommonController
                 ->where($map)->order('project.update_time desc')->limit($pre.','.$num)->select();
 
         }
+//        ajax_success('1',$list);
         if ( $list ) {
             foreach ( $list as $key => $value ) {
                 switch($value['sche_id'])
@@ -152,13 +153,15 @@ class FinanceController extends CommonController
                     break;
                 }
                 //收款记录
-                $obj = M('schedule')->field(['round(sum(receive), 2)' => 'receive', 'round(sum(money)-sum(receive), 2)' => 'debt'])->where(['project_id' => $value['project_id']])->find();
+                $obj = M('schedule')->field(['id','round(sum(receive), 2)' => 'receive', 'round(sum(money)-sum(receive), 2)' => 'debt'])->where(['project_id' => $value['project_id']])->find();
                 $list[$key]['receive'] = $obj['receive'] ? $obj['receive'] : 0;
                 $list[$key]['debt'] = $obj['debt'] ? $obj['debt'] : 0;
                 $list[$key]['project_time'] = date('Y-m-d', $value['project_time']) ? date('Y-m-d', $value['project_time']) : '暂无';
                 $list[$key]['process'] = $value['process'] ? $value['process'] : '';
                 $schedule_money = M('schedule')->where(['project_id'=>$value['project_id']])->getField('sum(money)');
                 $list[$key]['project_money'] = $value['project_moeny'] + $schedule_money;
+                $cause = M('receipt')->where(array('s_id'=>$obj['id']))->field('cause')->order('add_time desc')->find();
+                $list[$key]['cause']=$cause['cause']?$cause['cause']:'没有记录';
             }
         }
         ajax_success('数据请求成功', compact('count', 'totalPage', 'list'));
@@ -225,6 +228,7 @@ class FinanceController extends CommonController
 
         $schedule_id = I('post.schedule_id', 0, 'intval');
         $receipt_id = I('post.receipt_id', 0, 'intval');
+        $uid = I('post.uid', 0, 'intval');
 
         if ( $schedule_id <= 0 ) ajax_error('参数错误');
 
@@ -247,6 +251,9 @@ class FinanceController extends CommonController
         $info = $scheduleMod->field(['money', 'receive', 'project_id'])->where(['id' => $schedule_id])->find();
         if ( !$info ) ajax_error('当前阶段信息不存在');
 
+        //日志
+        $nickname = M('user')->where(['id'=>$uid])->getField('nickname');
+        $pro_name = M('project')->where(['id'=>$info['project_id']])->getField('name');
         //当前项目阶段未收款
         $debt = $info['money'] - $info['receive'];
 
@@ -262,6 +269,7 @@ class FinanceController extends CommonController
 
             $data['id'] = $receipt_id;
             if ( !$receiptMod->save($data) )  ajax_error($receiptMod->getError());
+            $this->log($nickname.'在项目：'.$pro_name.'，编辑了一条收款记录',7);
 
         } else {
             //添加收款记录
@@ -270,6 +278,7 @@ class FinanceController extends CommonController
             $data['s_id'] = $schedule_id;
             $data['add_time'] = time();
             if ( !$receiptMod->add($data) ) ajax_error($receiptMod->getError());
+            $this->log($nickname.'在项目：'.$pro_name.'，增加了一条收款记录',7);
 
         }
 
@@ -289,6 +298,7 @@ class FinanceController extends CommonController
 //                M('project')->where(['id' => $info['project_id']])->save(['status' => 1, 'update_time' => time()]);
 //            }
 //        }
+
 
         ajax_success('操作成功');
 
@@ -318,6 +328,9 @@ class FinanceController extends CommonController
         $data['add_time'] = $data['update_time'] = time();
 
         if ( $scheduleMod->add($data) ) {
+            $nickname = M('user')->where(['id'=>$this->user_id])->getField('nickname');
+            $pro_name = M('project')->where(['id'=>$data['project_id']])->getField('name');
+            $this->log($nickname.'在项目：'.$pro_name.'，增加了新阶段',7);
             ajax_success('操作成功');
         } else {
             ajax_error($scheduleMod->getError());
@@ -388,6 +401,9 @@ class FinanceController extends CommonController
 
             if ( $bool ) {
                 M()->commit();
+
+                $nickname = M('user')->where(['id'=>$data['uid']])->getField('nickname');
+                $this->log($nickname.'编辑了项目收款',7);
                 ajax_success('编辑成功');
             } else {
                 M()->rollback();
@@ -514,9 +530,10 @@ class FinanceController extends CommonController
                 "from_unixtime(project.project_time, '%Y-%m-%d')" => 'project_time',
                 'schedule.name' => 'stage'
             ])
-            ->join('left join s_schedule schedule on schedule.project_id = project.sche_id')
+            ->join('left join s_schedule schedule on schedule.id = project.sche_id')
             ->where(['project.id' => $project_id])->find();
         if ( !$project_info ) ajax_error('项目信息不存在');
+
 
         $expenseMod = M('expense');
         $project_info['expense_amount'] = $expenseMod->where(['project_id' => $project_id])->sum('amount');     //支出总额
@@ -588,6 +605,10 @@ class FinanceController extends CommonController
         if ( !$data ) ajax_error($expenseMod->getError());
         if ( $data['amount'] <= 0 ) ajax_error('金额不能为0');
 
+        //日志准备
+        $nickname = M('user')->where(['id'=>$this->user_id])->getField('nickname');
+        $pro_name = M('project')->where((['id'=>$data['project_id']]))->getField('name');
+
         $data['add_time'] = $data['update_time'] = time();
 
         $expense_id = I('post.expense_id', 0, 'intval');
@@ -600,6 +621,7 @@ class FinanceController extends CommonController
             unset($data['add_time']);
 
             if ( $expenseMod->save($data) !== false ) {
+                $this->log($nickname.'在项目：'.$pro_name.'，编辑了一条项目支出记录',7);
                 ajax_success('编辑成功');
             } else {
                 ajax_error($expenseMod->getError());
@@ -608,6 +630,7 @@ class FinanceController extends CommonController
         } else {
             //添加
             if ( $expenseMod->add($data) ) {
+                $this->log($nickname.'在项目：'.$pro_name.'，新增了一条项目支出记录',7);
                 ajax_success('添加成功');
             } else {
                 ajax_error($expenseMod->getError());
@@ -683,6 +706,8 @@ class FinanceController extends CommonController
         if ( $data['amount'] <= 0 ) ajax_error('金额不能为0');
 
         $executive_id = I('post.executive_id', 0, 'intval');
+        //日志准备
+        $nickname = M('user')->where(['id'=>$this->user_id])->getField('nickname');
 
         $data['add_time'] = $data['update_time'] = time();
 
@@ -695,6 +720,7 @@ class FinanceController extends CommonController
             unset($data['add_time']);
 
             if ( $executiveMod->save($data) !== false ) {
+                $this->log($nickname.'编辑了一条行政支出',7);
                 ajax_success('编辑成功');
             } else {
                 ajax_error($executiveMod->getError());
@@ -703,6 +729,7 @@ class FinanceController extends CommonController
         } else {
             //添加
             if ( $executiveMod->add($data) ) {
+                $this->log($nickname.'添加了一条行政支出',7);
                 ajax_success('添加成功');
             } else {
                 ajax_error($executiveMod->getError());
@@ -1006,7 +1033,8 @@ class FinanceController extends CommonController
         //项目主管计提金额
         $supervisor_money =  round( ($amount * $supervisor_rate) / 100, 2);
         $group_money = $amount - $supervisor_money;     //项目组金额
-
+        //获取项目ID
+        $pid = M('project_commission')->where(['id'=>$project_commission_id])->getField('project_id');
         $data = [
             'supervisor_rate' => $supervisor_rate,
             'supervisor_money' => $supervisor_money,
@@ -1069,6 +1097,9 @@ class FinanceController extends CommonController
 
         if ( $bool ) {
             M()->commit();
+            $nickname = M('user')->where(['id'=>$this->user_id])->getField('nickname');
+            $pro_name = M('project')->where(['id'=>$pid])->getField('name');
+            $this->log($nickname.'在项目：'.$pro_name.'，确认或修改了一次计提',7);
             ajax_success('操作成功');
         } else {
             M()->rollback();
@@ -1250,7 +1281,11 @@ class FinanceController extends CommonController
             'round(money-receive, 2)' => 'debat',
             'process'
         ])->where(['project_id' => $project_id])->select();
+        foreach ($schedule_list as $k=>$v){
+            $schedule_list[$k]['process'] = M('receipt')->where(['s_id'=>$schedule_list[$k]['schedule_id']])->order('id desc')->getfield('cause');
+        }
 
+        //ajax_success($schedule_list);
         //查找项目支出列表
         $expense_list = M('expense')->alias('e')->join('left join s_user u on u.id = e.user_id')->join('left join s_overhead_type ot on ot.id = overhead_type_id')->field([
             'e.id' => 'expense_id',

@@ -604,7 +604,7 @@ $(function() {
 				id: uid
 			},
 			success: function(data) {
-				toast(data.msg);
+				// toast(data.msg);
 				if(data.status == 1) { //success
 					viewPEdit(data.data);
 				} else {}
