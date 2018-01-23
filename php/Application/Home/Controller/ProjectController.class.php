@@ -39,9 +39,6 @@ class ProjectController extends CommonController
             // todo:// 暂时未确定是按照参与人员添加时间区分还是按照具体项目添加时间区分,所以目前先做具体项目区分
             $temp_staff = M('staff')->where(['user_id'=>$user_id])->field(['add_time','project_child_id'])->find();
             $temp_staff = M('projectChild')->alias('a')->join('__PROJECT__ b on a.project_id=b.id')->where(['a.id'=>$temp_staff['project_child_id']])->field(['a.project_id','b.add_time'])->find();
-// dump($temp_director);
-// dump($temp_manager);
-// dump($temp_staff);exit; 
             $temp_arr = [];
             $temp_arr['director'] = $temp_director;
             $temp_arr['managers'] = $temp_manager;
@@ -296,12 +293,12 @@ class ProjectController extends CommonController
                         foreach($val['work'] as $vo){
                             if($vo['user_id'])
                             {
-                            M('project_child_work_type')->add([
-                                'work_id' => $vo['work_id'], //工种ID
-                                'user_id' => $vo['user_id'], //工种负责人ID
-                                'project_child_id' => $add, //子项目ID
-                                'update_time' => time(),
-                                'add_time' => time(),
+                                M('project_child_work_type')->add([
+                                    'work_id' => $vo['work_id'], //工种ID
+                                    'user_id' => $vo['user_id'], //工种负责人ID
+                                    'project_child_id' => $add, //子项目ID
+                                    'update_time' => time(),
+                                    'add_time' => time(),
                                 ]);
                             // 需要添加该负责人到staff表
                             // add at 2017年11月1日15:05:28
@@ -312,6 +309,7 @@ class ProjectController extends CommonController
                                     'labor'     => '',
                                     'status'    => 2,
                                     'project_child_id'  => $add,
+                                    'status' => 2,
                                     'add_time'  => time(),
                                     'update_time'   => time()
                                 ]);
@@ -334,7 +332,7 @@ class ProjectController extends CommonController
             //查询项目主管
             $data['nickname'] = M('user')->where("id = ".$data['director_id'])->getField('nickname');
             //获取自定义工种列表
-            $data['work'] = M('work')->where("type = 1")->field('id,name')->select();
+            $data['work'] = M('work')->where()->field('id,name')->select();
 
             ajax_success('成功',$data);
         }
@@ -370,6 +368,14 @@ class ProjectController extends CommonController
                     }
                     if(!empty($id))
                     {
+                        foreach ($data['work'] as $val){
+                            //获取已有工种负责人的备选工种
+                            if($val['work_id'] > 7){
+                                $cust_res = M('work')->field('id,name')->where(['id'=>$val['work_id']])->select();
+                                $data['allWork'] = array_merge($data['allWork'],$cust_res);
+                            }
+                        }
+
                         $where['id'] = array('NOT IN',$id);
                     }
                     $where['type'] = 1;
@@ -729,6 +735,7 @@ class ProjectController extends CommonController
                 $project['file'] = '';
             }
 
+            $project['haveChild'] = M('project_child')->where(['project_id'=>$id])->select()?1:0;
 
             //查询项目进度和收款情况
             $schedule = M('schedule')->where("id = ".$project['sche_id'])->find();
@@ -1096,6 +1103,28 @@ class ProjectController extends CommonController
             }
         }
     }
+    /*点击编辑，项目组管理验证用户身份*/
+    public function checkUser(){
+        if(IS_POST) {
+            $post = I('post.');
+            $cheRes = M('project')->where(['id' => $post['project_id'], 'director_id' => $post['uid']])->field('id')->select();
+            $haveChild = M('project_child')->where(['project_id' => $post['project_id']])->select();
+            $data['check'] = $cheRes?1:0;
+            $data['haveChild'] = $haveChild ? 1 : 0;
+            ajax_success('success', $data);
+        }
+    }
+    /*判断是否有子项目*/
+    public function checkChild(){
+        if(IS_POST){
+            $project_id = I('project_id');
+            $haveChild = M('project_child')->where(['project_id' => $project_id])->select();
+            $data['haveChild'] = $haveChild ? 1 : 0;
+            ajax_success('',$data);
+        }
+    }
+
+
 
     /**
      * [Identity 查询用户对于项目都有什么身份]

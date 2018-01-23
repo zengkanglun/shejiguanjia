@@ -29,7 +29,12 @@ $(function() {
 					director_id = data.data.director_id;
 					design = "";
 					for(var i = 0; i < data.data.work.length; i++) {
-						design += '<li data-id="' + data.data.work[i].id + '">';
+						if(i<7){
+                            design += '<li class="active" data-id="' + data.data.work[i].id + '">';
+						}else {
+                            design += '<li data-id="' + data.data.work[i].id + '">';
+						}
+
 						design += '<i><img src="img/backstage_checkbox_orange.png" alt="" /></i>';
 						design += '<span>' + data.data.work[i].name + '</span>';
 						design += '</li>';
@@ -51,22 +56,50 @@ $(function() {
 
 	/*备选工种添加*/
 	$(document).on("click", ".cnt_detail .beixuan .design li i", function() {
-		$(this).parents("li").toggleClass("active");
-		var data_id = $(this).parents("li").attr("data-id");
-		var spanTxt = $(this).siblings("span").text();
-		var display = $(this).find("img").css("display");
-		var tbody = '<tr data-id="' + data_id + '" class="work"><td class="item" data-id="' + data_id + '">' + spanTxt + '</td><td class="item_num"><span>选人</span><input type="text" class="show" data-id="0" disabled="disabled"/></td></tr>';
+		/*$(this).parents("li").toggleClass("active");
+        var data_id = $(this).parents("li").attr("data-id");
+        var spanTxt = $(this).siblings("span").text();
+        var display = $(this).find("img").css("display");
+        var tbody = '<tr data-id="' + data_id + '" class="work"><td class="item" data-id="' + data_id + '">' + spanTxt + '</td><td class="item_num"><span>选人</span><input type="text" class="show" data-id="0" disabled="disabled"/></td></tr>';
 
-		if(display == "block") {
-			$(this).parents(".cnt_detail").find("table tbody").append(tbody);
-		} else {
-			$(this).parents(".cnt_detail").find("table tbody tr").each(function() {
-				var id = $(this).attr("data-id");
-				if(id == data_id) {
-					$(this).remove();
-				}
-			})
-		}
+        if(display == "block") {
+            $(this).parents(".cnt_detail").find("table tbody").append(tbody);
+        } else {
+            $(this).parents(".cnt_detail").find("table tbody tr").each(function() {
+                var id = $(this).attr("data-id");
+                if(id == data_id) {
+                    $(this).remove();
+                }
+            })
+        }*/
+        var display = $(this).find("img").css("display");
+        var data_id = $(this).parents("li").attr("data-id");
+        // $(this).parents("li").toggleClass("active");
+        if(display == "block") {
+            var flag = 0;
+            $(this).parents(".cnt_detail").find("table tbody tr").each(function() {
+                var id = $(this).attr("data-id");
+
+                if(id == data_id) {
+                    if($(this).find('.item_num input').attr('data-id') != ''){
+                        toast('该工种已有负责人!');
+                        // $(this).parents("li").removeClass("active");
+                    }else{
+                        $(this).remove();
+                        flag = 1;
+                    }
+                }
+            });
+            if(flag) $(this).parents("li").toggleClass("active");
+        }else{
+            $(this).parents("li").toggleClass("active");
+            var spanTxt = $(this).siblings("span").text();
+            var tbody = '<tr data-id="' + data_id + '"><td class="item" data-id="' + data_id + '">' + spanTxt + '</td><td class="item_num"><span>选人</span><input type="text" class="show" value="暂无" data-id="" disabled="disabled"/></td></tr>';
+            $(this).parents(".cnt_detail").find("table tbody").append(tbody);
+        }
+
+
+
 	})
 	/*增加子项目*/
 	var subItem;
@@ -94,53 +127,53 @@ $(function() {
 		subItem += '                                       <input type="text"  class="show director" value="' + director + '" data-id="0" disabled="disabled"/>';
 		subItem += '									</td>';
 		subItem += '								</tr>';
-		subItem += '								<tr class="work">';
-		subItem += '									<td class="item" data-id="1">规划负责：</td>';
+		subItem += '								<tr data-id="1" class="work">';
+		subItem += '									<td class="item" data-id="1">规划工种：</td>';
 		subItem += '									<td class="item_num">';
 		subItem += '										<span>选人</span>';
-		subItem += '										<input type="text" class="show" data-id="0" disabled="disabled"/>';
+		subItem += '										<input type="text" class="show" value="暂无" data-id="" disabled="disabled"/>';
 		subItem += '									</td>';
 		subItem += '								</tr>';
-		subItem += '								<tr class="work">';
-		subItem += '									<td class="item" data-id="2">方案负责：</td>';
+		subItem += '								<tr data-id="2" class="work">';
+		subItem += '									<td class="item" data-id="2">方案工种：</td>';
 		subItem += '									<td class="item_num">';
 		subItem += '										<span>选人</span>';
-		subItem += '										<input type="text" class="show" data-id="0" disabled="disabled"/>';
+		subItem += '										<input type="text" class="show" value="暂无" data-id="" disabled="disabled"/>';
 		subItem += '								</td>';
 		subItem += '								</tr>';
-		subItem += '								<tr class="work">';
-		subItem += '									<td class="item" data-id="3">建筑负责：</td>';
+		subItem += '								<tr data-id="3" class="work">';
+		subItem += '									<td class="item" data-id="3">建筑工种：</td>';
 		subItem += '									<td class="item_num">';
 		subItem += '										<span>选人</span>';
-		subItem += '										<input type="text" class="show" data-id="0" disabled="disabled"/>';
+		subItem += '										<input type="text" class="show" value="暂无" data-id="" disabled="disabled"/>';
 		subItem += '									</td>';
 		subItem += '								</tr>';
-		subItem += '								<tr class="work">';
-		subItem += '									<td class="item" data-id="4">结构负责：</td>';
+		subItem += '								<tr data-id="4" class="work">';
+		subItem += '									<td class="item" data-id="4">结构工种：</td>';
 		subItem += '									<td class="item_num">';
 		subItem += '										<span>选人</span>';
-		subItem += '										<input type="text" class="show" data-id="0" disabled="disabled"/>';
+		subItem += '										<input type="text" class="show" value="暂无" data-id="" disabled="disabled"/>';
 		subItem += '									</td>';
 		subItem += '								</tr>';
-		subItem += '								<tr class="work">';
-		subItem += '									<td class="item" data-id="5">电气负责：</td>';
+		subItem += '								<tr data-id="5" class="work">';
+		subItem += '									<td class="item" data-id="5">电气工种：</td>';
 		subItem += '									<td class="item_num">';
 		subItem += '									<span>选人</span>';
-		subItem += '										<input type="text" class="show" data-id="0" disabled="disabled"/>';
+		subItem += '										<input type="text" class="show" value="暂无" data-id="" disabled="disabled"/>';
 		subItem += '									</td>';
 		subItem += '								</tr>';
-		subItem += '								<tr class="work">';
-		subItem += '									<td class="item" data-id="6">给排水负责：</td>';
+		subItem += '								<tr data-id="6" class="work">';
+		subItem += '									<td class="item" data-id="6">给排水工种：</td>';
 		subItem += '									<td class="item_num">';
 		subItem += '										<span>选人</span>';
-		subItem += '										<input type="text" class="show" data-id="0" disabled="disabled"/>';
+		subItem += '										<input type="text" class="show" value="暂无" data-id="" disabled="disabled"/>';
 		subItem += '									</td>';
 		subItem += '								</tr>';
-		subItem += '								<tr class="work">';
-		subItem += '									<td class="item" data-id="7">暖通负责：</td>';
+		subItem += '								<tr data-id="7" class="work">';
+		subItem += '									<td class="item" data-id="7">暖通工种：</td>';
 		subItem += '									<td class="item_num">';
 		subItem += '										<span>选人</span>';
-		subItem += '										<input type="text" class="show" data-id="0" disabled="disabled"/>';
+		subItem += '										<input type="text" class="show" value="暂无" data-id="" disabled="disabled"/>';
 		subItem += '									</td>';
 		subItem += '								</tr>';
 		subItem += '							</tbody>';
