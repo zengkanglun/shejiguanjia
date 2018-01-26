@@ -267,7 +267,9 @@ $(function() {
 						str += '<tr>';
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td><a href="javascirpt:void(0)">' + datas.list[i].overhead_type_name + '</a></td>';
-						str += '	<td>' + datas.list[i].executive_content + '</td>';
+                        if (datas.list[i].executive_content.length > 15)
+                            str += '	<td>' + datas.list[i].executive_content.substring(0,15) +'...' + '</td>';
+                        else  str += '	<td>' + datas.list[i].executive_content + '</td>';
 						str += '	<td>' + datas.list[i].amount + '</td>';
 						str += '	<td>' + datas.list[i].executive_time + '</td>';
 						str += '	<td class="handle"><span class="check" data-id="' + i + '">查看</span></td>';

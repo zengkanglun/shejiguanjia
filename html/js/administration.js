@@ -909,19 +909,24 @@ $(function() {
 				if(data.status == 1) {
 					//					console.log(data)
 					/*新建项目信息*/
-					var newItem = "";
-					for(var i = 0; i < data.data.current_work_list.length; i++) {
-						newItem += '<tr>';
-						newItem += '<td>' + (i + 1) + '</td>';
-						newItem += '<td class="work" data-id="' + data.data.current_work_list[i].work_id + '">' + data.data.current_work_list[i].work_name + '</td>';
-						newItem += '<td>' + data.data.current_work_list[i].username + '</td>';
-						newItem += '<td class="work_status"><span class="check">查看</span></td>';
-						newItem += '<td class="rate"><input type="number" placeholder="请输入内容" /></td>';
-						newItem += '<td class="handle"><span>通知</span></td>';
-						newItem += '</tr>';
+					if(data.data.current_commission_list.list.length == 0){
+                        var newItem = "";
+                        for(var i = 0; i < data.data.current_work_list.length; i++) {
+                            newItem += '<tr>';
+                            newItem += '<td>' + (i + 1) + '</td>';
+                            newItem += '<td class="work" data-id="' + data.data.current_work_list[i].work_id + '">' + data.data.current_work_list[i].work_name + '</td>';
+                            newItem += '<td>' + data.data.current_work_list[i].username + '</td>';
+                            newItem += '<td class="work_status"><span class="check">查看</span></td>';
+                            newItem += '<td class="rate"><input type="number" placeholder="请输入内容" /></td>';
+                            newItem += '<td class="handle"><span>通知</span></td>';
+                            newItem += '</tr>';
+                        }
+                        $(".userAdminFive .newCount tbody tr").remove();
+                        $(".userAdminFive .newCount tbody").append(newItem);
+					}else{
+						$('.userAdminFive .newCount').hide()
 					}
-					$(".userAdminFive .newCount tbody tr").remove();
-					$(".userAdminFive .newCount tbody").append(newItem);
+
 					/*进行中的项目*/
 					var goItem = "";
 					var datas = data.data.current_commission_list.list;
@@ -1950,6 +1955,10 @@ $(function() {
                         $('.commissionModify').html('修改');
                         $('.commissionModify').hide();
                         $('.nowbutton').hide();
+                        /*删除后，显示新建计提*/
+                        $('.userAdminFive .newCount').show()
+                        itemId = $(".userAdminFive .project_name").attr('project_id');
+                        countlist(itemId)
                     },
                     error: function(data) {
                         toast('删除失败');

@@ -43,7 +43,9 @@ $(function() {
 						incomeList += '<td>' + datas[i].name + '</td>';
 						incomeList += '<td>' + datas[i].receive + '</td>';
 						incomeList += '<td>' + datas[i].debat + '</td>';
-						incomeList += '<td>' + datas[i].process + '</td>';
+                        if (datas[i].process.length > 18){
+                            incomeList += '<td>' + datas[i].process.substring(0,18) + '…' + '</td>';
+                        }else incomeList += '	<td>' + datas[i].process + '</td>';
 						incomeList += '<td class="handle" data-id="' + datas[i].schedule_id + '"><span class="check">详情</span></td>';
 						incomeList += '</tr>';
 					}
@@ -53,7 +55,10 @@ $(function() {
 						expendList += '<td>' + expend[i].expense_time + '</td>';
 						expendList += '<td>' + expend[i].type_name + '</td>';
 						expendList += '<td>' + expend[i].amount + '</td>';
-						expendList += '<td>' + expend[i].expense_content + '</td>';
+
+                        if (expend[i].expense_content.length > 13){
+                            expendList += '<td>' + expend[i].expense_content.substring(0,13) + '…' + '</td>';
+                        }else expendList += '	<td>' + expend[i].expense_content + '</td>';
 						expendList += '<td>' + expend[i].username + '</td>';
 						expendList += '<td class="handle" data-id="' + expend[i].expense_id + '"><span class="check">详情</span></td>';
 						expendList += '</tr>';
