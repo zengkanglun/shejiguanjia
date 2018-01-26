@@ -659,7 +659,7 @@ foreach($data['data'] as $k=>$v)
             $scheme   = $port == '443' ? 'https' : 'http';
             
             //$scheme.'://'.$_SERVER['SERVER_NAME'].$path.$data['pic'];
-                ajax_success('成功',$scheme.'://'.$_SERVER['SERVER_NAME'].$path.$res[0]);
+                ajax_success('成功',$scheme.'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$path.$res[0]);
             }
 
         }
