@@ -678,7 +678,7 @@ body {
   cursor: pointer;
   margin-left: 15px;
 }
-#bodyRight #content .center_content .content_detail .perf_content .perf_time .sort {
+#bodyRight #content .center_content .content_detail .perf_content .perf_time .sort,.tab_right {
   width: 76px;
   height: 36px;
   text-align: center;
