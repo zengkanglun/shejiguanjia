@@ -1,5 +1,5 @@
 $(function() {
-	var host_host_host = "http://localhost/shejiguanjia/php";
+	var host_host_host = "http://archinfo.gzhu.edu.cn:8080/shejiguanjia/php";
 	var d = new Date();
 	var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
 	var str1 = "星期" + "日一二三四五六".charAt(new Date().getDay());

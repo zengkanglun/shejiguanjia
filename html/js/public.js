@@ -1,4 +1,4 @@
-var host_host_host = "http://localhost/shejiguanjia/php";
+var host_host_host = "http://archinfo.gzhu.edu.cn:8080/shejiguanjia/php";
 var tapChoose = null;
 var token = localStorage.getItem("token");
 var windowWidthR, resizeWidth;
