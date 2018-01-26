@@ -95,7 +95,9 @@ $(function() {
 					xmzc += '	<td>' + data.data.expense_list[c].expense_time + '</td>';
 					xmzc += '	<td>' + data.data.expense_list[c].type_name + '</td>';
 					xmzc += '	<td>' + data.data.expense_list[c].amount + '</td>';
-					xmzc += '	<td>' + data.data.expense_list[c].expense_content + '</td>';
+                    if (data.data.expense_list[c].expense_content.length > 13)
+                        xmzc += '	<td>' + data.data.expense_list[c].expense_content.substring(0,13) +'...' + '</td>';
+                    else  xmzc += '	<td>' + data.data.expense_list[c].expense_content + '</td>';
 					xmzc += '	<td>' + data.data.expense_list[c].username + '</td>';
 					xmzc += '	<td class="handle"><span class="check" data-id="' + data.data.expense_list[c].expense_id + '">详情</span></td>';
 					xmzc += '</tr>';

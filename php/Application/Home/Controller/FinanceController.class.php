@@ -1283,6 +1283,9 @@ class FinanceController extends CommonController
         ])->where(['project_id' => $project_id])->select();
         foreach ($schedule_list as $k=>$v){
             $schedule_list[$k]['process'] = M('receipt')->where(['s_id'=>$schedule_list[$k]['schedule_id']])->order('id desc')->getfield('cause');
+            if (!$schedule_list[$k]['process']){
+                $schedule_list[$k]['process'] = '暂无收款记录';
+            }
         }
 
         //ajax_success($schedule_list);

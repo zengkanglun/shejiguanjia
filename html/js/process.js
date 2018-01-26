@@ -163,7 +163,11 @@ $(function() {
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.process[i].time + '</td>';
 						str += '	<td>' + data.data.process[i].name + '</td>';
-						str += '	<td>' + data.data.process[i].content + '</td>';
+						if (data.data.process[i].content.length > 15){
+							str += '<td>' + data.data.process[i].content.substring(0,15) + '…' + '</td>'
+
+						}else str += '	<td>' + data.data.process[i].content + '</td>';
+
 						str += '	<td>' + data.data.process[i].nickname + '</td>';
 						str += '	<td class="handle">';
 						str += '		<span class="check">查看</span>';
@@ -438,7 +442,9 @@ $(function() {
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.Picture[i].add_time + '</td>';
 						str += '	<td>' + data.data.Picture[i].name + '</td>';
-						str += '	<td>' + data.data.Picture[i].content + '</td>';
+                        if (data.data.Picture[i].content.length > 15){
+                            str += '<td>' + data.data.Picture[i].content.substring(0,15) + '…' + '</td>'
+                        }else str += '	<td>' + data.data.Picture[i].content + '</td>';
 						str += '	<td>' + data.data.Picture[i].num + '</td>';
 						str += '	<td>' + data.data.Picture[i].nickname + '</td>';
 						str += '	<td class="handle">';
@@ -713,8 +719,10 @@ $(function() {
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.letter[i].time + '</td>';
 						str += '	<td>' + data.data.letter[i].name + '</td>';
-						str += '	<td>' + data.data.letter[i].content + '</td>';
-						str += '	<td class="letterFile">' + data.data.letter[i].filename + '</td>';
+                        if (data.data.letter[i].content.length > 15){
+                            str += '<td>' + data.data.letter[i].content.substring(0,15) + '…' + '</td>'
+                        }else str += '	<td>' + data.data.letter[i].content + '</td>';
+						str += '	<td><span class="letterFile">' + data.data.letter[i].filename + '</span></td>';
 						str += '	<td>' + data.data.letter[i].nickname + '</td>';
 						str += '	<td class="handle">';
 						str += '		<span class="check">查看</span>';
@@ -986,8 +994,10 @@ $(function() {
 						str += '	<td>' + (i + 1) + '</td>';
 						str += '	<td>' + data.data.letter[i].time + '</td>';
 						str += '	<td>' + data.data.letter[i].name + '</td>';
-						str += '	<td>' + data.data.letter[i].content + '</td>';
-						str += '	<td class="titleFile">' + data.data.letter[i].filename + '</td>';
+                        if (data.data.letter[i].content.length > 15){
+                            str += '<td>' + data.data.letter[i].content.substring(0,15) + '…' + '</td>'
+                        }else str += '	<td>' + data.data.letter[i].content + '</td>';
+						str += '	<td><span class="titleFile">' + data.data.letter[i].filename + '</span></td>';
 						str += '	<td>' + data.data.letter[i].nickname + '</td>';
 						str += '	<td class="handle">';
 						str += '		<span class="check">查看</span>';
@@ -1287,8 +1297,15 @@ $(function() {
 						}else{
                             xiangm += '	<td>' + data.data.user[i].work.name + '</td>';
 						}
-						xiangm += '	<td>' + data.data.user[i].labor + '</td>';
-						xiangm += '	<td>' + data.data.user[i].content + '</td>';
+
+                        if (data.data.user[i].content.length > 15){
+                            xiangm += '<td>' + data.data.user[i].labor.substring(0,15) + '…' + '</td>'
+                        }else xiangm += '	<td>' + data.data.user[i].labor + '</td>';
+
+                        if (data.data.user[i].content.length > 15){
+                            xiangm += '<td>' + data.data.user[i].content.substring(0,15) + '…' + '</td>'
+                        }else xiangm += '	<td>' + data.data.user[i].content + '</td>';
+
 						xiangm += '	<td class="handle">';
 						xiangm += '		<span class="check">查看</span>';
 						if(data.data.user_id == data.data.user[i].user_id) {
