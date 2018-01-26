@@ -72,7 +72,7 @@ class PublicController extends Controller
             $port 		= $_SERVER['SERVER_PORT'];
             $scheme   = $port == '443' ? 'https' : 'http';
             $new_data['token']    = $token;
-            $new_data['img']      = $scheme.'://'.$_SERVER['SERVER_NAME'].$path.$data['pic'];
+            $new_data['img']      = $scheme.'://'.$_SERVER['SERVER_NAME'].':'.$port.$path.$data['pic'];
             $new_data['username'] = $data['username'];
             $new_data['nickname'] = $data['nickname'];
             $new_data['authority']= $data['authority']; // 所拥有权限
